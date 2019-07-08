@@ -14,7 +14,7 @@ export default {
 	store,
 	data() {
 		return {
-			//
+			//branch용
 		}
 	}
 }
