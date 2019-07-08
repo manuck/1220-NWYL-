@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    
+    <link rel="shortcut icon" type="image/png" href="/img/icon/favicon.png">
+    <title>ssafy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+    <style>
+      a:hover, a:visited, a:link {
+        text-decoration: none;
+      }
+      #footer {
+          height: 60px;
+          width: 100%;
+          background-color: black;
+      }
+      .footer-wrapper {
+          display: flex;
+          height: inherit;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 50px;
+          color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>
+      <strong>We're sorry but ssafy doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+
+    </div>
+    <!-- built files will be auto injected -->
+    <div id="footer">
+      <div class="footer-wrapper">
+        <div class="left">
+          <span>ⓒ 2019 Copyright LimDM</span>
+        </div>
+        <div class="right">
+          <span>ssafy blanc</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    console.log('beforecreate')
+    let userAgent = window.navigator.userAgent;
+    let isChrome = userAgent.indexOf('Chrome')
+    let isChromeMobile = userAgent.indexOf('CriOS');
+    let isSamsungBrowser = userAgent.indexOf('SamsungBrowser');
+    let isWindows = userAgent.indexOf('Windows NT');
+    let isEdge = userAgent.indexOf('Edge');
+    let isIE = userAgent.indexOf('Trident');
+    if(!((isChrome > -1 && isWindows > -1 && isChromeMobile < 0 && isSamsungBrowser < 0 && isEdge < 0 && isIE < 0) || 
+    (isChrome < 0 && isChromeMobile > -1 && isSamsungBrowser < 0 && isWindows < 0 && isEdge < 0 && isIE < 0))) {
+      alert('해당 사이트는 크롬에 최적화 되어 있습니다.')
+    } 
+  </script>
+</html>
