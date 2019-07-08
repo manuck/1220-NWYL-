@@ -49,6 +49,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -60,6 +61,7 @@ import RepositoryList from '../components/RepositoryList'
 import Navbar from '../components/Navbar'
 import TopButton from '../components/TopButton'
 import Bookmark from '../components/Bookmark'
+import Footer from '../components/Footer'
 
 export default {
 	name: 'HomePage',
@@ -71,6 +73,7 @@ export default {
     Navbar,
     TopButton,
     Bookmark,
+    Footer,
   },
   // mounted() {
   //   console.log('beforecreate')
