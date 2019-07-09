@@ -1,5 +1,6 @@
 <template>
     <div id="navbar">
+      <LoginModal></LoginModal>
         <div class="navbar-fixed">
         <div class="navbar-wrapper">
             <div class="left">
@@ -15,12 +16,15 @@
             </div>
         </div>
         </div>
+
+
         <v-navigation-drawer
             v-model="drawer"
             temporary
             right
             class="nav-drawer"
         >
+
             <router-link to="/portfolio">
                 <div class="navitems">
                     Portfolio
@@ -31,24 +35,36 @@
                     Post
                 </div>
             </router-link>
-            <router-link to="/login">
-                <div class="navitems">
-                    Login
+           <!-- <router-link to="/login"> -->
+                <div class="navitems" >
+                    <LoginModal></LoginModal>
                 </div>
-            </router-link>
+          <!-- </router-link> -->
+
         </v-navigation-drawer>
+
+
     </div>
+
 
 </template>
 
 <script>
 
+import LoginModal from './LoginModal'
 export default {
     name: 'Navbar',
-    data() {
-        return {
-            drawer: false
-        }
+    components: {
+      LoginModal
+    },
+    data: () => ({
+      drawer: false,
+      dialog: false
+    }),
+    methods: {
+      on() {
+        alert("hhhhhh");
+      }
     }
 }
 </script>
@@ -94,7 +110,7 @@ export default {
 .nav-drawer {
     position: fixed;
     top: 0;
-    width: 250px; 
+    width: 250px;
     height: 100vh;
 }
 
