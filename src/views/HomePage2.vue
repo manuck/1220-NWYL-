@@ -1,6 +1,6 @@
 <template>
-    <div>
-        newhome
+    <div class="back2">
+    
     </div>
 </template>
 
@@ -9,3 +9,18 @@ export default {
     name: 'pjt2',
 }
 </script>
+<style>
+    .application--wrap {
+        backface-visibility: visible;
+    }
+    .back2 {
+        height: 100%;
+        width: 100%;
+        background-image: url("https://source.unsplash.com/random/1600x900");
+        background-size: cover;
+        background-position: center;
+        filter: blur(5px);
+        transform: scale(1.1);
+        overflow: hidden;
+    }
+</style>
