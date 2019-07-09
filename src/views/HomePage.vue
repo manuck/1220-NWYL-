@@ -3,6 +3,7 @@
     <Navbar></Navbar>
     <TopButton />
     <Bookmark />
+    <div id="google_translate_element"></div>
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
       <div style="line-height:1.2em;" slot="text">Real artists ship.<br> -steve jobs</div>
     </ImgBanner>
@@ -10,7 +11,7 @@
       <!-- About Me -->
       <v-layout my-5 style="justify-content: center;">
         <v-flex xs8 aboutme>
-          <h2 class="headline mb-3">About Me TEST</h2>
+          <h2 class="headline mb-3">About Me</h2>
           <p class="mr-4 aboutme">안녕하세요, 임동명입니다.<br>디자인을 사랑해서 프론트엔드를 공부하고 있지만 백엔드도 공부해서 전체적인 그림을 볼 줄아는 웹 개발자가 되고 싶습니다.</p>
         </v-flex>
         <v-flex xs4 hidden-xs-only>
