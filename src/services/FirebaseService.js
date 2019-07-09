@@ -7,18 +7,20 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-	projectId: 'elice-ssafy',
-	authDomain: 'elice-ssafy.firebaseapp.com',
-	apiKey: 'AIzaSyCax1KLYHHlLEoxNkRIW8efgUBWooyEB2Q',
-	databaseURL: 'https://elice-ssafy.firebaseio.com',
-	storageBucket: 'gs://elice-ssafy.appspot.com'
+	apiKey: "AIzaSyAkuq-JbKzXNSx6zWNjeT6pGxGal6GPZJ8",
+  authDomain: "spatial-framing-246206.firebaseapp.com",
+	databaseURL: "https://spatial-framing-246206.firebaseio.com",
+	projectId: "spatial-framing-246206",
+	storageBucket: "spatial-framing-246206.appspot.com",
+	messagingSenderId: "478331739090",
+	appId: "1:478331739090:web:72cc71c0c7ccbdb0"
 }
 
 firebase.initializeApp(config)
 const firestore = firebase.firestore()
 
 // firestore.settings({timestampsInSnapshots: true})
-export { firestore }; 
+export { firestore };
 
 export default {
 	getPosts() {
