@@ -16,9 +16,9 @@
 </template>
 
 <script>
+import Imgur from '../components/Imgur'
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 import { firestore } from '@/services/FirebaseService'
-import Imgur from '../components/Imgur'
 
 export default {
 	// name: 'Form',
@@ -29,8 +29,8 @@ export default {
   //   imgSrc: {type: String},
   // },
   components: {
-    markdownEditor,
     Imgur,
+    markdownEditor,
   },
   data() {
     return {
