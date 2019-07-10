@@ -8,7 +8,7 @@ const PORTFOLIOS = 'portfolios'
 // Setup Firebase
 const config = {
 	apiKey: "AIzaSyAkuq-JbKzXNSx6zWNjeT6pGxGal6GPZJ8",
-  authDomain: "spatial-framing-246206.firebaseapp.com",
+	authDomain: "spatial-framing-246206.firebaseapp.com",
 	databaseURL: "https://spatial-framing-246206.firebaseio.com",
 	projectId: "spatial-framing-246206",
 	storageBucket: "spatial-framing-246206.appspot.com",
@@ -72,6 +72,16 @@ export default {
 			return result
 		}).catch(function(error) {
 			console.error('[Google Login Error]', error)
+		})
+	},
+	loginWithFacebook() {
+		let provider = new firebase.auth.FacebookAuthProvider()
+		return firebase.auth().signInWithPopup(provider).then(function(result) {
+			let accessToken = result.credential.accessToken
+			let user = result.user
+			return result
+		}).catch(function(error) {
+			console.error('[Facebook Login Error]', error)
 		})
 	}
 }

@@ -25,7 +25,7 @@
 
               <!-- facebook login -->
               <v-flex xs12 text-xs-center>
-                <v-btn round color="#1a0dab" dark  style="width:60%;"><v-icon size="25" class="mr-2">fa-facebook</v-icon> FaceBook 로그인</v-btn>
+                <v-btn round color="#1a0dab" dark v-on:click="loginWithFacebook" style="width:60%;"><v-icon size="25" class="mr-2">fa-facebook</v-icon> Facebook 로그인</v-btn>
               </v-flex>
             </v-layout>
           </v-container>
@@ -54,7 +54,18 @@ import FirebaseService from '@/services/FirebaseService'
   			const result = await FirebaseService.loginWithGoogle()
   			this.$store.state.accessToken = result.credential.accessToken
   			this.$store.state.user = result.user
-  		}
+        this.dialog = false;
+        // console.log("google")
+        // console.log(result)
+  		},
+      async loginWithFacebook() {
+  			const result = await FirebaseService.loginWithFacebook()
+  			this.$store.state.accessToken = result.credential.accessToken
+  			this.$store.state.user = result.user
+        this.dialog = false;
+        // console.log("facebook")
+        // console.log(result)
+  		},
   }
 }
 </script>
