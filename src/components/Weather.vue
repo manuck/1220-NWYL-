@@ -24,7 +24,8 @@ export default {
       
   },
   mounted() {
-    const BASE_URL = 'http://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=69d0d9ea132e148068fc83dc5fed6a42'
+    var key = '69d0d9ea132e148068fc83dc5fed6a42'
+    const BASE_URL = `http://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=${key}`
       console.log(BASE_URL)
       this.$http.get(`${BASE_URL}`)
       .then((result) => {
