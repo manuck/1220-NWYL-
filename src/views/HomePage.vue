@@ -3,6 +3,7 @@
     <Navbar></Navbar>
     <TopButton />
     <Bookmark />
+    <div id="google_translate_element"></div>
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
       <div style="line-height:1.2em;" slot="text">Real artists ship.<br> -steve jobs</div>
     </ImgBanner>

@@ -11,6 +11,7 @@
 </template>
 
 <script>
+// TEST //
 import FirebaseService from '@/services/FirebaseService'
 
 export default {
