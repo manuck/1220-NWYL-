@@ -1,4 +1,6 @@
-$full: 100%;
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Bungee+Hairline|Bungee+Inline|Bungee+Shade|Codystar|Ewert|Faster+One|Hanalei|Kanit|Monofett|Righteous|Russo+One|Viga&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Baumans|Bungee+Inline|Graduate|Iceland|Julius+Sans+One|Mina|Play|Poiret+One|Raleway|Righteous|Russo+One|Shadows+Into+Light|Unica+One&display=swap');
 
 .v-content__wrap {
     overflow: hidden;
@@ -7,11 +9,19 @@ $full: 100%;
     backface-visibility: visible;
 }
 .main-bg {
-    height: $full;
-    width: $full;
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: url("https://source.unsplash.com/random/1600x900");
     background-size: cover;
     background-position: center;
     filter: blur(5px);
     transform: scale(1.1);
+}
+a {
+    color: white !important;
+    &:hover {
+        text-decoration: none;
+        color: #ffffffbe !important;
+    }
 }
