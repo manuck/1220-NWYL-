@@ -10,6 +10,7 @@
       v-model="body" 
       ref="markdownEditor"
     ></markdown-editor>
+    <Imgur></Imgur>
     <v-btn @click="submit">submit</v-btn>
   </v-form>
 </template>
@@ -17,7 +18,7 @@
 <script>
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 import { firestore } from '@/services/FirebaseService'
-
+import Imgur from '../components/Imgur'
 
 export default {
 	// name: 'Form',
@@ -29,6 +30,7 @@ export default {
   // },
   components: {
     markdownEditor,
+    Imgur,
   },
   data() {
     return {
