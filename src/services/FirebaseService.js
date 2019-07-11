@@ -83,5 +83,21 @@ export default {
 		}).catch(function(error) {
 			console.error('[Facebook Login Error]', error)
 		})
+	},
+	createUserWithEmailAndPassword(email, password) {
+		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+			return result
+		})
+		.catch(function(error) {
+			let errorCode = error.code;
+			let errorMessage = error.message;
+			if(errorCode === 'auth/email-already-in-use') {
+				alert('이미 사용중인 e-mail 입니다.');
+			}
+			else {
+				alert(errorMessage);
+			}
+			console.error('[SignUp Error]',error)
+		})
 	}
 }
