@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar></Navbar>
+    <Translate/>
     <TopButton />
     <Bookmark />
-    <div id="google_translate_element"></div>
     <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
       <div style="line-height:1.2em;" slot="text">Real artists ship.<br> -steve jobs</div>
     </ImgBanner>
@@ -61,6 +61,7 @@ import RepositoryList from '../components/RepositoryList'
 import Navbar from '../components/Navbar'
 import TopButton from '../components/TopButton'
 import Bookmark from '../components/Bookmark'
+import Translate from '../components/Translate'
 
 export default {
 	name: 'HomePage',
@@ -72,6 +73,7 @@ export default {
     Navbar,
     TopButton,
     Bookmark,
+    Translate
   },
   // mounted() {
   //   console.log('beforecreate')
