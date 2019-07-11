@@ -6,9 +6,7 @@
             <div class="body-wrapper">
                 <div class="body-flex-c">
                     <div class="body-flex-r">
-                        <Cardview />
-                        <Cardview />
-                        <Cardview />
+                        <ChangeBgImage/>
                     </div>
                 </div>
             </div>
@@ -20,13 +18,13 @@
 
 <script>
 import Navbar2 from '../components/Navbar2'
-import Cardview from '../components/Cardview'
+import ChangeBgImage from '../components/ChangeBgImage'
 
 export default {
     name: 'pjt2',
     components: {
         Navbar2,
-        Cardview,
+        ChangeBgImage,
     }
 }
 </script>

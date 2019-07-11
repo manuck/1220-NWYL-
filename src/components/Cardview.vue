@@ -1,16 +1,14 @@
 <template>
-    <div class="card-wrapper">
-        <Weather />
-    </div>
+    <div class="card-wrapper" />
+
 </template>
 
 <script>
-import Weather from '../components/Weather'
 
 export default {
     name: "Cardview",
     components: {
-        Weather,
+
     }
 }
 </script>
