@@ -1,17 +1,19 @@
 <template>
   <div>
-    <input name="img" type="file"/>
+    <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file"/>
   </div>
 </template>
 
 <script>
 var imagelink = "https://source.unsplash.com/random"
-
+var zzz = 1;
 export default {
     name: 'Imgur',
+    props: ['imagelink'],
     components: {
     },
-    mounted() {
+    created() {
+      console.log('마운트 되나?')
       console.log(imagelink)
       function uploadImageByImgur(file, callback) {            
         var imgform = new FormData();
@@ -59,9 +61,9 @@ export default {
     },
     data() {
         return {
-            drawer: false
-                }
+            imagelink:'',
             }
+        }
     };
 
 </script>

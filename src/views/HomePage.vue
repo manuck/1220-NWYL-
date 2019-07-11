@@ -8,7 +8,8 @@
       <div style="line-height:1.2em;" slot="text">Real artists ship.<br> -steve jobs</div>
     </ImgBanner>
       <button onclick="unsplash()" src="https://source.unsplash.com/random/" name="unsplash">unsplash</button>
-      <Imgur @click="imglink"></Imgur>
+      <Imgur @imguring="imguring"></Imgur>
+      <p>sad {{imagelink}}</p>
     <v-container>
       <!-- About Me -->
       <v-layout my-5 style="justify-content: center;">
@@ -67,7 +68,7 @@ import Bookmark from '../components/Bookmark'
 import Footer from '../components/Footer'
 import Imgur from '../components/Imgur'
 
-var ImgurBus = Imgur
+ 
 export default {
 	name: 'HomePage',
 	components: {
@@ -81,6 +82,10 @@ export default {
     Footer,
     Imgur,
   },
+  // props: {
+	// 	c: {type: String},
+	// 	text: {timgSrype: String}
+	// },
   // mounted() {
   //   console.log('beforecreate')
   //   let userAgent = window.navigator.userAgent;
@@ -101,19 +106,20 @@ export default {
   //   } 
   // },
 	methods: {
+    imguring(imagelink) {
+      console.log('asd');
+      console.log(imagelink);
+      },
     getImgUrl(img) {
       return require('../assets/' + img)
     },
-    imggogo(){
-      ImgurBus.$emit('imglink', this.imagelink )
-    },
-
     unsplash(){
         document.mainPic.imgSrc = document.unsplash.src
         return
     },
     
   },
+
 }
 
 </script>
