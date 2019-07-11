@@ -1,11 +1,16 @@
 <template>
-    <div>
+    <div style="height: 100%; width: 100%;">
         <div class="main-bg"></div>
         <div class="main-wrapper">
-            <div class="header-wrapper">
-                
-            </div>
+            <Navbar2 />
             <div class="body-wrapper">
+                <div class="body-flex-c">
+                    <div class="body-flex-r">
+                        <Cardview />
+                        <Cardview />
+                        <Cardview />
+                    </div>
+                </div>
             </div>
             <div class="footer-wrapper">
             </div>
@@ -14,19 +19,36 @@
 </template>
 
 <script>
+import Navbar2 from '../components/Navbar2'
+import Cardview from '../components/Cardview'
+
 export default {
     name: 'pjt2',
+    components: {
+        Navbar2,
+        Cardview,
+    }
 }
 </script>
 <style>
     @import '../assets/css/HomePage2.css';
+
     .main-wrapper {
-        
-    }
-    .header-wrapper {
-        height: 70px;
+        position: relative;
+        height: 100%;
         width: 100%;
-        background: white;
-        opacity: 0.3;
+    }
+    .body-wrapper {
+        width: 100%;
+        padding: 40px 40px;
+    }
+    .body-flex-c {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .body-flex-r {
+        display: flex;
+        width: 100%;
     }
 </style>
