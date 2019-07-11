@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input name="img" type="file"/>
+    <input name="img" type="file" id="img"/>
   </div>
 </template>
 
@@ -51,6 +51,9 @@ export default {
               console.log('업로드된 파일경로:'+result.data.link);
               imagelink = result.data.link
               console.log(imagelink)
+            
+              let bgimg = document.querySelector('.main-bg')
+              bgimg.style.backgroundImage = `url(${imagelink})`;
             }
           });
         });

@@ -7,16 +7,18 @@
         <div class="card-content-wrapper">
             <button class="button">랜덤 이미지</button>
             <button class="button">로컬 이미지</button>
+            <Imgur class="button"/>
         </div>
     </div>
 </template>
 
 <script>
+import Imgur from './Imgur'
 
 export default {
     name: "ChangeBgImage",
     components: {
-
+        Imgur,
     }
 }
 </script>
@@ -62,6 +64,9 @@ export default {
     }
     .button:hover {
         background-color: rgba(0,0,0,0.1);
+    }
+    button:focus, input:focus {
+        outline: none !important;
     }
 </style>
 
