@@ -4,9 +4,11 @@
     <TopButton />
     <Bookmark />
     <div id="google_translate_element"></div>
-    <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
+    <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900" name="mainPic">
       <div style="line-height:1.2em;" slot="text">Real artists ship.<br> -steve jobs</div>
     </ImgBanner>
+      <button onclick="unsplash()" src="https://source.unsplash.com/random/" name="unsplash">unsplash</button>
+      <Imgur @click="imglink"></Imgur>
     <v-container>
       <!-- About Me -->
       <v-layout my-5 style="justify-content: center;">
@@ -63,7 +65,9 @@ import Navbar from '../components/Navbar'
 import TopButton from '../components/TopButton'
 import Bookmark from '../components/Bookmark'
 import Footer from '../components/Footer'
+import Imgur from '../components/Imgur'
 
+var ImgurBus = Imgur
 export default {
 	name: 'HomePage',
 	components: {
@@ -75,6 +79,7 @@ export default {
     TopButton,
     Bookmark,
     Footer,
+    Imgur,
   },
   // mounted() {
   //   console.log('beforecreate')
@@ -99,8 +104,18 @@ export default {
     getImgUrl(img) {
       return require('../assets/' + img)
     },
+    imggogo(){
+      ImgurBus.$emit('imglink', this.imagelink )
+    },
+
+    unsplash(){
+        document.mainPic.imgSrc = document.unsplash.src
+        return
+    },
+    
   },
 }
+
 </script>
 
 <style>

@@ -5,12 +5,13 @@
 </template>
 
 <script>
+var imagelink = "https://source.unsplash.com/random"
+
 export default {
     name: 'Imgur',
     components: {
     },
     mounted() {
-      var imagelink = "https://source.unsplash.com/random"
       console.log(imagelink)
       function uploadImageByImgur(file, callback) {            
         var imgform = new FormData();
@@ -62,6 +63,7 @@ export default {
                 }
             }
     };
+
 </script>
 
 <style>
