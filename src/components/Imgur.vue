@@ -1,10 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
-    <input name="img" type="file" id="img"/>
-=======
     <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file"/>
->>>>>>> NSM
   </div>
 </template>
 
