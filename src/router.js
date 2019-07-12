@@ -43,5 +43,11 @@ export default new Router({
 			name: 'pjt2',
 			component: HomePage2
 		},
+    // {
+    //   path: '/gitlabgraph',
+    //   name: 'gitlabgraph',
+    //   component: GitlabGraph
+    // },
+
   ]
 })

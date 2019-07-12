@@ -69,8 +69,10 @@ import Bookmark from '../components/Bookmark'
 import Footer from '../components/Footer'
 import Translate from '../components/Translate'
 import Imgur from '../components/Imgur'
+import GitlabGraph from '../components/GitlabGraph'
 
- 
+
+
 export default {
 	name: 'HomePage',
 	components: {
@@ -84,6 +86,7 @@ export default {
     Footer,
     Translate,
     Imgur,
+    GitlabGraph,
   },
 	methods: {
     imguring(imagelink) {
