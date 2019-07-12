@@ -13,10 +13,10 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
-                <v-text-field label="Email*" required></v-text-field>
+                <v-text-field label="Email address" required v-model="email" type="email"></v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field label="Password*" type="password" required></v-text-field>
+                <v-text-field label="Password*" type="password" required v-model="password" type="password"></v-text-field>
               </v-flex>
 
 
@@ -58,6 +58,8 @@ import SignUp from './SignUp'
   export default {
     name: 'LoginModal',
     data: () => ({
+      email: undefined,
+      password: undefined,
       dialog: false,
       sign: false
     }),
@@ -65,6 +67,14 @@ import SignUp from './SignUp'
       SignUp
     },
     methods: {
+      async loginWithEmailAndPassword() {
+        const result = await FirebaseService.loginWithEmailAndPassword(this.email, this.password)
+        this.$store.state.accessToken = result.credential.accessToken
+  			this.$store.state.user = result.user
+        this.dialog = false;
+        console.log("emailAndpassword")
+        console.log(result)
+      },
   		async loginWithGoogle() {
   			const result = await FirebaseService.loginWithGoogle()
   			this.$store.state.accessToken = result.credential.accessToken

@@ -72,6 +72,21 @@ export default {
 			created_at: firebase.firestore.FieldValue.serverTimestamp()
 		})
 	},
+  loginWithEmailAndPassword(email, password) {
+    return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+      return result
+    })
+    .catch(function(error) {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      if(errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+      }
+      console.error('[SignIn Error]',error)
+    })
+  },
 	loginWithGoogle() {
 		let provider = new firebase.auth.GoogleAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -109,19 +124,19 @@ export default {
 		})
 	},
   // 로그인 확인하는 것 미완성
-  // onAuthStateChanged() {
-  //   var isLogin = false;
-  //   firebase.auth().onAuthStateChanged(function(user) {
-  //     if(user == null) {
-  //       alert('로그인 필요해!')
-  //     }else {
-  //       alert(user.email)
-  //       isLogin = true;
-  //     }
-  //   }).then(function(isLogin) {
-  //     return true
-  //   })
-  // },
+  onAuthStateChanged() {
+    var isLogin = false;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user == null) {
+        alert('로그인 필요해!')
+      }else {
+        alert(user.email)
+        isLogin = true;
+      }
+    }).then(function(isLogin) {
+      return true
+    })
+  },
   currnetUser() {
     return firebase.auth().currentUser
   },

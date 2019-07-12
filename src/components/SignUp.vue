@@ -14,7 +14,7 @@
       type="email"
     ></v-text-field>
       <v-text-field
-        v-model="password"
+        v-model="Password"
         label="Password"
         type="password"
       ></v-text-field>
