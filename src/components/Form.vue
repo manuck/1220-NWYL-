@@ -19,6 +19,9 @@
 import Imgur from '../components/Imgur'
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 import { firestore } from '@/services/FirebaseService'
+import { EventBus } from "../eventBus.js";
+
+
 
 export default {
 	// name: 'Form',
@@ -40,6 +43,13 @@ export default {
       imgSrc: '',
     }
   },
+  created() {
+    EventBus.$on("Imagelinksubmit", imagelink => {
+      console.log('부모컴포넌트')
+      this.imgSrc = imagelink;
+      console.log(imgSrc)
+    });
+  },
   methods: {
     submit() {
       console.log('submit clicked')
@@ -47,7 +57,7 @@ export default {
         title: this.title,
         body: this.body,
         date: 'dummy',
-        imgSrc: 'dummy',
+        imgSrc: this.imgSrc,
       }
       console.log(project)
       firestore.collection('project').add(project).then(() => {
@@ -55,7 +65,7 @@ export default {
       })
 
     }
-  }
+  },
 }
 </script>
 

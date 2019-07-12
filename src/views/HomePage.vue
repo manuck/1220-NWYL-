@@ -68,7 +68,6 @@ import Bookmark from '../components/Bookmark'
 import Footer from '../components/Footer'
 import Imgur from '../components/Imgur'
 
- 
 export default {
 	name: 'HomePage',
 	components: {
@@ -82,33 +81,18 @@ export default {
     Footer,
     Imgur,
   },
-  // props: {
-	// 	c: {type: String},
-	// 	text: {timgSrype: String}
-	// },
-  // mounted() {
-  //   console.log('beforecreate')
-  //   let userAgent = window.navigator.userAgent;
-  //   let isChrome = userAgent.indexOf('Chrome')
-  //   let isChromeMobile = userAgent.indexOf('CriOS');
-  //   let isSamsungBrowser = userAgent.indexOf('SamsungBrowser');
-  //   let isWindows = userAgent.indexOf('Windows NT');
-  //   let isEdge = userAgent.indexOf('Edge');
-  //   let isIE = userAgent.indexOf('Trident');
-  //   // if(isChrome > -1 || isChromeMobile > -1){
-  //   //   if(isSamsungBrowser < 0 && isEdge < 0){
-  //   //     alert('해당 사이트는 크롬에 최적화 되어 있습니다.')
-  //   //   }
-  //   // }
-  //   if(!((isChrome > -1 && isWindows > -1 && isChromeMobile < 0 && isSamsungBrowser < 0 && isEdge < 0 && isIE < 0) || 
-  //   (isChrome < 0 && isChromeMobile > -1 && isSamsungBrowser < 0 && isWindows < 0 && isEdge < 0 && isIE < 0))) {
-  //     alert('해당 사이트는 크롬에 최적화 되어 있습니다.')
-  //   } 
-  // },
+  data() {
+    return {
+      value: '',
+    };
+  },
+
 	methods: {
-    imguring(imagelink) {
+    imguring(event) {
+      const {value} = event.imagelink;
+      this.value = value;
       console.log('asd');
-      console.log(imagelink);
+      console.log(value);
       },
     getImgUrl(img) {
       return require('../assets/' + img)

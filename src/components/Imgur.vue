@@ -1,18 +1,25 @@
 <template>
   <div>
-    <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file"/>
+    <input name="img" type="file" v-on:click="handleImgur"/>
   </div>
 </template>
 
 <script>
+import { EventBus } from "../eventBus.js";
+
 var imagelink = "https://source.unsplash.com/random"
-var zzz = 1;
+
 export default {
     name: 'Imgur',
     props: ['imagelink'],
     components: {
     },
-    created() {
+    data() {
+        return {
+            imgSrc:''
+            }
+        },
+    mounted() {
       console.log('마운트 되나?')
       console.log(imagelink)
       function uploadImageByImgur(file, callback) {            
@@ -59,12 +66,15 @@ export default {
         });
         });
     },
-    data() {
-        return {
-            imagelink:'',
-            }
-        }
+    methods: {
+      handleImgur() {
+        this.$store.state.imgSrc = imagelink;
+        console.log('보내봐')
+        console.log(this.$store.state.imgSrc)
+      }
+    }
     };
+    
 
 </script>
 
