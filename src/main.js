@@ -1,16 +1,17 @@
 import Vue from 'vue'
+import axios from 'axios'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueSimplemde from 'vue-simplemde'
 import 'simplemde/dist/simplemde.min.css'
 import 'font-awesome/css/font-awesome.min.css'
-
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false
+Vue.prototype.$http = axios
 
 Vue.use(Vuetify, {
 	iconfont: 'fa',

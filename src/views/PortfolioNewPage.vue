@@ -9,15 +9,16 @@
       <!-- Portfolio New -->
       <v-layout>
         <v-flex xs12>
-          <Form></Form>
+          <Form>
+          </Form>
         </v-flex>
       </v-layout>
-
     </v-container>
   </div>
 </template>
 
-<script>
+
+<script type = "text/javascript">
 import ImgBanner from '../components/ImgBanner'
 import Form from '../components/Form'
 import Navbar from '../components/Navbar'
@@ -30,4 +31,5 @@ export default {
     Navbar,
 	},
 }
+
 </script>
