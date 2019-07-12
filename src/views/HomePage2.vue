@@ -12,6 +12,7 @@
                     </div>
                     <div class="body-flex-c">
                         <WeatherBox/>
+                        <TranslateBox/>
                     </div>
                 </div>
             </div>
@@ -27,6 +28,8 @@ import ChangeBgImage from '../components/ChangeBgImage'
 import GitlabLinkBox from '../components/GitlabLinkBox'
 import PortfolioViewBox from '../components/PortfolioViewBox'
 import WeatherBox from '../components/WeatherBox'
+import Weather from '../components/Weather'
+import TranslateBox from '../components/TranslateBox'
 
 export default {
     name: 'pjt2',
@@ -35,7 +38,9 @@ export default {
         ChangeBgImage,
         GitlabLinkBox,
         PortfolioViewBox,
+        Weather,
         WeatherBox,
+        TranslateBox,
     }
 }
 </script>
@@ -54,7 +59,7 @@ export default {
     .body-flex-c {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        /* width: 100%; */
     }
     .body-flex-r {
         display: flex;

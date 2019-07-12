@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="gitlab">
+                <!-- <div class="gitlab">
                     <a href="">
                         GITLAB
                     </a>
@@ -18,25 +18,21 @@
                     <a href="">
                         WEATHER
                     </a>
-                </div>
-                <div class="login">
-                    <a href="">
-                        LOGIN   
-                    </a>
-                </div>
-                <div class="signin">
-                    <a href="">
-                        SIGNIN
-                    </a>
-                </div>
+                </div> -->
+                <LoginModal/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import LoginModal from './LoginModal'
+
 export default {
     name: 'Navbar2',
+    components: {
+        LoginModal,
+    }
 }
 </script>
 <style>

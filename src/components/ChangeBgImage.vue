@@ -34,8 +34,8 @@ export default {
         display: flex;
         flex-direction: column;
         min-height: 100px;
-        width: 250px;
-        min-width: 250px;
+        width: 300px;
+        min-width: 300px;
         border-radius: 7px;
         background: white;
         margin: 10px 40px 10px 0;
@@ -63,6 +63,8 @@ export default {
         padding-top: 10px;
         padding-bottom: 1px;
         text-align: center;
+        align-items: center;
+        overflow: hidden;
     }
     .button {
         border: 1px solid #c9c9c9;

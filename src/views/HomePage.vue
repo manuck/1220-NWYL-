@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <Translate/>
+    <TranslateBox/>
     <TopButton />
     <Bookmark />
     <div id="google_translate_element"></div>
@@ -67,7 +67,7 @@ import Navbar from '../components/Navbar'
 import TopButton from '../components/TopButton'
 import Bookmark from '../components/Bookmark'
 import Footer from '../components/Footer'
-import Translate from '../components/Translate'
+import TranslateBox from '../components/TranslateBox'
 import Imgur from '../components/Imgur'
 
  
@@ -82,7 +82,7 @@ export default {
     TopButton,
     Bookmark,
     Footer,
-    Translate,
+    TranslateBox,
     Imgur,
   },
 	methods: {
