@@ -61,7 +61,7 @@ export default {
 
         },
     })
-    // 문제점
+
     const data = {
         labels: app.date,
         datasets: [{
