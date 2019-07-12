@@ -53,6 +53,17 @@
           <RepositoryList></RepositoryList>
         </v-flex>
       </v-layout>
+
+      <!-- GitlabGraph -->
+      <v-layout my-5>
+        <v-flex xs12>
+          <router-link to="project">
+            <h2 class="headline my-5 text-xs-center">Project</h2>
+          </router-link>
+          <GitlabGraph></GitlabGraph>
+        </v-flex>
+      </v-layout>
+
     </v-container>
     <Footer></Footer>
   </div>
