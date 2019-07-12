@@ -8,8 +8,22 @@
 .application--wrap {
     backface-visibility: visible;
 }
-.main-bg {
-    position: absolute;
+// .main-bg {
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     background-image: url("https://source.unsplash.com/random/1600x900");
+//     background-size: cover;
+//     background-position: center;
+//     filter: blur(5px);
+//     transform: scale(1.1);
+// }
+.main-wrapper::before {
+    // position: absolute;
+    content: "";
+    position: fixed;
+    right: 0;
+    left: 0;
     height: 100%;
     width: 100%;
     background-image: url("https://source.unsplash.com/random/1600x900");
@@ -17,6 +31,34 @@
     background-position: center;
     filter: blur(5px);
     transform: scale(1.1);
+    overflow: hidden;
+    z-index: -1;
+}
+.main-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+}
+.body-wrapper {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    padding: 40px 40px;
+}
+.body-flex-c {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    flex-wrap: wrap;
+    width: 100px;
+    max-width: 100%;
+}
+.body-flex-r {
+    display: flex;
+    width: 100%;
 }
 a {
     color: white !important;

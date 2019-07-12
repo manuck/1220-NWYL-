@@ -2,15 +2,16 @@
 @import url("https://fonts.googleapis.com/css?family=Baumans|Bungee+Inline|Graduate|Iceland|Julius+Sans+One|Mina|Play|Poiret+One|Raleway|Righteous|Russo+One|Shadows+Into+Light|Unica+One&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
 .v-content__wrap {
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 .application--wrap {
-  backface-visibility: visible;
-}
+  backface-visibility: visible; }
 
-.main-bg {
-  position: absolute;
+.main-wrapper::before {
+  content: "";
+  position: fixed;
+  right: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   background-image: url("https://source.unsplash.com/random/1600x900");
@@ -18,13 +19,37 @@
   background-position: center;
   filter: blur(5px);
   transform: scale(1.1);
-}
+  overflow: hidden;
+  z-index: -1; }
+
+.main-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%; }
+
+.body-wrapper {
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  padding: 40px 40px; }
+
+.body-flex-c {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  flex-wrap: wrap;
+  width: 100px;
+  max-width: 100%; }
+
+.body-flex-r {
+  display: flex;
+  width: 100%; }
 
 a {
-  color: white !important;
-}
-
-a:hover {
-  text-decoration: none;
-  color: #ffffffbe !important;
-}
+  color: white !important; }
+  a:hover {
+    text-decoration: none;
+    color: #ffffffbe !important; }
