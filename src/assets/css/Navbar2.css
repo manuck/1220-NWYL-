@@ -1,17 +1,20 @@
 .header-wrapper {
   height: 90px;
   width: 100%;
-  /* background: rgba(0,0,0,0.2); */ }
+  /* background: rgba(0,0,0,0.2); */
+}
 
 .header-flex {
   display: flex;
   height: 100%;
   width: 100%;
   padding: 15px 40px;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 
 .left, .right {
-  display: flex; }
+  display: flex;
+}
 
 .logo {
   font-size: 40px;
@@ -24,7 +27,8 @@
   /* font-family: 'Bungee Inline', cursive; */
   /* font-family: 'Bungee Hairline', cursive; */
   font-family: 'Monofett', cursive;
-  margin-top: -5px; }
+  margin-top: -5px;
+}
 
 .gitlab, .weather, .login, .signin {
   color: white;
@@ -32,4 +36,5 @@
   margin: 0 20px;
   /* font-family: 'Shadows Into Light', cursive; */
   /* font-family: 'Julius Sans One', sans-serif; */
-  font-family: 'Mina', sans-serif; }
+  font-family: 'Mina', sans-serif;
+}
