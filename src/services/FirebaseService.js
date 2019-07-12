@@ -7,13 +7,13 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-	apiKey: "AIzaSyAkuq-JbKzXNSx6zWNjeT6pGxGal6GPZJ8",
-	authDomain: "spatial-framing-246206.firebaseapp.com",
-	databaseURL: "https://spatial-framing-246206.firebaseio.com",
-	projectId: "spatial-framing-246206",
-	storageBucket: "spatial-framing-246206.appspot.com",
-	messagingSenderId: "478331739090",
-	appId: "1:478331739090:web:72cc71c0c7ccbdb0"
+    apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
+    authDomain: "web-mobile-second.firebaseapp.com",
+    databaseURL: "https://web-mobile-second.firebaseio.com",
+    projectId: "web-mobile-second",
+    storageBucket: "web-mobile-second.appspot.com",
+    messagingSenderId: "1084413908904",
+    appId: "1:1084413908904:web:07ae84d3a56ff52f"
 }
 
 firebase.initializeApp(config)
@@ -82,6 +82,22 @@ export default {
 			return result
 		}).catch(function(error) {
 			console.error('[Facebook Login Error]', error)
+		})
+	},
+	createUserWithEmailAndPassword(email, password) {
+		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+			return result
+		})
+		.catch(function(error) {
+			let errorCode = error.code;
+			let errorMessage = error.message;
+			if(errorCode === 'auth/email-already-in-use') {
+				alert('이미 사용중인 e-mail 입니다.');
+			}
+			else {
+				alert(errorMessage);
+			}
+			console.error('[SignUp Error]',error)
 		})
 	}
 }

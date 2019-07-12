@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar></Navbar>
+    <Translate/>
     <TopButton />
     <Bookmark />
     <div id="google_translate_element"></div>
@@ -66,6 +67,7 @@ import Navbar from '../components/Navbar'
 import TopButton from '../components/TopButton'
 import Bookmark from '../components/Bookmark'
 import Footer from '../components/Footer'
+import Translate from '../components/Translate'
 import Imgur from '../components/Imgur'
 
 export default {
@@ -79,14 +81,9 @@ export default {
     TopButton,
     Bookmark,
     Footer,
+    Translate,
     Imgur,
   },
-  data() {
-    return {
-      value: '',
-    };
-  },
-
 	methods: {
     imguring(event) {
       const {value} = event.imagelink;
@@ -101,11 +98,8 @@ export default {
         document.mainPic.imgSrc = document.unsplash.src
         return
     },
-    
   },
-
 }
-
 </script>
 
 <style>
