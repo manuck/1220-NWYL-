@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="filecontainer">
+    로컬 이미지
     <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file"/>
   </div>
 </template>
@@ -72,5 +73,18 @@ export default {
 </script>
 
 <style>
-
+  .filecontainer {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+  }
+  .filecontainer [type=file] {
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 </style>
