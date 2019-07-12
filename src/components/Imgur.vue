@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { EventBus } from "../eventBus.js";
 
 var imagelink = "https://source.unsplash.com/random"
 
