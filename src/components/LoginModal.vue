@@ -2,7 +2,7 @@
 <template>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <div v-on="on">Login</div>
+        <div v-on="on" class="login">LOGIN</div>
       </template>
       <template v-if="sign === false">
       <v-card min-width="400px">

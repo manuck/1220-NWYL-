@@ -14,8 +14,8 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
 		{
-			path: '/',
-			name: 'home',
+			path: '/pjt2',
+			name: 'pjt2',
 			component: HomePage
 		},
 		{
@@ -39,8 +39,8 @@ export default new Router({
 			component: PortfolioNewPage
 		},
 		{
-			path: '/pjt2',
-			name: 'pjt2',
+			path: '/',
+			name: 'home',
 			component: HomePage2
 		},
   ]
