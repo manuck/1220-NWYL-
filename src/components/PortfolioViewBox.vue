@@ -5,7 +5,8 @@
         </div>
         <div class="card-bar"/>
         <div class="card-content-wrapper">
-            <u>See our works</u>
+            <router-link to="portfolio/new" class="button" style="color:black !important;">포트폴리오 생성하기</router-link>
+            <router-link to="portfolio" class="button" style="color:black !important;"><u>See our works</u></router-link>
         </div>
     </div>
 </template>

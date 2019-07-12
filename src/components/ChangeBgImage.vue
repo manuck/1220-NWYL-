@@ -67,10 +67,13 @@ export default {
         overflow: hidden;
     }
     .button {
+        width: 100%;
         border: 1px solid #c9c9c9;
         border-radius: 5px;
         padding: 5px 10px;
         margin: 5px 0;
+        background-color: rgba(255,255,255,1);
+        transition: 0.6s;
     }
     .button:hover {
         background-color: rgba(0,0,0,0.1);
