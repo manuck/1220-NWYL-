@@ -62,7 +62,6 @@ export default {
         },
     })
 
-// 문제부분
     const data = {
         labels: app.date,
         datasets: [{
