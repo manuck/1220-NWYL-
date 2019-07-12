@@ -7,13 +7,21 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-    apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
-    authDomain: "web-mobile-second.firebaseapp.com",
-    databaseURL: "https://web-mobile-second.firebaseio.com",
-    projectId: "web-mobile-second",
-    storageBucket: "web-mobile-second.appspot.com",
-    messagingSenderId: "1084413908904",
-    appId: "1:1084413908904:web:07ae84d3a56ff52f"
+
+  apiKey: "AIzaSyAkuq-JbKzXNSx6zWNjeT6pGxGal6GPZJ8",
+   authDomain: "spatial-framing-246206.firebaseapp.com",
+   databaseURL: "https://spatial-framing-246206.firebaseio.com",
+   projectId: "spatial-framing-246206",
+   storageBucket: "spatial-framing-246206.appspot.com",
+   messagingSenderId: "478331739090",
+   appId: "1:478331739090:web:72cc71c0c7ccbdb0"
+    // apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
+    // authDomain: "web-mobile-second.firebaseapp.com",
+    // databaseURL: "https://web-mobile-second.firebaseio.com",
+    // projectId: "web-mobile-second",
+    // storageBucket: "web-mobile-second.appspot.com",
+    // messagingSenderId: "1084413908904",
+    // appId: "1:1084413908904:web:07ae84d3a56ff52f"
 }
 
 firebase.initializeApp(config)
@@ -99,5 +107,31 @@ export default {
 			}
 			console.error('[SignUp Error]',error)
 		})
-	}
+	},
+  // 로그인 확인하는 것 미완성
+  // onAuthStateChanged() {
+  //   var isLogin = false;
+  //   firebase.auth().onAuthStateChanged(function(user) {
+  //     if(user == null) {
+  //       alert('로그인 필요해!')
+  //     }else {
+  //       alert(user.email)
+  //       isLogin = true;
+  //     }
+  //   }).then(function(isLogin) {
+  //     return true
+  //   })
+  // },
+  currnetUser() {
+    return firebase.auth().currentUser
+  },
+  signOut() {
+    firebase.auth().signOut().then(function() {
+      alert("로그아웃 되었습니다.")
+      // Sign-out successful.
+    }).catch(function(error) {
+      console.error('[SignOut Error]',error)
+    })
+  }
+
 }

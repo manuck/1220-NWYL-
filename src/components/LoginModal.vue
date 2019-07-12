@@ -70,16 +70,16 @@ import SignUp from './SignUp'
   			this.$store.state.accessToken = result.credential.accessToken
   			this.$store.state.user = result.user
         this.dialog = false;
-        // console.log("google")
-        // console.log(result)
+        console.log("google")
+        console.log(result)
   		},
       async loginWithFacebook() {
   			const result = await FirebaseService.loginWithFacebook()
   			this.$store.state.accessToken = result.credential.accessToken
   			this.$store.state.user = result.user
         this.dialog = false;
-        // console.log("facebook")
-        // console.log(result)
+        console.log("facebook")
+        console.log(result)
   		},
       closeSignUp: function() {
         this.sign = false;
