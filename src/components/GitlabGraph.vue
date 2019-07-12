@@ -1,16 +1,22 @@
 <template>
+
 <div>
-  <div id="chart" class="hide_xs"></div>
 
-  <h2 class="headline mt-2 text-xs-center">
-    <a href="//lab.ssafy.com/dmlimgo/webmobile-sub22">GitlabRepogitory 방문</a>
-  </h2>
+
+
+
+    <div id="chart" class="hide_xs">
+
+    </div>
+
+    <h2 class="headline mt-2 text-xs-center">
+      <a href="//lab.ssafy.com/DaeJeon4ban_JeongPyoYong/webmobile-sub2">GitlabRepogitory 방문</a>
+    </h2>
+
+
 </div>
-</template>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src = "https://unpkg.com/axios/dist/axios.min.js"> </script>
-<script src = "https://unpkg.com/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"> </script>
+</template>
 
 <script>
 
@@ -52,7 +58,7 @@ export default {
 
   methods: {
     getRepo: function () {
-        axios.get('https://lab.ssafy.com/api/v4/projects/6075/events?private_token=JqwP6fMQbfkr2sLj9b_R')
+        axios.get('https://lab.ssafy.com/api/v4/projects/6078/events?private_token=NB7dVHnZ4-xzjAgQawUy')
         .then(response => {
             this.repo = response.data
         })

@@ -53,17 +53,6 @@
           <RepositoryList></RepositoryList>
         </v-flex>
       </v-layout>
-
-      <!-- GitlabGraph -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <router-link to="project">
-            <h2 class="headline my-5 text-xs-center">Project</h2>
-          </router-link>
-          <GitlabGraph></GitlabGraph>
-        </v-flex>
-      </v-layout>
-
     </v-container>
     <Footer></Footer>
   </div>
@@ -81,6 +70,7 @@ import Footer from '../components/Footer'
 import TranslateBox from '../components/TranslateBox'
 import Imgur from '../components/Imgur'
 import GitlabGraph from '../components/GitlabGraph'
+import GitlabLinkBox from '../components/GitlabLinkBox'
 
 
 
