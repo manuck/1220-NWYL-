@@ -4,9 +4,14 @@
         <div class="main-wrapper">
             <Navbar2 />
             <div class="body-wrapper">
-                <div class="body-flex-c">
-                    <div class="body-flex-r">
+                <div class="body-flex-r">
+                    <div class="body-flex-c">
                         <ChangeBgImage/>
+                        <GitlabLinkBox/>
+                        <PortfolioViewBox/>
+                    </div>
+                    <div class="body-flex-c">
+                        <WeatherBox/>
                     </div>
                 </div>
             </div>
@@ -19,12 +24,18 @@
 <script>
 import Navbar2 from '../components/Navbar2'
 import ChangeBgImage from '../components/ChangeBgImage'
+import GitlabLinkBox from '../components/GitlabLinkBox'
+import PortfolioViewBox from '../components/PortfolioViewBox'
+import WeatherBox from '../components/WeatherBox'
 
 export default {
     name: 'pjt2',
     components: {
         Navbar2,
         ChangeBgImage,
+        GitlabLinkBox,
+        PortfolioViewBox,
+        WeatherBox,
     }
 }
 </script>
