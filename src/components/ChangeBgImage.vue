@@ -5,8 +5,7 @@
         </div>
         <div class="card-bar"/>
         <div class="card-content-wrapper">
-            <button class="button">랜덤 이미지</button>
-            <button class="button">로컬 이미지</button>
+            <button class="button" @click="changeBgImageRandom">랜덤 이미지</button>
             <Imgur class="button"/>
         </div>
     </div>
@@ -19,6 +18,13 @@ export default {
     name: "ChangeBgImage",
     components: {
         Imgur,
+    },
+    methods: {
+        changeBgImageRandom() {
+            console.log('here')
+            let bgimg = document.querySelector('.main-bg')
+            bgimg.style.backgroundImage = `url("https://source.unsplash.com/random/1600x900")`
+        }
     }
 }
 </script>
@@ -44,6 +50,7 @@ export default {
         font-weight: 700;
         font-size: 20px;
         margin-bottom: 10px;
+        text-align: center;
     }
     .card-bar {
         height: 1px;
@@ -55,6 +62,7 @@ export default {
         flex-direction: column;
         padding-top: 10px;
         padding-bottom: 1px;
+        text-align: center;
     }
     .button {
         border: 1px solid #c9c9c9;
