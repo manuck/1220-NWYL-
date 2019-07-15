@@ -7,13 +7,13 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-    apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
-    authDomain: "web-mobile-second.firebaseapp.com",
-    databaseURL: "https://web-mobile-second.firebaseio.com",
-    projectId: "web-mobile-second",
-    storageBucket: "web-mobile-second.appspot.com",
-    messagingSenderId: "1084413908904",
-    appId: "1:1084413908904:web:07ae84d3a56ff52f"
+	apiKey: "AIzaSyAkuq-JbKzXNSx6zWNjeT6pGxGal6GPZJ8",
+	authDomain: "spatial-framing-246206.firebaseapp.com",
+	databaseURL: "https://spatial-framing-246206.firebaseio.com",
+	projectId: "spatial-framing-246206",
+	storageBucket: "spatial-framing-246206.appspot.com",
+	messagingSenderId: "478331739090",
+	appId: "1:478331739090:web:72cc71c0c7ccbdb0"
 }
 
 firebase.initializeApp(config)
@@ -99,5 +99,11 @@ export default {
 			}
 			console.error('[SignUp Error]',error)
 		})
+	},
+	writeUserData(email) {
+		var userid = email.split('@');
+		firebase.database().ref('users/' + userid).set({
+		  email: email
+		});
 	}
 }
