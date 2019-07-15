@@ -34,11 +34,11 @@ export default {
         this.weather = result.data.weather[0].main
         this.view = true
         console.log(result)
+        sendWeatherData()
       })
   },
   methods: {
   }
-
 }
 </script>
 

@@ -33,3 +33,8 @@
   /* font-family: 'Shadows Into Light', cursive; */
   /* font-family: 'Julius Sans One', sans-serif; */
   font-family: 'Mina', sans-serif; }
+
+.login:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffffbe !important; }

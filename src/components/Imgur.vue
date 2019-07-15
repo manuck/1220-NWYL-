@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <input name="img" type="file" v-on:click="handleImgur"/>
+  <div class="filecontainer">
+    로컬 이미지
+    <input name="img" type="file"/>
   </div>
 </template>
 
 <script>
-
+import store from '../store.js'
 var imagelink = "https://source.unsplash.com/random"
 
 export default {
@@ -60,7 +61,8 @@ export default {
               console.log('업로드된 파일경로:'+result.data.link);
               imagelink = result.data.link
               console.log(imagelink)
-            
+              console.log(this)
+              store.state.imgSrc = imagelink;
               let bgimg = document.querySelector('.main-bg')
               bgimg.style.backgroundImage = `url(${imagelink})`;
             }
@@ -69,11 +71,6 @@ export default {
         });
     },
     methods: {
-      handleImgur() {
-        this.$store.state.imgSrc = imagelink;
-        console.log('보내봐')
-        console.log(this.$store.state.imgSrc)
-      }
     }
     };
     
@@ -81,5 +78,18 @@ export default {
 </script>
 
 <style>
-
+  .filecontainer {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+  }
+  .filecontainer [type=file] {
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 </style>

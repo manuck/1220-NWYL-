@@ -11,7 +11,7 @@
       ref="markdownEditor"
     ></markdown-editor>
     <Imgur></Imgur>
-    <v-btn @click="submit">submit</v-btn>
+    <v-btn @click="postPortfolio(title, body, imgSrc)">submit</v-btn>
   </v-form>
 </template>
 
@@ -19,14 +19,16 @@
 import Imgur from '../components/Imgur'
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 import { firestore } from '@/services/FirebaseService'
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
 
 export default {
   
-	// name: 'Form',
+	name: 'Form',
 	// props: {
 	// 	title: {type: String},
   //   body: {type: String},
-  //   date: {type: String},
   //   imgSrc: {type: String},
   // },
   components: {
@@ -37,26 +39,26 @@ export default {
     return {
       title: '',
       body: '',
-      date: '',
-      imgSrc: '',
+      imgSrc: 'https://source.unsplash.com/random/',
     }
   },
-  methods: {
-    submit() {
-      console.log('submit clicked')
-      const project = {
-        title: this.title,
-        body: this.body,
-        date: 'dummy',
-        imgSrc: this.$store.state.imgSrc,
-      }
-      console.log(project)
-      firestore.collection('project').add(project).then(() => {
-        console.log('added to firestore')
-      })
 
+  methods: {
+    postPortfolio(title, body, imgSrc) {
+    console.log(this)
+    if (this.$store.state.imgSrc){
+    console.log(imgSrc)
+    console.log('vuex')
+    console.log(this.$store.state.imgSrc)
+    imgSrc = this.$store.state.imgSrc }
+		return firestore.collection('portfolios').add({
+			title,
+			body,
+			imgSrc,
+			created_at: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(console.log('전송완료'))
+	  }
     }
-  },
 }
 </script>
 

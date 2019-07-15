@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
 		accessToken: '',
     user: '',
-    imgSrc: 'https://source.unsplash.com/random/',
+    imgSrc: '',
 
   }
 })
