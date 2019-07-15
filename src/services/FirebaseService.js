@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import store from '../store'
 
 const POSTS = 'posts'
 const PORTFOLIOS = 'portfolios'
@@ -29,6 +30,11 @@ const firestore = firebase.firestore()
 
 // firestore.settings({timestampsInSnapshots: true})
 export { firestore };
+
+firebase.auth().onAuthStateChanged((user)=> {
+  store.dispatch('getUser', user)
+  //console.log(store.state.accessToken)
+})
 
 export default {
 	getPosts() {
@@ -72,8 +78,10 @@ export default {
 			created_at: firebase.firestore.FieldValue.serverTimestamp()
 		})
 	},
-  loginWithEmailAndPassword(email, password) {
+  signInWithEmailAndPassword(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+      alert("여긴되니??")
+      //alert(result.user.email)
       return result
     })
     .catch(function(error) {
@@ -109,6 +117,7 @@ export default {
 	},
 	createUserWithEmailAndPassword(email, password) {
 		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
+      alert("회원가입 성공!");
 			return result
 		})
 		.catch(function(error) {
@@ -123,20 +132,6 @@ export default {
 			console.error('[SignUp Error]',error)
 		})
 	},
-  // 로그인 확인하는 것 미완성
-  onAuthStateChanged() {
-    var isLogin = false;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if(user == null) {
-        alert('로그인 필요해!')
-      }else {
-        alert(user.email)
-        isLogin = true;
-      }
-    }).then(function(isLogin) {
-      return true
-    })
-  },
   currnetUser() {
     return firebase.auth().currentUser
   },

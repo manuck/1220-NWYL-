@@ -44,7 +44,7 @@
               logout
           </div>
         </v-navigation-drawer>
-
+      
 
     </div>
 
@@ -69,7 +69,6 @@ export default {
         FirebaseService.signOut();
         console.log("로그아웃 !")
       }
-
     }
 }
 </script>

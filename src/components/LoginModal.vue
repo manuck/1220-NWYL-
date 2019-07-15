@@ -2,7 +2,13 @@
 <template>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <div v-on="on" class="login">LOGIN</div>
+        <div v-if="$store.state.accessToken">
+        <div @click="signOut" class="login">LOGOUT</div>
+      </div>
+      <div v-else>
+          <div v-on="on" class="login">LOGIN</div>
+      </div>
+        <!-- <div @click="signOut" class="logout" v-if="$store.state.accessToken != null">LOGOUT</div> -->
       </template>
       <template v-if="sign === false">
       <v-card min-width="400px">
@@ -13,10 +19,10 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
-                <v-text-field label="Email address" required v-model="email" type="email"></v-text-field>
+                <v-text-field label="Email address" required v-model="email"></v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-text-field label="Password*" type="password" required v-model="password" type="password"></v-text-field>
+                <v-text-field label="Password*" type="password" required v-model="password"></v-text-field>
               </v-flex>
 
 
@@ -33,10 +39,10 @@
           </v-container>
         </v-card-text>
         <v-card-actions>
-          <v-btn flat @click="sign= true"> Sign Up</v-btn>
+          <v-btn flat @click="sign= true; email=''; password=''"> Sign Up</v-btn>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click="dialog = false; sign=false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click="dialog = false; sign=false">Login</v-btn>
+          <v-btn color="blue darken-1" flat @click="dialog = false; sign=false; email=''; password='' ">Close</v-btn>
+          <v-btn color="blue darken-1" flat @click="loginWithEmailAndPassword(email, password); email=''; password=''">Login</v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -58,8 +64,8 @@ import SignUp from './SignUp'
   export default {
     name: 'LoginModal',
     data: () => ({
-      email: undefined,
-      password: undefined,
+      email: '',
+      password: '',
       dialog: false,
       sign: false
     }),
@@ -67,35 +73,36 @@ import SignUp from './SignUp'
       SignUp
     },
     methods: {
-      async loginWithEmailAndPassword() {
-        const result = await FirebaseService.loginWithEmailAndPassword(this.email, this.password)
-        this.$store.state.accessToken = result.credential.accessToken
-  			this.$store.state.user = result.user
+      async loginWithEmailAndPassword(email, password) {
+        const result = await FirebaseService.signInWithEmailAndPassword(email, password)
         this.dialog = false;
-        console.log("emailAndpassword")
-        console.log(result)
+        //alert(result.credential.accessToken + " asdasd ")
+        // console.log("emailAndpassword")
+        // console.log(result.user.displayName)
       },
   		async loginWithGoogle() {
   			const result = await FirebaseService.loginWithGoogle()
-  			this.$store.state.accessToken = result.credential.accessToken
-  			this.$store.state.user = result.user
         this.dialog = false;
-        console.log("google")
-        console.log(result)
+        //alert(this.$store.state.accessToken + " asdasd " + this.$store.state.user)
+        // console.log("google")
+        // console.log(result)
   		},
       async loginWithFacebook() {
   			const result = await FirebaseService.loginWithFacebook()
-  			this.$store.state.accessToken = result.credential.accessToken
-  			this.$store.state.user = result.user
         this.dialog = false;
-        console.log("facebook")
-        console.log(result)
+        // console.log("facebook")
+        // console.log(result)
   		},
+      signOut() {
+        FirebaseService.signOut();
+        //console.log("로그아웃 !")
+      },
       closeSignUp: function() {
         this.sign = false;
       },
       closeDialog: function() {
         this.dialog = false;
+        this.sign = false;
       }
 
   }
