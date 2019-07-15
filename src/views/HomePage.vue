@@ -53,6 +53,18 @@
           <RepositoryList></RepositoryList>
         </v-flex>
       </v-layout>
+
+      <!-- GitlabGraph -->
+      <v-layout my-5>
+        <v-flex xs12>
+          <h2 class="headline my-5 text-xs-center">GitlabGraph</h2>
+          <h2 class="headline mt-2 text-xs-center">
+            <a href="//lab.ssafy.com/dmlimgo/webmobile-sub2">GitlabgitCommitsgitory 방문</a>
+          </h2>
+          <GitlabGraph></GitlabGraph>
+        </v-flex>
+      </v-layout>
+
     </v-container>
     <Footer></Footer>
   </div>
@@ -72,8 +84,6 @@ import Imgur from '../components/Imgur'
 import GitlabGraph from '../components/GitlabGraph'
 import GitlabLinkBox from '../components/GitlabLinkBox'
 
-
-
 export default {
 	name: 'HomePage',
 	components: {
@@ -88,6 +98,7 @@ export default {
     TranslateBox,
     Imgur,
     GitlabGraph,
+    GitlabLinkBox,
   },
 	methods: {
     imguring(imagelink) {

@@ -1,103 +1,95 @@
 <template>
-
 <div>
-
-
-
-
-    <div id="chart" class="hide_xs">
-
-    </div>
-
-    <h2 class="headline mt-2 text-xs-center">
-      <a href="//lab.ssafy.com/DaeJeon4ban_JeongPyoYong/webmobile-sub2">GitlabRepogitory 방문</a>
-    </h2>
-
-
+  <div id="chart" class="hide_xs"></div>
 </div>
-
 </template>
 
-<script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src = "https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src = "https://unpkg.com/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
+
+<script >
 
 export default {
+
   name: 'GitlabGraph',
 
   data() {
     return {
-      repo: [],
-      date: [],
+      gitCommits: [],
+      gitCommitDates: [],
       commits: [],
-
     }
   },
+
   components: {
 
   },
+
   mounted() {
-    this.getRepo()
+    this.getgitCommits()
     const data = {
-      labels: this.date,
-      datasets: [
-         {
-             name: "Commit count", type: "bar",
-             values: this.commits
-         },
-      ]
+      labels: this.gitCommitDates,
+      datasets: [{
+        name: "Commit count",
+        type: "bar",
+        values: this.commits
+      }, ]
     }
 
-   const chart = new frappe.Chart("#chart", {  // or a DOM element,
-                                               // new Chart() in case of ES6 module with above usage
-       title: "Gitlab Commit log",
-       data: data,
-       type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-       height: 250,
-       colors: ['#7cd6fd']
-      })
+    const chart = new frappe.Chart("#chart", {
+      title: "My Awesome Chart",
+      data: data,
+      type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+      height: 250,
+      colors: ['#7cd6fd', '#743ee2']
+    })
   },
 
   methods: {
-    getRepo: function () {
-        axios.get('https://lab.ssafy.com/api/v4/projects/6078/events?private_token=NB7dVHnZ4-xzjAgQawUy')
+    getgitCommits: function() {
+      axios.get('https://lab.ssafy.com/api/v4/projects/6075/events?private_token=JqwP6fMQbfkr2sLj9b_R')
         .then(response => {
-            this.repo = response.data
+          this.gitCommits = response.data.reverse()
         })
-        .then(()=> {
-            this.getDate()
+        .then(() => {
+          this.getDate()
         })
     },
 
-    getDate: function () {
+    getDate: function() {
 
-        for (var i = 0; i < this.repo.length; i++) {
-            var flag = 0;
+      for (var i = 0; i < this.gitCommits.length; i++) {
+        if (this.gitCommits[i]["action_name"] === "pushed to") {
+          var flag = 0;
 
-            var tempdate = this.repo[i]["created_at"].slice(0, 10)
+          var tempdate = this.gitCommits[i]["created_at"].slice(0, 10)
 
-        for (var j = 0; j < this.date.length; j++) {
+          for (var j = 0; j < this.gitCommitDates.length; j++) {
 
-            if (tempdate === this.date[j]) {
-                flag = 1;
-                this.commits[j] += this.repo[i]["push_data"]["commit_count"];
+            if (tempdate === this.gitCommitDates[j]) {
+              flag = 1;
+              // this.commits[j] += this.gitCommits[i]["push_data"]["commit_count"];
+              this.commits[j] += 1;
 
             }
-        }
-        if (flag ===0){
-            this.date.push(tempdate);
-            this.commits.push(this.repo[i]["push_data"]["commit_count"]);
+          }
+          if (flag === 0) {
+            this.gitCommitDates.push(tempdate);
+            this.commits.push(this.gitCommits[i]["push_data"]["commit_count"]);
 
+          }
         }
+      }
     }
-}
   },
 }
-
 </script>
 
 <style>
 @media only screen and (max-width : 450px) {
   .hide_xs {
-    display:none;
+    display: none;
   }
 }
 </style>
