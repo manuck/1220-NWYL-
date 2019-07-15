@@ -6,30 +6,14 @@ const POSTS = 'posts'
 const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
-// const config = {
-//     apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
-//     authDomain: "web-mobile-second.firebaseapp.com",
-//     databaseURL: "https://web-mobile-second.firebaseio.com",
-//     projectId: "web-mobile-second",
-//     storageBucket: "web-mobile-second.appspot.com",
-//     messagingSenderId: "1084413908904",
-// 	appId: "1:1084413908904:web:07ae84d3a56ff52f",
-// }
-// const config = {
-// 	projectId: 'elice-ssafy',
-// 	authDomain: 'elice-ssafy.firebaseapp.com',
-// 	apiKey: 'AIzaSyCax1KLYHHlLEoxNkRIW8efgUBWooyEB2Q',
-// 	databaseURL: 'https://elice-ssafy.firebaseio.com',
-// 	storageBucket: 'gs://elice-ssafy.appspot.com'
-// }
 const config = {
-	apiKey: "AIzaSyAKodJUz5WVvTWaGYqwQkmBnNRZksZyePQ",
-    authDomain: "nwyl-webmobile2-583cf.firebaseapp.com",
-    databaseURL: "https://nwyl-webmobile2-583cf.firebaseio.com",
-    projectId: "nwyl-webmobile2-583cf",
-    storageBucket: "nwyl-webmobile2-583cf.appspot.com",
-    messagingSenderId: "1072881395763",
-    appId: "1:1072881395763:web:67e5bb2e1f538736"
+    apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
+    authDomain: "web-mobile-second.firebaseapp.com",
+    databaseURL: "https://web-mobile-second.firebaseio.com",
+    projectId: "web-mobile-second",
+    storageBucket: "web-mobile-second.appspot.com",
+    messagingSenderId: "1084413908904",
+	appId: "1:1084413908904:web:07ae84d3a56ff52f",
 }
 
 
@@ -61,20 +45,14 @@ export default {
 		})
 	},
 	getPortfolios() {
-		console.log('getportfolios executed')
 		const postsCollection = firestore.collection(PORTFOLIOS)
-		console.log('R3')
 		return postsCollection
 				.orderBy('created_at', 'desc')
 				.get()
 				.then((docSnapshots) => {
-					console.log('R5')
 					return docSnapshots.docs.map((doc) => {
-						console.log('R6')
 						let data = doc.data()
-						console.log('R7')
 						data.created_at = new Date(data.created_at.toDate())
-						console.log('R8')
 						return data
 					})
 				})
