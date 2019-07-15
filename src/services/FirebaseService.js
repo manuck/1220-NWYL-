@@ -31,9 +31,14 @@ const firestore = firebase.firestore()
 // firestore.settings({timestampsInSnapshots: true})
 export { firestore };
 
-firebase.auth().onAuthStateChanged((user)=> {
-  store.dispatch('getUser', user)
-  //console.log(store.state.accessToken)
+firebase.auth().onAuthStateChanged(function(user) {
+  if(user != null) {
+    // 로그인된 상태
+    store.dispatch('getUser', user)
+  }else {
+    // 로그아웃된 상태
+    //console.log("로그아웃 상태입니다.")
+  }
 })
 
 export default {

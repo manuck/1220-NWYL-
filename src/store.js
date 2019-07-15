@@ -21,6 +21,8 @@ export default new Vuex.Store({
       commit('setUser', user)
       user.getIdToken().then(accessToken => {
         commit('setToken', accessToken)
+      }).catch(function(error) {
+        console.error('[getIdToken Error]',error)
       })
     }
   }
