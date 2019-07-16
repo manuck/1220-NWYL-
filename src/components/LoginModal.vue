@@ -90,6 +90,7 @@ import SignUp from './SignUp'
       async loginWithFacebook() {
   			const result = await FirebaseService.loginWithFacebook()
         this.dialog = false;
+
         // console.log("facebook")
         // console.log(result)
   		},

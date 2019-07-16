@@ -16,13 +16,18 @@
 <script>
 import Form from '../components/Form'
 import Navbar2 from '../components/Navbar2'
+import store from '../store'
 
 export default {
-	name: 'PortfolioNewPage',
+  name: 'PortfolioNewPage',
 	components: {
     Form,
     Navbar2,
 	},
+  mounted: () => {
+    store.state.vueName.page = 'PortfolioNewPage';
+    store.dispatch('addLog');
+  }
 }
 </script>
 

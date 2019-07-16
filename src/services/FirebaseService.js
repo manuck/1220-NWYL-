@@ -114,7 +114,25 @@ export default {
 			console.error('[Facebook Login Error]', error)
 		})
 	},
+<<<<<<< HEAD
   // 회원가입하기
+=======
+	loginWithEmailAndPassword(email, password) {
+		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+		  return result
+		})
+		.catch(function(error) {
+		  let errorCode = error.code;
+		  let errorMessage = error.message;
+		  if(errorCode === 'auth/wrong-password') {
+			alert('Wrong password.');
+		  } else {
+			alert(errorMessage);
+		  }
+		  console.error('[SignIn Error]',error)
+		})
+	  },
+>>>>>>> issue/req.2-7
 	createUserWithEmailAndPassword(email, password) {
 		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
       alert("회원가입 성공!");
@@ -131,6 +149,7 @@ export default {
 			}
 			console.error('[SignUp Error]',error)
 		})
+<<<<<<< HEAD
 	},
   // 로그아웃
   signOut() {
@@ -147,3 +166,7 @@ export default {
   },
 
 }
+=======
+	}
+}
+>>>>>>> issue/req.2-7

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { firestore } from '@/services/FirebaseService'
 
 Vue.use(Vuex)
 
@@ -8,6 +9,11 @@ export default new Vuex.Store({
 		accessToken: '',
     user: '',
     imgSrc: '',
+    vueName: {
+      page: '',
+      userid: '',
+      time: ''
+     }
   },
   mutations: {
     setUser(state, user) {
@@ -15,6 +21,13 @@ export default new Vuex.Store({
     },
     setToken(state, accessToken) {
       state.accessToken = accessToken
+    },
+    addLog (state) {
+      console.log('mmmmmmmmmmmmm')
+      console.log(state.vueName)
+      firestore.collection('LOG').add(state.vueName).then(() => {
+        console.log('added LOG!!')
+      })
     }
   },
   actions: {
@@ -29,7 +42,10 @@ export default new Vuex.Store({
     afterLogout({commit}, user) {
       commit('setUser', user)
       commit('setToken', user)
+    },
+    addLog (aa) {
+      console.log('aaaaaaaaaaaaa')
+      aa.commit('addLog')
     }
-  }
-
+  },
 })
