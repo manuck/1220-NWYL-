@@ -10,6 +10,7 @@
             </div>
             <div class="right">
                 <LoginModal/>
+
             </div>
         </div>
     </div>

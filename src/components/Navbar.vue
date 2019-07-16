@@ -40,9 +40,11 @@
                     <LoginModal></LoginModal>
                 </div>
           <!-- </router-link> -->
-
+          <div class="navitems" @click="signOut">
+              logout
+          </div>
         </v-navigation-drawer>
-
+      
 
     </div>
 
@@ -51,6 +53,7 @@
 
 <script>
 
+import FirebaseService from '@/services/FirebaseService'
 import LoginModal from './LoginModal'
 export default {
     name: 'Navbar',
@@ -61,9 +64,10 @@ export default {
       drawer: false,
       dialog: false
     }),
-    methods: {
-      on() {
-        alert("hhhhhh");
+    methods : {
+      signOut() {
+        FirebaseService.signOut();
+        console.log("로그아웃 !")
       }
     }
 }
