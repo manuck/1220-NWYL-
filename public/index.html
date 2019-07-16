@@ -51,7 +51,7 @@
       <strong>We're sorry but ssafy doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app">
-
+ 
     </div>
   </body>
   <script>
@@ -67,5 +67,9 @@
     (isChrome < 0 && isChromeMobile > -1 && isSamsungBrowser < 0 && isWindows < 0 && isEdge < 0 && isIE < 0))) {
       alert('해당 사이트는 크롬에 최적화 되어 있습니다.')
     }
+    var locationSM = navigator.geolocation.getCurrentPosition
+    console.log(navigator.geolocation.getCurrentPosition)
+    console.log(locationSM.data)
+ 
   </script>
 </html>

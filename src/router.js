@@ -26,7 +26,7 @@ export default new Router({
 		{
 			path: '/portfolio',
 			name: 'portfolio',
-			component: PortfolioPage
+			component: PortfolioPage,
 		},
 		{
 			path: '/login',
