@@ -84,6 +84,21 @@ export default {
 			console.error('[Facebook Login Error]', error)
 		})
 	},
+	loginWithEmailAndPassword(email, password) {
+		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+		  return result
+		})
+		.catch(function(error) {
+		  let errorCode = error.code;
+		  let errorMessage = error.message;
+		  if(errorCode === 'auth/wrong-password') {
+			alert('Wrong password.');
+		  } else {
+			alert(errorMessage);
+		  }
+		  console.error('[SignIn Error]',error)
+		})
+	  },
 	createUserWithEmailAndPassword(email, password) {
 		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
 			return result
@@ -99,11 +114,5 @@ export default {
 			}
 			console.error('[SignUp Error]',error)
 		})
-	},
-	writeUserData(email) {
-		var userid = email.split('@');
-		firebase.database().ref('users/' + userid).set({
-		  email: email
-		});
 	}
 }

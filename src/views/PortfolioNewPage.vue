@@ -22,14 +22,19 @@
 import ImgBanner from '../components/ImgBanner'
 import Form from '../components/Form'
 import Navbar from '../components/Navbar'
+import store from '../store'
 
 export default {
-	name: 'PortfolioNewPage',
+  name: 'PortfolioNewPage',
 	components: {
 		ImgBanner,
     Form,
     Navbar,
 	},
+  mounted: () => {
+    store.state.vueName.page = 'PortfolioNewPage';
+    store.dispatch('addLog');
+  }
 }
 
 </script>

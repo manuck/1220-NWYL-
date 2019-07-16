@@ -66,10 +66,11 @@ import SignUp from './SignUp'
     },
     methods: {
   		async loginWithGoogle() {
-  			const result = await FirebaseService.loginWithGoogle()
+        const result = await FirebaseService.loginWithGoogle()
   			this.$store.state.accessToken = result.credential.accessToken
   			this.$store.state.user = result.user
         this.dialog = false;
+
         // console.log("google")
         // console.log(result)
   		},
@@ -78,6 +79,7 @@ import SignUp from './SignUp'
   			this.$store.state.accessToken = result.credential.accessToken
   			this.$store.state.user = result.user
         this.dialog = false;
+
         // console.log("facebook")
         // console.log(result)
   		},
