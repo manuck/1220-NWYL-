@@ -1,42 +1,39 @@
 <template>
-  <div style="height: 100%; width: 100%;">
-    <div class="main-wrapper">
-      <Navbar2 />
-      <TopButton />
-      <div class="body-wrapper">
-        <div class="portfolio-wrapper">
-          <router-link to="portfolio/new" class="portfolio-title">
-            <span class="button-rounded">
-              Write Portfolio
-            </span>
-          </router-link>
-          <div class="portfolio-flex-r">              
-            <PortfolioList :limits="6" :load-more="true"></PortfolioList>
-          </div>
+    <div style="height: 100%; width: 100%;">
+        <div class="main-wrapper">
+            <Navbar />
+            <TopButton />
+            <div class="body-wrapper">
+                <div class="portfolio-wrapper">
+                    <router-link to="portfolio/new" class="portfolio-title">
+                        <span class="button-rounded">
+                            Write Portfolio
+                        </span>
+                    </router-link>
+                    <div class="portfolio-flex-r">              
+                        <PortfolioList :limits="6" :load-more="true"></PortfolioList>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-wrapper">
+            </div>
         </div>
-      </div>
-      <div class="footer-wrapper">
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
-import ImgBanner from '../components/ImgBanner'
-import PortfolioList from '../components/PortfolioList'
-import Navbar2 from '../components/Navbar2'
-import TopButton from '../components/TopButton'
+import PortfolioList from '@/components/portfolio/PortfolioList'
+import Navbar from '@/components/mainview/Navbar'
 
 export default {
-	name: 'PortfolioPage',
-	components: {
-		ImgBanner,
-    PortfolioList,
-    Navbar2,
-    TopButton,
-	},
+    name: 'PortfolioPage',
+    components: {
+        PortfolioList,
+        Navbar,
+    },
 }
 </script>
+
 <style>
 .portfolio-wrapper {
   display: flex;

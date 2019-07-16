@@ -19,15 +19,15 @@ export default {
 </script>
 
 <style>
-    #google_translate_element {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 50px;
-    }
-    .goog-te-gadget-simple {
-        border-radius: 15px;
-        padding: 3px 5px;
-    }
+#google_translate_element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+.goog-te-gadget-simple {
+    border-radius: 15px;
+    padding: 3px 5px;
+}
 </style>

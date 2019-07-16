@@ -10,22 +10,22 @@
             </div>
             <div class="right">
                 <LoginModal/>
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import LoginModal from './LoginModal'
+import LoginModal from '@/components/authenticate/LoginModal'
 
 export default {
-    name: 'Navbar2',
+    name: 'Navbar',
     components: {
         LoginModal,
     }
 }
 </script>
+
 <style lang="scss">
-    @import '../assets/sass/Navbar2.scss';
+    @import '@/assets/sass/Navbar.scss';
 </style>

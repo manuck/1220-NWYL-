@@ -29,17 +29,17 @@ export default {
 </script>
 
 <style>
-	.jemok {
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-	.content {
-		display: -webkit-box;
-		height: 4.5em;
-		overflow: hidden;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
-	}
+.jemok {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.content {
+	display: -webkit-box;
+	height: 4.5em;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
 </style>
 
