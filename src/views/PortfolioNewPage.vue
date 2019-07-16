@@ -33,6 +33,8 @@ export default {
 	},
   mounted: () => {
     store.state.vueName.page = 'PortfolioNewPage';
+    var cur_time = new Date();
+    store.state.vueName.time = cur_time;
     store.dispatch('addLog');
   }
 }
