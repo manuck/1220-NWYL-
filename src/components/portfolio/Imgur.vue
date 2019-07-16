@@ -4,11 +4,12 @@
 
 <script>
 import store from '@/store.js'
-var imagelink = "https://source.unsplash.com/random"
 
 export default {
     name: 'Imgur',
-    props: ['imagelink'],
+    props: {
+        imagelink: {type: String, default: "https://source.unsplash.com/random"},
+    },
     components: {
     },
     created() {
@@ -48,7 +49,7 @@ export default {
                     }
                     else{
                         console.log('업로드된 파일경로:'+result.data.link);
-                        imagelink = result.data.link
+                        this.imagelink = result.data.link
                     }
                 });
             });
@@ -61,26 +62,26 @@ export default {
 
 <style>
 .filecontainer {
-  height: 36.8px;  
+    height: 36.8px;  
 }
 .filecontainer::-webkit-file-upload-button {
-  visibility: hidden;
-  display: inline-block;
-  height: 100%;
-  width: 150px;
+    visibility: hidden;
+    display: inline-block;
+    height: 100%;
+    width: 150px;
 }
 .filecontainer::before {
-  content: '이미지 업로드';
-  display: inline-block;
-  border: 1px solid black;
-  border-radius: 50px;
-  color: black;
-  padding: 7px 30px;
-  background-color: rgba(0,0,0,0);
-  transition: background-color 1s, border 0.3s;
+    content: '이미지 업로드';
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 50px;
+    color: black;
+    padding: 7px 30px;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 1s, border 0.3s;
 }
 .filecontainer:hover::before {
-  background-color: rgba(0,0,0,0.2);
-  border: 1px solid rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
 }
 </style>

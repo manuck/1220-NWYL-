@@ -3,11 +3,12 @@
 </template>
 
 <script>
-var imagelink = "https://source.unsplash.com/random"
 var zzz = 1;
 export default {
     name: 'Imgur',
-    props: ['imagelink'],
+    props: {
+        imagelink: {type: String, default: "https://source.unsplash.com/random"},
+    },
     components: {
     },
     created() {
@@ -46,22 +47,18 @@ export default {
                         console.log('지원하지않는 파일형식..');
                     }
                     else{
-                        console.log('업로드된 파일경로:'+result.data.link);
-                        imagelink = result.data.link
+                        console.log('업로드된 파일경로:' + result.data.link);
+                        this.imagelink = result.data.link
+                        console.log('imagelink:',this.imagelink)
                         let bgimg = document.querySelector('.main-bg')
-                        bgimg.style.backgroundImage = `url(${imagelink})`;
+                        bgimg.style.backgroundImage = `url(${this.imagelink})`;
+                        console.log('bgimgchanged',bgimg.style.backgroundImage)
                     }
                 });
             });
         });
     },
-    data() {
-        return {
-            imagelink:'',
-            }
-        }
-    };
-
+};
 </script>
 
 <style>
