@@ -6,18 +6,20 @@
         <div class="card-bar"/>
         <div class="card-content-wrapper">
             <button class="button" @click="changeBgImageRandom">랜덤 이미지</button>
-            <Imgur class="button"/>
+            <label class="button"> 로컬 이미지
+                <ImgurBg/>
+            </label>
         </div>
     </div>
 </template>
 
 <script>
-import Imgur from './Imgur'
+import ImgurBg from './ImgurBg'
 
 export default {
     name: "ChangeBgImage",
     components: {
-        Imgur,
+        ImgurBg,
     },
     methods: {
         changeBgImageRandom() {
