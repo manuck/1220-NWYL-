@@ -31,6 +31,7 @@ const firestore = firebase.firestore()
 // firestore.settings({timestampsInSnapshots: true})
 export { firestore };
 
+// 로그인, 로그아웃 상태를 감지
 firebase.auth().onAuthStateChanged(function(user) {
   if(user != null) {
     // 로그인된 상태
@@ -83,10 +84,9 @@ export default {
 			created_at: firebase.firestore.FieldValue.serverTimestamp()
 		})
 	},
+  // 회원가입을 통해 생성한 계정으로 로그인하기
   signInWithEmailAndPassword(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
-      alert("여긴되니??")
-      //alert(result.user.email)
       return result
     })
     .catch(function(error) {
@@ -100,6 +100,7 @@ export default {
       console.error('[SignIn Error]',error)
     })
   },
+  // 구글 계정으로 로그인하기 (팝업)
 	loginWithGoogle() {
 		let provider = new firebase.auth.GoogleAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -110,6 +111,7 @@ export default {
 			console.error('[Google Login Error]', error)
 		})
 	},
+  // 페이스북 계정으로 로그인하기 (팝업)
 	loginWithFacebook() {
 		let provider = new firebase.auth.FacebookAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -120,6 +122,7 @@ export default {
 			console.error('[Facebook Login Error]', error)
 		})
 	},
+  // 회원가입하기
 	createUserWithEmailAndPassword(email, password) {
 		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
       alert("회원가입 성공!");
@@ -137,16 +140,18 @@ export default {
 			console.error('[SignUp Error]',error)
 		})
 	},
-  currnetUser() {
-    return firebase.auth().currentUser
-  },
+  // 로그아웃
   signOut() {
     firebase.auth().signOut().then(function() {
       alert("로그아웃 되었습니다.")
+      store.dispatch('afterLogout', '')
       // Sign-out successful.
     }).catch(function(error) {
       console.error('[SignOut Error]',error)
     })
-  }
+  },
+  currnetUser() {
+    return firebase.auth().currentUser
+  },
 
 }

@@ -2,14 +2,15 @@
 <template>
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on }">
-        <div v-if="$store.state.accessToken">
-        <div @click="signOut" class="login">LOGOUT</div>
-      </div>
-      <div v-else>
-          <div v-on="on" class="login">LOGIN</div>
-      </div>
-        <!-- <div @click="signOut" class="logout" v-if="$store.state.accessToken != null">LOGOUT</div> -->
+        <v-layout wrap v-if="$store.state.accessToken">
+          <v-flex> {{$store.state.user.displayName}} 님 환영합니다. </v-flex>
+          <v-flex @click="signOut" class="login">LOGOUT</v-flex>
+        </v-layout>
+        <v-layout v-else>
+          <v-flex v-on="on" class="login">LOGIN</v-flex>
+        </v-layout>
       </template>
+
       <template v-if="sign === false">
       <v-card min-width="400px">
         <v-card-title>
@@ -24,7 +25,6 @@
               <v-flex xs12>
                 <v-text-field label="Password*" type="password" required v-model="password"></v-text-field>
               </v-flex>
-
 
               <!-- google login -->
               <v-flex xs12 text-xs-center>

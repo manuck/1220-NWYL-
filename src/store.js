@@ -24,6 +24,10 @@ export default new Vuex.Store({
       }).catch(function(error) {
         console.error('[getIdToken Error]',error)
       })
+    },
+    afterLogout({commit}, user) {
+      commit('setUser', user)
+      commit('setToken', user)
     }
   }
 
