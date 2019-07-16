@@ -10,8 +10,10 @@
       v-model="body" 
       ref="markdownEditor"
     ></markdown-editor>
-    <Imgur></Imgur>
-    <v-btn @click="postPortfolio(title, body, imgSrc)">submit</v-btn>
+    <div class="submit-area">
+      <Imgur></Imgur>
+      <button @click="postPortfolio(title,body,img)" class="form-button">제출</button>
+    </div>
   </v-form>
 </template>
 
@@ -20,17 +22,9 @@ import Imgur from '../components/Imgur'
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 import { firestore } from '@/services/FirebaseService'
 import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
 
 export default {
-  
 	name: 'Form',
-	// props: {
-	// 	title: {type: String},
-  //   body: {type: String},
-  //   imgSrc: {type: String},
-  // },
   components: {
     Imgur,
     markdownEditor,
@@ -39,29 +33,39 @@ export default {
     return {
       title: '',
       body: '',
-      imgSrc: 'https://source.unsplash.com/random/',
+      img: '',
     }
   },
-
   methods: {
-    postPortfolio(title, body, imgSrc) {
-    console.log(this)
-    if (this.$store.state.imgSrc){
-    console.log(imgSrc)
-    console.log('vuex')
-    console.log(this.$store.state.imgSrc)
-    imgSrc = this.$store.state.imgSrc }
-		return firestore.collection('portfolios').add({
-			title,
-			body,
-			imgSrc,
-			created_at: firebase.firestore.FieldValue.serverTimestamp()
-    }).then(console.log('전송완료'))
-	  }
-    }
+    postPortfolio(title, body, img) {
+      return firestore.collection('portfolios').add({
+        title,
+        body,
+        img,
+        created_at: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(console.log('firebase added'))
+    },
+  }
 }
 </script>
 
 <style>
   @import '~simplemde/dist/simplemde.min.css';
+  .submit-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .form-button {
+    border: 1px solid black;
+    border-radius: 50px;
+    color: black;
+    padding: 7px 30px;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 1s, border 0.3s;
+  }
+  .form-button:hover {
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
+  }
 </style>

@@ -1,34 +1,30 @@
 <template>
-  <div>
-    <Navbar />
-    <TopButton />
-    <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
-      <div style="line-height:1.2em;font-size:1.2em;" slot="text">Portfolio</div>
-    </ImgBanner>
-    <v-container>
-
-      <!-- Portfolio -->
-      
-      <router-link to="portfolio/new">
-        <v-btn>
-          Create Portfolio
-        </v-btn>
-      </router-link>
-      
-      <v-layout>
-        <v-flex xs12>
-          <PortfolioList :limits="6" :load-more="true"></PortfolioList>
-        </v-flex>
-      </v-layout>
-
-    </v-container>
+  <div style="height: 100%; width: 100%;">
+    <div class="main-wrapper">
+      <Navbar2 />
+      <TopButton />
+      <div class="body-wrapper">
+        <div class="portfolio-wrapper">
+          <router-link to="portfolio/new" class="portfolio-title">
+            <span class="button-rounded">
+              Write Portfolio
+            </span>
+          </router-link>
+          <div class="portfolio-flex-r">              
+            <PortfolioList :limits="6" :load-more="true"></PortfolioList>
+          </div>
+        </div>
+      </div>
+      <div class="footer-wrapper">
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import ImgBanner from '../components/ImgBanner'
 import PortfolioList from '../components/PortfolioList'
-import Navbar from '../components/Navbar'
+import Navbar2 from '../components/Navbar2'
 import TopButton from '../components/TopButton'
 
 export default {
@@ -36,8 +32,32 @@ export default {
 	components: {
 		ImgBanner,
     PortfolioList,
-    Navbar,
+    Navbar2,
     TopButton,
 	},
 }
 </script>
+<style>
+.portfolio-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.portfolio-title {
+  display: flex;
+}
+.button-rounded {
+  color: white;
+  border: 1px solid white;
+  border-radius: 25px;
+  padding: 7px 20px;
+  background: rgba(255,255,255,0);
+  transition: background 1s;
+  transition: color 1s;
+}
+.button-rounded:hover {
+  background: rgba(255,255,255,0.8);
+  color: black;
+}
+</style>

@@ -7,22 +7,14 @@ const PORTFOLIOS = 'portfolios'
 
 // Setup Firebase
 const config = {
-	apiKey: "AIzaSyDFwuoT6RdQgQhb4tMK6HqImQB0qxc4csw",
-    authDomain: "manuck-40296.firebaseapp.com",
-    databaseURL: "https://manuck-40296.firebaseio.com",
-    projectId: "manuck-40296",
-    storageBucket: "manuck-40296.appspot.com",
-    messagingSenderId: "1054869151902",
-    appId: "1:1054869151902:web:3d1b8c55dea6090c"
+    apiKey: "AIzaSyABr2suTcnEjJ4dB6HQnbXClCIgfrVGcF4",
+    authDomain: "web-mobile-second.firebaseapp.com",
+    databaseURL: "https://web-mobile-second.firebaseio.com",
+    projectId: "web-mobile-second",
+    storageBucket: "web-mobile-second.appspot.com",
+    messagingSenderId: "1084413908904",
+	appId: "1:1084413908904:web:07ae84d3a56ff52f",
 }
-// const config = {
-// 	projectId: 'elice-ssafy',
-// 	authDomain: 'elice-ssafy.firebaseapp.com',
-// 	apiKey: 'AIzaSyCax1KLYHHlLEoxNkRIW8efgUBWooyEB2Q',
-// 	databaseURL: 'https://elice-ssafy.firebaseio.com',
-// 	storageBucket: 'gs://elice-ssafy.appspot.com'
-// }
-
 
 firebase.initializeApp(config)
 const firestore = firebase.firestore()

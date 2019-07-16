@@ -3,22 +3,12 @@
         <div class="header-flex">
             <div class="left">
                 <div class="logo">
-                    <a href="">
+                    <router-link to="/">
                         NWYL
-                    </a>
+                    </router-link>
                 </div>
             </div>
             <div class="right">
-                <!-- <div class="gitlab">
-                    <a href="">
-                        GITLAB
-                    </a>
-                </div>
-                <div class="weather">
-                    <a href="">
-                        WEATHER
-                    </a>
-                </div> -->
                 <LoginModal/>
             </div>
         </div>
@@ -35,6 +25,6 @@ export default {
     }
 }
 </script>
-<style>
-    @import '../assets/css/Navbar2.css';
+<style lang="scss">
+    @import '../assets/sass/Navbar2.scss';
 </style>
