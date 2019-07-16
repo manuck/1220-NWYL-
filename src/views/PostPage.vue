@@ -16,6 +16,7 @@
 <script>
 import PostList from '@/components/post/PostList'
 import Navbar from '@/components/mainview/Navbar'
+import store from '@/store'
 
 export default {
     name: 'PostPage',
@@ -25,6 +26,13 @@ export default {
     },
     mounted() {
         console.log(this.$store.state.imgSrc)
+        var cur_time = new Date();
+        var uid = store.state.user.displayName;
+
+        store.state.vueName.page = 'PostPage';
+        store.state.vueName.time = cur_time;
+        store.state.vueName.userid = uid;
+        store.dispatch('addLog');
     }
 }
 </script>

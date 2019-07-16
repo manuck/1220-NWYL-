@@ -26,6 +26,7 @@ import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
 import WeatherBox from '@/components/weather/WeatherBox'
 import Weather from '@/components/weather/Weather'
 import TranslateBox from '@/components/translate/TranslateBox'
+import store from '@/store'
 
 export default {
     name: 'pjt2',
@@ -37,6 +38,15 @@ export default {
         Weather,
         WeatherBox,
         TranslateBox,
+    },
+    mounted: () => {
+        var cur_time = new Date();
+        var uid = store.state.user.displayName;
+
+        store.state.vueName.page = 'HomePage';
+        store.state.vueName.time = cur_time;
+        store.state.vueName.userid = uid;
+        store.dispatch('addLog');
     }
 }
 </script>
