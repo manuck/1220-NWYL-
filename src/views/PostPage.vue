@@ -31,6 +31,9 @@ export default {
     PostList,
     Navbar,
     TopButton,
-	}
+  },
+  mounted() {
+    console.log(this.$store.state.imgSrc)
+  }
 }
 </script>

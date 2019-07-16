@@ -97,9 +97,11 @@ export default {
     GitlabLinkBox,
   },
 	methods: {
-    imguring(imagelink) {
+    imguring(event) {
+      const {value} = event.imagelink;
+      this.value = value;
       console.log('asd');
-      console.log(imagelink);
+      console.log(value);
       },
     getImgUrl(img) {
       return require('../assets/' + img)

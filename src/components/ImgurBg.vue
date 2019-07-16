@@ -1,11 +1,10 @@
 <template>
-  <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file" class="filecontainer"/>
+  <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file"/>
 </template>
 
 <script>
-import store from '../store.js'
 var imagelink = "https://source.unsplash.com/random"
-
+var zzz = 1;
 export default {
     name: 'Imgur',
     props: ['imagelink'],
@@ -49,40 +48,25 @@ export default {
             else{
               console.log('업로드된 파일경로:'+result.data.link);
               imagelink = result.data.link
+            
+              let bgimg = document.querySelector('.main-bg')
+              bgimg.style.backgroundImage = `url(${imagelink})`;
             }
           });
         });
         });
     },
-    methods: {
-    }
+    data() {
+        return {
+            imagelink:'',
+            }
+        }
     };
-    
 
 </script>
 
 <style>
-  .filecontainer {
-    height: 36.8px;  
-  }
-  .filecontainer::-webkit-file-upload-button {
-    visibility: hidden;
-    display: inline-block;
-    height: 100%;
-    width: 150px;
-  }
-  .filecontainer::before {
-    content: '이미지 업로드';
-    display: inline-block;
-    border: 1px solid black;
-    border-radius: 50px;
-    color: black;
-    padding: 7px 30px;
-    background-color: rgba(0,0,0,0);
-    transition: background-color 1s, border 0.3s;
-  }
-  .filecontainer:hover::before {
-    background-color: rgba(0,0,0,0.2);
-    border: 1px solid rgba(0,0,0,0.1);
+  .card-content-wrapper input[type="file"]{
+    display: none;
   }
 </style>

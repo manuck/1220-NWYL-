@@ -5,7 +5,7 @@
               :date="portfolios[i - 1].created_at.toString()"
               :title="portfolios[i - 1].title"
               :body="portfolios[i - 1].body"
-              :imgSrc="portfolios[i - 1].imgSrc"
+              :imgSrc="portfolios[i - 1].img"
       ></Portfolio>
     </v-flex>
 

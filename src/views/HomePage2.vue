@@ -1,19 +1,15 @@
 <template>
     <div style="height: 100%; width: 100%;">
-        <div class="main-bg"></div>
+        <!-- <div class="main-bg"></div> -->
         <div class="main-wrapper">
             <Navbar2 />
             <div class="body-wrapper">
-                <div class="body-flex-r">
-                    <div class="body-flex-c">
-                        <ChangeBgImage/>
-                        <GitlabLinkBox/>
-                        <PortfolioViewBox/>
-                    </div>
-                    <div class="body-flex-c">
-                        <WeatherBox/>
-                        <TranslateBox/>
-                    </div>
+                <div class="body-flex-c">
+                    <ChangeBgImage/>
+                    <GitlabLinkBox/>
+                    <PortfolioViewBox/>
+                    <WeatherBox/>
+                    <TranslateBox/>
                 </div>
             </div>
             <div class="footer-wrapper">
@@ -44,25 +40,6 @@ export default {
     }
 }
 </script>
-<style>
-    @import '../assets/css/HomePage2.css';
-
-    .main-wrapper {
-        position: relative;
-        height: 100%;
-        width: 100%;
-    }
-    .body-wrapper {
-        width: 100%;
-        padding: 40px 40px;
-    }
-    .body-flex-c {
-        display: flex;
-        flex-direction: column;
-        /* width: 100%; */
-    }
-    .body-flex-r {
-        display: flex;
-        width: 100%;
-    }
+<style lang="scss">
+    @import '../assets/sass/HomePage2.scss';
 </style>
