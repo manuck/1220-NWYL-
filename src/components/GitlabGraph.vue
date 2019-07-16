@@ -9,6 +9,10 @@
 <script src = "https://unpkg.com/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
 
 <script >
+import ImgBanner from '../components/ImgBanner'
+import PostList from '../components/PostList'
+import Navbar from '../components/Navbar'
+import TopButton from '../components/TopButton'
 
 export default {
 
@@ -48,7 +52,7 @@ export default {
 
   methods: {
     getgitCommits: function() {
-      axios.get('https://lab.ssafy.com/api/v4/projects/6075/events?private_token=JqwP6fMQbfkr2sLj9b_R')
+      axios.get('https://lab.ssafy.com/api/v4/projects/6075/events?per_page=100&private_token=JqwP6fMQbfkr2sLj9b_R')
         .then(response => {
           this.gitCommits = response.data.reverse()
         })
@@ -69,8 +73,8 @@ export default {
 
             if (tempdate === this.gitCommitDates[j]) {
               flag = 1;
+              this.commits[j] += 1
               // this.commits[j] += this.gitCommits[i]["push_data"]["commit_count"];
-              this.commits[j] += 1;
 
             }
           }

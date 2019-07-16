@@ -1,32 +1,27 @@
 <template>
-<div>
-  <GitlabGraph></GitlabGraph>
-</div>
+  <div>
+    <Navbar />
+    <ImgBanner imgSrc="https://source.unsplash.com/random/1600x900">
+      <div style="line-height:1.2em;font-size:1.2em;" slot="text">Portfolio New</div>
+    </ImgBanner>
+    <br />
+    <GitlabGraph></GitlabGraph>
+  </div>
 </template>
 
 <script >
 import GitlabGraph from '../components/GitlabGraph'
 import ImgBanner from '../components/ImgBanner'
 import Navbar from '../components/Navbar'
-import TopButton from '../components/TopButton'
+
 
 export default {
 
-  name: 'GitlabGraph',
-
-  data() {
-    return {
-      gitCommits: [],
-      gitCommitDates: [],
-      commits: [],
-    }
-  },
-
+  name: 'GitlabGraph2',
   components: {
-    ImgBanner,
-    TopButton,
-    Navbar,
     GitlabGraph,
+    ImgBanner,
+    Navbar,
   },
 }
 </script>
