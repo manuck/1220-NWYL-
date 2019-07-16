@@ -1,6 +1,16 @@
 <template>
 <div>
-  <div id="chart" class="hide_xs"></div>
+  <v-container>
+    <v-layout my-5>
+      <v-flex xs12>
+        <div class="text-xs-center mt-5"><h1>Gitlab Commit Graph</h1></div>
+        <h2 class="headline mt-2 text-xs-right">
+          <a href="//lab.ssafy.com/dmlimgo/webmobile-sub2" class="button blue mr-3">Gitlab Page 방문</a>
+        </h2>
+        <div id="chart" class="hide_xs mb-5"></div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </div>
 </template>
 
@@ -42,10 +52,10 @@ export default {
     }
 
     const chart = new frappe.Chart("#chart", {
-      title: "My Awesome Chart",
+
       data: data,
       type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-      height: 250,
+      height: 450,
       colors: ['#7cd6fd', '#743ee2']
     })
   },
