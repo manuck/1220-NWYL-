@@ -1,8 +1,5 @@
 <template>
-  <div class="filecontainer">
-    로컬 이미지
-    <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file"/>
-  </div>
+  <input v-on:input="(imagelink) => this.$emit('imguring', imagelink)" name="img" type="file" class="filecontainer"/>
 </template>
 
 <script>
@@ -74,17 +71,26 @@ export default {
 
 <style>
   .filecontainer {
-    overflow: hidden;
-    position: relative;
-    text-align: center;
+    height: 36.8px;  
   }
-  .filecontainer [type=file] {
-    display: block;
+  .filecontainer::-webkit-file-upload-button {
+    visibility: hidden;
+    display: inline-block;
     height: 100%;
-    width: 100%;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+    width: 150px;
+  }
+  .filecontainer::before {
+    content: '이미지 업로드';
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 50px;
+    color: black;
+    padding: 7px 30px;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 1s, border 0.3s;
+  }
+  .filecontainer:hover::before {
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
   }
 </style>
