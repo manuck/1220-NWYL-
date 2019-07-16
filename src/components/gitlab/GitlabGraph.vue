@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src = "https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src = "https://unpkg.com/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
 
@@ -36,7 +36,7 @@ export default {
         }
 
         const chart = new frappe.Chart("#chart", {
-            title: "My Awesome Chart",
+            title: "GitLab Commit Graph",
             data: data,
             type: 'axis-mixed', // or 'bar', 'line', 'scatter', 'pie', 'percentage'
             height: 250,
@@ -83,4 +83,5 @@ export default {
         display: none;
     }
 }
+
 </style>

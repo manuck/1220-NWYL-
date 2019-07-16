@@ -11,8 +11,9 @@
           ref="markdownEditor"
         ></markdown-editor>
         <div class="submit-area">
-            <Imgur></Imgur>
-            <button @click="postPortfolio(title,body,img)" class="form-button">제출</button>
+          <Imgur></Imgur>
+          <button @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</button>
+          <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
         </div>
     </v-form>
 </template>
@@ -33,19 +34,21 @@ export default {
         return {
             title: '',
             body: '',
-            img: '',
+            imgSrc: 'https://source.unsplash.com/random/',
         }
     },
-    methods: {
-        postPortfolio(title, body, img) {
-            return firestore.collection('portfolios').add({
-                title,
-                body,
-                img,
-                created_at: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(console.log('firebase added'))
-        },
-    }
+     methods: {
+    postPortfolio(title, body, imgSrc) {
+    if (this.$store.state.imgSrc){
+      imgSrc = this.$store.state.imgSrc }
+		  return firestore.collection('portfolios').add({
+			  title,
+			  body,
+			  imgSrc,
+			  created_at: firebase.firestore.FieldValue.serverTimestamp()
+          }).then(console.log('전송완료'))
+	    }
+     }
 }
 </script>
 
