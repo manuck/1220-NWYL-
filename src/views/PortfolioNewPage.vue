@@ -1,33 +1,33 @@
 <template>
-  <div style="height: 100%; width: 100%;">
-    <div class="main-wrapper">
-      <Navbar2 />
-      <div class="body-wrapper">
-        <div class="form-box">
-          <Form/>
+    <div style="height: 100%; width: 100%;">
+        <div class="main-wrapper">
+            <Navbar />
+            <div class="body-wrapper">
+                <div class="form-box">
+                    <Form/>
+                </div>
+            </div>
+            <div class="footer-wrapper">
+            </div>
         </div>
-      </div>
-      <div class="footer-wrapper">
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
-import Form from '../components/Form'
-import Navbar2 from '../components/Navbar2'
-import store from '../store'
+import Form from '@/components/portfolio/Form'
+import Navbar from '@/components/mainview/Navbar'
+import store from '@/store'
 
 export default {
-  name: 'PortfolioNewPage',
-	components: {
-    Form,
-    Navbar2,
-	},
-  mounted: () => {
-    store.state.vueName.page = 'PortfolioNewPage';
-    store.dispatch('addLog');
-  }
+    name: 'PortfolioNewPage',
+    components: {
+        Form,
+        Navbar,
+    },
+    mounted: () => {
+        store.state.vueName.page = 'PortfolioNewPage';
+        store.dispatch('addLog');
+    }
 }
 </script>
 

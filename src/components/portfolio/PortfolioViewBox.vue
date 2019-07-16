@@ -10,11 +10,13 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: "PortfolioViewBox",    
 }
 </script>
+
 <style>
 
 </style>

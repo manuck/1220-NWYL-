@@ -14,8 +14,9 @@
     </v-flex>
   </v-layout>
 </template>
+
 <script>
-import Portfolio from '@/components/Portfolio'
+import Portfolio from '@/components/portfolio/Portfolio'
 import FirebaseService from '@/services/FirebaseService'
 
 export default {
@@ -40,14 +41,14 @@ export default {
 			this.portfolios = await FirebaseService.getPortfolios()
 		},
 		loadMorePortfolios() {
-
-    }
+    	},
 	},
 }
 </script>
+
 <style>
-  .mw-700 {
-    max-width: 700px;
-    margin: auto;
-  }
+	.mw-700 {
+		max-width: 700px;
+		margin: auto;
+	}
 </style>
