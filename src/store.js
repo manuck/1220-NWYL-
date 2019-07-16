@@ -5,29 +5,47 @@ import { firestore } from '@/services/FirebaseService'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-		accessToken: '',
-    user: '',
-    vueName: {
-      page: '',
-      userid: '',
-      time: ''
-     }
-  },
-  mutations: {
-    addLog (state) {
-      console.log('mmmmmmmmmmmmm')
-      console.log(state.vueName)
-      console.log(state.time)
-      firestore.collection('LOG').add(state.vueName).then(() => {
-        console.log('added LOG!!')
-      })
-    }
-  },
-  actions: {
-    addLog (aa) {
-      console.log('aaaaaaaaaaaaa')
-      aa.commit('addLog')
-    }
-  }
+    state: {
+        accessToken: '',
+        user: '',
+        imgSrc: '',
+        vueName: {
+            page: '',
+            userid: '',
+            time: ''
+        }
+    },
+    mutations: {
+        setUser(state, user) {
+            state.user = user
+        },
+        setToken(state, accessToken) {
+           state.accessToken = accessToken
+        },
+        addLog (state) {
+            console.log('mmmmmmmmmmmmm')
+            console.log(state.vueName)
+            firestore.collection('LOG').add(state.vueName).then(() => {
+                console.log('added LOG!!')
+            })
+        }
+    },
+    actions: {
+        getUser({commit}, user){
+            commit('setUser', user)
+            user.getIdToken().then(accessToken => {
+                commit('setToken', accessToken)
+            }).catch(function(error) {
+                console.error('[getIdToken Error]',error)
+            })
+        },
+        afterLogout({commit}, user) {
+            commit('setUser', user)
+            commit('setToken', user)
+        },
+        addLog (aa) {
+            console.log('aaaaaaaaaaaaa')
+            aa.commit('addLog')
+        }
+    },
 })
