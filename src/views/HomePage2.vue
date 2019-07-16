@@ -40,6 +40,6 @@ export default {
     }
 }
 </script>
-<style>
-    @import '../assets/css/HomePage2.css';
+<style lang="scss">
+    @import '../assets/sass/HomePage2.scss';
 </style>
