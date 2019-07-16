@@ -1,0 +1,32 @@
+.header-wrapper {
+    height: 90px;
+    width: 100%;
+}
+.header-flex {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 15px 40px;
+    justify-content: space-between;
+}
+.left, .right {
+    display: flex;
+}
+.logo {
+    font-size: 40px;
+    line-height: 40px;
+    color: white;
+    font-family: 'Monofett', cursive;
+    margin-top: -5px;
+}
+.login, .signin {
+    color: white;
+    font-family: 'Mina', sans-serif;
+}
+.login {
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+        color: #ffffffbe !important;
+    }
+}
