@@ -6,19 +6,19 @@
             <div class="body-wrapper">
                 <div class="section-1">
                     <div class="section-1-title">
-                        <span>
-                            <span style="font-size:90px;">N</span>o
-                            <span style="font-size:90px;">W</span>ork
-                            <span style="font-size:90px;">Y</span>es
-                            <span style="font-size:90px;">L</span>ife
+                        <span style="font-size:100px;">
+                            NW<span style="color: #c8e19d;">YL</span>
                         </span>
                     </div>
                     <div class="section-1-content">
-                        <img src="@/assets/images/lying.png"/>
+                        <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;"/>
+                    </div>
+                    <div class="section-1-scroll">
+
                     </div>
                 </div>
-                <div class="section-2">
-                </div>
+                <!-- <div class="section-2">
+                </div> -->
                 <div class="section-3">
                     <div class="body-flex-c">
                         <ChangeBgImage/>
