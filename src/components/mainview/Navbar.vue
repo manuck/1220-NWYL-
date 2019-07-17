@@ -22,6 +22,14 @@ export default {
     name: 'Navbar',
     components: {
         LoginModal,
+    },
+    props: {
+        ismain: {type: Boolean, default: false},
+    },
+    mounted() {
+        if (this.ismain) {
+            document.querySelector('.header-wrapper').style.display = "none";
+        }
     }
 }
 </script>
