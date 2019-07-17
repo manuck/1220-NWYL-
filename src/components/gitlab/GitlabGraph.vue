@@ -1,5 +1,7 @@
 <template>
+
     <div>
+        <a class="button blue mr-3" href="https://lab.ssafy.com/dmlimgo/webmobile-sub2/tree/develop">Gitlab Page 이동</a>
         <div id="chart" class="hide_xs"></div>
     </div>
 </template>
