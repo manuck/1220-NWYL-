@@ -26,6 +26,7 @@
                         <PortfolioViewBox/>
                         <WeatherBox/>
                         <TranslateBox/>
+                        <Map/>
                     </div>
                 </div>
             </div>
@@ -42,6 +43,7 @@ import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
 import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
 import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
 import store from '@/store'
+import Map from '@/components/map/Map'
 
 export default {
     name: 'pjt2',
@@ -53,6 +55,7 @@ export default {
         GitlabLinkBox,
         ChangeBgImage,
         PortfolioViewBox,
+        Map,
     },
     data() {
         return {

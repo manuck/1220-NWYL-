@@ -1,5 +1,5 @@
 <template>
-  <div class="card-wrapper">
+  <div class="card-wrapper" style="width: 400px;">
     <div class="card-title">
       지도
     </div>
@@ -19,10 +19,13 @@ export default {
     return {
       }
     },
-  methods: function () {
+  mounted: function () {
+      console.log('???')
+      initMap();
     // GoogleMapsLoader.KEY = 'AIzaSyCVaIeCU6pPEngLSTnS5FvpklT3pJAL5ag';
       var map, infoWindow;
       function initMap() {
+        console.log('mapinit')
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 35.194, lng: 128.102},
           zoom: 14
@@ -57,12 +60,12 @@ export default {
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
-  
   }
   }
 </script>
 <style>
 #map {
-  height: 100%;
+  height: 400px;
+  width: 400px;
 }
 </style>

@@ -28,7 +28,7 @@ export default {
     },
     mounted() {
         var key = '69d0d9ea132e148068fc83dc5fed6a42'
-        const BASE_URL = `http://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=${key}&lang=kr`
+        const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=${key}&lang=kr`
         console.log(BASE_URL)
         this.$http.get(`${BASE_URL}`)
         .then((result) => {
@@ -44,7 +44,7 @@ export default {
     },
     computed: {
         weathericon() {
-            return 'http://openweathermap.org/img/wn/' + this.weatherdata.icon + '@2x.png'
+            return 'https://openweathermap.org/img/wn/' + this.weatherdata.icon + '@2x.png'
         }
     },
 }
