@@ -36,10 +36,10 @@ export default {
     },
     methods: {
         viewNav() {
-            if (window.scrollY > 650) {
-                document.querySelector('.header-wrapper').style.visibility = "visible";
-            } else {
+            if (this.ismain && window.scrollY <= 650) {
                 document.querySelector('.header-wrapper').style.visibility = "hidden";
+            } else {
+                document.querySelector('.header-wrapper').style.visibility = "visible";
             }
         }
     }

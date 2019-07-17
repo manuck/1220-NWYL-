@@ -1,7 +1,8 @@
 <template>
     <div style="height: 100%; width: 100%;">
+        <div class="main-bg"/>
         <div class="main-wrapper">
-            <Navbar />
+            <Navbar :ismain="false"/>
             <div class="body-wrapper">
                 <div class="form-box">
                     <Form/>

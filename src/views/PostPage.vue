@@ -1,7 +1,6 @@
 <template>
     <div>
-        <Navbar />
-        <TopButton />
+        <Navbar :ismain="false"/>
         <v-container>
             <!-- Post -->
             <v-layout>
