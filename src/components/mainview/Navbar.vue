@@ -26,9 +26,21 @@ export default {
     props: {
         ismain: {type: Boolean, default: false},
     },
+    created() {
+        window.addEventListener('scroll', this.viewNav)
+    },
     mounted() {
         if (this.ismain) {
-            document.querySelector('.header-wrapper').style.display = "none";
+            document.querySelector('.header-wrapper').style.visibility = "hidden";
+        }
+    },
+    methods: {
+        viewNav() {
+            if (window.scrollY > 650) {
+                document.querySelector('.header-wrapper').style.visibility = "visible";
+            } else {
+                document.querySelector('.header-wrapper').style.visibility = "hidden";
+            }
         }
     }
 }

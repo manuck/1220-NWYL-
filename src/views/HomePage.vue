@@ -2,7 +2,6 @@
     <div style="height: 100%; width: 100%;">
         <div class="main-bg"/>
         <div class="main-wrapper">
-            <Navbar :ismain="true"/>
             <div class="body-wrapper">
                 <div class="section-1">
                     <div class="section-1-title">
@@ -14,12 +13,13 @@
                         <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;"/>
                     </div>
                     <div class="section-1-scroll">
-
+                        <div class="scroll-round"/>
                     </div>
                 </div>
                 <!-- <div class="section-2">
                 </div> -->
                 <div class="section-3">
+                    <Navbar :ismain="true"/>
                     <div class="body-flex-c">
                         <ChangeBgImage/>
                         <GitlabLinkBox/>
@@ -28,8 +28,6 @@
                         <TranslateBox/>
                     </div>
                 </div>
-            </div>
-            <div class="footer-wrapper">
             </div>
         </div>
     </div>
@@ -55,9 +53,29 @@ export default {
         ChangeBgImage,
         PortfolioViewBox,
     },
-    mounted() {
-        document.querySelector('.main-wrapper').attr(bgimage, 'url("https://source.unsplash.com/random/1600x900")');
-    }
+    data() {
+        return {
+            statY: 0,
+            heightnow: 0,
+        }
+    },
+    created() {
+        // window.addEventListener('scroll', this.autoMoveToSecond)
+    },
+    methods: {
+        autoMoveToSecond() {
+            this.statY = window.scrollY;
+            this.heightnow = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            if(this.statY > 10 && this.statY < 100) {
+                console.log(this.heightnow)
+                window.scroll({
+                    top: this.heightnow,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+            }
+        }
+    },
 }
 </script>
 

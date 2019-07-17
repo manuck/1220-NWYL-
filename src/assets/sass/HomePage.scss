@@ -3,6 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Gugi|Jua|Sniglet&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
 .v-content__wrap {
     overflow: hidden;
 }
@@ -40,13 +43,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 90px);
 }
 .section-1 {
     height: calc(100vh - 30px);
 }
 .section-2 {
     background: white;
+}
+.section-3 {
+    height: calc(100vh - 40px);
 }
 .section-1-title {
     display: flex;
@@ -56,14 +61,51 @@
     // font-family: 'Monofett', cursive;
     font-family: 'Sniglet', cursive;
 }
+.section-1-scroll {
+    display: flex;
+    align-items: center;
+    height: 160px;
+}
+.scroll-round {
+    display: flex;
+    justify-content: center;
+    width: 35px;
+    height: 55px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 5px;
+    &::before {
+        content: "";
+        position: relative;
+        top: 2px;
+        height: 14px;
+        width: 2px;
+        background: black;
+        border-radius: 100px;
+        opacity: 1;
+        animation: mouse 2s infinite;
+    }
+}
+@keyframes mouse {
+    from {
+        opacity: 1;
+        top: 2px;
+    }
+    to {
+        opacity: 0;
+        top: 25px;
+    }
+}
 
 .body-flex-c {
     display: flex;
     flex-direction: column;
-    max-height: 100%;
     flex-wrap: wrap;
+    height: calc(100vh - 130px);
     width: 100%;
     max-width: 100%;
+    align-items: center;
 }
 .body-flex-r {
     display: flex;

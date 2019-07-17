@@ -2,7 +2,7 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on }">
             <v-layout wrap v-if="$store.state.accessToken">
-                <v-flex> {{$store.state.user.displayName}} 님 환영합니다. </v-flex>
+                <v-flex class="profile"> {{$store.state.user.displayName}} 님 환영합니다. </v-flex>
                 <v-flex @click="signOut" class="login">LOGOUT</v-flex>
             </v-layout>
             <v-layout v-else>
@@ -113,5 +113,11 @@ export default {
     align-items: center;
     cursor: pointer;
     color: #3f51b5;
+}
+.profile {
+    display: flex;
+    color: white;
+    padding: 0 10px;
+    font-family: 'Noto Sans KR';
 }
 </style>
