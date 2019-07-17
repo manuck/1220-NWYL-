@@ -41,6 +41,7 @@ import TranslateBox from '@/components/translate/TranslateBox'
 import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
 import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
 import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
+import store from '@/store'
 
 export default {
     name: 'pjt2',
@@ -61,6 +62,16 @@ export default {
     },
     created() {
         // window.addEventListener('scroll', this.autoMoveToSecond)
+    },
+    mounted() {
+        document.querySelector('.main-wrapper').attr(bgimage, 'url("https://source.unsplash.com/random/1600x900")');
+        var cur_time = new Date();
+        var uid = store.state.user.displayName;
+
+        store.state.vueName.page = 'HomePage';
+        store.state.vueName.time = cur_time;
+        store.state.vueName.userid = uid;
+        store.dispatch('addLog');
     },
     methods: {
         autoMoveToSecond() {

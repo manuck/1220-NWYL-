@@ -26,7 +26,12 @@ export default {
         Navbar,
     },
     mounted: () => {
+        var cur_time = new Date();
+        var uid = store.state.user.displayName;
+
         store.state.vueName.page = 'PortfolioNewPage';
+        store.state.vueName.time = cur_time;
+        store.state.vueName.userid = uid;
         store.dispatch('addLog');
     }
 }
@@ -34,9 +39,9 @@ export default {
 
 <style>
 .form-box {
-  padding: 20px;
-  border: 1px solid white;
-  border-radius: 15px;
-  background: white;
+    padding: 20px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: white;
 }
 </style>

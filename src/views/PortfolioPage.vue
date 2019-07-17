@@ -25,6 +25,7 @@
 <script>
 import PortfolioList from '@/components/portfolio/PortfolioList'
 import Navbar from '@/components/mainview/Navbar'
+import store from '@/store'
 
 export default {
     name: 'PortfolioPage',
@@ -32,6 +33,15 @@ export default {
         PortfolioList,
         Navbar,
     },
+    mounted: () => {
+        var cur_time = new Date();
+        var uid = store.state.user.displayName;
+
+        store.state.vueName.page = 'PortfolioPage';
+        store.state.vueName.time = cur_time;
+        store.state.vueName.userid = uid;
+        store.dispatch('addLog');
+    }
 }
 </script>
 

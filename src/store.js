@@ -24,7 +24,6 @@ export default new Vuex.Store({
         },
         addLog (state) {
             console.log('mmmmmmmmmmmmm')
-            console.log(state.vueName)
             firestore.collection('LOG').add(state.vueName).then(() => {
                 console.log('added LOG!!')
             })
