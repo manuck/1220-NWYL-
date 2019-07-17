@@ -49,7 +49,8 @@ export default {
                     }
                     else{
                         console.log('업로드된 파일경로:'+result.data.link);
-                        this.imagelink = result.data.link
+                        this.imagelink = result.data.link;
+                        store.state.imgSrc = imagelink;
                     }
                 });
             });
