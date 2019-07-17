@@ -1,0 +1,65 @@
+[debug] [2019-07-17T06:55:23.182Z] ----------------------------------------------------------------------
+[debug] [2019-07-17T06:55:23.184Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\multicampus\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2019-07-17T06:55:23.184Z] CLI Version:   7.1.0
+[debug] [2019-07-17T06:55:23.184Z] Platform:      win32
+[debug] [2019-07-17T06:55:23.184Z] Node Version:  v10.16.0
+[debug] [2019-07-17T06:55:23.185Z] Time:          Wed Jul 17 2019 15:55:23 GMT+0900 (GMT+09:00)
+[debug] [2019-07-17T06:55:23.185Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-17T06:55:23.193Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-17T06:55:23.193Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\multicampus\Desktop\Projects\0708 pjt2\webmobile-sub2
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2019-07-17T06:55:25.937Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-17T06:55:25.937Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-17T06:55:26.235Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-17T06:55:26.249Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?page_size=100  
+ 
+[debug] [2019-07-17T06:55:27.229Z] <<< HTTP RESPONSE 200
+[info] i  Using project spatial-framing-246206 (webmobile-sub2)
+[info] 
+=== Firestore Setup
+[debug] [2019-07-17T06:55:30.646Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-17T06:55:30.647Z] > authorizing via signed-in user
+[debug] [2019-07-17T06:55:30.647Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/spatial-framing-246206  
+ 
+[debug] [2019-07-17T06:55:31.052Z] <<< HTTP RESPONSE 200
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2019-07-17T06:55:32.421Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/spatial-framing-246206/releases?pageSize=10&pageToken=  
+ 
+[debug] [2019-07-17T06:55:33.758Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-17T06:55:33.759Z] Found ruleset: projects/spatial-framing-246206/rulesets/ee32862a-65ff-4504-89f0-363aba8e032c
+[debug] [2019-07-17T06:55:33.759Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/spatial-framing-246206/rulesets/ee32862a-65ff-4504-89f0-363aba8e032c  
+ 
+[debug] [2019-07-17T06:55:35.067Z] <<< HTTP RESPONSE 200
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
