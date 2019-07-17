@@ -10,6 +10,7 @@
                     <PortfolioViewBox/>
                     <WeatherBox/>
                     <TranslateBox/>
+                    <Map/>
                 </div>
             </div>
             <div class="footer-wrapper">
@@ -26,6 +27,7 @@ import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
 import WeatherBox from '@/components/weather/WeatherBox'
 import Weather from '@/components/weather/Weather'
 import TranslateBox from '@/components/translate/TranslateBox'
+import Map from '@/components/map/Map'
 
 export default {
     name: 'pjt2',
@@ -37,6 +39,7 @@ export default {
         Weather,
         WeatherBox,
         TranslateBox,
+        Map,
     }
 }
 </script>
