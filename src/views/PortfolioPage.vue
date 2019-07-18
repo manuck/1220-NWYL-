@@ -3,7 +3,6 @@
         <div class="main-bg"/>
         <div class="main-wrapper">
             <Navbar :ismain="false"/>
-            <TopButton />
             <div class="body-wrapper">
                 <div class="portfolio-wrapper">
                     <router-link to="portfolio/new" class="portfolio-title">
