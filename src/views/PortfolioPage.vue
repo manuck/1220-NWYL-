@@ -41,7 +41,6 @@ export default {
         store.state.vueName.time = cur_time;
         store.state.vueName.userid = uid;
         store.dispatch('addLog');
-        window.location.reload()
     }
 }
 </script>
