@@ -21,6 +21,7 @@
                 <div class="section-3">
                     <Navbar :ismain="true"/>
                     <div class="body-flex-c">
+                        <ProfileBox/>
                         <ChangeBgImage/>
                         <GitlabLinkBox/>
                         <PortfolioViewBox/>
@@ -38,6 +39,7 @@
 import Navbar from '@/components/mainview/Navbar'
 import Weather from '@/components/weather/Weather'
 import WeatherBox from '@/components/weather/WeatherBox'
+import ProfileBox from '@/components/gravatar/ProfileBox'
 import TranslateBox from '@/components/translate/TranslateBox'
 import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
 import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
@@ -51,6 +53,7 @@ export default {
         Navbar,
         Weather,
         WeatherBox,
+        ProfileBox,
         TranslateBox,
         GitlabLinkBox,
         ChangeBgImage,
