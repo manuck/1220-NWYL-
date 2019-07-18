@@ -1,19 +1,18 @@
 <template>
     <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on }">
-            <v-layout wrap v-if="$store.state.accessToken">
-                <v-flex class="profile"> {{$store.state.user.displayName}} 님 환영합니다. </v-flex>
-                <v-flex @click="signOut" class="login">LOGOUT</v-flex>
+            <v-layout wrap v-if="$store.state.accessToken"  style="width:100%;">
+                <v-flex @click="signOut" class="button">로그아웃 하기</v-flex>
             </v-layout>
             <v-layout v-else>
-                <v-flex v-on="on" class="login">LOGIN</v-flex>
+                <v-flex v-on="on" class="button">로그인 하기</v-flex>
             </v-layout>
         </template>
 
         <template v-if="sign === false">
             <v-card min-width="400px">
                 <v-card-title>
-                    <span class="headline">Login</span>
+                    <span class="headline">로그인 하기</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container grid-list-md>

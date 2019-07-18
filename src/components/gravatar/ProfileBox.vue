@@ -10,20 +10,27 @@
         </div>
         <div class="card-bar"/>
         <div class="card-content-wrapper" v-if="$store.state.user">
-            <img :src="gravatarURL"/>
-            <router-link to="portfolio" class="button" style="color:black !important;">로그아웃 하기</router-link>
+            <div style="margin: -12px;">
+                <img :src="gravatarURL"/>
+            </div>
+            <LoginModal/>
         </div>
         <div class="card-content-wrapper" v-else>
-            <router-link to="portfolio" class="button" style="color:black !important;">로그인 하기</router-link>
+            <LoginModal/>
         </div>
     </div>
 </template>
 
 <script>
+import LoginModal from '@/components/authenticate/LoginModal'
 import store from '@/store'
 let md5 = require('md5');
+
 export default {
     name: "ProfileBox",
+    components: {
+        LoginModal,
+    },
     computed: {
         gravatarURL() {
             return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=200?=retro`
