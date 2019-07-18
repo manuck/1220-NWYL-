@@ -1,19 +1,19 @@
 <template>
     <v-form>
         <v-text-field
-          v-model="title"
-          :counter="100"
-          label="Title"
-          required
+            v-model="title"
+            :counter="100"
+            label="Title"
+            required
         ></v-text-field>
         <markdown-editor 
-          v-model="body" 
-          ref="markdownEditor"
+            v-model="body" 
+            ref="markdownEditor"
         ></markdown-editor>
         <div class="submit-area">
-          <Imgur></Imgur>
-          <button onclick="location.href='/portfolio'" id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
-          <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
+            <Imgur></Imgur>
+            <button onclick="location.href='/portfolio'" id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
+            <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
         </div>
     </v-form>
 </template>
