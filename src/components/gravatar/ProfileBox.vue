@@ -10,10 +10,12 @@
         </div>
         <div class="card-bar"/>
         <div class="card-content-wrapper" v-if="$store.state.user">
-            <div style="margin: -12px;">
-                <img :src="gravatarURL"/>
+            <div style="display: flex;">
+                <img :src="gravatarURL" style="margin: -15px;"/>
             </div>
-            <LoginModal/>
+            <div style="display: flex; width: 100%;">
+                <LoginModal/>
+            </div>
         </div>
         <div class="card-content-wrapper" v-else>
             <LoginModal/>
@@ -33,7 +35,7 @@ export default {
     },
     computed: {
         gravatarURL() {
-            return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=200?=retro`
+            return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=200?d=retro`
         }
     }
 }

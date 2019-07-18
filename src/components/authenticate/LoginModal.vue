@@ -1,10 +1,10 @@
 <template>
     <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on }">
-            <v-layout wrap v-if="$store.state.accessToken"  style="width:100%;">
+            <v-layout wrap v-if="$store.state.accessToken" auth-wrapper>
                 <v-flex @click="signOut" class="button">로그아웃 하기</v-flex>
             </v-layout>
-            <v-layout v-else>
+            <v-layout v-else auth-wrapper>
                 <v-flex v-on="on" class="button">로그인 하기</v-flex>
             </v-layout>
         </template>
@@ -105,18 +105,8 @@ export default {
 </script>
 
 <style>
-.navitems {
-    display: flex;
-    height: 72px;
-    padding: 0 10px;
-    align-items: center;
+.auth-wrapper {
+    width: 100%;
     cursor: pointer;
-    color: #3f51b5;
-}
-.profile {
-    display: flex;
-    color: white;
-    padding: 0 10px;
-    font-family: 'Noto Sans KR';
 }
 </style>
