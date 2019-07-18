@@ -4,12 +4,12 @@
 
 <script>
 import store from '@/store.js'
+let imagelink = "https://source.unsplash.com/random";
 
 export default {
     name: 'Imgur',
-    props: {
-        imagelink: {type: String, default: "https://source.unsplash.com/random"},
-    },
+    props: ['imagelink']
+    ,
     components: {
     },
     created() {
@@ -52,7 +52,7 @@ export default {
                     }
                     else{
                         console.log('업로드된 파일경로:'+result.data.link);
-                        this.imagelink = result.data.link;
+                        imagelink = result.data.link;
                         store.state.imgSrc = imagelink;
                         document.getElementById("formButton").disabled = false;
                         document.getElementById("formButton").style.borderColor = "rgba(0,0,0,1)";

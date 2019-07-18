@@ -1,5 +1,5 @@
 <template>
-    <v-form>
+    <v-form action="/portfolio">
         <v-text-field
           v-model="title"
           :counter="100"
