@@ -12,7 +12,7 @@
         ></markdown-editor>
         <div class="submit-area">
           <Imgur></Imgur>
-          <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="">제출</button>
+          <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
           <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
         </div>
     </v-form>
@@ -42,6 +42,7 @@ export default {
     },
      methods: {
     postPortfolio(title, body, imgSrc) {
+      console.log('보내지는 함수가?')
     if (this.$store.state.imgSrc){
       imgSrc = this.$store.state.imgSrc }
 		  return firestore.collection('portfolios').add({
@@ -49,8 +50,8 @@ export default {
 			  body,
 			  imgSrc,
 			  created_at: firebase.firestore.FieldValue.serverTimestamp()
-          }).then(console.log('전송완료'))
-	    }
+          }).then(location.href="/portfolio")
+      }
      }
 }
 </script>
