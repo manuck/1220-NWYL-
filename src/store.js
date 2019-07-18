@@ -9,6 +9,10 @@ export default new Vuex.Store({
         accessToken: '',
         user: '',
         imgSrc: '',
+        imgToDB: {
+            imglink: '',
+            user_email: '',
+        },
         vueName: {
             page: '',
             userid: '',
@@ -23,7 +27,6 @@ export default new Vuex.Store({
            state.accessToken = accessToken
         },
         addLog (state) {
-            console.log('mmmmmmmmmmmmm')
             firestore.collection('LOG').add(state.vueName).then(() => {
                 console.log('added LOG!!')
             })
@@ -43,7 +46,6 @@ export default new Vuex.Store({
             commit('setToken', user)
         },
         addLog (aa) {
-            console.log('aaaaaaaaaaaaa')
             aa.commit('addLog')
         }
     },

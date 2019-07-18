@@ -8,9 +8,9 @@
                     </router-link>
                 </div>
             </div>
-            <div class="right">
+            <!-- <div class="right">
                 <LoginModal/>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

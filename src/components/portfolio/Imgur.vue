@@ -4,12 +4,12 @@
 
 <script>
 import store from '@/store.js'
+let imagelink = "https://source.unsplash.com/random";
 
 export default {
     name: 'Imgur',
-    props: {
-        imagelink: {type: String, default: "https://source.unsplash.com/random"},
-    },
+    props: ['imagelink']
+    ,
     components: {
     },
     created() {
@@ -38,6 +38,9 @@ export default {
         /*파일 변경 이벤트가 감지되면 자동으로 이미지 업로드*/
         $(document).ready(function(){ // document가 모두 로드되면 실행됨
             $("input[name=img]").change(function(){// 사용자가 파일을 변경했을때 발생됨
+                document.getElementById("formButton").disabled = true;
+                document.getElementById("formButton").style.borderColor = "rgba(0,0,0,0.1)";
+                document.getElementById("formButton").style.color = "rgba(0,0,0,0.1)";
                 var file = this.files[0];
                 uploadImageByImgur(file, function(result){
                     console.log('업로드결과:'+result.status); 
@@ -49,8 +52,11 @@ export default {
                     }
                     else{
                         console.log('업로드된 파일경로:'+result.data.link);
-                        this.imagelink = result.data.link;
+                        imagelink = result.data.link;
                         store.state.imgSrc = imagelink;
+                        document.getElementById("formButton").disabled = false;
+                        document.getElementById("formButton").style.borderColor = "rgba(0,0,0,1)";
+                        document.getElementById("formButton").style.color = "rgba(0,0,0,1)";
                     }
                 });
             });

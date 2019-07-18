@@ -3,7 +3,9 @@
 </template>
 
 <script>
-var zzz = 1;
+import { firestore } from '@/services/FirebaseService'
+import store from '@/store'
+
 export default {
     name: 'Imgur',
     props: {
@@ -54,6 +56,11 @@ export default {
                         bgimg.style.backgroundImage = `url(${this.imagelink})`;
                         console.log('bgimgchanged',bgimg.style.backgroundImage)
                     }
+                    store.state.imgToDB.imglink = result.data.link
+                    store.state.imgToDB.user_email = store.state.user.email
+                    firestore.collection('Imglink').add(store.state.imgToDB).then(() =>{
+                        console.log('added Imglink')
+                    })
                 });
             });
         });

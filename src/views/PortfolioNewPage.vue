@@ -26,12 +26,12 @@ export default {
         Navbar,
     },
     mounted: () => {
-        var cur_time = new Date();
-        var uid = store.state.user.displayName;
+        // var cur_time = new Date();
+        // var uid = store.state.user.displayName;
 
         store.state.vueName.page = 'PortfolioNewPage';
-        store.state.vueName.time = cur_time;
-        store.state.vueName.userid = uid;
+        // store.state.vueName.time = cur_time;
+        // store.state.vueName.userid = uid;
         store.dispatch('addLog');
     }
 }

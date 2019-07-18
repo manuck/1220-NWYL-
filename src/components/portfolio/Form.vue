@@ -1,5 +1,5 @@
 <template>
-    <v-form>
+    <v-form action="/portfolio">
         <v-text-field
           v-model="title"
           :counter="100"
@@ -12,7 +12,7 @@
         ></markdown-editor>
         <div class="submit-area">
           <Imgur></Imgur>
-          <button @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</button>
+          <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="">제출</button>
           <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
         </div>
     </v-form>
@@ -36,6 +36,9 @@ export default {
             body: '',
             imgSrc: 'https://source.unsplash.com/random/',
         }
+    },
+    mounted() {
+      document.getElementById("formButton").disabled = false;
     },
      methods: {
     postPortfolio(title, body, imgSrc) {
