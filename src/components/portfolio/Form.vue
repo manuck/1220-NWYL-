@@ -12,8 +12,8 @@
         ></markdown-editor>
         <div class="submit-area">
             <Imgur></Imgur>
-            <button onclick="location.href='/portfolio'" id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
-            <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
+            <button onclick="location.href='https://spatial-framing-246206.firebaseapp.com/portfolio'" id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
+            <!-- <router-link to="/portfolio" id="formButton" v-on:click.native="postPortfolio(title,body,imgSrc)" class="form-button" tag="button">제출</router-link> -->
         </div>
     </v-form>
 </template>
@@ -49,7 +49,7 @@ export default {
                 body,
                 imgSrc,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
-            })
+            }).then(console.log('posted'))
         }
     }
 }
