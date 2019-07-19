@@ -11,6 +11,7 @@
 </template>
 
 <script>
+// 구글map api import
 import GoogleMapsLoader from 'google-maps'
 
 export default {
@@ -20,10 +21,9 @@ export default {
       }
     },
   mounted: function () {
-      console.log('???')
       initMap();
-    // GoogleMapsLoader.KEY = 'AIzaSyCVaIeCU6pPEngLSTnS5FvpklT3pJAL5ag';
       var map, infoWindow;
+      // 초기 map 설정(위도, 경도, 줌상태)
       function initMap() {
         console.log('mapinit')
         map = new google.maps.Map(document.getElementById('map'), {
@@ -33,6 +33,7 @@ export default {
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
+        // 위치 허용 확인하면 실행
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -52,7 +53,7 @@ export default {
           handleLocationError(false, infoWindow, map.getCenter());
         }
       }
-
+      // 현재위치를 받을 수 없을 때 발생하는 함수
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?

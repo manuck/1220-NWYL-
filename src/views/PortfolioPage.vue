@@ -1,7 +1,8 @@
 <template>
     <div style="height: 100%; width: 100%;">
+        <div class="main-bg"/>
         <div class="main-wrapper">
-            <Navbar />
+            <Navbar :ismain="false"/>
             <TopButton />
             <div class="body-wrapper">
                 <div class="portfolio-wrapper">
@@ -24,6 +25,7 @@
 <script>
 import PortfolioList from '@/components/portfolio/PortfolioList'
 import Navbar from '@/components/mainview/Navbar'
+// import store from '@/store'
 
 export default {
     name: 'PortfolioPage',
@@ -31,6 +33,15 @@ export default {
         PortfolioList,
         Navbar,
     },
+    // mounted: () => {
+    //     var cur_time = new Date();
+    //     var uid = store.state.user.displayName;
+
+    //     store.state.vueName.page = 'PortfolioPage';
+    //     store.state.vueName.time = cur_time;
+    //     store.state.vueName.userid = uid;
+    //     store.dispatch('addLog');
+    // }
 }
 </script>
 

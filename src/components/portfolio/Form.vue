@@ -38,19 +38,21 @@ export default {
         }
     },
     mounted() {
+      // form 제출 버튼 활성화
       document.getElementById("formButton").disabled = false;
     },
      methods: {
     postPortfolio(title, body, imgSrc) {
-      console.log('보내지는 함수가?')
     if (this.$store.state.imgSrc){
       imgSrc = this.$store.state.imgSrc }
+      // portfolio write 내용 firebase에 추가
 		  return firestore.collection('portfolios').add({
 			  title,
 			  body,
 			  imgSrc,
 			  created_at: firebase.firestore.FieldValue.serverTimestamp()
           }).then(location.href="/portfolio")
+          // 제출 후 location.href 반환
       }
      }
 }
