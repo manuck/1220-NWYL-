@@ -25,8 +25,10 @@ export default {
         var key = '69d0d9ea132e148068fc83dc5fed6a42'
         const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=Daejeon&appid=${key}`
             console.log(BASE_URL)
+            // BASE_URL에 넣어놓은 url을 get으로 받아옴
             this.$http.get(`${BASE_URL}`)
             .then((result) => {
+                // 결과의 나라와 도시, 날씨를 받아서 data에 저장
                 this.country = result.data.sys.country
                 this.city = result.data.name
                 this.weather = result.data.weather[0].main

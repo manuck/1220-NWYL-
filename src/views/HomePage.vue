@@ -75,7 +75,6 @@ export default {
 
         store.state.vueName.page = 'HomePage';
         store.state.vueName.time = cur_time;
-        console.log('uid: ',uid)
         store.state.vueName.userid = uid;
         store.dispatch('addLog');
     },

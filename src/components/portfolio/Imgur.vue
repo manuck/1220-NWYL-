@@ -4,7 +4,8 @@
 
 <script>
 import store from '@/store.js'
-let imagelink = "https://source.unsplash.com/random";
+// 초기 imagelink = random 이미지
+var imagelink = "https://source.unsplash.com/random"
 
 export default {
     name: 'Imgur',
@@ -38,8 +39,8 @@ export default {
         /*파일 변경 이벤트가 감지되면 자동으로 이미지 업로드*/
         $(document).ready(function(){ // document가 모두 로드되면 실행됨
             $("input[name=img]").change(function(){// 사용자가 파일을 변경했을때 발생됨
-                document.getElementById("formButton").disabled = true;
-                document.getElementById("formButton").style.borderColor = "rgba(0,0,0,0.1)";
+                document.getElementById("formButton").disabled = true; // 업로드가 시작할때 제출 버튼 비활성화
+                document.getElementById("formButton").style.borderColor = "rgba(0,0,0,0.1)"; // 버튼 design 변경
                 document.getElementById("formButton").style.color = "rgba(0,0,0,0.1)";
                 var file = this.files[0];
                 uploadImageByImgur(file, function(result){
@@ -52,8 +53,10 @@ export default {
                     }
                     else{
                         console.log('업로드된 파일경로:'+result.data.link);
-                        imagelink = result.data.link;
+                        imagelink = result.data.link
+                        // 업로드가 완료되면 vuex state에 이미지 경로 저장
                         store.state.imgSrc = imagelink;
+                        // 제출 버튼 활성화 및 디자인 복구
                         document.getElementById("formButton").disabled = false;
                         document.getElementById("formButton").style.borderColor = "rgba(0,0,0,1)";
                         document.getElementById("formButton").style.color = "rgba(0,0,0,1)";

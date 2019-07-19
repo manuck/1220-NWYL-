@@ -24,7 +24,7 @@
 <script>
 import PortfolioList from '@/components/portfolio/PortfolioList'
 import Navbar from '@/components/mainview/Navbar'
-import store from '@/store'
+// import store from '@/store'
 
 export default {
     name: 'PortfolioPage',
@@ -32,40 +32,39 @@ export default {
         PortfolioList,
         Navbar,
     },
-    mounted: () => {
-        
-        var cur_time = new Date();
-        var uid = store.state.user.displayName;
+    // mounted: () => {
+    //     var cur_time = new Date();
+    //     var uid = store.state.user.displayName;
 
-        store.state.vueName.page = 'PortfolioPage';
-        store.state.vueName.time = cur_time;
-        store.state.vueName.userid = uid;
-        store.dispatch('addLog');
-    }
+    //     store.state.vueName.page = 'PortfolioPage';
+    //     store.state.vueName.time = cur_time;
+    //     store.state.vueName.userid = uid;
+    //     store.dispatch('addLog');
+    // }
 }
 </script>
 
 <style>
 .portfolio-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .portfolio-title {
-  display: flex;
+    display: flex;
 }
 .button-rounded {
-  color: white;
-  border: 1px solid white;
-  border-radius: 25px;
-  padding: 7px 20px;
-  background: rgba(255,255,255,0);
-  transition: background 1s;
-  transition: color 1s;
+    color: white;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 7px 20px;
+    background: rgba(255,255,255,0);
+    transition: background 1s;
+    transition: color 1s;
 }
 .button-rounded:hover {
-  background: rgba(255,255,255,0.8);
-  color: black;
+    background: rgba(255,255,255,0.8);
+    color: black;
 }
 </style>

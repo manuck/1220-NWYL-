@@ -12,8 +12,8 @@
         ></markdown-editor>
         <div class="submit-area">
             <Imgur></Imgur>
-            <!-- <button onclick="location.href='https://spatial-framing-246206.firebaseapp.com/portfolio'" referrerpolicy="noreferrer" id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button> -->
-            <router-link to="/portfolio" id="formButton" v-on:click.native="postPortfolio(title,body,imgSrc)" class="form-button" tag="button">제출</router-link>
+            <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
+            <!-- <router-link to="/portfolio" @click="postPortfolio(title,body,imgSrc)" class="form-button">제출</router-link> -->
         </div>
     </v-form>
 </template>
@@ -38,18 +38,21 @@ export default {
         }
     },
     mounted() {
+        // form 제출 버튼 활성화
         document.getElementById("formButton").disabled = false;
     },
         methods: {
     postPortfolio(title, body, imgSrc) {
-        if (this.$store.state.imgSrc){
-            imgSrc = this.$store.state.imgSrc }
+    if (this.$store.state.imgSrc){
+        imgSrc = this.$store.state.imgSrc }
+            // portfolio write 내용 firebase에 추가
             return firestore.collection('portfolios').add({
                 title,
                 body,
                 imgSrc,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(console.log('posted'))
+            }).then(location.href="/portfolio")
+            // 제출 후 location.href 반환
         }
     }
 }
