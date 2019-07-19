@@ -70,12 +70,12 @@ export default {
         // window.addEventListener('scroll', this.autoMoveToSecond)
     },
     mounted() {
-        document.querySelector('.main-wrapper').attr(bgimage, 'url("https://source.unsplash.com/random/1600x900")');
         var cur_time = new Date();
         var uid = store.state.user.displayName;
 
         store.state.vueName.page = 'HomePage';
         store.state.vueName.time = cur_time;
+        console.log('uid: ',uid)
         store.state.vueName.userid = uid;
         store.dispatch('addLog');
     },
