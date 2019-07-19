@@ -12,7 +12,7 @@
         <!-- 로그인 상황에 따라 다른 화면 표시 -->
         <div class="card-content-wrapper" v-if="$store.state.user">
             <div style="display: flex;">
-                <img :src="gravatarURL" style="margin: -15px;"/>
+                <img :src="gravatarURL" class="gravatar-img"/>
             </div>
             <div style="display: flex; width: 100%;">
                 <LoginModal/>
@@ -36,14 +36,16 @@ export default {
     },
     computed: {
         gravatarURL() {
-            return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=200?d=retro`
+            return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=150&d=retro`
         }
     }
 }
 </script>
 
 <style>
-
+.gravatar-img {
+    border-radius: 100px;
+}
 </style>
 
 

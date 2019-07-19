@@ -3,8 +3,8 @@
         <div class="header-flex">
             <div class="left">
                 <div class="logo">
-                    <router-link to="/">
-                        NWYL
+                    <router-link to="/" style="-webkit-text-stroke: 1px black;">
+                        <span style="color: #5a90bf;">NW</span><span style="color: #c8e19d;">YL</span>
                     </router-link>
                 </div>
             </div>

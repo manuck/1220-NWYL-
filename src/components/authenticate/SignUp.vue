@@ -20,13 +20,19 @@
               type="password"
               required
             ></v-text-field>
+            <v-text-field
+              v-model="create_name"
+              label="Name"
+              type="text"
+              required
+            ></v-text-field>
         </v-form>
         <v-divider></v-divider>
         <v-card-actions>
             <v-btn flat @click="$refs.form.reset()">Clear</v-btn>
             <v-spacer></v-spacer>
             <v-btn flat @click="closeSignUp">Close</v-btn>
-            <v-btn flat @click="createUser(create_email, create_password)">Submit</v-btn>
+            <v-btn flat @click="createUser(create_email, create_password, create_name)">Submit</v-btn>
         </v-card-actions>
     </v-card>
 </template>
@@ -41,17 +47,19 @@ export default {
     data: () => ({
         create_email: '',
         form: false,
-        isLoading: false,
-        create_password: ''
+        create_password: '',
+        create_name: '',
     }),
     methods: {
         closeSignUp: function() {
           this.$emit('on-closeSignUp');
         },
-        async createUser(email, password) {
-            const result = await FirebaseService.createUserWithEmailAndPassword(email, password)
+        async createUser(email, password, name) {
+            const result = await FirebaseService.createUserWithEmailAndPassword(email, password, name)
+            console.log("111111")
             if(result != null) {
-                this.$emit('on-closeDialog');
+                // this.$emit('on-closeSignUp');
+                console.log("2222222")
                 this.$refs.form.reset();
                 //console.log(result.user.email);
             }

@@ -1,6 +1,7 @@
 .header-wrapper {
     height: 90px;
     width: 100%;
+    transition: visibility 0s linear 300ms;
 }
 .header-flex {
     display: flex;
@@ -19,7 +20,6 @@
     color: white;
     // font-family: 'Monofett', cursive;
     font-family: 'Sniglet', cursive;
-    margin-top: -5px;
 }
 .login, .signin {
     color: white;

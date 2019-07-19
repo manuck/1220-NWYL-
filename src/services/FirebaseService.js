@@ -127,9 +127,14 @@ export default {
 		  console.error('[SignIn Error]',error)
 		})
 	  },
-	createUserWithEmailAndPassword(email, password) {
+	createUserWithEmailAndPassword(email, password, name) {
 		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
-      alert("회원가입 성공!");
+			if (result) {
+				result.user.updateProfile({
+					displayName: name
+				}).then()
+				alert("회원가입 성공!");
+			}
 			return result
 		})
 		.catch(function(error) {
