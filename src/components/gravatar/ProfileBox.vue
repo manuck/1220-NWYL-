@@ -8,7 +8,8 @@
                 로그인 해 주세요
             </span>
         </div>
-        <div class="card-bar"/>
+        <div class="card-bar"/> 
+        <!-- 로그인 상황에 따라 다른 화면 표시 -->
         <div class="card-content-wrapper" v-if="$store.state.user">
             <div style="display: flex;">
                 <img :src="gravatarURL" style="margin: -15px;"/>
