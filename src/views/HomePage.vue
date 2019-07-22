@@ -13,11 +13,12 @@
                         <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;"/>
                     </div>
                     <div class="section-1-scroll">
-                        <div class="scroll-round"/>
+                        <button class="scroll-round" v-on:click="pageScroll"/>
                     </div>
                 </div>
-                <!-- <div class="section-2">
-                </div> -->
+                <div class="section-2">
+                    2
+                </div>
                 <div class="section-3">
                     <Navbar :ismain="true"/>
                     <div class="body-flex-c">
@@ -47,6 +48,7 @@ import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
 import store from '@/store'
 import Map from '@/components/map/Map'
 
+// let time;
 export default {
     name: 'pjt2',
     components: {
@@ -64,12 +66,14 @@ export default {
         return {
             statY: 0,
             heightnow: 0,
+            timer,
         }
     },
     created() {
         // window.addEventListener('scroll', this.autoMoveToSecond)
     },
     mounted() {
+        window.addEventListener('wheel', this.pageScroll)
         var cur_time = new Date();
         var uid = store.state.user.displayName;
 
@@ -89,6 +93,19 @@ export default {
                     left: 0,
                     behavior: 'smooth'
                 })
+            }
+        },
+        pageScroll(e) {
+            console.log('pageScroll activated', this.timer)
+            if (!this.timer) {
+                let y = e.deltaY
+                let h = window.innerHeight
+                console.log('pageScroll if 문', this.timer, y, h)
+                if (y > 0 || !y)  window.scrollBy(0, h)
+                else        window.scrollBy(0, -h)
+                this.timer = setTimeout(() => {
+                    this.timer = null
+                }, 500)
             }
         }
     },
