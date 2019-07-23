@@ -40,6 +40,7 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 
+
 export default {
     props:
         ['dialog']
@@ -56,7 +57,6 @@ export default {
         },
         async createUser(email, password, name) {
             const result = await FirebaseService.createUserWithEmailAndPassword(email, password, name)
-            console.log("111111")
             if(result != null) {
                 // this.$emit('on-closeSignUp');
                 console.log("2222222")

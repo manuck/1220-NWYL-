@@ -24,10 +24,10 @@ const firestore = firebase.firestore()
 export { firestore };
 
 // 로그인, 로그아웃 상태를 감지
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(async function(user) {
 	if(user != null) {
 		// 로그인된 상태
-		store.dispatch('getUser', user)
+		await store.dispatch('getUser', user)
 	}else {
 		// 로그아웃된 상태
 		//console.log("로그아웃 상태입니다.")
