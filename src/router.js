@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import PostPage from './views/PostPage.vue'
+import MenuPage from '@/views/MenuPage.vue'
 import PortfolioPage from './views/PortfolioPage.vue'
 import LoginPage from './views/LoginPage.vue'
 import PortfolioNewPage from './views/PortfolioNewPage.vue'
@@ -22,6 +23,11 @@ export default new Router({
 			path: '/post',
 			name: 'post',
 			component: PostPage
+		},
+		{
+			path: '/menu',
+			name: 'menu',
+			component: MenuPage
 		},
 		{
 			path: '/portfolio',

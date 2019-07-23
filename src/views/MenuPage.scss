@@ -1,0 +1,22 @@
+.portfolio-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.portfolio-title {
+    display: flex;
+}
+.button-rounded {
+    color: white;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 7px 20px;
+    background: rgba(255,255,255,0);
+    transition: background 1s;
+    transition: color 1s;
+}
+.button-rounded:hover {
+    background: rgba(255,255,255,0.8);
+    color: black;
+}
