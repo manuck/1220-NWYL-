@@ -48,7 +48,7 @@ export default {
 
     methods: {
         getgitCommits: function() {
-            axios.get('https://lab.ssafy.com/api/v4/projects/6075/events?per_page=100&private_token=JqwP6fMQbfkr2sLj9b_R')
+            axios.get('https://lab.ssafy.com/api/v4/projects/7541/events?per_page=100&private_token=JqwP6fMQbfkr2sLj9b_R')
                 .then(response => {
                     this.gitCommits = response.data.reverse()
                 })
