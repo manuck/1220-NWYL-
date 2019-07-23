@@ -6,6 +6,7 @@
               :title="portfolios[i - 1].title"
               :body="portfolios[i - 1].body"
               :imgSrc="portfolios[i - 1].imgSrc"
+			  :id="[i-1]"
       ></Portfolio>
     </v-flex>
 
@@ -35,10 +36,12 @@ export default {
 	},
 	mounted() {
 		this.getPortfolios()
+		console.log(this.$data)
 	},
 	methods: {
 		async getPortfolios() {
 			this.portfolios = await FirebaseService.getPortfolios()
+			console.log(this.portfolios[0])
 		},
 		loadMorePortfolios() {
 			// console.log(this.portfolios.length)

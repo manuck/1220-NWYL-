@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card @click="detail()">
     <v-img :src="imgSrc" height="200px">
     </v-img>
     <v-card-title primary-title>
@@ -24,6 +24,9 @@ export default {
 		return {
 			//
 		}
+	},
+	detail(){
+		console.log(this.$route.params.id)
 	}
 }
 </script>
