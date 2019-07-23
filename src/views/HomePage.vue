@@ -6,7 +6,7 @@
                 <div class="section-1">
                     <div class="section-1-title">
                         <span style="font-size:100px;">
-                            NW<span style="color: #c8e19d;">YL</span>
+                            12<span style="color: #c8e19d;">15</span>
                         </span>
                     </div>
                     <div class="section-1-content">
