@@ -4,8 +4,8 @@
         <div class="main-wrapper">
             <SideNav/>
             <div class="body-wrapper">
-                <div class="portfolio-wrapper">
-                    <router-link to="portfolio/new" class="portfolio-title">
+                <div class="menu-wrapper">
+                    <router-link to="portfolio/new" class="menu-title">
                         <span class="button-rounded">
                             Write Portfolio
                         </span>
