@@ -6,6 +6,7 @@ import LoginPage from './views/LoginPage.vue'
 import PortfolioNewPage from './views/PortfolioNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
+import PortfolioDetailPage from './views/PortfolioDetailPage'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
 			path: '/gitlabgraph2',
 			name: 'gitlabgraph2',
 			component: GitlabGraph2
+		},
+		{	
+			path: '/portfolio/:Pfid',
+			name: 'details',
+			component: PortfolioDetailPage,
 		},
   ]
 })

@@ -6,7 +6,7 @@
               :title="portfolios[i - 1].title"
               :body="portfolios[i - 1].body"
               :imgSrc="portfolios[i - 1].imgSrc"
-			  :id="[i-1]"
+			  :id="portfolios[i-1].documentId"
       ></Portfolio>
     </v-flex>
 
@@ -19,12 +19,16 @@
 <script>
 import Portfolio from '@/components/portfolio/Portfolio'
 import FirebaseService from '@/services/FirebaseService'
+import { firestore } from '@/services/FirebaseService'
+import firebase from 'firebase/app'
+
+const db = firebase.firestore();
 
 export default {
 	name: 'PortfoliosList',
 	props: {
 		limits: {type: Number, default: 3},
-    loadMore: {type: Boolean, default: false}
+		loadMore: {type: Boolean, default: false},
 	},
 	data() {
 		return {
@@ -36,12 +40,23 @@ export default {
 	},
 	mounted() {
 		this.getPortfolios()
-		console.log(this.$data)
+		db.collection('portfolios').onSnapshot(res => {
+    	const changes = res.docChanges();
+    	changes.forEach(change => {
+        	if (change.type === 'added') { // each change has 3 type. (added, removed, modified)
+            	this.portfolios.push({
+                	...change.doc.data(),
+                	id: change.doc.id,
+            		})
+				console.log(change.doc.id)
+				}
+   			})
+		})
 	},
 	methods: {
 		async getPortfolios() {
 			this.portfolios = await FirebaseService.getPortfolios()
-			console.log(this.portfolios[0])
+			// console.log(this.portfolios[0])
 		},
 		loadMorePortfolios() {
 			// console.log(this.portfolios.length)

@@ -1,10 +1,11 @@
 <template>
-  <v-card @click="detail()">
+  <v-card>
     <v-img :src="imgSrc" height="200px">
     </v-img>
     <v-card-title primary-title>
       <div>
-        <div class="headline jemok">{{title}}</div>
+        <div class="headline jemok" v-on:click="detail()">{{title}}</div>
+		<!-- <router-link :to="{ name: 'detail', params: { Pfid: id }}" class="headline jemok">{{title}}</router-link> -->
         <span class="grey--text content">{{body}}</span>
       </div>
     </v-card-title>
@@ -12,6 +13,17 @@
 </template>
 
 <script>
+import Router from 'vue-router'
+import firebase from 'firebase/app'
+import FirebaseService from '@/services/FirebaseService'
+
+// this.portfolios = FirebaseService.getPortfolios()
+// const db = firebase.firestore();
+// const ref = db.collection('portfolios').doc();
+// const id = ref.id;
+
+
+
 export default {
 	name: 'Portfolio',
 	props: {
@@ -26,7 +38,16 @@ export default {
 		}
 	},
 	detail(){
-		console.log(this.$route.params.id)
+		// console.log(this.$route.params.id)
+	},
+	mounted(){
+		// console.log(this.$route.params)
+		// console.log('db')
+		// console.log(db)
+		// console.log('ref')
+		// console.log(ref)
+		// console.log('id')
+		// console.log(id)
 	}
 }
 </script>
