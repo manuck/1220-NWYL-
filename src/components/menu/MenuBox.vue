@@ -12,20 +12,25 @@
             </li>
         </ul>
         <div class="menu-favorite">
-            <img src="@/assets/images/favorites.png" class="favorite-icon"/>
-            <img src="@/assets/images/favorites-1.png" class="favorite-icon"/>
+            <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon"/>
         </div>
-        <button class="button">
+        <button id="modal-button" class="button">
             리뷰 보기
         </button>
+        <MenuModal />
     </div>
 </template>
 
 <script>
+import MenuModal from './MenuModal'
+
 export default {
     name: 'MenuBox',
     props: {
         menu: Object,
+    },
+    components: {
+        MenuModal,
     }
 }
 </script>
