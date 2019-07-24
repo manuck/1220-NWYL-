@@ -24,10 +24,11 @@ const firestore = firebase.firestore()
 export { firestore };
 
 // 로그인, 로그아웃 상태를 감지
-firebase.auth().onAuthStateChanged(async function(user) {
+firebase.auth().onAuthStateChanged(function(user) {
+	console.log("onAuthStateChanged 실행!       " + user )
 	if(user != null) {
 		// 로그인된 상태
-		await store.dispatch('getUser', user)
+		store.dispatch('getUser', user)
 	}else {
 		// 로그아웃된 상태
 		//console.log("로그아웃 상태입니다.")
@@ -127,28 +128,62 @@ export default {
 		  console.error('[SignIn Error]',error)
 		})
 	  },
-	createUserWithEmailAndPassword(email, password, name) {
-		return firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
-			if (result) {
-				result.user.updateProfile({
-					displayName: name
-				}).then()
-				alert("회원가입 성공!");
+	// async createUserWithEmailAndPassword(email, password, name) {
+	// 	console.log("FirebaseService.js 내의 createUserWithEmailAndPassword 시작")
+	// 	return await firebase.auth().createUserWithEmailAndPassword(email, password).then(async function(result) {
+	// 		console.log("FirebaseService.js 내의 createUserWithEmailAndPassword then 이후 if 전")
+	// 		if (result) {
+	// 			console.log("updateProfile 호출 전?" + "     " + result.user.displayName)
+	// 			await result.user.updateProfile({
+	// 				displayName: name
+	// 			}).then(async function() {
+	// 				console.log("updateProfile 호출 후" + "     " + result.user.displayName)
+	// 				await store.dispatch('getUser', result.user)
+	// 			})
+	// 			alert("회원가입 성공!");
+	// 		}
+	// 		return result
+	// 	})
+	// 	.catch(async function(error) {
+	// 		let errorCode = error.code;
+	// 		let errorMessage = error.message;
+	// 		if(errorCode === 'auth/email-already-in-use') {
+	// 			await alert('이미 사용중인 e-mail 입니다.');
+	// 		}
+	// 		else {
+	// 			await alert(errorMessage);
+	// 		}
+	// 		await console.error('[SignUp Error]',error)
+	// 	})
+	// },
+	async createUserWithEmailAndPassword(email, password, name) {
+		return firebase.auth().createUserWithEmailAndPassword(email, password).then(
+			async (result) => {
+				await result.user.updateProfile({
+					displayName : name
+				}).then(
+					async () => {
+						await console.log("update 실행")
+						await store.dispatch('getUser', result.user)
+						await console.log("update 반영완료")
+					}
+				)
 			}
-			return result
-		})
-		.catch(function(error) {
+		)
+		.catch(async function(error) {
 			let errorCode = error.code;
 			let errorMessage = error.message;
 			if(errorCode === 'auth/email-already-in-use') {
-				alert('이미 사용중인 e-mail 입니다.');
+				await alert('이미 사용중인 e-mail 입니다.');
 			}
 			else {
-				alert(errorMessage);
+				await alert(errorMessage);
 			}
-			console.error('[SignUp Error]',error)
+			await console.error('[SignUp Error]',error)
 		})
 	},
+
+
   // 로그아웃
 	signOut() {
 		firebase.auth().signOut().then(function() {

@@ -29,7 +29,7 @@
         </v-form>
         <v-divider></v-divider>
         <v-card-actions>
-            <v-btn flat @click="$refs.form.reset()">Clear</v-btn>
+            <v-btn flat @click="resetForm">Clear</v-btn>
             <v-spacer></v-spacer>
             <v-btn flat @click="closeSignUp">Close</v-btn>
             <v-btn flat @click="createUser(create_email, create_password, create_name)">Submit</v-btn>
@@ -39,7 +39,8 @@
 
 <script>
 import FirebaseService from '@/services/FirebaseService'
-
+import store from '@/store'
+import firebase from 'firebase/app'
 
 export default {
     props:
@@ -56,13 +57,28 @@ export default {
           this.$emit('on-closeSignUp');
         },
         async createUser(email, password, name) {
-            const result = await FirebaseService.createUserWithEmailAndPassword(email, password, name)
-            if(result != null) {
-                // this.$emit('on-closeSignUp');
-                console.log("2222222")
-                this.$refs.form.reset();
-                //console.log(result.user.email);
-            }
+            const result = await firebase.auth().createUserWithEmailAndPassword(email, password).then(
+			async (result) => {
+				await result.user.updateProfile({
+					displayName : name
+				}).then(
+					async () => {
+						await console.log("update 실행")
+						await store.dispatch('getUser', result.user.displayName)
+                        await console.log("update 반영완료")
+                        await store.dispatch('', result.user)
+                        await console.log("emit 후에 찍혀야지")
+					}
+				)
+			}
+		)
+            
+            
+                this.resetForm
+            
+        }, 
+        resetForm() {
+            this.$refs.form.reset()
         }
     }
 }

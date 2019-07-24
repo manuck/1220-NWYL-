@@ -24,7 +24,7 @@ export default new Vuex.Store({
             state.user = user
         },
         setToken(state, accessToken) {
-           state.accessToken = accessToken
+            state.accessToken = accessToken
         },
         addLog (state) {
             firestore.collection('LOG').add(state.vueName).then(() => {

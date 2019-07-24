@@ -66,7 +66,7 @@ export default {
         return {
             statY: 0,
             heightnow: 0,
-            timer,
+            timer: '',
         }
     },
     created() {

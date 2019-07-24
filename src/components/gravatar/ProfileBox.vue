@@ -2,6 +2,7 @@
     <div class="card-wrapper">
         <div class="card-title">
             <span v-if="$store.state.user">
+                <span v-on:on-update="getUser"></span>
                 {{$store.state.user.displayName}} 님의 프로필
             </span>
             <span v-else>
@@ -31,12 +32,22 @@ let md5 = require('md5');
 
 export default {
     name: "ProfileBox",
+    data() {
+       return {
+           user: ''
+       } 
+    },
     components: {
         LoginModal,
     },
     computed: {
         gravatarURL() {
             return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=150&d=retro`
+        }   
+    },
+    watch: {
+        userName: () => {
+            console.log("userName이 변경됨을 감지했어!")
         }
     }
 }
