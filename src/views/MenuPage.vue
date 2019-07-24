@@ -4,18 +4,28 @@
         <div class="main-wrapper">
             <SideNav/>
             <div class="body-wrapper">
-                <div class="menu-wrapper">
-                    <router-link to="portfolio/new" class="menu-title">
-                        <span class="button-rounded">
-                            Write Portfolio
-                        </span>
-                    </router-link>
-                    <div class="portfolio-flex-r">              
-                        <PortfolioList :limits="6" :load-more="true"></PortfolioList>
+                <div class="menu-flex">
+                    <div class="filter-wrapper">
+                        <ul class="country">
+                            <li>한식</li>
+                            <li>일식</li>
+                            <li>중식</li>
+                            <li>양식</li>
+                            <li>기타</li>
+                        </ul>
+                        <ul class="style">
+                            <li>볶음</li>
+                            <li>면</li>
+                            <li>국</li>
+                            <li>밥</li>
+                            <li>고기</li>
+                            <li>야채</li>
+                            <li>과일</li>
+                            <li>기타</li>
+                        </ul>
                     </div>
+                    <MenuList/>
                 </div>
-            </div>
-            <div class="footer-wrapper">
             </div>
         </div>
     </div>
@@ -24,12 +34,14 @@
 <script>
 import PortfolioList from '@/components/portfolio/PortfolioList'
 import SideNav from '@/components/mainview/SideNav'
+import MenuList from '@/components/menu/MenuList'
 
 export default {
     name: 'MenuPage',
     components: {
         PortfolioList,
         SideNav,
+        MenuList,
     },
 }
 </script>

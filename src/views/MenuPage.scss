@@ -1,11 +1,56 @@
-.menu-wrapper {
+.menu-flex {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    min-width: 650px;
 }
-.menu-title {
+.filter-wrapper {
     display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+.country {
+    display: flex;
+    border: 2px solid black;
+    background: #f7f7f7;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    > li {
+        border-right: 2px solid black;
+        padding: 18px;
+        text-align: center;
+        width: 600px;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 700;
+        &:last-of-type {
+            border-right: none;
+        }
+        &:hover {
+            background: rgba(0, 0, 0, 0.2)
+        }
+    }
+}
+.style {
+    display: flex;
+    border: 2px solid black;
+    background: #f7f7f7;
+    border-radius: 10px;
+    > li {
+        border-right: 2px solid black;
+        padding: 18px;
+        text-align: center;
+        width: 600px;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 700;
+        &:last-of-type {
+            border-right: none;
+        }
+        &:hover {
+            background: rgba(0, 0, 0, 0.2)
+        }
+    }
 }
 .button-rounded {
     color: white;

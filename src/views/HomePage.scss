@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Black+Ops+One|Bungee+Hairline|Bungee+Inline|Bungee+Shade|Codystar|Ewert|Faster+One|Hanalei|Kanit|Monofett|Righteous|Russo+One|Viga&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Baumans|Bungee+Inline|Graduate|Iceland|Julius+Sans+One|Mina|Play|Poiret+One|Raleway|Righteous|Russo+One|Shadows+Into+Light|Unica+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Gugi|Jua|Sniglet&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -12,6 +12,9 @@ html {
 }
 .application--wrap {
     backface-visibility: visible;
+}
+.application {
+    font-family: 'Noto Sans KR', sans-serif;
 }
 .main-bg {
     position: fixed;
@@ -37,7 +40,7 @@ html {
 .body-wrapper {
     height: 100%;
     width: 100%;
-    padding: 40px 65px;
+    padding: 40px 80px;
 }
 .section-1, .section-2, .section-3 {
     display: flex;
@@ -118,4 +121,10 @@ a {
         text-decoration: none;
         color: #ffffffbe !important;
     }
+}
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
 }
