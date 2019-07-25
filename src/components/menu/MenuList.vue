@@ -11,6 +11,8 @@
 import MenuBox from './MenuBox'
 import MenuModal from './MenuModal'
 import FirebaseService from '@/services/FirebaseService'
+// import { firestore } from '@/services/FirebaseService'
+
 
 export default {
     name: 'MenuList',    
@@ -24,7 +26,8 @@ export default {
         }
     },
 	mounted() {
-		this.getMenus()
+        this.getMenus()
+        console.log('마운트')
 	},
 	methods: {
 		async getMenus() {
