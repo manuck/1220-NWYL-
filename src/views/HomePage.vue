@@ -10,7 +10,7 @@
                         </span>
                     </div>
                     <div class="section-1-content">
-                        <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;"/>
+                        <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;" alt="main_image"/>
                     </div>
                     <div class="section-1-scroll">
                         <button class="scroll-round" v-on:click="pageScroll"/>

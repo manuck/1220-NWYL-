@@ -2,6 +2,7 @@
     <div>
         <div class="menulist-wrapper">
             <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id"/>
+            <MenuModal />
         </div>
     </div>
 </template>

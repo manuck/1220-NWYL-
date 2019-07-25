@@ -116,10 +116,11 @@ html {
     width: 100%;
 }
 a {
-    color: white !important;
+    color: rgba(0,0,0,1) !important;
+    text-align: center;
     &:hover {
         text-decoration: none;
-        color: #ffffffbe !important;
+        color: black !important;
     }
 }
 ul {

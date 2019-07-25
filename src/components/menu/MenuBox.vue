@@ -4,7 +4,7 @@
             {{ menu.name }}
         </div>
         <div class="menu-image">
-            <img :src="menu.image" style="width: 150px; height: 150px;">
+            <img :src="menu.image" style="width: 150px; height: 150px;" alt="menu_detail_image">
         </div>
         <ul class="menu-tags">
             <li v-for="tag in menu.tags" :tag="tag" :key="tag.id" class="tag">
@@ -12,12 +12,11 @@
             </li>
         </ul>
         <div class="menu-favorite">
-            <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon"/>
+            <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon" alt="favorite_star_image"/>
         </div>
-        <button id="modal-button" class="button">
+        <a id="modal-button" class="button" href="#menu-modal">
             리뷰 보기
-        </button>
-        <MenuModal />
+        </a>
     </div>
 </template>
 

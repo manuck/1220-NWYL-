@@ -1,29 +1,28 @@
 <template>
     <div id="menu-modal" class="modal-wrapper">
+        <a href="#" class="modal-back"/>
         <div class="modal-box">
-            this is modal
-            <span id="close-modal">close</span>
+            <div class="modal-header">
+                <span class="modal-title">메뉴 이름</span>
+                <a href="#" class="modal-close">&times;</a>
+            </div>
+            <div class="modal-content">
+                <div class="modal-image">
+                    <img src="" alt="modal_detail_image">
+                </div>
+                <div class="modal-info">
+                    content
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    mounted() {
-        var modal = document.querySelector('#menu-modal')
-        var btn = document.querySelector('#modal-button')
-        var close = document.querySelector('#close-modal')
-        btn.onclick = function() {
-            modal.style.display = "block"
-        }
-        close.onclick = function() {
-            modal.style.display = "none"
-        }
-        window.onclick = function(e) {
-            if (e.target == modal) {
-                modal.style.display = "none"
-            }
-        }
+    name: 'MenuModal',
+    props: {
+        name: {type: String},
     }
 }
 </script>
