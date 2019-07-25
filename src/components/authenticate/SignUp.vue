@@ -40,7 +40,7 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 import store from '@/store'
-import firebase from 'firebase/app'
+import {EventBus} from '@/EventBus'
 
 export default {
     props:
@@ -57,25 +57,12 @@ export default {
           this.$emit('on-closeSignUp');
         },
         async createUser(email, password, name) {
-            const result = await firebase.auth().createUserWithEmailAndPassword(email, password).then(
-			async (result) => {
-				await result.user.updateProfile({
-					displayName : name
-				}).then(
-					async () => {
-						await console.log("update 실행")
-						await store.dispatch('getUser', result.user.displayName)
-                        await console.log("update 반영완료")
-                        await store.dispatch('', result.user)
-                        await console.log("emit 후에 찍혀야지")
-					}
-				)
-			}
-		)
-            
-            
+            const result = await FirebaseService.createUserWithEmailAndPassword(email, password, name)
+            .then( () => {
                 this.resetForm
-            
+                EventBus.$emit('on-updateProfile')
+            })  
+                
         }, 
         resetForm() {
             this.$refs.form.reset()

@@ -1,9 +1,9 @@
 <template>
     <div class="card-wrapper">
         <div class="card-title">
-            <span v-if="$store.state.user">
-                <span v-on:on-update="getUser"></span>
-                {{$store.state.user.displayName}} 님의 프로필
+            <!-- key 설정을 통해 재렌더링-->
+            <span v-if="$store.state.user" :key="userName">
+               {{$store.state.user.displayName}}님의 프로필
             </span>
             <span v-else>
                 로그인 해 주세요
@@ -28,14 +28,16 @@
 <script>
 import LoginModal from '@/components/authenticate/LoginModal'
 import store from '@/store'
+import {EventBus} from '@/EventBus'
+
 let md5 = require('md5');
 
 export default {
     name: "ProfileBox",
     data() {
-       return {
-           user: ''
-       } 
+        return {
+            userName: ''
+        }
     },
     components: {
         LoginModal,
@@ -43,13 +45,15 @@ export default {
     computed: {
         gravatarURL() {
             return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=150&d=retro`
-        }   
-    },
-    watch: {
-        userName: () => {
-            console.log("userName이 변경됨을 감지했어!")
         }
+          
+    },
+    beforeUpdate() {
+        EventBus.$on('on-updateProfile', () => {
+              return this.userName = store.state.user.displayName
+          })
     }
+    
 }
 </script>
 

@@ -25,7 +25,6 @@ export { firestore };
 
 // 로그인, 로그아웃 상태를 감지
 firebase.auth().onAuthStateChanged(function(user) {
-	console.log("onAuthStateChanged 실행!       " + user )
 	if(user != null) {
 		// 로그인된 상태
 		store.dispatch('getUser', user)
@@ -157,29 +156,28 @@ export default {
 	// 	})
 	// },
 	async createUserWithEmailAndPassword(email, password, name) {
-		return firebase.auth().createUserWithEmailAndPassword(email, password).then(
+		return await firebase.auth().createUserWithEmailAndPassword(email, password)
+		.then(
 			async (result) => {
 				await result.user.updateProfile({
 					displayName : name
 				}).then(
 					async () => {
-						await console.log("update 실행")
 						await store.dispatch('getUser', result.user)
-						await console.log("update 반영완료")
 					}
 				)
 			}
-		)
-		.catch(async function(error) {
+		)   
+		.catch(function(error) {
 			let errorCode = error.code;
 			let errorMessage = error.message;
 			if(errorCode === 'auth/email-already-in-use') {
-				await alert('이미 사용중인 e-mail 입니다.');
+				alert('이미 사용중인 e-mail 입니다.');
 			}
 			else {
-				await alert(errorMessage);
+				alert(errorMessage);
 			}
-			await console.error('[SignUp Error]',error)
+			console.error('[SignUp Error]',error)
 		})
 	},
 
