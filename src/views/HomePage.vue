@@ -6,15 +6,16 @@
                 <div class="section-1">
                     <div class="section-1-title">
                         <span style="font-size:100px;">
-                            NW<span style="color: #c8e19d;">YL</span>
+                            12<span style="color: #c8e19d;">15</span>
                         </span>
                     </div>
                     <div class="section-1-content">
-                        <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;"/>
+                        <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;" alt="main_image"/>
                     </div>
                     <div class="section-1-scroll">
                         <button class="scroll-round" v-on:click="pageScroll"/>
                     </div>
+                    <SideNav/>
                 </div>
                 <div class="section-2">
                     2
@@ -38,6 +39,7 @@
 
 <script>
 import Navbar from '@/components/mainview/Navbar'
+import SideNav from '@/components/mainview/SideNav'
 import Weather from '@/components/weather/Weather'
 import WeatherBox from '@/components/weather/WeatherBox'
 import ProfileBox from '@/components/gravatar/ProfileBox'
@@ -53,6 +55,7 @@ export default {
     name: 'pjt2',
     components: {
         Navbar,
+        SideNav,
         Weather,
         WeatherBox,
         ProfileBox,
@@ -113,5 +116,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/sass/HomePage.scss';
+@import './HomePage.scss';
 </style>
