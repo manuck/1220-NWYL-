@@ -41,8 +41,6 @@ export default {
 			this.portfolios = await FirebaseService.getPortfolios()
 		},
 		loadMorePortfolios() {
-			// console.log(this.portfolios.length)
-			// console.log(this.limits)
 			this.limits += 2
     }
 	},

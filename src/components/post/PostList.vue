@@ -1,12 +1,12 @@
 <template>
 	<v-layout mt-5 wrap>
 		<v-flex v-for="i in posts.length > limits ? limits : posts.length" xs12 sm6>
-			<Post id="postid" class="ma-3"
+			<Post class="ma-3"
 				:date="posts[i - 1].created_at.toString()"
 				:title="posts[i - 1].title"
 				:body="posts[i - 1].body"
 				:imgSrc="posts[i - 1].imgSrc"
-			><button ref="myButton" @click="clickedButton"></button></Post>
+			></Post>
 		</v-flex>
 
 		<v-flex xs12 text-xs-center round my-5 v-if="loadMore">
@@ -20,19 +20,14 @@ import Post from '@/components/post/Post'
 import FirebaseService from '@/services/FirebaseService'
 
 export default {
-	el: '#postid',
 	name: 'PostList',
 	props: {
 		limits: {type: Number, default: 3},
 		loadMore: {type: Boolean, default: false}
-		// column: {type: Number, default: 1},
-		// limits: {type: Number, default: 4},
-		// loadMore: {type: Boolean, default: false}
 	},
 	data() {
 		return {
-			posts: [],
-			message: "Hello World!",
+			posts: []
 		}
 	},
 	components: {
@@ -47,12 +42,8 @@ export default {
 		},
 		loadMorePosts() {
 			this.limits += 2
-		},
-		clickedButton: function() {
-			console.log(this.$refs);
-			this.$refs.myButton.innerText = this.message;
 		}
-	}
+	},
 }
 </script>
 
