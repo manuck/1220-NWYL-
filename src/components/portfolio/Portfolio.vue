@@ -17,12 +17,7 @@ import Router from 'vue-router'
 import firebase from 'firebase/app'
 import FirebaseService from '@/services/FirebaseService'
 
-// this.portfolios = FirebaseService.getPortfolios()
-// const db = firebase.firestore();
-// const ref = db.collection('portfolios').doc();
-// const id = ref.id;
-
-
+const db = firebase.firestore();
 
 export default {
 	name: 'Portfolio',
@@ -32,23 +27,20 @@ export default {
 		body: {type: String},
 		imgSrc: {type: String},
 	},
+	detail() {
+	// console.log(this.$route.params.id)
+	console.log('디테일')
+	},
 	data() {
 		return {
 			//
 		}
 	},
-	detail(){
-		// console.log(this.$route.params.id)
-	},
 	mounted(){
-		// console.log(this.$route.params)
-		// console.log('db')
-		// console.log(db)
-		// console.log('ref')
-		// console.log(ref)
-		// console.log('id')
-		// console.log(id)
-	}
+		// console.log(this)
+		// console.log(this._uid)
+		// console.log(db.collection('portfolios').where(firebase.firestore.FieldPath.documentId(), '==', this.documentId).get())
+	},
 }
 </script>
 

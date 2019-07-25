@@ -48,7 +48,19 @@ export default {
                 	...change.doc.data(),
                 	id: change.doc.id,
             		})
-				console.log(change.doc.id)
+					// console.log(change.doc.id)
+					// console.log(db.collection('portfolios').doc(change.doc.id).get())
+					var docRef = db.collection('portfolios').doc(change.doc.id)
+					docRef.get().then(function(doc) {
+    				if (doc.exists) {
+        			// console.log("Document data:", doc.data());
+    				} else {
+        			// doc.data() will be undefined in this case
+        			console.log("No such document!");
+    				}
+					}).catch(function(error) {
+    					console.log("Error getting document:", error);
+					});
 				}
    			})
 		})
