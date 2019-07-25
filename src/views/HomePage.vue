@@ -10,7 +10,12 @@
                         </span>
                     </div>
                     <div class="section-1-content">
-                        <img src="@/assets/images/lying_hd.png" style="height:280px; width:auto;" alt="main_image"/>
+                        <div class="section-1-content-menu">
+                            
+                        </div>
+                        <div class="section-1-content-image">
+                            <img src="@/assets/images/lying_hd.png" style="height:100px; width:auto;" alt="main_image"/>
+                        </div>
                     </div>
                     <div class="section-1-scroll">
                         <button class="scroll-round" v-on:click="pageScroll"/>
@@ -18,7 +23,25 @@
                     <SideNav/>
                 </div>
                 <div class="section-2">
-                    2
+                    <div class="col1">
+                        <div class="aboutus-image-box">
+                            <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
+                        </div>
+                        <div class="aboutus-image-box">
+                            <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
+                        </div>
+                        <div class="aboutus-image-box">
+                            <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div class="aboutus-image-box">
+                            <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
+                        </div>
+                        <div class="aboutus-image-box">
+                            <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
+                        </div>
+                    </div>
                 </div>
                 <div class="section-3">
                     <Navbar :ismain="true"/>
@@ -69,7 +92,7 @@ export default {
         return {
             statY: 0,
             heightnow: 0,
-            timer,
+            timer: null,
         }
     },
     created() {
@@ -82,8 +105,11 @@ export default {
 
         store.state.vueName.page = 'HomePage';
         store.state.vueName.time = cur_time;
-        store.state.vueName.userid = uid;
         store.dispatch('addLog');
+
+        var team_btn = document.querySelector('#team-icon')
+        console.log(team_btn)
+        team_btn.addEventListener('click', this.pageScroll)
     },
     methods: {
         autoMoveToSecond() {

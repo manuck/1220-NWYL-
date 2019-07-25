@@ -7,9 +7,9 @@
                         <img src="@/assets/images/home-1.png" style="width: 100%;" alt="home">
                     </div>
                 </router-link>
-                <div class="nav-icon team">
+                <button id="team-icon" class="nav-icon team">
                     <img src="@/assets/images/group.png" style="width:100%;" alt="team">
-                </div>
+                </button>
             </div>
         </div>
         <div class="rightnav-wrapper">
