@@ -26,6 +26,9 @@ import MenuModal from './MenuModal'
 import store from '@/store.js'
 import firebase from 'firebase/app'
 
+
+const db = firebase.firestore();
+
 export default {
     name: 'MenuBox',
     data() {
@@ -40,8 +43,32 @@ export default {
     },
     methods: {
     menuidfunction(a) {
-        store.state.menuid = a
+        if (a[0] == " "){
+            store.state.menuid = a.slice(1)}
+        else{
+            store.state.menuid = a
+        }
+        // .slice(1, 21)
+        console.log(a)
         console.log(store.state.menuid)
+        console.log("HnzgnU4CrfToTKmIdoCC")
+        // store.state.menuname = db.collection('menus').doc(a).onSnapshot(function(doc) {
+        // });
+        console.log(typeof(a))
+        console.log(typeof(store.state.menuid))
+        var docRef = db.collection("menus").doc(store.state.menuid);
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                store.state.menuname = doc.data().name
+                store.state.menuimg = doc.data().image
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
     }
     }
 }
