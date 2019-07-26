@@ -20,16 +20,28 @@
             <div class="modal-comment">
                 댓글창
                 <!-- 이곳에 댓글창 구현해 주세요 -->
+                <h1>hi</h1>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
         </div>
     </div>
 </template>
 
+<script id="dsq-count-scr" src="//hongyong3.disqus.com/count.js" async></script>
 <script>
 export default {
     name: 'MenuModal',
     props: {
         name: {type: String},
+    },
+    methods: {
+      getComment: function() {
+        var d = document,
+            s = d.createElement('script');
+        s.src = 'https://hongyong3.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+      }
     }
 }
 </script>
@@ -37,5 +49,3 @@ export default {
 <style lang="scss">
 @import './MenuModal.scss'
 </style>
-
-
