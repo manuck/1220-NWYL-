@@ -43,17 +43,7 @@ export default {
     },
     methods: {
     menuidfunction(a) {
-        if (a[0] == " "){
-            store.state.menuid = a.slice(1)}
-        else{
-            store.state.menuid = a
-        }
-        // .slice(1, 21)
-        console.log(a)
-        console.log(store.state.menuid)
-        console.log("HnzgnU4CrfToTKmIdoCC")
-        // store.state.menuname = db.collection('menus').doc(a).onSnapshot(function(doc) {
-        // });
+        store.state.menuid = a
         console.log(typeof(a))
         console.log(typeof(store.state.menuid))
         var docRef = db.collection("menus").doc(store.state.menuid);

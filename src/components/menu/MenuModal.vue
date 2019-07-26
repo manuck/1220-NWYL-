@@ -44,7 +44,7 @@ export default {
             nsm: '',
             title: '',
         }
-    },s
+    },
     mounted() {
 
     }
