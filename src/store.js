@@ -11,6 +11,7 @@ export default new Vuex.Store({
         menuid: '',
         menuname: '',
         menuimg: '',
+        menutag: [],
         imgToDB: {
             imglink: '',
             user_email: '',

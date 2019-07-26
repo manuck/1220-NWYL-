@@ -52,6 +52,8 @@ export default {
                 console.log("Document data:", doc.data());
                 store.state.menuname = doc.data().name
                 store.state.menuimg = doc.data().image
+                console.log(doc.data().tags)
+                store.state.menutag = doc.data().tags
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");

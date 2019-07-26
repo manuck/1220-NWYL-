@@ -16,6 +16,7 @@
                 <div class="modal-info">
                     <!-- 이곳에 메뉴 정보를 넣어주세요 -->
                     메뉴 정보
+                    <li v-for="item in $store.state.menutag">{{ item }}</li>
                 </div>
             </div>
             <div class="modal-comment">
