@@ -127,34 +127,6 @@ export default {
 		  console.error('[SignIn Error]',error)
 		})
 	  },
-	// async createUserWithEmailAndPassword(email, password, name) {
-	// 	console.log("FirebaseService.js 내의 createUserWithEmailAndPassword 시작")
-	// 	return await firebase.auth().createUserWithEmailAndPassword(email, password).then(async function(result) {
-	// 		console.log("FirebaseService.js 내의 createUserWithEmailAndPassword then 이후 if 전")
-	// 		if (result) {
-	// 			console.log("updateProfile 호출 전?" + "     " + result.user.displayName)
-	// 			await result.user.updateProfile({
-	// 				displayName: name
-	// 			}).then(async function() {
-	// 				console.log("updateProfile 호출 후" + "     " + result.user.displayName)
-	// 				await store.dispatch('getUser', result.user)
-	// 			})
-	// 			alert("회원가입 성공!");
-	// 		}
-	// 		return result
-	// 	})
-	// 	.catch(async function(error) {
-	// 		let errorCode = error.code;
-	// 		let errorMessage = error.message;
-	// 		if(errorCode === 'auth/email-already-in-use') {
-	// 			await alert('이미 사용중인 e-mail 입니다.');
-	// 		}
-	// 		else {
-	// 			await alert(errorMessage);
-	// 		}
-	// 		await console.error('[SignUp Error]',error)
-	// 	})
-	// },
 	async createUserWithEmailAndPassword(email, password, name) {
 		return await firebase.auth().createUserWithEmailAndPassword(email, password)
 		.then(
