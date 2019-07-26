@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Baumans|Bungee+Inline|Graduate|Iceland|Julius+Sans+One|Mina|Play|Poiret+One|Raleway|Righteous|Russo+One|Shadows+Into+Light|Unica+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Gugi|Jua|Sniglet&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap');
+// 한글 제목용
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower|Jua|Poor+Story&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -41,6 +43,12 @@ html {
     height: 100%;
     width: 100%;
     padding: 0 120px;
+}
+.body-flex {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    min-height: 100vh;
 }
 .section-1, .section-2, .section-3 {
     display: flex;
