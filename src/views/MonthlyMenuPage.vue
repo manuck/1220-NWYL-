@@ -44,12 +44,11 @@ export default {
             return 32 - new Date(iYear, iMonth, 32).getDate()
         },
         createCalendar() {
-            const month = new Date().getMonth()-1
+            const month = new Date().getMonth()
             const year = new Date().getFullYear()
             const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
             
             const today = new Date()
-            const firstDay = new Date(year, month).getDay()
 
             let tbl = document.querySelector('#calendar-body')
             tbl.innerHTML = ""
@@ -59,6 +58,7 @@ export default {
             
             let date = today.getDate() - today.getDay() + 1;
             // date가 -4일 경우 안나옴! 해결해야 할지도..
+
             let row = document.createElement("tr")
             for (let j = 0; j < 5; j++) {
                 if (date < 1) {
@@ -84,7 +84,7 @@ export default {
             }
             tbl.appendChild(row)
         },
-        createCalendar_reserved(month, year) {
+        createCalendar_wholemonth(month, year) {
             let firstDay = (new Date(year, month)).getDay()
             let tbl = document.querySelector('#calendar-body')
             tbl.innerHTML = ""
@@ -119,7 +119,7 @@ export default {
                 tbl.appendChild(row)
             }
         },
-
+        
     }
 }
 </script>
