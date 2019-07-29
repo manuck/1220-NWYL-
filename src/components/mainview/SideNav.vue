@@ -19,8 +19,8 @@
                         <img src="@/assets/images/menu-1.png" style="width: 100%;" alt="menu">
                     </div>
                 </router-link>
-                <router-link to="/monthlymenu">
-                    <div class="nav-icon monthlymenu">
+                <router-link to="/weeklymenu">
+                    <div class="nav-icon weeklymenu">
                         <img src="@/assets/images/calendar.png" style="width:100%;" alt="calendar">
                     </div>
                 </router-link>

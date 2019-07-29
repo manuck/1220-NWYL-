@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import PostPage from './views/PostPage.vue'
 import MenuPage from '@/views/MenuPage.vue'
-import MonthlyMenuPage from '@/views/MonthlyMenuPage.vue'
+import WeeklyMenuPage from '@/views/WeeklyMenuPage.vue'
 import PortfolioPage from './views/PortfolioPage.vue'
 import LoginPage from './views/LoginPage.vue'
 import PortfolioNewPage from './views/PortfolioNewPage.vue'
@@ -31,9 +31,9 @@ export default new Router({
 			component: MenuPage
 		},
 		{
-			path: '/monthlymenu',
-			name: 'monthlymenu',
-			component: MonthlyMenuPage
+			path: '/weeklymenu',
+			name: 'weeklymenu',
+			component: WeeklyMenuPage
 		},
 		{
 			path: '/portfolio',

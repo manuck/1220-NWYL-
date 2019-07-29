@@ -1,14 +1,15 @@
-<template>
+s<template>
     <div style="height: 100%; width: 100%;">
         <div class="main-bg"/>
         <div class="main-wrapper">
             <SideNav/>
             <div class="body-wrapper">
                 <div class="body-flex">
-                    <div class="MonthlyMenu-title">
+                    <div class="WeeklyMenu-title">
                         <span id="showMonth"/>월 식단표
                     </div>
-                    <div class="MonthlyMenu-content">
+                    <a href="#add-weekly-modal" class="button">식단표 추가</a>
+                    <div class="WeeklyMenu-content">
                         <table id="calendar">
                             <thead>
                                 <tr>
@@ -24,17 +25,20 @@
                     </div>
                 </div>
             </div>
+            <AddWeeklyMenuModal/>
         </div>
     </div>
 </template>
 
 <script>
 import SideNav from '@/components/mainview/SideNav'
+import AddWeeklyMenuModal from '@/components/menu/AddWeeklyMenuModal'
 
 export default {
-    name: 'MonthlyMenuPage',
+    name: 'WeeklyMenuPage',
     components: {
         SideNav,
+        AddWeeklyMenuModal,
     },
     mounted() {
         this.createCalendar()
@@ -119,11 +123,13 @@ export default {
                 tbl.appendChild(row)
             }
         },
-        
+        getMenu() {
+
+        }
     }
 }
 </script>
 
 <style lang="scss">
-@import './MonthlyMenuPage.scss';
+@import './WeeklyMenuPage.scss';
 </style>

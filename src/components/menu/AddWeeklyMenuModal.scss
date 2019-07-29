@@ -1,0 +1,17 @@
+#add-weekly-modal:target {
+    display: block;
+}
+#add-weekly-modal {
+    .modal-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .filecontainer::before {
+        content: "파일 업로드";
+    }
+}
+.modal-content2-title {
+    font-weight: 500;
+    margin: 10px 0;
+}
