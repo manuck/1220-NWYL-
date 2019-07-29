@@ -18,6 +18,9 @@
         <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction()">
             리뷰 보기
         </a>
+        <a id="modal-button" class="button" @click="deletecheck()">
+            삭제 확인용
+        </a>
     </div>
 </template>
 
@@ -68,27 +71,22 @@ export default {
     },
     commentfunction() {
         store.state.menucomments = []
-        console.log('댓글!')
-        console.log(db.collection("menus").doc(store.state.menuid).collection("comments"))
-        // var docCom = db.collection("menus").doc(store.state.menuid).collection("comments").doc("1WSb3IlNVF8CKdmHCHPc")
-        // docCom.get().then(function(doc) {
-        //     if (doc.exists) {
-        //         console.log("comments data:", doc.data());
-        //     } else {
-        //         // doc.data() will be undefined in this case
-        //         console.log("No such comments!");
-        //     }
-        //     }).catch(function(error) {
-        //         console.log("Error getting comments:", error);
-        //     });  
-        const collection = db.collection('menus').doc(store.state.menuid).collection("comments");
+  
+        const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at");
         collection.get().then(snapshot => {
             snapshot.forEach(doc => {
             console.log( doc.data().comment); 
             store.state.menucomments.push(doc.data().comment)
             });
             });
-        }
+    },
+    deletecheck() {
+        console.log("삭제전")
+        db.collection('menus').doc(store.state.menuid).collection("5Xaxs0CxMIXBIb97UxrK").doc("comment").delete()
+        console.log("삭제됨")
+
+    }
+    
     }
     }
 

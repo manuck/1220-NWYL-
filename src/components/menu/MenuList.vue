@@ -15,7 +15,11 @@ import FirebaseService from '@/services/FirebaseService'
 
 
 export default {
-    name: 'MenuList',    
+    name: 'MenuList',   
+    props:{
+        comment: {type: String},
+		score: {type: Number},
+    },
     components: {
         MenuBox,
         MenuModal,

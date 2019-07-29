@@ -19,7 +19,20 @@
                     <li v-for="item in $store.state.menutag">{{ item }}</li>
                 </div>
             </div>
-            <div class="modal-comment">
+            <v-form>
+                <v-text-field
+                    v-model="comment"
+                    :counter="100"
+                    label="comment"
+                    required
+                ></v-text-field>
+                <input v-model="score" type="number">
+                <div class="submit-area">
+                <button id="formButton" @click="postComment(comment,score); addcomment(comment)" class="form-button" type="button">제출</button>
+                </div>
+            </v-form>
+
+            <div class="modal-comment" id="commentSection">
                 댓글창
                 <!-- 이곳에 댓글창 구현해 주세요 -->
                 <li v-for="comment in $store.state.menucomments">{{ comment }}</li>
@@ -31,24 +44,38 @@
 <script>
 import firebase from 'firebase/app'
 import store from '@/store.js'
-
+import { firestore } from '@/services/FirebaseService'
 
 const db = firebase.firestore();
 
 export default {
     name: 'MenuModal',
     props: {
-        name: {type: String},
-        // menu: Object,
+        comment: {type: String},
+		score: {type: Number},
     },
     data() {
         return {
-            com:[],
             title: '',
         }
     },
     mounted() {
 
+    },
+    methods: {
+        postComment(comment, score) {
+            return firestore.collection('menus').doc(store.state.menuid).collection("comments").add({
+                comment,
+                score,
+                created_at: firebase.firestore.FieldValue.serverTimestamp()
+            })
+        },
+        addcomment(comment) {
+            var node = document.createElement("LI");
+            var textnode = document.createTextNode(comment);
+            node.appendChild(textnode);
+            document.getElementById("commentSection").appendChild(node);
+        }
     }
 }
 </script>
