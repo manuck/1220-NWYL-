@@ -40,7 +40,6 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 import store from '@/store'
-import {EventBus} from '@/EventBus'
 
 export default {
     props:
@@ -60,7 +59,6 @@ export default {
             const result = await FirebaseService.createUserWithEmailAndPassword(email, password, name)
             .then( () => {
                 this.resetForm
-                EventBus.$emit('on-updateProfile')
             })  
                 
         }, 

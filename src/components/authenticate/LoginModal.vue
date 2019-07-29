@@ -12,7 +12,7 @@
         <template v-if="sign === false">
             <v-card min-width="400px">
                 <v-card-title>
-                    <span class="headline">로그인 하기</span>
+                    <span class="headline">Login</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container grid-list-md>

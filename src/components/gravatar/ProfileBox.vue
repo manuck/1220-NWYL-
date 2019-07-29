@@ -2,7 +2,7 @@
     <div class="card-wrapper">
         <div class="card-title">
             <!-- key 설정을 통해 재렌더링-->
-            <span v-if="$store.state.user" :key="userName">
+            <span v-if="$store.state.user">
                {{$store.state.user.displayName}}님의 프로필
             </span>
             <span v-else>
@@ -28,17 +28,12 @@
 <script>
 import LoginModal from '@/components/authenticate/LoginModal'
 import store from '@/store'
-import {EventBus} from '@/EventBus'
+
 
 let md5 = require('md5');
 
 export default {
     name: "ProfileBox",
-    data() {
-        return {
-            userName: ''
-        }
-    },
     components: {
         LoginModal,
     },
@@ -46,14 +41,7 @@ export default {
         gravatarURL() {
             return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=150&d=retro`
         }
-          
-    },
-    beforeUpdate() {
-        EventBus.$on('on-updateProfile', () => {
-              return this.userName = store.state.user.displayName
-          })
     }
-    
 }
 </script>
 

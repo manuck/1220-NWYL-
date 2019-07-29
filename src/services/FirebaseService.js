@@ -3,6 +3,11 @@ import 'firebase/firestore'
 import 'firebase/auth'
 import store from '../store'
 
+/// admin 기능 추가 ///
+import 'firebase/functions'
+
+
+
 const POSTS = 'posts'
 const PORTFOLIOS = 'portfolios'
 
@@ -20,14 +25,23 @@ const config = {
 firebase.initializeApp(config)
 const firestore = firebase.firestore()
 
+/// admin 기능 추가 ///
+const functions = firebase.functions()
+
 // firestore.settings({timestampsInSnapshots: true})
 export { firestore };
 
 // 로그인, 로그아웃 상태를 감지
 firebase.auth().onAuthStateChanged(function(user) {
-	if(user != null) {
+	if(user) {
 		// 로그인된 상태
-		store.dispatch('getUser', user)
+		user.getIdTokenResult().then(idTokenResult => {
+			console.log(idTokenResult.claims)
+		})
+
+		if(user.displayName != null) {
+			store.dispatch('getUser', user)
+		}
 	}else {
 		// 로그아웃된 상태
 		//console.log("로그아웃 상태입니다.")
@@ -91,6 +105,7 @@ export default {
   // 회원가입을 통해 생성한 계정으로 로그인하기
   signInWithEmailAndPassword(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+		store.dispatch('getUser', result.user)
       	return result
     })
     .catch(function(error) {
@@ -108,6 +123,7 @@ export default {
 	loginWithGoogle() {
 		let provider = new firebase.auth.GoogleAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
+			store.dispatch('getUser', result.user)
 			// let accessToken = result.credential.accessToken
 			// let user = result.user
 			return result
@@ -119,6 +135,7 @@ export default {
 	loginWithFacebook() {
 		let provider = new firebase.auth.FacebookAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
+			store.dispatch('getUser', result.user)
 			return result
 		}).catch(function(error) {
 			console.error('[Facebook Login Error]', error)
@@ -126,6 +143,7 @@ export default {
 	},
 	loginWithEmailAndPassword(email, password) {
 		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+			store.dispatch('getUser', result.user)
 		  return result
 		})
 		.catch(function(error) {
@@ -179,4 +197,12 @@ export default {
 	currnetUser() {
 		return firebase.auth().currentUser
 	},
+	createAdmin(admin_email) {
+		const addAdminRole = functions.httpsCallable('addAdminRole')
+		return addAdminRole( {
+			email : admin_email
+		}).then(result => {
+			console.log("관리자 등록 성공")
+		})
+	}
 }
