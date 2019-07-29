@@ -20,8 +20,20 @@
                 <div id="uploaded-menu">
                     <table>
                         <thead>
+                            <tr>
+                                <td></td>
+                                <td>월</td>
+                                <td>화</td>
+                                <td>수</td>
+                                <td>목</td>
+                                <td>금</td>
+                            </tr>
                         </thead>
                         <tbody>
+                            <tr id="menu-date"/>
+                            <tr id="menu-korean"/>
+                            <tr id="menu-special"/>
+                            <tr id="menu-star"/>
                         </tbody>
                     </table>
                 </div>
@@ -61,14 +73,28 @@ export default {
             const selectedFile = document.querySelector('#menudata').files[0]
             
             var reader = new FileReader()
-            reader.onload = function(e) {
+            reader.onload = (e) => {
                 this.menudata = JSON.parse(e.target.result)
-                showMenuData(this.menudata)
+                this.showMenuData(this.menudata)
             }
             reader.readAsText(selectedFile)
         },
         showMenuData(data) {
-            
+            let menuDate = document.querySelector('#menu-date')
+            for (let i = 0; i < 6; i++) {
+                let cell = document.createElement('td')
+                if (i == 0) {
+                    let cellText = document.createTextNode("")
+                } else {
+                    let cellText = document.createTextNode("2")
+                    // let cellText = document.createTextNode(data["menus"][i-1]["date"])
+                }
+                cell.appendChild(cellText)
+                menuDate.appendChild(cell)
+            }
+            let menuKorean = document.querySelector('#menu-korean')
+            let menuSpecial = document.querySelector('#menu-special')
+            let menuStar = document.querySelector('#menu-star')
         },
     },
 }
