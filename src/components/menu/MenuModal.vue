@@ -22,6 +22,7 @@
             <div class="modal-comment">
                 댓글창
                 <!-- 이곳에 댓글창 구현해 주세요 -->
+                <li v-for="comment in $store.state.menucomments">{{ comment }}</li>
             </div>
         </div>
     </div>
@@ -42,7 +43,7 @@ export default {
     },
     data() {
         return {
-            nsm: '',
+            com:[],
             title: '',
         }
     },

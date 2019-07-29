@@ -15,7 +15,7 @@
             <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon" alt="favorite_star_image"/>
         </div>
         <!-- <p>{{menu.id}}</p> -->
-        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id)">
+        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction()">
             리뷰 보기
         </a>
     </div>
@@ -43,27 +43,55 @@ export default {
     },
     methods: {
     menuidfunction(a) {
+        store.state.menuname = ''
+        store.state.menuimg = ''
+        store.state.menutag = ''
+
         store.state.menuid = a
         console.log(typeof(a))
         console.log(typeof(store.state.menuid))
         var docRef = db.collection("menus").doc(store.state.menuid);
         docRef.get().then(function(doc) {
             if (doc.exists) {
-                console.log("Document data:", doc.data());
+                console.log("MENUS data:", doc.data());
                 store.state.menuname = doc.data().name
                 store.state.menuimg = doc.data().image
                 console.log(doc.data().tags)
                 store.state.menutag = doc.data().tags
             } else {
                 // doc.data() will be undefined in this case
-                console.log("No such document!");
+                console.log("No such MENUS!");
             }
             }).catch(function(error) {
-                console.log("Error getting document:", error);
+                console.log("Error getting MENUS:", error);
             });
+    },
+    commentfunction() {
+        store.state.menucomments = []
+        console.log('댓글!')
+        console.log(db.collection("menus").doc(store.state.menuid).collection("comments"))
+        // var docCom = db.collection("menus").doc(store.state.menuid).collection("comments").doc("1WSb3IlNVF8CKdmHCHPc")
+        // docCom.get().then(function(doc) {
+        //     if (doc.exists) {
+        //         console.log("comments data:", doc.data());
+        //     } else {
+        //         // doc.data() will be undefined in this case
+        //         console.log("No such comments!");
+        //     }
+        //     }).catch(function(error) {
+        //         console.log("Error getting comments:", error);
+        //     });  
+        const collection = db.collection('menus').doc(store.state.menuid).collection("comments");
+        collection.get().then(snapshot => {
+            snapshot.forEach(doc => {
+            console.log( doc.data().comment); 
+            store.state.menucomments.push(doc.data().comment)
+            });
+            });
+        }
     }
     }
-}
+
 </script>
 
 <style lang="scss">
