@@ -35,7 +35,7 @@
             <div class="modal-comment" id="commentSection">
                 댓글창
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <li v-for="comment in $store.state.menucomments">{{ comment }}</li>
+                <li v-for="i in $store.state.menucomments.length">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="idconsole(i); deletecomment(i)">ID check</button></li>
             </div>
         </div>
     </div>
@@ -68,6 +68,11 @@ export default {
                 comment,
                 score,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(function(docRef) {
+                 console.log("Document written with ID: ", docRef.id);
+                 firestore.collection('menus').doc(store.state.menuid).collection("comments").doc(docRef.id).update({
+                     id: docRef.id
+                })
             })
         },
         addcomment(comment) {
@@ -75,6 +80,16 @@ export default {
             var textnode = document.createTextNode(comment);
             node.appendChild(textnode);
             document.getElementById("commentSection").appendChild(node);
+        },
+        idconsole(i){
+            console.log(store.state.commentId[i-1])
+        },
+        deletecomment(i) {
+            db.collection("menus").doc(store.state.menuid).collection("comments").doc(store.state.commentId[i-1]).delete().then(function() {
+                console.log("Comment successfully deleted!");
+            }).catch(function(error) {
+                console.error("Error removing Comment: ", error);
+            });
         }
     }
 }

@@ -77,12 +77,13 @@ export default {
             snapshot.forEach(doc => {
             console.log( doc.data().comment); 
             store.state.menucomments.push(doc.data().comment)
+            store.state.commentId.push(doc.data().id)
             });
             });
     },
     deletecheck() {
         console.log("삭제전")
-        db.collection('menus').doc(store.state.menuid).collection("5Xaxs0CxMIXBIb97UxrK").doc("comment").delete()
+        db.collection('menus').doc(store.state.menuid).collection("5Xaxs0CxMIXBIb97UxrK").doc("comment").deletey()
         console.log("삭제됨")
 
     }

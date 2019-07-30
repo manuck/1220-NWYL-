@@ -13,6 +13,7 @@ export default new Vuex.Store({
         menuimg: '',
         menutag: [],
         menucomments: [],
+        commentId: [],
         imgToDB: {
             imglink: '',
             user_email: '',
