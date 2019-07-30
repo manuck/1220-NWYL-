@@ -28,12 +28,12 @@
                                 <td>목</td>
                                 <td>금</td>
                             </tr>
+                            <tr id="menu-date"/>
                         </thead>
                         <tbody>
-                            <tr id="menu-date"/>
                             <tr id="menu-korean"/>
-                            <tr id="menu-special"/>
                             <tr id="menu-star"/>
+                            <tr id="menu-special"/>
                         </tbody>
                     </table>
                 </div>
@@ -44,19 +44,6 @@
 
 <script>
 // const testdata = require('./5thJul2019.json')
-// console.log(testdata)
-// var requestURL = '../../../data/5thJul2019.json'
-// printdata(testdata)
-// function printdata(jsonobj) {
-//     let menutest = document.querySelector('#menu-test')
-//     console.log('0', menutest)
-//     let mytest = document.createElement('div')
-//     console.log('1', mytest)
-//     mytest.innerHTML = jsonobj
-//     console.log('2', mytest.textContent)
-//     console.log('03', menutest)
-    // menutest.appendChild(mytest)
-// }
 
 export default {
     name: "AddWeeklyMenuModal",
@@ -75,27 +62,42 @@ export default {
             var reader = new FileReader()
             reader.onload = (e) => {
                 this.menudata = JSON.parse(e.target.result)
+                console.log('after parse', this.menudata)
                 this.showMenuData(this.menudata)
             }
             reader.readAsText(selectedFile)
         },
         showMenuData(data) {
-            let menuDate = document.querySelector('#menu-date')
-            for (let i = 0; i < 6; i++) {
-                let cell = document.createElement('td')
-                if (i == 0) {
-                    let cellText = document.createTextNode("")
-                } else {
-                    let cellText = document.createTextNode("2")
-                    // let cellText = document.createTextNode(data["menus"][i-1]["date"])
-                }
-                cell.appendChild(cellText)
-                menuDate.appendChild(cell)
-            }
-            let menuKorean = document.querySelector('#menu-korean')
-            let menuSpecial = document.querySelector('#menu-special')
-            let menuStar = document.querySelector('#menu-star')
+            this.getDataFromJson(data, "date", '#menu-date', '')
+            this.getDataFromJson(data, "korean", '#menu-korean', '한식')
+            this.getDataFromJson(data, "star", '#menu-star', '별식')
+            this.getDataFromJson(data, "special", '#menu-special', '스페셜')
         },
+        getDataFromJson(data, key, id, first) {
+            let query = document.querySelector(id)
+            for (let i = 0; i < 6; i++) {
+                var cell = document.createElement('td')
+                if (i == 0) {
+                    var cellText = document.createTextNode(first)
+                    cell.appendChild(cellText)
+                    query.appendChild(cell)
+                } else {
+                    let keydata = data["menus"][i-1][key]
+                    if (keydata.length) {
+                        for (let j = 0; j < keydata.length; j++) {
+                            var cellText = document.createTextNode(keydata[j])
+                            cell.appendChild(cellText)
+                            var br = document.createElement('br')
+                            cell.appendChild(br)
+                        }
+                    } else {
+                        var cellText = document.createTextNode(keydata)
+                        cell.appendChild(cellText)
+                    }
+                    query.appendChild(cell)
+                }
+            }
+        }
     },
 }
 </script>
