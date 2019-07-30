@@ -26,16 +26,16 @@
                     label="comment"
                     required
                 ></v-text-field>
-                <input v-model="score" type="number">
+                <input v-model="score" type="number" min="0" max="10" value="10">
                 <div class="submit-area">
-                <button id="formButton" @click="postComment(comment,score); addcomment(comment)" class="form-button" type="button">제출</button>
+                <button id="formButton" @click="postComment(comment,score); addcomment(comment); clear()" class="form-button" type="button">제출</button>
                 </div>
             </v-form>
-
+            <br><hr><br>
             <div class="modal-comment" id="commentSection">
-                댓글창
+                <!-- 댓글창 -->
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <li v-for="i in $store.state.menucomments.length">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="idconsole(i); deletecomment(i)">ID check</button></li>
+                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="idconsole(i); deletecomment(i)" style="position: absolute; right: 0;">삭제</button></li>
             </div>
         </div>
     </div>
@@ -73,13 +73,25 @@ export default {
                  firestore.collection('menus').doc(store.state.menuid).collection("comments").doc(docRef.id).update({
                      id: docRef.id
                 })
+                store.state.menuid.prepend(docRef.id)
+                store.state.menucomments.prepend(comment)
             })
         },
-        addcomment(comment) {
+        addcomment(comment, id) {
             var node = document.createElement("LI");
             var textnode = document.createTextNode(comment);
+            var jbBtn = document.createElement( 'button' );
+            var jbBtnText = document.createTextNode( '삭제' );
+
             node.appendChild(textnode);
-            document.getElementById("commentSection").appendChild(node);
+            jbBtn.appendChild( jbBtnText );
+
+            document.getElementById("commentSection").prepend(node)
+            // document.getElementById("commentSection").prepend( jbBtn );
+        },
+        clear () {
+            this.comment = ''
+            this.score = 10
         },
         idconsole(i){
             console.log(store.state.commentId[i-1])
@@ -87,6 +99,7 @@ export default {
         deletecomment(i) {
             db.collection("menus").doc(store.state.menuid).collection("comments").doc(store.state.commentId[i-1]).delete().then(function() {
                 console.log("Comment successfully deleted!");
+
             }).catch(function(error) {
                 console.error("Error removing Comment: ", error);
             });

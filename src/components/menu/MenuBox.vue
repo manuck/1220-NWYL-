@@ -18,9 +18,6 @@
         <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction()">
             리뷰 보기
         </a>
-        <a id="modal-button" class="button" @click="deletecheck()">
-            삭제 확인용
-        </a>
     </div>
 </template>
 
@@ -71,8 +68,9 @@ export default {
     },
     commentfunction() {
         store.state.menucomments = []
+        store.state.commentId = []
   
-        const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at");
+        const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
         collection.get().then(snapshot => {
             snapshot.forEach(doc => {
             console.log( doc.data().comment); 
@@ -81,15 +79,8 @@ export default {
             });
             });
     },
-    deletecheck() {
-        console.log("삭제전")
-        db.collection('menus').doc(store.state.menuid).collection("5Xaxs0CxMIXBIb97UxrK").doc("comment").deletey()
-        console.log("삭제됨")
-
-    }
-    
-    }
-    }
+}
+}
 
 </script>
 
