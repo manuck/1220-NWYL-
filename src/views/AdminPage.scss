@@ -1,0 +1,34 @@
+.admin-topnav {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    background: rgba(0,245,0,0.2);
+    padding: 10px 40px;
+    // font-family: 'Sniglet', cursive;
+    font-size: 24px;
+}
+.admin-topnav-flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.admin-topnav-left {
+    display: flex;
+}
+.admin-topnav-right {
+    display: flex;
+}
+.admin-aside {
+    position: relative;
+    display: inline-block;
+    height: calc(100vh - 60px);
+    width: 200px;
+    background: rgba(233, 0, 0, 0.2);
+}
+.admin-content {
+    position: relative;
+    display: inline-block;
+    height: calc(100vh - 60px);
+    width: calc(100vw - 200px);
+    background: rgba(0,0,231, 0.2);
+}
