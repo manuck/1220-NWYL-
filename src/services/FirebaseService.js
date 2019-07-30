@@ -2,11 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 import store from '../store'
-
-/// admin 기능 추가 ///
 import 'firebase/functions'
-
-
 
 const POSTS = 'posts'
 const PORTFOLIOS = 'portfolios'
@@ -33,18 +29,20 @@ export { firestore };
 
 // 로그인, 로그아웃 상태를 감지
 firebase.auth().onAuthStateChanged(function(user) {
-	if(user) {
-		// 로그인된 상태
+	if(user) {  //// 로그인된 상태
+		
+
+		// 로그인된 사용자의 권한을 확인해보자
 		user.getIdTokenResult().then(idTokenResult => {
 			console.log(idTokenResult.claims)
 		})
 
+		// 회원가입 후, 바로 store.js에 저장하지 않는다. displayName의 update가 이뤄진 다음에 저장!
 		if(user.displayName != null) {
 			store.dispatch('getUser', user)
 		}
-	}else {
-		// 로그아웃된 상태
-		//console.log("로그아웃 상태입니다.")
+	}else {    /// 로그아웃된 상태
+		
 	}
 })
 
@@ -141,6 +139,8 @@ export default {
 			console.error('[Facebook Login Error]', error)
 		})
 	},
+
+	// signUp으로 생성한 계정으로 로그인하기
 	loginWithEmailAndPassword(email, password) {
 		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
 			store.dispatch('getUser', result.user)
@@ -157,6 +157,8 @@ export default {
 		  console.error('[SignIn Error]',error)
 		})
 	  },
+
+	// email, password로 사용자 계정 생성하기
 	async createUserWithEmailAndPassword(email, password, name) {
 		return await firebase.auth().createUserWithEmailAndPassword(email, password)
 		.then(
@@ -183,26 +185,32 @@ export default {
 		})
 	},
 
-
-  // 로그아웃
+  	// 로그아웃
 	signOut() {
 		firebase.auth().signOut().then(function() {
 			alert("로그아웃 되었습니다.")
+
+			// store.js에 저장된 User 정보를 없앤다.
 			store.dispatch('afterLogout', '')
 			// Sign-out successful.
 		}).catch(function(error) {
 			console.error('[SignOut Error]',error)
 		})
-  },
+  	},
+
+  	// 현재 로그인된 유저정보를 반환
 	currnetUser() {
 		return firebase.auth().currentUser
 	},
+
+
+	// 관리자 권한 부여하기
 	createAdmin(admin_email) {
 		const addAdminRole = functions.httpsCallable('addAdminRole')
 		return addAdminRole( {
 			email : admin_email
 		}).then(result => {
-			console.log("관리자 등록 성공")
+			alert("관리자 등록 성공")
 		})
 	}
 }

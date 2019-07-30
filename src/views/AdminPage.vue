@@ -60,8 +60,10 @@ export default {
     }),
     methods: {
         createAdmin(email) {
-            const result = FirebaseService.createAdmin(email)
-            this.$data.admin_email = ''
+            const result = FirebaseService.createAdmin(email).then( () => {
+                this.$data.admin_email = ''
+            })
+            
         }
     }
 }
