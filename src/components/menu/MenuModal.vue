@@ -26,16 +26,16 @@
                     label="comment"
                     required
                 ></v-text-field>
-                <input v-model="score" type="number" min="0" max="10" value="10">
+                <input v-model="score" id="myscore" type="number" min="0" max="5" value="5" />
                 <div class="submit-area">
-                <button id="formButton" @click="postComment(comment,score); addcomment(comment); clear()" class="form-button" type="button">제출</button>
+                <button id="formButton" @click="postComment(comment,score); clear();" class="form-button" type="button">제출</button>
                 </div>
             </v-form>
             <br><hr><br>
-            <div class="modal-comment" id="commentSection">
+            <div class="modal-comment" id="commentSection" :key="$store.state.menucomments.length">
                 <!-- 댓글창 -->
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="idconsole(i); deletecomment(i)" style="position: absolute; right: 0;">삭제</button></li>
+                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="idconsole(i); deletecomment(i);" style="position: absolute; right: 0;">삭제</button></li>
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
 <script>
 import firebase from 'firebase/app'
 import store from '@/store.js'
-import { firestore } from '@/services/FirebaseService'
-
+import { firestore } from '@/services/FirebaseService'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+// modalrefresh($store.state.menuid)
 const db = firebase.firestore();
 
 export default {
@@ -60,21 +60,24 @@ export default {
         }
     },
     mounted() {
-
+        document.getElementById("myscore").value = 5;
     },
     methods: {
         postComment(comment, score) {
+            console.log('postComment:', comment, score)
             return firestore.collection('menus').doc(store.state.menuid).collection("comments").add({
                 comment,
                 score,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
             }).then(function(docRef) {
                  console.log("Document written with ID: ", docRef.id);
+                 console.log()
                  firestore.collection('menus').doc(store.state.menuid).collection("comments").doc(docRef.id).update({
                      id: docRef.id
                 })
-                store.state.menuid.prepend(docRef.id)
-                store.state.menucomments.prepend(comment)
+                console.log(store.state.menucomments)
+                // store.state.menuid.prepend(docRef.id)
+                // store.state.menucomments.prepend(comment)
             })
         },
         addcomment(comment, id) {
@@ -91,7 +94,7 @@ export default {
         },
         clear () {
             this.comment = ''
-            this.score = 10
+            this.score = 5
         },
         idconsole(i){
             console.log(store.state.commentId[i-1])
@@ -103,6 +106,13 @@ export default {
             }).catch(function(error) {
                 console.error("Error removing Comment: ", error);
             });
+        },
+        modalrefresh(a) {
+            location.href="#"
+            store.state.menuid = a
+        },
+        forceUD(){
+            this.$forceUpdate
         }
     }
 }

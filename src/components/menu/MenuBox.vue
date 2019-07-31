@@ -67,16 +67,24 @@ export default {
             });
     },
     commentfunction() {
-        store.state.menucomments = []
-        store.state.commentId = []
-  
         const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
-        collection.get().then(snapshot => {
+        console.log('commentfucntion:',collection)
+        collection.onSnapshot(snapshot => {
+            store.state.menucomments = []
+            store.state.commentId = []
+            store.state.commentScore = 0
+            var commentL = 0
             snapshot.forEach(doc => {
-            console.log( doc.data().comment); 
+            commentL += 1
             store.state.menucomments.push(doc.data().comment)
             store.state.commentId.push(doc.data().id)
+            store.state.commentScore += Number(doc.data().score)
             });
+            console.log("score 합 : ",store.state.commentScore)
+            console.log('commentL : ',commentL)
+            var res = parseInt(store.state.commentScore/commentL)
+            console.log("avg : ",res)
+            db.collection('menus').doc(store.state.menuid).update({score:String(res)})
             });
     },
 }
