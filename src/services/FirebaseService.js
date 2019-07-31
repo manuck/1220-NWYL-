@@ -35,6 +35,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		// 로그인된 사용자의 권한을 확인해보자
 		user.getIdTokenResult().then(idTokenResult => {
 			console.log(idTokenResult.claims)
+			console.log("아직이야")
 		})
 
 		// 회원가입 후, 바로 store.js에 저장하지 않는다. displayName의 update가 이뤄진 다음에 저장!
@@ -203,7 +204,6 @@ export default {
 		return firebase.auth().currentUser
 	},
 
-
 	// 관리자 권한 부여하기
 	createAdmin(admin_email) {
 		const addAdminRole = functions.httpsCallable('addAdminRole')
@@ -212,5 +212,19 @@ export default {
 		}).then(result => {
 			alert("관리자 등록 성공")
 		})
+	},
+
+	// 현재 로그인된 사용자가 관리자인지 확인하기
+	isAdmin() {
+		const user = firebase.auth().currentUser
+		user.getIdTokenResult().then(idTokenResult => {
+			//console.log(idTokenResult.claims.admin)
+			 if(idTokenResult.claims.admin == true) {
+				 return true
+			 }
+		}).catch(err => {
+			console.log(err)
+		}) 
+
 	}
 }

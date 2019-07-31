@@ -8,6 +8,7 @@ export default new Vuex.Store({
     state: {
         accessToken: '',
         user: '',
+        admin: '',
         imgSrc: '',
         imgToDB: {
             imglink: '',
@@ -26,6 +27,9 @@ export default new Vuex.Store({
         setToken(state, accessToken) {
             state.accessToken = accessToken
         },
+        setAdmin(state, isad) {
+            state.admin = isad
+        },
         addLog (state) {
             firestore.collection('LOG').add(state.vueName).then(() => {
                 console.log('added LOG!!')
@@ -35,6 +39,11 @@ export default new Vuex.Store({
     actions: {
         getUser({commit}, user){
             commit('setUser', user)
+            user.getIdTokenResult().then(idTokenResult => {
+                if(idTokenResult.claims.admin) {
+                    commit('setAdmin', true)
+                }
+            })
             user.getIdToken().then(accessToken => {
                 commit('setToken', accessToken)
             }).catch(function(error) {
@@ -44,6 +53,7 @@ export default new Vuex.Store({
         afterLogout({commit}, user) {
             commit('setUser', user)
             commit('setToken', user)
+            commit('setAdmin', false)
         },
         addLog (aa) {
             aa.commit('addLog')
