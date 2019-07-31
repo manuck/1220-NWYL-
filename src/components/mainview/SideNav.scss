@@ -2,16 +2,16 @@
     position: absolute;
     top: 50vh;
     left: 0;
-    width: 65px;
-    padding-left: 15px;
+    width: 90px;
+    padding-left: 40px;
     transform: translateY(-50%);
 }
 .rightnav-wrapper {
     position: absolute;
     top: 50vh;
     right: 0;
-    width: 65px;
-    padding-right: 15px;
+    width: 90px;
+    padding-right: 40px;
     transform: translateY(-50%);
 }
 .nav-flex {
@@ -30,7 +30,7 @@
     .menu {
         background: rgba(255,255,255,0.9);
     }
-    .calendar {
+    .weeklymenu {
         background: rgba(255,255,255,0.9);
     }
 }

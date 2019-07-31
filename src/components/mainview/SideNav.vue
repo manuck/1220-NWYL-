@@ -7,9 +7,9 @@
                         <img src="@/assets/images/home-1.png" style="width: 100%;" alt="home">
                     </div>
                 </router-link>
-                <div class="nav-icon team">
+                <button id="team-icon" class="nav-icon team">
                     <img src="@/assets/images/group.png" style="width:100%;" alt="team">
-                </div>
+                </button>
             </div>
         </div>
         <div class="rightnav-wrapper">
@@ -19,9 +19,11 @@
                         <img src="@/assets/images/menu-1.png" style="width: 100%;" alt="menu">
                     </div>
                 </router-link>
-                <div class="nav-icon calendar">
-                    <img src="@/assets/images/calendar.png" style="width:100%;" alt="calendar">
-                </div>
+                <router-link to="/weeklymenu">
+                    <div class="nav-icon weeklymenu">
+                        <img src="@/assets/images/calendar.png" style="width:100%;" alt="calendar">
+                    </div>
+                </router-link>
             </div>
         </div>
     </div>
