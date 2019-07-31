@@ -1,4 +1,4 @@
-s<template>
+<template>
     <div style="height: 100%; width: 100%;">
         <div class="main-bg"/>
         <div class="main-wrapper">
@@ -33,9 +33,15 @@ s<template>
 <script>
 import SideNav from '@/components/mainview/SideNav'
 import AddWeeklyMenuModal from '@/components/menu/AddWeeklyMenuModal'
+import data from '../data/5thJul2019.json'
 
 export default {
     name: 'WeeklyMenuPage',
+    data: function () {
+        return {
+            data,
+        }
+    },
     components: {
         SideNav,
         AddWeeklyMenuModal,
@@ -51,7 +57,7 @@ export default {
             const month = new Date().getMonth()
             const year = new Date().getFullYear()
             const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-            
+
             const today = new Date()
 
             let tbl = document.querySelector('#calendar-body')
@@ -59,7 +65,7 @@ export default {
 
             let showMonth = document.querySelector('#showMonth')
             showMonth.innerHTML = months[month]
-            
+
             let date = today.getDate() - today.getDay() + 1;
             // date가 -4일 경우 안나옴! 해결해야 할지도..
 
@@ -95,7 +101,7 @@ export default {
 
             let showMonth = document.querySelector('#showMonth')
             showMonth.innerHTML = months[month]
-            
+
             let date = 1;
             for (let i = 0; i < 6; i++) {
                 let row = document.createElement("tr")

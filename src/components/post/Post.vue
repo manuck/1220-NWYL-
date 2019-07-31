@@ -5,6 +5,7 @@
     <v-card-title primary-title>
       <div>
         <div class="headline jemok">{{title}}</div>
+        <div>id : {{this.$route.params.id}}</div>
         <span class="grey--text content">{{body}}</span>
       </div>
     </v-card-title>
