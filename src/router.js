@@ -8,7 +8,7 @@ import LoginPage from './views/LoginPage.vue'
 import PortfolioNewPage from './views/PortfolioNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
-import AdminPage from './views/AdminPage.vue'
+import AdminPageView from './views/AdminPageView.vue'
 
 Vue.use(Router)
 
@@ -57,9 +57,9 @@ export default new Router({
 			component: GitlabGraph2
 		},
 		{
-			path: '/admin',
-			name: 'admin',
-			component: AdminPage
+			path: '/adminview',
+			name: 'adminview',
+			component: AdminPageView
 		},
   ]
 })
