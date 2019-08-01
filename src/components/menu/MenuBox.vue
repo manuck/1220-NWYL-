@@ -12,10 +12,21 @@
             </li>
         </ul>
         <div class="menu-favorite">
-            <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon" alt="favorite_star_image"/>
+            <!-- v-for="score in menu.score" :key="score.id" -->
+            <!-- <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon" alt="favorite_star_image"/> -->
+            <!-- <span>평점: </span>
+            <span v-bind:id="menu.id">{{ menu.score }} </span>
+            <span>/ 5</span> -->
+            <div class="star-ratings-css">
+            <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
         </div>
-        <!-- <p>{{menu.id}}</p> -->
-        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction()">
+        <!-- <div class='rating_bar'>
+        <!-- div element that contains full stars with percentage width, which represents rating -->
+        <!-- <div class='rating' style='width:40%;'></div>
+        </div> -->
+        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
             리뷰 보기
         </a>
     </div>
@@ -32,14 +43,18 @@ const db = firebase.firestore();
 export default {
     name: 'MenuBox',
     data() {
-        return {
-        }
+        tmp : {{menu.id}}
     },
     props: {
         menu: Object,
     },
     components: {
         MenuModal,
+    },
+    mounted(){
+        console.log(tmp)
+        // document.getElementById(menuid)
+        // console.log(document.querySelector(".menulist-wrapper"))
     },
     methods: {
     menuidfunction(a) {
@@ -84,9 +99,16 @@ export default {
             console.log('commentL : ',commentL)
             var res = parseInt(store.state.commentScore/commentL)
             console.log("avg : ",res)
-            db.collection('menus').doc(store.state.menuid).update({score:String(res)})
+            document.getElementById(store.state.menuid).style.width = res*20 + "%";
+            db.collection('menus').doc(store.state.menuid).update({score:Number(res)})
             });
     },
+    scorefunction(){
+        const collection = db.collection('menus').doc(store.state.menuid)
+        collection.onSnapshot(function(doc){
+            console.log("Current score: ", doc.data().score)
+        })
+    }
 }
 }
 
@@ -94,4 +116,34 @@ export default {
 
 <style lang="scss">
 @import './MenuBox.scss';
+
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+//   height: 25px;
+//   width: 100px;
+//   margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+  
+  &-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  &-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+}
+
+
 </style>
