@@ -7,6 +7,7 @@
           ref="form"
           v-model="form"
           class="pa-3 pt-4"
+          @keyup.enter="createUser(create_email, create_password, create_name)"
         >
             <v-text-field
               v-model="create_email"

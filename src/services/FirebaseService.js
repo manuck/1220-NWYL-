@@ -31,11 +31,9 @@ export { firestore };
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user) {  //// 로그인된 상태
 		
-
 		// 로그인된 사용자의 권한을 확인해보자
 		user.getIdTokenResult().then(idTokenResult => {
 			console.log(idTokenResult.claims)
-			console.log("아직이야")
 		})
 
 		// 회원가입 후, 바로 store.js에 저장하지 않는다. displayName의 update가 이뤄진 다음에 저장!
@@ -43,7 +41,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			store.dispatch('getUser', user)
 		}
 	}else {    /// 로그아웃된 상태
-		
+		store.dispatch('test', '')
 	}
 })
 

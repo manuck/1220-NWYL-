@@ -1,7 +1,6 @@
 <template>
     <div class="card-wrapper">
         <div class="card-title">
-            <!-- key 설정을 통해 재렌더링-->
             <span v-if="$store.state.user">
                {{$store.state.user.displayName}}님의 프로필
             </span>

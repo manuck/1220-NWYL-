@@ -8,7 +8,7 @@ export default new Vuex.Store({
     state: {
         accessToken: '',
         user: '',
-        admin: '',
+        admin: 'ab',                // 관리자 == true,  일반회원 == false, 방문자 == ''
         imgSrc: '',
         imgToDB: {
             imglink: '',
@@ -42,18 +42,25 @@ export default new Vuex.Store({
             user.getIdTokenResult().then(idTokenResult => {
                 if(idTokenResult.claims.admin) {
                     commit('setAdmin', true)
+                }else{
+                    commit('setAdmin', false)
                 }
+            }).catch(error => {
+                console.error('[getIdTokenResult Error]',error)
             })
             user.getIdToken().then(accessToken => {
                 commit('setToken', accessToken)
-            }).catch(function(error) {
+            }).catch(error=> {
                 console.error('[getIdToken Error]',error)
             })
+        },
+        test({commit}, tes) {
+            commit('setAdmin', '')
         },
         afterLogout({commit}, user) {
             commit('setUser', user)
             commit('setToken', user)
-            commit('setAdmin', false)
+            commit('setAdmin', '')
         },
         addLog (aa) {
             aa.commit('addLog')
