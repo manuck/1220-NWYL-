@@ -1,0 +1,25 @@
+.admin-header {
+    position: relative;
+    height: 60px;
+    width: calc(100% - 200px);
+    float: right;
+    background: rgba(0,245,0,0.2);
+    padding: 10px 40px;
+    // font-family: 'Sniglet', cursive;
+}
+.admin-header-flex {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.admin-header-right {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.admin-header-image {
+    display: flex;
+    border-radius: 100px;
+}

@@ -1,0 +1,35 @@
+.admin-aside {
+    position: relative;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background: rgba(233, 0, 0, 0.2);
+}
+.admin-aside-flex {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.admin-aside-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.admin-aside-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.admin-aside-li {
+    display: flex;
+    width: 100%;
+    padding: 20px 10px;
+    border-radius: 5px;
+    &:hover {
+        background: rgba(233,0,0,0.4);
+    }
+}
