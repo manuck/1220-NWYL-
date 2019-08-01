@@ -53,12 +53,12 @@ export default {
         }
     },
     mounted() {
-        
+
     },
     methods: {
         getMenuData() {
             const selectedFile = document.querySelector('#menudata').files[0]
-            
+
             var reader = new FileReader()
             reader.onload = (e) => {
                 this.menudata = JSON.parse(e.target.result)
@@ -105,4 +105,3 @@ export default {
 <style lang="scss">
 @import './AddWeeklyMenuModal.scss';
 </style>
-

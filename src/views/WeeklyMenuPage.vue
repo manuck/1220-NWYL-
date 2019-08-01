@@ -23,9 +23,11 @@
                             <tbody id="calendar-body" style="text-align: center;"/>
                         </table>
                     </div>
+                    <div id="uploaded-menu">
+                      <AddWeeklyMenuModal/>
+                    </div>
                 </div>
             </div>
-            <AddWeeklyMenuModal/>
         </div>
     </div>
 </template>
@@ -33,13 +35,12 @@
 <script>
 import SideNav from '@/components/mainview/SideNav'
 import AddWeeklyMenuModal from '@/components/menu/AddWeeklyMenuModal'
-import data from '../data/5thJul2019.json'
 
 export default {
     name: 'WeeklyMenuPage',
     data: function () {
         return {
-            data,
+            data
         }
     },
     components: {

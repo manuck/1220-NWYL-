@@ -20,7 +20,6 @@
             <div class="modal-comment">
                 댓글창
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <h1>hi</h1>
                 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
         </div>
