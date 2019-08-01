@@ -14,7 +14,7 @@
         <div class="menu-favorite">
             <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon" alt="favorite_star_image"/>
         </div>
-        <a id="modal-button" class="button" href="#menu-modal">
+        <a class="button" href="#menu-modal">
             리뷰 보기
         </a>
     </div>

@@ -2,12 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import PostPage from './views/PostPage.vue'
 import MenuPage from '@/views/MenuPage.vue'
+import WeeklyMenuPage from '@/views/WeeklyMenuPage.vue'
 import PortfolioPage from './views/PortfolioPage.vue'
 import LoginPage from './views/LoginPage.vue'
 import PortfolioNewPage from './views/PortfolioNewPage.vue'
 import PostNewPage from './views/PostNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
+import AdminPageView from './views/AdminPageView.vue'
 
 Vue.use(Router)
 
@@ -29,6 +31,11 @@ export default new Router({
 			path: '/menu',
 			name: 'menu',
 			component: MenuPage
+		},
+		{
+			path: '/weeklymenu',
+			name: 'weeklymenu',
+			component: WeeklyMenuPage
 		},
 		{
 			path: '/portfolio',
@@ -54,6 +61,11 @@ export default new Router({
 			path: '/gitlabgraph2',
 			name: 'gitlabgraph2',
 			component: GitlabGraph2
+		},
+		{
+			path: '/adminview',
+			name: 'adminview',
+			component: AdminPageView
 		},
   ]
 })
