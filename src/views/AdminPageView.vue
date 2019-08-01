@@ -37,13 +37,9 @@ export default {
             contentstate: "",
         }
     },
-    beforeUpdate() {
-
-    },
     methods: {
         changeState(received) {
             this.contentstate = received
-            console.log(this.contentstate)
         }
     }
 }

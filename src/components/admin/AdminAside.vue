@@ -28,15 +28,8 @@
 <script>
 export default {
     name: "AdminAside",
-    data() {
-        return {
-            contentstate: "",
-        }
-    },
     methods: {
         showContent(e) {
-            // this.contentstate = e.target.id
-            // this.$emit('state', this.contentstate)
             this.$emit('state', e.target.id)
         }
     }
