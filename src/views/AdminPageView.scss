@@ -6,3 +6,33 @@
     background: rgba(0,0,231, 0.2);
     padding: 20px;
 }
+.admin-content-wrapper {
+    display: flex;
+    height: 100%;
+}
+.admin-fullbox {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    min-width: 875px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
+}
+.admin-box-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    padding-bottom: 10px;
+}
+.admin-header-title {
+    font-size: 24px;
+    font-weight: 500;
+}
+.admin-box-content {
+    overflow-y: scroll;
+}

@@ -3,7 +3,7 @@
         <AdminAside v-on:state="changeState"/>
         <AdminHeader/>
         <div class="admin-content">
-            <AdminDashBoard v-if="this.contentstate === 'admin-dashboard'"/>
+            <AdminDashBoard v-if="(this.contentstate === 'admin-dashboard') || (this.contentstate === '') "/>
             <AdminPageInfo v-if="this.contentstate === 'admin-pageinfo'"/>
             <AdminUserInfo v-if="this.contentstate === 'admin-userinfo'"/>
             <AdminMenuInfo v-if="this.contentstate === 'admin-menuinfo'"/>

@@ -88,23 +88,23 @@ export default {
 					})
 				})
 	},
-  // 회원가입을 통해 생성한 계정으로 로그인하기
-  signInWithEmailAndPassword(email, password) {
-    return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
-      	return result
-    })
-    .catch(function(error) {
-		let errorCode = error.code;
-		let errorMessage = error.message;
-		if(errorCode === 'auth/wrong-password') {
-			alert('Wrong password.');
-		} else {
-			alert(errorMessage);
-		}
-		console.error('[SignIn Error]',error)
-    })
-  },
-  // 구글 계정으로 로그인하기 (팝업)
+  	// 회원가입을 통해 생성한 계정으로 로그인하기
+  	signInWithEmailAndPassword(email, password) {
+		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+			return result
+		})
+		.catch(function(error) {
+			let errorCode = error.code;
+			let errorMessage = error.message;
+			if(errorCode === 'auth/wrong-password') {
+				alert('Wrong password.');
+			} else {
+				alert(errorMessage);
+			}
+			console.error('[SignIn Error]',error)
+		})
+	},
+ 	// 구글 계정으로 로그인하기 (팝업)
 	loginWithGoogle() {
 		let provider = new firebase.auth.GoogleAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -115,7 +115,7 @@ export default {
 			console.error('[Google Login Error]', error)
 		})
 	},
-  // 페이스북 계정으로 로그인하기 (팝업)
+  	// 페이스북 계정으로 로그인하기 (팝업)
 	loginWithFacebook() {
 		let provider = new firebase.auth.FacebookAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -161,7 +161,7 @@ export default {
 			console.error('[SignUp Error]',error)
 		})
 	},
-  // 로그아웃
+  	// 로그아웃
 	signOut() {
 		firebase.auth().signOut().then(function() {
 			alert("로그아웃 되었습니다.")
@@ -170,8 +170,25 @@ export default {
 		}).catch(function(error) {
 			console.error('[SignOut Error]',error)
 		})
-  },
+  	},
 	currnetUser() {
 		return firebase.auth().currentUser
+	},
+	// admin
+	getLogs() {
+		const logsCollection = firestore.collection('LOG')
+		return logsCollection
+				.orderBy('time', 'asc')
+				.get()
+				.then((docSnapshots) => {
+					return docSnapshots.docs.map((doc) => {
+						let data = doc.data()
+						if (data.time.seconds) {
+							console.log('getLogs data', data.time.toDate(), typeof(data.time.seconds))	
+						}
+						
+						return data
+					})
+				})
 	},
 }
