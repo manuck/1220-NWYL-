@@ -32,14 +32,12 @@
 </template>
 
 <script>
-import PortfolioList from '@/components/portfolio/PortfolioList'
 import SideNav from '@/components/mainview/SideNav'
 import MenuList from '@/components/menu/MenuList'
 
 export default {
     name: 'MenuPage',
     components: {
-        PortfolioList,
         SideNav,
         MenuList,
     },
