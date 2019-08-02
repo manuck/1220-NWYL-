@@ -61,6 +61,7 @@ export default new Router({
 			path: '/portfolio/:Pfid',
 			name: 'details',
 			component: PortfolioDetailPage,
+		},
 		{
 			path: '/adminview',
 			name: 'adminview',

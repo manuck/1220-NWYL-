@@ -43,18 +43,29 @@ const db = firebase.firestore();
 export default {
     name: 'MenuBox',
     data() {
-        tmp : {{menu.id}}
+        return {
+
+        }
     },
     props: {
         menu: Object,
+        ID: String
     },
     components: {
         MenuModal,
     },
     mounted(){
-        console.log(tmp)
-        // document.getElementById(menuid)
-        // console.log(document.querySelector(".menulist-wrapper"))
+        console.log(this.ID)
+        var docRef = db.collection("menus").doc(this.ID)
+        docRef.get().then(function(doc) {
+            if (doc.exists) {
+                document.getElementById(doc.data().id).style.width = doc.data().score*20 + "%";
+                // console.log(doc.data().score);
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such MENUS!");
+            }
+            })   
     },
     methods: {
     menuidfunction(a) {

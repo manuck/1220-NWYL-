@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="menulist-wrapper">
-            <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id"/>
+            <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>
             <MenuModal />
         </div>
     </div>
