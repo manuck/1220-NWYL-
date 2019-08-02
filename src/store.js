@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { firestore } from '@/services/FirebaseService'
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -9,6 +8,13 @@ export default new Vuex.Store({
         accessToken: '',
         user: '',
         imgSrc: '',
+        menuid: '',
+        menuname: '',
+        menuimg: '',
+        menutag: [],
+        menucomments: [],
+        commentId: [],
+        commentScore: 0,
         imgToDB: {
             imglink: '',
             user_email: '',

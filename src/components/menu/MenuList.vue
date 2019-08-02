@@ -12,8 +12,13 @@ import MenuBox from './MenuBox'
 import MenuModal from './MenuModal'
 import FirebaseService from '@/services/FirebaseService'
 
+
 export default {
-    name: 'MenuList',    
+    name: 'MenuList',   
+    props:{
+        comment: {type: String},
+		score: {type: Number},
+    },
     components: {
         MenuBox,
         MenuModal,
@@ -24,7 +29,7 @@ export default {
         }
     },
 	mounted() {
-		this.getMenus()
+        this.getMenus()
 	},
 	methods: {
 		async getMenus() {

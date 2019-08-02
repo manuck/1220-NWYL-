@@ -51,7 +51,15 @@ export default {
                 body,
                 imgSrc,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(location.href="/portfolio")
+            })
+            .then(function(docRef) {
+                 console.log("Document written with ID: ", docRef.id);
+                 firestore.collection('portfolios').doc(docRef.id).update({
+                     id: docRef.id
+                 })
+                //  location.href="/portfolio"
+                })
+                // .then(location.href="/portfolio")
             // 제출 후 location.href 반환
         }
     }
