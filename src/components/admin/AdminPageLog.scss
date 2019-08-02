@@ -4,8 +4,19 @@
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .admin-header-input {
-    width: 100px;
+    width: 90px;
     border: 1px solid rgba(0,0,0,1);
     border-radius: 100px;
     padding: 5px 20px;
+    margin-left: 10px;
+}
+.admin-header-option {
+    span {
+        margin: auto 0;
+    }
+}
+select {
+    background: url('../../assets/icon/down-arrow.svg') no-repeat 75% 50%;
+    background-size: 10px;
+    appearance: none;
 }

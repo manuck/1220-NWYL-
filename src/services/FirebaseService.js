@@ -178,15 +178,11 @@ export default {
 	getLogs() {
 		const logsCollection = firestore.collection('LOG')
 		return logsCollection
-				.orderBy('time', 'asc')
+				.orderBy('time', 'desc')
 				.get()
 				.then((docSnapshots) => {
 					return docSnapshots.docs.map((doc) => {
 						let data = doc.data()
-						if (data.time.seconds) {
-							console.log('getLogs data', data.time.toDate(), typeof(data.time.seconds))	
-						}
-						
 						return data
 					})
 				})
