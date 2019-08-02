@@ -76,19 +76,13 @@ export default {
         loginWithGoogle() {
             const result = FirebaseService.loginWithGoogle()
             this.dialog = false;
-            //alert(this.$store.state.accessToken + " asdasd " + this.$store.state.user)
-            // console.log("google")
-            // console.log(result)
         },
         loginWithFacebook() {
             const result = FirebaseService.loginWithFacebook()
             this.dialog = false;
-            // console.log("facebook")
-            // console.log(result)
         },
         signOut() {
             FirebaseService.signOut();
-            //console.log("로그아웃 !")
         },
         closeSignUp: function() {
            this.sign = false;

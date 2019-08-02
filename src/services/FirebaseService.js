@@ -30,18 +30,13 @@ export { firestore };
 // 로그인, 로그아웃 상태를 감지
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user) {  //// 로그인된 상태
-		
-		// 로그인된 사용자의 권한을 확인해보자
-		user.getIdTokenResult().then(idTokenResult => {
-			console.log(idTokenResult.claims)
-		})
-
+	
 		// 회원가입 후, 바로 store.js에 저장하지 않는다. displayName의 update가 이뤄진 다음에 저장!
 		if(user.displayName != null) {
 			store.dispatch('getUser', user)
 		}
 	}else {    /// 로그아웃된 상태
-		store.dispatch('test', '')
+		store.dispatch('setGuest')
 	}
 })
 
@@ -158,15 +153,15 @@ export default {
 	  },
 
 	// email, password로 사용자 계정 생성하기
-	async createUserWithEmailAndPassword(email, password, name) {
-		return await firebase.auth().createUserWithEmailAndPassword(email, password)
+	createUserWithEmailAndPassword(email, password, name) {
+		return firebase.auth().createUserWithEmailAndPassword(email, password)
 		.then(
-			async (result) => {
-				await result.user.updateProfile({
+			(result) => {
+				result.user.updateProfile({
 					displayName : name
 				}).then(
-					async () => {
-						await store.dispatch('getUser', result.user)
+					() => {
+						store.dispatch('getUser', result.user)
 					}
 				)
 			}
@@ -223,6 +218,14 @@ export default {
 		}).catch(err => {
 			console.log(err)
 		}) 
-
+	},
+	getUserList() {
+		const userList = functions.httpsCallable('userList')
+		userList().then(result => {
+			console.log('work!')
+		})
+		// return userList().then(result => {
+		// 	console.log(result.message)
+		// })
 	}
 }

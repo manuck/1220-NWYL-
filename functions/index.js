@@ -15,4 +15,28 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     }).catch(err => {
         return err
     })
-})
+}),
+
+/// 유저 리스트 
+
+exports.userList = functions.https.onCall((context) => {
+        // List batch of users, 1000 at a time.
+       return admin.auth().listUsers(1000, nextPageToken)
+          .then(function(listUsersResult) {
+            listUsersResult.users.forEach(function(userRecord) {
+              console.log('user', userRecord.toJSON());
+            });
+            if (listUsersResult.pageToken) {
+              // List next batch of users.
+              listAllUsers(listUsersResult.pageToken);
+            }
+          })
+          .then(() => {
+              return {
+                  message : ' Success! call function!!'
+              }
+          })
+          .catch(function(error) {
+            console.log('Error listing users:', error);
+          });
+}) 

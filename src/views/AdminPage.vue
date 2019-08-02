@@ -38,6 +38,7 @@
 
                     <v-card-actions>
                         <v-btn @click="createAdmin(admin_email)">Make Admin</v-btn>
+                        <v-btn @click="showList">User List</v-btn>
                     </v-card-actions>
                 </v-card>
 
@@ -146,9 +147,14 @@ export default {
             this.$data.email = ''
             this.$data.password = ''
         },
-        async loginWithEmailAndPassword(email, password) {
-            const result = await FirebaseService.signInWithEmailAndPassword(email, password)
+        loginWithEmailAndPassword(email, password) {
+            const result = FirebaseService.signInWithEmailAndPassword(email, password)
+        },
+        showList() {
+            const result = FirebaseService.getUserList()
+            alert(result)
         }
+
     }
 }
 </script>

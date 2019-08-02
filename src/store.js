@@ -27,8 +27,8 @@ export default new Vuex.Store({
         setToken(state, accessToken) {
             state.accessToken = accessToken
         },
-        setAdmin(state, isad) {
-            state.admin = isad
+        setAdmin(state, isadmin) {
+            state.admin = isadmin
         },
         addLog (state) {
             firestore.collection('LOG').add(state.vueName).then(() => {
@@ -37,7 +37,7 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        getUser({commit}, user){
+        getUser({commit}, user){                // 사용자 로그인 후, state.user , accessToken, admin을 설정
             commit('setUser', user)
             user.getIdTokenResult().then(idTokenResult => {
                 if(idTokenResult.claims.admin) {
@@ -54,7 +54,7 @@ export default new Vuex.Store({
                 console.error('[getIdToken Error]',error)
             })
         },
-        test({commit}, tes) {
+        setGuest({commit}) {                   // 방문자인 경우, state.admin을 따로 설정해야 함 
             commit('setAdmin', '')
         },
         afterLogout({commit}, user) {
