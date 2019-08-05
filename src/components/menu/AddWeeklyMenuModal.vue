@@ -10,7 +10,7 @@
                 <div class="modal-info">
                     <!-- <input @change="test" id="file" ref="myfile" name="weekly-menu" type="file" class="filecontainer"/> -->
                     <input @change="getMenuData" id="menudata" type="file" class="filecontainer"/>
-                    <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
+                    <button id="formButton" @click="setChildValue()" class="form-button" disabled="" type="button">제출</button>
                 </div>
             </div>
             <div class="modal-content2">
@@ -97,6 +97,10 @@ export default {
                     query.appendChild(cell)
                 }
             }
+        },
+        setChildValue(name) {
+          opener.setChildValue(name);
+          window.close();
         }
     },
 }
