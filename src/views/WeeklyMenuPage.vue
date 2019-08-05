@@ -51,7 +51,7 @@ export default {
             const month = new Date().getMonth()
             const year = new Date().getFullYear()
             const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-            
+
             const today = new Date()
 
             let tbl = document.querySelector('#calendar-body')
@@ -59,7 +59,7 @@ export default {
 
             let showMonth = document.querySelector('#showMonth')
             showMonth.innerHTML = months[month]
-            
+
             let date = today.getDate() - today.getDay() + 1;
             // date가 -4일 경우 안나옴! 해결해야 할지도..
 
@@ -95,7 +95,7 @@ export default {
 
             let showMonth = document.querySelector('#showMonth')
             showMonth.innerHTML = months[month]
-            
+
             let date = 1;
             for (let i = 0; i < 6; i++) {
                 let row = document.createElement("tr")
@@ -123,9 +123,48 @@ export default {
                 tbl.appendChild(row)
             }
         },
-        getMenu() {
+        getMenuData() {
+            const selectedFile = document.querySelector('#menudata').files[0]
 
-        }
+            var reader = new FileReader()
+            reader.onload = (e) => {
+                this.menudata = JSON.parse(e.target.result)
+                console.log('after parse', this.menudata)
+                this.showMenuData(this.menudata)
+            }
+            reader.readAsText(selectedFile)
+        },
+        showMenuData(data) {
+            this.getDataFromJson(data, "date", '#menu-date', '')
+            this.getDataFromJson(data, "korean", '#menu-korean', '한식')
+            this.getDataFromJson(data, "star", '#menu-star', '별식')
+            this.getDataFromJson(data, "special", '#menu-special', '스페셜')
+        },
+        getDataFromJson(data, key, id, first) {
+            let query = document.querySelector(id)
+            for (let i = 0; i < 6; i++) {
+                var cell = document.createElement('td')
+                if (i == 0) {
+                    var cellText = document.createTextNode(first)
+                    cell.appendChild(cellText)
+                    query.appendChild(cell)
+                } else {
+                    let keydata = data["menus"][i-1][key]
+                    if (keydata.length) {
+                        for (let j = 0; j < keydata.length; j++) {
+                            var cellText = document.createTextNode(keydata[j])
+                            cell.appendChild(cellText)
+                            var br = document.createElement('br')
+                            cell.appendChild(br)
+                        }
+                    } else {
+                        var cellText = document.createTextNode(keydata)
+                        cell.appendChild(cellText)
+                    }
+                    query.appendChild(cell)
+                }
+            }
+        },
     }
 }
 </script>

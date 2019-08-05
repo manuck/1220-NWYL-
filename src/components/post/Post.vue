@@ -15,6 +15,7 @@
 export default {
 	name: 'Post',
 	props: {
+    id: {type: Number},
 		date: {type: String},
 		title: {type: String},
 		body: {type: String},
