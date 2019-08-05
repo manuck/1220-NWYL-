@@ -221,8 +221,8 @@ export default {
 	},
 	getUserList() {
 		const userList = functions.httpsCallable('userList')
-		userList().then(result => {
-			console.log('work!')
+		return userList().then(result => {
+			console.log(result)
 		})
 		// return userList().then(result => {
 		// 	console.log(result.message)

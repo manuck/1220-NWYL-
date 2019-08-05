@@ -19,24 +19,38 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 
 /// 유저 리스트 
 
-exports.userList = functions.https.onCall((context) => {
-        // List batch of users, 1000 at a time.
-       return admin.auth().listUsers(1000, nextPageToken)
-          .then(function(listUsersResult) {
-            listUsersResult.users.forEach(function(userRecord) {
-              console.log('user', userRecord.toJSON());
-            });
-            if (listUsersResult.pageToken) {
-              // List next batch of users.
-              listAllUsers(listUsersResult.pageToken);
-            }
-          })
-          .then(() => {
-              return {
-                  message : ' Success! call function!!'
-              }
-          })
-          .catch(function(error) {
-            console.log('Error listing users:', error);
-          });
+// exports.userList = functions.https.onCall((context) => {
+//         // List batch of users, 1000 at a time.
+//        return admin.auth().listUsers(1000, nextPageToken)
+//           .then(function(listUsersResult) {
+//             listUsersResult.users.forEach(function(userRecord) {
+//               console.log('user', userRecord.toJSON());
+//             });
+//             if (listUsersResult.pageToken) {
+//               // List next batch of users.
+//               listAllUsers(listUsersResult.pageToken);
+//             }
+//           })
+//           .then(() => {
+//               return {
+//                   message : ' Success! call function!!'
+//               }
+//           })
+//           .catch(function(error) {
+//             console.log('Error listing users:', error);
+//           });
+// }) 
+
+exports.userList = functions.https.onRequest(async (req, res) => {
+  let userlist = new Array()
+  await admin.auth().listUsers(1000)
+  .then(listUsersResult => {
+    console.log("userlist ..." + userlist)
+    listUsersResult.users.forEach(userRecord => {
+      userlist.push(userRecord.toJSON())
+    })
+    
+  })
+  console.log("userlist response 직전 " + userlist)
+  res.status(200).send(userlist)
 }) 
