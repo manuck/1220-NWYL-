@@ -63,10 +63,11 @@ export default new Router({
 			name: 'gitlabgraph2',
 			component: GitlabGraph2
 		},
-		{	
+		{
 			path: '/portfolio/:Pfid',
 			name: 'details',
 			component: PortfolioDetailPage,
+    },
 		{
 			path: '/adminview',
 			name: 'adminview',
