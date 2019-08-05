@@ -159,3 +159,6 @@ ul {
 li {
     list-style: none;
 }
+select:focus {
+    outline: none;
+}
