@@ -26,7 +26,40 @@
                     label="comment"
                     required
                 ></v-text-field>
-                <input v-model="score" id="myscore" type="number" min="0" max="5" value="5" />
+                <!-- <input v-model="score" id="myscore" type="number" min="1" max="5" value="5" /> -->
+                <form class="rating">
+                <label>
+                    <input v-model="score" id="myscore" type="radio" name="stars" value="1" />
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input v-model="score" id="myscore" type="radio" name="stars" value="2" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                <input v-model="score" id="myscore" type="radio" name="stars" value="3" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>   
+                </label>
+                <label>
+                    <input v-model="score" id="myscore" type="radio" name="stars" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                <label>
+                    <input v-model="score" id="myscore" type="radio" name="stars" value="5" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </label>
+                </form>
+
                 <div class="submit-area">
                 <button id="formButton" @click="postComment(comment,score); clear();" class="form-button" type="button">제출</button>
                 </div>
@@ -119,7 +152,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import './MenuModal.scss'
+@import './MenuModal.scss';
 </style>
+
 
 

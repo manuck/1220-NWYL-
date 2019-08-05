@@ -68,58 +68,59 @@ export default {
             })   
     },
     methods: {
-    menuidfunction(a) {
-        store.state.menuname = ''
-        store.state.menuimg = ''
-        store.state.menutag = ''
+        menuidfunction(a) {
+            store.state.menuname = ''
+            store.state.menuimg = ''
+            store.state.menutag = ''
 
-        store.state.menuid = a
-        console.log(typeof(a))
-        console.log(typeof(store.state.menuid))
-        var docRef = db.collection("menus").doc(store.state.menuid);
-        docRef.get().then(function(doc) {
-            if (doc.exists) {
-                console.log("MENUS data:", doc.data());
-                store.state.menuname = doc.data().name
-                store.state.menuimg = doc.data().image
-                console.log(doc.data().tags)
-                store.state.menutag = doc.data().tags
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such MENUS!");
-            }
-            }).catch(function(error) {
-                console.log("Error getting MENUS:", error);
-            });
-    },
-    commentfunction() {
-        const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
-        console.log('commentfucntion:',collection)
-        collection.onSnapshot(snapshot => {
-            store.state.menucomments = []
-            store.state.commentId = []
-            store.state.commentScore = 0
-            var commentL = 0
-            snapshot.forEach(doc => {
-            commentL += 1
-            store.state.menucomments.push(doc.data().comment)
-            store.state.commentId.push(doc.data().id)
-            store.state.commentScore += Number(doc.data().score)
-            });
-            console.log("score 합 : ",store.state.commentScore)
-            console.log('commentL : ',commentL)
-            var res = parseInt(store.state.commentScore/commentL)
-            console.log("avg : ",res)
-            document.getElementById(store.state.menuid).style.width = res*20 + "%";
-            db.collection('menus').doc(store.state.menuid).update({score:Number(res)})
-            });
-    },
-    scorefunction(){
-        const collection = db.collection('menus').doc(store.state.menuid)
-        collection.onSnapshot(function(doc){
-            console.log("Current score: ", doc.data().score)
-        })
-    }
+            store.state.menuid = a
+            console.log(typeof(a))
+            console.log(typeof(store.state.menuid))
+            var docRef = db.collection("menus").doc(store.state.menuid);
+            docRef.get().then(function(doc) {
+                if (doc.exists) {
+                    console.log("MENUS data:", doc.data());
+                    store.state.menuname = doc.data().name
+                    store.state.menuimg = doc.data().image
+                    console.log(doc.data().tags)
+                    store.state.menutag = doc.data().tags
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such MENUS!");
+                }
+                }).catch(function(error) {
+                    console.log("Error getting MENUS:", error);
+                });
+        },
+        commentfunction() {
+            const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
+            console.log('commentfucntion:',collection)
+            collection.onSnapshot(snapshot => {
+                store.state.menucomments = []
+                store.state.commentId = []
+                store.state.commentScore = 0
+                var commentL = 0
+                snapshot.forEach(doc => {
+                commentL += 1
+                store.state.menucomments.push(doc.data().comment)
+                store.state.commentId.push(doc.data().id)
+                store.state.commentScore += Number(doc.data().score)
+                });
+                console.log("score 합 : ",store.state.commentScore)
+                console.log('commentL : ',commentL)
+                var res = store.state.commentScore/commentL
+                res = res.toFixed(1)
+                console.log("avg : ",res)
+                document.getElementById(store.state.menuid).style.width = res*20 + "%";
+                db.collection('menus').doc(store.state.menuid).update({score:Number(res)})
+                });
+        },
+        scorefunction(){
+            const collection = db.collection('menus').doc(store.state.menuid)
+            collection.onSnapshot(function(doc){
+                console.log("Current score: ", doc.data().score)
+            })
+        }
 }
 }
 
