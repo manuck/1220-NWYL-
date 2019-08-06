@@ -3,7 +3,7 @@
         <div class="menulist-wrapper">
             <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>
             <MenuModal />
-            <AddMenu v-if="$store.state.admin===admin"></AddMenu>
+            <AddMenu v-if="$store.state.admin===true"></AddMenu>
         </div>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
     },
 	mounted() {
         this.getMenus()
-        console.log($store.state.admin)
+        console.log(this.$store.state.admin)
 	},
 	methods: {
 		async getMenus() {

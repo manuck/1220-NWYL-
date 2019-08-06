@@ -12,20 +12,12 @@
             </li>
         </ul>
         <div class="menu-favorite">
-            <!-- v-for="score in menu.score" :key="score.id" -->
-            <!-- <img v-for="score in menu.score" :key="score.id" src="@/assets/images/favorites-1.png" class="favorite-icon" alt="favorite_star_image"/> -->
-            <!-- <span>평점: </span>
-            <span v-bind:id="menu.id">{{ menu.score }} </span>
-            <span>/ 5</span> -->
             <div class="star-ratings-css">
             <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 0%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             </div>
         </div>
-        <!-- <div class='rating_bar'>
-        <!-- div element that contains full stars with percentage width, which represents rating -->
-        <!-- <div class='rating' style='width:40%;'></div>
-        </div> -->
+        <div class='rating' style='width:40%;'></div>
         <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
             리뷰 보기
         </a>

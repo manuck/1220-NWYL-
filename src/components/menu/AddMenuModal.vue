@@ -112,7 +112,6 @@ export default {
                     })
                     location.href="/menu"
                 })
-                // .then(location.href="/menu")
         },
         imageSelect1() {
             this.isStatusOn = true;
