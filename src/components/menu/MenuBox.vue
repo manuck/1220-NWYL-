@@ -21,6 +21,9 @@
         <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
             리뷰 보기
         </a>
+        <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id)">
+            삭제
+        </a>
     </div>
 </template>
 
@@ -111,6 +114,15 @@ export default {
             const collection = db.collection('menus').doc(store.state.menuid)
             collection.onSnapshot(function(doc){
                 console.log("Current score: ", doc.data().score)
+            })
+        },
+        menuDelete(a){
+            console.log(a)
+            db.collection("menus").doc(a).delete().then(function() {
+                console.log("Document successfully deleted!");
+                location.href="/menu"
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
             })
         }
 }
