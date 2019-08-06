@@ -30,3 +30,11 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+export const eventBus = new Vue({
+	methods: {
+		menuSended(date) {
+			this.$emit('menuSended', date)
+		}
+	}
+})
