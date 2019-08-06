@@ -44,8 +44,10 @@ html {
 }
 .body-wrapper {
     height: 100%;
-    width: 100%;
+    // width: 100%;
+    width: 1000px;
     padding: 0 120px;
+    margin: 0 auto;
 }
 .body-flex {
     display: flex;
@@ -59,6 +61,9 @@ html {
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+.section-1 {
+    justify-content: space-around;
 }
 .col1, .col2 {
     display: flex;
@@ -76,9 +81,107 @@ html {
     flex-direction: column;
     height: 55vh;
     width: 100%;
+    // 임시 border
+    border: 2px solid black;
 }
 .section-1-content-menu {
-    display: flex;
+    // display: flex;
+    position: relative;
+    // justify-content: center;
+    // align-items: center;
+    height: 100%;
+    width: 100%;
+    // border: 2px solid black;
+}
+.sec-1-cloud {
+    position: absolute;
+    height: 240px;
+    width: 240px;
+    top: 20%;
+    left: 32%;
+    transform-style: preserve-3d;
+    transform: rotateZ(90deg) rotateY(110deg);
+    z-index: 1;
+    background: #f7f7f7;
+    @mixin circle($mod) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 300px;
+        width: 300px;
+        // border: 2px solid black;
+        border-radius: 50%;
+        animation: $mod 80s linear infinite;
+        background: #f7f7f7;
+    }
+    @for $i from 1 through 9 {
+        .c#{$i} {
+            @include circle("c#{$i}");
+        }
+    }
+    .c1, .c3, .c5, .c7 {
+        height: 230px;
+        width: 230px;
+        z-index: 1;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            z-index: -3;
+            transform: translate(1px);
+            // box-shadow: 0 0 5px 3px black;
+        }
+    }
+    .c2, .c4, .c6, .c8 {
+        height: 200px;
+        width: 200px;
+        z-index: 1;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            z-index: -3;
+            transform: translate(1px);
+            // box-shadow: 0 0 5px 3px black;
+        }
+    }
+    .c9 {
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            z-index: -3;
+            transform: translate(1px);
+            // box-shadow: 0 0 5px 3px black;
+        }
+    }
+}
+@for $i from 1 through 9 {
+    @keyframes c#{$i} {
+        0% { transform: rotateZ((0 + $i * 40)+deg) translateX(250px) rotateZ(-(0 + $i * 40)+deg) rotateY(-110deg) }
+        50% { transform: rotateZ((180 + $i * 40)+deg) translateX(200px) rotateZ(-(180 + $i * 40)+deg) rotateY(-110deg) }
+        100% { transform: rotateZ((360 + $i * 40)+deg) translateX(250px) rotateZ(-(360 + $i * 40)+deg) rotateY(-110deg) }
+    }
+}
+.section-1-menu-box {
+    height: 350px;
+    min-width: 200px;
+    border: 2px solid black;
+    border-radius: 30px;
+    background: #f7f7f7;
+    margin: 0 20px;
 }
 .section-1-content-image {
     display: flex;

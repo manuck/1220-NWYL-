@@ -11,13 +11,26 @@
                     </div>
                     <div class="section-1-content">
                         <div class="section-1-content-menu">
-                            
-                        </div>
-                        <div class="section-1-content-image">
-                            <img src="@/assets/images/lying_hd.png" style="height:100px; width:auto;" alt="main_image"/>
+                            <div class="sec-1-cloud">
+                                <div class="c1"/>
+                                <div class="c2"/>
+                                <div class="c3"/>
+                                <div class="c4"/>
+                                <div class="c5"/>
+                                <div class="c6"/>
+                                <div class="c7"/>
+                                <div class="c8"/>
+                                <div class="c9"/>
+                            </div>
+                            <!-- <div id="main-korean" class="section-1-menu-box"></div> -->
+                            <!-- <div id="main-special" class="section-1-menu-box"></div> -->
+                            <!-- <div id="main-star" class="section-1-menu-box"></div> -->
                         </div>
                     </div>
                     <div class="section-1-scroll">
+                        <div class="section-1-content-image">
+                            <img src="@/assets/images/lying_hd.png" style="height:100px; width:auto;" alt="main_image"/>
+                        </div>
                         <button class="scroll-round" v-on:click="pageScroll"/>
                     </div>
                     <SideNav/>
