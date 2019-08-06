@@ -10,6 +10,9 @@ import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
 import PortfolioDetailPage from './views/PortfolioDetailPage'
 import AdminPageView from './views/AdminPageView.vue'
+import AdminPage from './views/AdminPage.vue'
+
+
 
 Vue.use(Router)
 
@@ -66,6 +69,11 @@ export default new Router({
 			path: '/adminview',
 			name: 'adminview',
 			component: AdminPageView
+		},
+		{
+			path: '/admin',
+			name: 'admin',
+			component: AdminPage
 		},
   ]
 })

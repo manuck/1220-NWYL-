@@ -7,11 +7,11 @@
                 <div class="menu-flex">
                     <div class="filter-wrapper">
                         <ul class="country">
-                            <li>한식</li>
-                            <li>일식</li>
-                            <li>중식</li>
-                            <li>양식</li>
-                            <li>기타</li>
+                            <li value="1">한식</li>
+                            <li value="2">일식</li>
+                            <li value="3">중식</li>
+                            <li value="4">양식</li>
+                            <li value="5">기타</li>
                         </ul>
                         <ul class="style">
                             <li>볶음</li>
@@ -41,6 +41,19 @@ export default {
         SideNav,
         MenuList,
     },
+    methods: {
+        countrySelect(a) {
+            console.log('asdsad')
+            console.log(a)
+            // var museums = db.collectionGroup('landmarks').where('type', '==', 'museum');
+            // museums.get().then(function (querySnapshot) {
+            // querySnapshot.forEach(function (doc) {
+            //     console.log(doc.id, ' => ', doc.data());
+            //     });
+            // });
+
+        }
+    }
 }
 </script>
 

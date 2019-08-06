@@ -11,7 +11,7 @@
             <div class="modal-content">
                 <div class="modal-image">
                     <!-- 밑의 src에 주소 넣어주세요 -->
-                    <img :src="$store.state.menuimg" alt="modal_detail_image">
+                    <img :src="$store.state.menuimg" width="300" height="400" alt="modal_detail_image">
                 </div>
                 <div class="modal-info">
                     <!-- 이곳에 메뉴 정보를 넣어주세요 -->

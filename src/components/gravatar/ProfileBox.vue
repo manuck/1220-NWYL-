@@ -2,7 +2,7 @@
     <div class="card-wrapper">
         <div class="card-title">
             <span v-if="$store.state.user">
-                {{$store.state.user.displayName}} 님의 프로필
+               {{$store.state.user.displayName}}님의 프로필
             </span>
             <span v-else>
                 로그인 해 주세요
@@ -27,6 +27,8 @@
 <script>
 import LoginModal from '@/components/authenticate/LoginModal'
 import store from '@/store'
+
+
 let md5 = require('md5');
 
 export default {

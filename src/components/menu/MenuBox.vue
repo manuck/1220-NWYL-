@@ -18,7 +18,7 @@
             <span v-bind:id="menu.id">{{ menu.score }} </span>
             <span>/ 5</span> -->
             <div class="star-ratings-css">
-            <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 0%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
             </div>
         </div>

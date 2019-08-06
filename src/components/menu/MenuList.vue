@@ -3,7 +3,7 @@
         <div class="menulist-wrapper">
             <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>
             <MenuModal />
-            <AddMenu></AddMenu>
+            <AddMenu v-if="$store.state.admin===admin"></AddMenu>
         </div>
     </div>
 </template>
@@ -12,6 +12,7 @@
 import MenuBox from './MenuBox'
 import MenuModal from './MenuModal'
 import AddMenu from './AddMenu'
+import store from '@/store.js'
 import FirebaseService from '@/services/FirebaseService'
 
 export default {
@@ -32,6 +33,7 @@ export default {
     },
 	mounted() {
         this.getMenus()
+        console.log($store.state.admin)
 	},
 	methods: {
 		async getMenus() {
