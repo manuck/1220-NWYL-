@@ -3,11 +3,13 @@
     float: left;
     height: 100vh;
     width: 200px;
-    background: rgba(233, 0, 0, 0.2);
+    box-shadow: 0 0 5px 0 gray;
+    // background: rgba(233, 0, 0, 0.2);
 }
 .admin-aside-flex {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
     width: 100%;
 }
@@ -15,23 +17,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
-    font-size: 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    height: 80px;
+    font-family: 'Sniglet', cursive;
+    font-size: 24px;
+}
+.admin-aside-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.admin-aside-profile-image {
+    height: 130px;
+    width: 130px;
+    border: 1px solid black;
+    border-radius: 100px;
+    background-image: url("../../assets/images/aboutus/ldm_emoji.png");
+    background-size: cover;
+    box-shadow: 0 0 5px 0 gray;
+}
+.admin-aside-profile-info {
+    margin: 16px 0;
+    font-size: 18px;
 }
 .admin-aside-menu {
     display: flex;
     flex-direction: column;
+    width: 100%;
     padding: 10px;
 }
 .admin-aside-li {
     display: flex;
     width: 100%;
-    padding: 16px 10px;
+    padding: 16px 16px;
     border-radius: 5px;
     font-size: 16px;
     &:hover {
-        background: rgba(233,0,0,0.4);
+        background: rgba(0,0,0,0.2);
         cursor: pointer;
+    }
+    span {
+        width: 30px;
     }
 }

@@ -1,7 +1,6 @@
 <template>
     <div>
         <AdminAside v-on:state="changeState"/>
-        <AdminHeader/>
         <div class="admin-content">
             <AdminDashBoard v-if="(this.contentstate === 'admin-dashboard') || (this.contentstate === '') "/>
             <AdminPageInfo v-if="this.contentstate === 'admin-pageinfo'"/>
