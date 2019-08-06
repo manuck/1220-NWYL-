@@ -59,16 +59,15 @@
                     <span class="icon">★</span>
                 </label>
                 </form>
-
                 <div class="submit-area">
-                <button id="formButton" @click="postComment(comment,score); clear();" class="form-button" type="button">제출</button>
+                <button v-if="$store.state.commentUserTF===false" id="formButton" @click="postComment(comment,score); clear();" class="form-button" type="button">제출</button>
                 </div>
             </v-form>
             <br><hr><br>
             <div class="modal-comment" id="commentSection" :key="$store.state.menucomments.length">
                 <!-- 댓글창 -->
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="idconsole(i); deletecomment(i);" style="position: absolute; right: 0;">삭제</button></li>
+                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="deletecomment(i);" style="position: absolute; right: 0;">삭제</button></li>
             </div>
         </div>
     </div>
@@ -94,6 +93,8 @@ export default {
     },
     mounted() {
         document.getElementById("myscore").value = 5;
+        console.log('모달에서 유저')
+        console.log(this.$store.state.user.uid)
     },
     methods: {
         postComment(comment, score) {
@@ -101,6 +102,7 @@ export default {
             return firestore.collection('menus').doc(store.state.menuid).collection("comments").add({
                 comment,
                 score,
+                userInfo: this.$store.state.user.uid,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
             }).then(function(docRef) {
                  console.log("Document written with ID: ", docRef.id);
@@ -113,24 +115,9 @@ export default {
                 // store.state.menucomments.prepend(comment)
             })
         },
-        addcomment(comment, id) {
-            var node = document.createElement("LI");
-            var textnode = document.createTextNode(comment);
-            var jbBtn = document.createElement( 'button' );
-            var jbBtnText = document.createTextNode( '삭제' );
-
-            node.appendChild(textnode);
-            jbBtn.appendChild( jbBtnText );
-
-            document.getElementById("commentSection").prepend(node)
-            // document.getElementById("commentSection").prepend( jbBtn );
-        },
         clear () {
             this.comment = ''
             this.score = 5
-        },
-        idconsole(i){
-            console.log(store.state.commentId[i-1])
         },
         deletecomment(i) {
             db.collection("menus").doc(store.state.menuid).collection("comments").doc(store.state.commentId[i-1]).delete().then(function() {
@@ -140,13 +127,6 @@ export default {
                 console.error("Error removing Comment: ", error);
             });
         },
-        modalrefresh(a) {
-            location.href="#"
-            store.state.menuid = a
-        },
-        forceUD(){
-            this.$forceUpdate
-        }
     }
 }
 </script>

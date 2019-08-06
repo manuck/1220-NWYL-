@@ -69,8 +69,6 @@ export default {
             store.state.menutag = ''
 
             store.state.menuid = a
-            console.log(typeof(a))
-            console.log(typeof(store.state.menuid))
             var docRef = db.collection("menus").doc(store.state.menuid);
             docRef.get().then(function(doc) {
                 if (doc.exists) {
@@ -93,19 +91,33 @@ export default {
             collection.onSnapshot(snapshot => {
                 store.state.menucomments = []
                 store.state.commentId = []
+                store.state.commentUserId = []
                 store.state.commentScore = 0
+                store.state.commentUserTF = false
                 var commentL = 0
                 snapshot.forEach(doc => {
                 commentL += 1
                 store.state.menucomments.push(doc.data().comment)
                 store.state.commentId.push(doc.data().id)
+                store.state.commentUserId.push(doc.data().userInfo)
                 store.state.commentScore += Number(doc.data().score)
                 });
-                console.log("score 합 : ",store.state.commentScore)
-                console.log('commentL : ',commentL)
+                if((store.state.commentUserId).includes(store.state.user.uid)){
+                    store.state.commentUserTF = true
+                }
+                else{
+                    store.state.commentUserTF = false
+                }
+                
+                // console.log("score 합 : ",store.state.commentScore)
+                // console.log('commentL : ',commentL)
+                console.log('유저 리스트?')
+                console.log(store.state.commentUserId)
+                console.log('나의 uid')
+                console.log(store.state.user.uid)
                 var res = store.state.commentScore/commentL
                 res = res.toFixed(1)
-                console.log("avg : ",res)
+                // console.log("avg : ",res)
                 document.getElementById(store.state.menuid).style.width = res*20 + "%";
                 db.collection('menus').doc(store.state.menuid).update({score:Number(res)})
                 });
@@ -117,7 +129,7 @@ export default {
             })
         },
         menuDelete(a){
-            console.log(a)
+            // console.log(a)
             db.collection("menus").doc(a).delete().then(function() {
                 console.log("Document successfully deleted!");
                 location.href="/menu"
