@@ -220,12 +220,30 @@ export default {
 		}) 
 	},
 	getUserList() {
-		const userList = functions.httpsCallable('userList')
-		return userList().then(result => {
-			console.log(result)
+		const userList2 = functions.httpsCallable('userList2')
+		userList2()
+		.then(data => {
+			alert("성공      " + data.data[0].uid)
+			console.log(data)
+	
 		})
-		// return userList().then(result => {
-		// 	console.log(result.message)
+		.catch(err => {
+			alert("실패      " + err)
+		})
+		// var config = {
+		// 	headers: {
+		// 	  'Access-Control-Allow-Origin': '*',
+		// 	  'dataType': "jsonp"
+		// 	}
+		//   };
+		// alert("씨발")
+		// console.log(config)
+
+		// userList2().then( data => {
+		// 	alert(data)
+		// 	return data
 		// })
+
+		
 	}
 }

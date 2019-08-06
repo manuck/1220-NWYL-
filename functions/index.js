@@ -1,5 +1,8 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const cors = require('cors')({
+  origin: true
+})
 admin.initializeApp();
 
 exports.addAdminRole = functions.https.onCall((data, context) => {
@@ -41,16 +44,22 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 //           });
 // }) 
 
-exports.userList = functions.https.onRequest(async (req, res) => {
+exports.userList2 = functions.https.onRequest(async (req, res) => {
+  res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS")
+  res.setHeader("Access-Control-Max-Age", "3600")
+  res.setHeader("Access-Control-Allow-Headers", "Origin,Accept, authorization, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Credentials", "true")
+  
   let userlist = new Array()
   await admin.auth().listUsers(1000)
-  .then(listUsersResult => {
-    console.log("userlist ..." + userlist)
-    listUsersResult.users.forEach(userRecord => {
+    .then(listUsersResult => {
+      listUsersResult.users.forEach(userRecord => {
       userlist.push(userRecord.toJSON())
+      })
     })
-    
-  })
-  console.log("userlist response 직전 " + userlist)
-  res.status(200).send(userlist)
+    //const result = JSON.stringify(userlist)
+    res.status(200).send(
+      {data:userlist}
+    )
 }) 

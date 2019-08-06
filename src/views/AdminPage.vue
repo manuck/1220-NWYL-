@@ -120,6 +120,7 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 import store from '@/store'
+import { Promise } from 'q';
 
 export default {
     name: 'AdminPage',
@@ -152,7 +153,8 @@ export default {
         },
         showList() {
             const result = FirebaseService.getUserList()
-            alert(result)
+            //alert(result)
+            
         }
 
     }
