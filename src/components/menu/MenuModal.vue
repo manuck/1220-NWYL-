@@ -21,6 +21,7 @@
             </div>
             <v-form>
                 <v-text-field
+                    id="commentTitle"
                     v-model="comment"
                     :counter="100"
                     label="comment"
@@ -61,13 +62,18 @@
                 </form>
                 <div class="submit-area">
                 <button v-if="$store.state.commentUserTF===false" id="formButton" @click="postComment(comment,score); clear();" class="form-button" type="button">제출</button>
+                <button id="editformButton" @click="clear();" class="form-button" type="button" style="display:none;">수정</button>
                 </div>
             </v-form>
             <br><hr><br>
             <div class="modal-comment" id="commentSection" :key="$store.state.menucomments.length">
                 <!-- 댓글창 -->
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button v-if="$store.state.user.uid===$store.state.commentUserId[i-1]" class="form-button" @click="deletecomment(i);" style="position: absolute; right: 0;">삭제</button></li>
+                <myli :id="i" v-for="i in $store.state.menucomments.length" style="margin-top:20px; display: block">{{ $store.state.menucomments[i-1] }}
+                    <button v-if="$store.state.user.uid===$store.state.commentUserId[i-1]" id="commentEdit" class="form-button" @click="editComment(i)" style="position: absolute; right: 90px;">수정</button>
+                    <!-- <a v-if="$store.state.user.uid===$store.state.commentUserId[i-1]" id="modal-button" class="button" href="#menu-modal" @click="">수정</a> -->
+                    <button v-if="$store.state.user.uid===$store.state.commentUserId[i-1]" class="form-button" @click="deletecomment(i);" style="position: absolute; right: 0;">삭제</button>
+                </myli>
             </div>
         </div>
     </div>
@@ -76,8 +82,8 @@
 <script>
 import firebase from 'firebase/app'
 import store from '@/store.js'
-import { firestore } from '@/services/FirebaseService'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-// modalrefresh($store.state.menuid)
+import { firestore } from '@/services/FirebaseService'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
 const db = firebase.firestore();
 
 export default {
@@ -85,6 +91,8 @@ export default {
     props: {
         comment: {type: String},
 		score: {type: Number},
+    },
+    components: {
     },
     data() {
         return {
@@ -127,6 +135,33 @@ export default {
                 console.error("Error removing Comment: ", error);
             });
         },
+        editComment(i) {
+            // var btn = document.createElement("BUTTON");
+            // btn.innerHTML = "제출";
+            // var e = document.getElementsByTagName('myli')[i-1];
+            // console.log(e)
+            // var d = document.createElement('input');
+            // d.setAttribute("id", "mycomment")
+            // d.innerHTML = e.innerHTML;
+            // e.parentNode.replaceChild(d, e);
+            // document.getElementById('mycomment').appendChild(btn);
+
+            document.getElementById("editformButton").style.display = "block";
+            document.getElementById("commentEdit").style.display = "none";
+            var myC = db.collection("menus").doc(store.state.menuid).collection("comments").doc(store.state.commentId[i-1])
+            myC.get().then(function(doc) {
+                if (doc.exists) {
+                    var myComment = doc.data().comment
+                    document.querySelector("#commentTitle").parentNode.firstElementChild.textContent = myComment
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+
+        }
     }
 }
 </script>
