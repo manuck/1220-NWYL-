@@ -221,11 +221,11 @@ export default {
 	},
 	getUserList() {
 		const userList2 = functions.httpsCallable('userList2')
-		userList2()
+		return userList2()
 		.then(data => {
-			alert("성공      " + data.data[0].uid)
-			console.log(data)
-	
+			//alert("성공      " + data.data[1].customClaims.admin)
+			//console.log(data)
+			return data.data
 		})
 		.catch(err => {
 			alert("실패      " + err)

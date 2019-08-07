@@ -104,15 +104,16 @@
                                     required
                             ></v-text-field> 
                         </v-form>
-                            
-
                     </v-card-text>
-
                     <v-card-actions>
                         <v-btn @click="loginWithEmailAndPassword(email, password)">Admin Login</v-btn>
                     </v-card-actions>
                 </v-card>
-            </div>
+
+                <!-- 유저 리스트가 나오는 영역 임시로-->
+                <UserList v-bind:members="members" member="member">
+                </UserList>
+            </div>       
       </div>
     </div>
 </template>
@@ -121,6 +122,10 @@
 import FirebaseService from '@/services/FirebaseService'
 import store from '@/store'
 import { Promise } from 'q';
+import { log } from 'util';
+let md5 = require('md5');
+
+import UserList from '../components/admin/UserList'
 
 export default {
     name: 'AdminPage',
@@ -135,8 +140,13 @@ export default {
       height: undefined,
       admin_email: '',
       email: '',
-      password: ''
+      password: '',
+      member: -1,
+      members: []
     }),
+    components: {
+        UserList
+    },
     methods: {
         createAdmin(email) {
             const result = FirebaseService.createAdmin(email).then( () => {
@@ -153,8 +163,16 @@ export default {
         },
         showList() {
             const result = FirebaseService.getUserList()
-            //alert(result)
-            
+            result.then( result => {
+                //var count = 0
+                this.members =  result
+                this.member = result.length
+                // console.log(result)
+                // alert(result.length)
+            }  )
+        },
+        gravatarURL(email) {
+            return `http://www.gravatar.com/avatar/${md5(email)}?s=150&d=retro`
         }
 
     }
