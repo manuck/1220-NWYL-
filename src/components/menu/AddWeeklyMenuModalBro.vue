@@ -7,18 +7,18 @@
 
 <script>
 // const testdata = require('./5thJul2019.json')
-import { eventBus } from '@/main'
+import { eventBus1 } from '@/main'
 import AddWeeklyMenuModal from './AddWeeklyMenuModal'
 
 export default {
     name: "AddWeeklyMenuModalBro",
-    props: [
+    props: {
         // 부모로부터 값을 받는 props
-        'date',
-        'korean',
-        'star',
-        'special',
-    ],
+        // 'date',
+        // 'korean',
+        // 'star',
+        // 'special',
+    },
     computed: {
         // 부모에게서 전달된 값을 this로 활용 가능.
     },

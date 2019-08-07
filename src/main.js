@@ -31,10 +31,19 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-export const eventBus = new Vue({
+export const eventBus1 = new Vue({
 	methods: {
 		menuSended(date) {
 			this.$emit('menuSended', date)
 		}
 	}
+})
+// 형제 컴포넌트 간 값 전달 방법
+export const eventBus = new Vue({
+  // 메소드로 만들어 형제 컴포넌트에서 선언한 userWasEdited를 메소드화
+  methods:{
+    userWasEdited(date){
+      this.$emit('userWasEdited', date)
+    }
+  }
 })

@@ -40,7 +40,7 @@ export default {
     name: 'WeeklyMenuPage',
     data: function () {
         return {
-            data
+            data: {},
         }
     },
     components: {

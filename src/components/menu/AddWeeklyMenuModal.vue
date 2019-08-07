@@ -43,17 +43,17 @@
 </template>
 
 <script>
-import { eventBus } from '@/main'
+import { eventBus1 } from '@/main'
 // const testdata = require('./5thJul2019.json')
 
 export default {
     name: "AddWeeklyMenuModal",
-    props: [
-        'date',
-        'korean',
-        'star',
-        'special',
-    ],
+    props: {
+        // 'date',
+        // 'korean',
+        // 'star',
+        // 'special',
+    },
     data() {
         return {
             menudata: [],
