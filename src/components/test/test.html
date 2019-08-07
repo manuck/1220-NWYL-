@@ -1,0 +1,47 @@
+<template>
+  <body>
+  <div id="app">
+    <div>
+      <h2>
+        메뉴 영역
+      </h2>
+      <!-- 경로 이동은 router-link 를 사용한다. -->
+      <router-link to="/">메인페이지</router-link>
+      <router-link to="/foo">Foo페이지</router-link>
+      <router-link to="/bar/test">Bar페이지</router-link>
+      <router-link to="/aaaaaaaaaaaaaa">잘못된 경로</router-link>
+    </div>
+    <div>
+      <h2>
+        컨텐츠 영역
+      </h2>
+      <!-- 여기에 라우터에서 매칭된 컴포넌트가 표시된다. -->
+      <router-view></router-view>
+    </div>
+  </div>
+  </body>
+</template>
+
+<script>
+    const Foo = { template: '<div>foo</div>' }
+    const Bar = { template: '<div>bar</div>' }
+
+    const routes = [
+      {
+        path: '/foo',
+        component: Foo,
+      }
+      {
+        path: '/bar',
+        component: Bar,
+      },
+    ]
+
+    const router = new VueRouter({
+      routes
+    })
+
+    const app = new Vue({
+      router
+    }).$mount('#app')
+</script>

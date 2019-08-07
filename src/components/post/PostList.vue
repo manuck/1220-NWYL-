@@ -24,9 +24,6 @@ export default {
 	props: {
 		limits: {type: Number, default: 3},
 		loadMore: {type: Boolean, default: false}
-		// column: {type: Number, default: 1},
-		// limits: {type: Number, default: 4},
-		// loadMore: {type: Boolean, default: false}
 	},
 	data() {
 		return {
@@ -45,8 +42,8 @@ export default {
 		},
 		loadMorePosts() {
 			this.limits += 2
-		},
-	}
+		}
+	},
 }
 </script>
 

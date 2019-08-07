@@ -9,7 +9,9 @@ import PortfolioNewPage from './views/PortfolioNewPage.vue'
 import PostNewPage from './views/PostNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
+import PortfolioDetailPage from './views/PortfolioDetailPage'
 import AdminPageView from './views/AdminPageView.vue'
+import test3 from './views/test3.vue'
 
 Vue.use(Router)
 
@@ -63,9 +65,19 @@ export default new Router({
 			component: GitlabGraph2
 		},
 		{
+			path: '/portfolio/:Pfid',
+			name: 'details',
+			component: PortfolioDetailPage,
+    },
+		{
 			path: '/adminview',
 			name: 'adminview',
 			component: AdminPageView
 		},
+    {
+      path: '/test3',
+      name: test3,
+      component: test3,
+    },
   ]
 })

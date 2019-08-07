@@ -15,7 +15,8 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-wrapper"></div>
+            <div class="footer-wrapper">
+            </div>
         </div>
     </div>
 </template>
@@ -31,7 +32,7 @@ export default {
         PostList,
         Navbar,
     },
-//     mounted() {
+    mounted() {
 //         console.log(this.$store.state.imgSrc)
 //         var cur_time = new Date();
 //         var uid = store.state.user.displayName;
@@ -40,7 +41,7 @@ export default {
 //         store.state.vueName.time = cur_time;
 //         store.state.vueName.userid = uid;
 //         store.dispatch('addLog');
-//     }
+    },
 }
 </script>
 

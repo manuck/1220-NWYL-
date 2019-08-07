@@ -10,7 +10,7 @@
                 <div class="modal-info">
                     <!-- <input @change="test" id="file" ref="myfile" name="weekly-menu" type="file" class="filecontainer"/> -->
                     <input @change="getMenuData" id="menudata" type="file" class="filecontainer"/>
-                    <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
+                    <button id="formButton" @click="sendData()" class="form-button" disabled="" type="button">제출</button>
                 </div>
             </div>
             <div class="modal-content2">
@@ -43,22 +43,36 @@
 </template>
 
 <script>
+import { eventBus1 } from '@/main'
 // const testdata = require('./5thJul2019.json')
 
 export default {
     name: "AddWeeklyMenuModal",
+    props: {
+        // 'date',
+        // 'korean',
+        // 'star',
+        // 'special',
+    },
     data() {
         return {
             menudata: [],
+            // weeklymenu: {}
         }
     },
+    created() {
+        this.menudata.date = this.date,
+        this.menudata.korean = this.korean,
+        this.menudata.star = this.star,
+        this.menudata.special = this.special
+    },
     mounted() {
-        
+
     },
     methods: {
         getMenuData() {
             const selectedFile = document.querySelector('#menudata').files[0]
-            
+
             var reader = new FileReader()
             reader.onload = (e) => {
                 this.menudata = JSON.parse(e.target.result)
@@ -97,6 +111,16 @@ export default {
                     query.appendChild(cell)
                 }
             }
+        },
+        sendData() {
+            this.$emit("child", this.menudata)
+            console.log('sendData')
+            // eventBus 를 통해서 형제 컴포넌트에게 값을 전송할 수 있다.
+            // eventBus가 하나의 부모 컴포넌트 역할을 하며  $emit를 통해서 신호를 받는다.
+            // eventBus.$emit('userWasEdited', new Date()) 한개의 경우 전송 방법
+            // main.js에 선언한 메소드로 전달
+            eventBus.menuSended(new Date() )
+            console.log('eventBus.menuSended')
         }
     },
 }
@@ -105,4 +129,3 @@ export default {
 <style lang="scss">
 @import './AddWeeklyMenuModal.scss';
 </style>
-

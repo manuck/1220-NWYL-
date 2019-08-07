@@ -1,4 +1,4 @@
-s<template>
+<template>
     <div style="height: 100%; width: 100%;">
         <div class="main-bg"/>
         <div class="main-wrapper">
@@ -23,9 +23,10 @@ s<template>
                             <tbody id="calendar-body" style="text-align: center;"/>
                         </table>
                     </div>
+                    <AddWeeklyMenuModal/>
+                    <AddWeeklyMenuModalBro/>
                 </div>
             </div>
-            <AddWeeklyMenuModal/>
         </div>
     </div>
 </template>
@@ -33,12 +34,19 @@ s<template>
 <script>
 import SideNav from '@/components/mainview/SideNav'
 import AddWeeklyMenuModal from '@/components/menu/AddWeeklyMenuModal'
+import AddWeeklyMenuModalBro from '@/components/menu/AddWeeklyMenuModalBro'
 
 export default {
     name: 'WeeklyMenuPage',
+    data: function () {
+        return {
+            data: {},
+        }
+    },
     components: {
         SideNav,
         AddWeeklyMenuModal,
+        AddWeeklyMenuModalBro,
     },
     mounted() {
         this.createCalendar()
