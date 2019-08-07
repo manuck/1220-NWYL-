@@ -82,7 +82,7 @@ html {
     height: 55vh;
     width: 100%;
     // 임시 border
-    border: 2px solid black;
+    // border: 2px solid black;
 }
 .section-1-content-menu {
     // display: flex;
@@ -93,86 +93,73 @@ html {
     width: 100%;
     // border: 2px solid black;
 }
-.sec-1-cloud {
+svg {
+    height: 100%;
+    width: 100%;
+    display: block;
     position: absolute;
-    height: 240px;
-    width: 240px;
-    top: 20%;
-    left: 32%;
-    transform-style: preserve-3d;
-    transform: rotateZ(90deg) rotateY(110deg);
-    z-index: 1;
+}
+  
+.ball {
+    position: absolute;
+    top: 5%;
+    width: 100px;
+    height: 100px;
+    background-color: #f7f7f7;
+    border-radius: 50%;
+
+    offset-path: path('M380,14.6C85.4,14.6,40.4,8.7,31.6,169.5v5.5  c0,0,0,5.5,0,5.5C40.4,341.3,85.4,335.4,380,335.4s339.6,5.9,348.4-154.9c0,0,0-5.5,0-5.5v-5.5C719.6,8.7,674.6,14.6,380,14.6z');
+    offset-distance: 0%;
+
+    animation: red-ball 20s linear infinite;
+}
+@mixin circle($mod) {
+    position: absolute;
+    top: 5%;
+    // border: 2px solid black;
+    width: 100px;
+    height: 100px;
     background: #f7f7f7;
-    @mixin circle($mod) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 300px;
-        width: 300px;
-        // border: 2px solid black;
-        border-radius: 50%;
-        animation: $mod 80s linear infinite;
-        background: #f7f7f7;
-    }
-    @for $i from 1 through 9 {
-        .c#{$i} {
-            @include circle("c#{$i}");
-        }
-    }
-    .c1, .c3, .c5, .c7 {
-        height: 230px;
-        width: 230px;
-        z-index: 1;
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius: 50%;
-            z-index: -3;
-            transform: translate(1px);
-            // box-shadow: 0 0 5px 3px black;
-        }
-    }
-    .c2, .c4, .c6, .c8 {
-        height: 200px;
-        width: 200px;
-        z-index: 1;
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius: 50%;
-            z-index: -3;
-            transform: translate(1px);
-            // box-shadow: 0 0 5px 3px black;
-        }
-    }
-    .c9 {
-        &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            border-radius: 50%;
-            z-index: -3;
-            transform: translate(1px);
-            // box-shadow: 0 0 5px 3px black;
-        }
+    border-radius: 50%;
+    z-index: 2;
+
+    offset-path: path('M380,14.6C85.4,14.6,40.4,8.7,31.6,169.5v5.5  c0,0,0,5.5,0,5.5C40.4,341.3,85.4,335.4,380,335.4s339.6,5.9,348.4-154.9c0,0,0-5.5,0-5.5v-5.5C719.6,8.7,674.6,14.6,380,14.6z');
+    offset-distance: 0%;
+
+    animation: $mod 200s linear infinite;
+}
+@for $i from 1 through 20 {
+    .ball#{$i} {
+        @include circle("ball#{$i}");
+        // &::before {
+        //     content: "";
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     bottom: 0;
+        //     right: 0;
+        //     border-radius: 50%;
+        //     z-index: -1;
+        //     box-shadow: 0 0 5px 5px gray;
+        // }
     }
 }
-@for $i from 1 through 9 {
-    @keyframes c#{$i} {
-        0% { transform: rotateZ((0 + $i * 40)+deg) translateX(250px) rotateZ(-(0 + $i * 40)+deg) rotateY(-110deg) }
-        50% { transform: rotateZ((180 + $i * 40)+deg) translateX(200px) rotateZ(-(180 + $i * 40)+deg) rotateY(-110deg) }
-        100% { transform: rotateZ((360 + $i * 40)+deg) translateX(250px) rotateZ(-(360 + $i * 40)+deg) rotateY(-110deg) }
+.ball1, .ball3, .ball7, .ball11, .ball13, .ball17, .ball20 {
+    width: 120px;
+    height: 120px;
+}
+.ball2, .ball5, .ball8, .ball12, .ball14, .ball18 {
+    height: 140px;
+    width: 140px;
+}
+.ball4, .ball6, .ball9, .ball10, .ball16 {
+    height: 180px;
+    width: 180px;
+}
+@for $i from 1 through 20 {
+    @keyframes ball#{$i} {
+        from {offset-distance: 0 + $i*5%}
+        to {offset-distance: 100 + $i*5%}
     }
 }
 .section-1-menu-box {

@@ -5,27 +5,24 @@
             <div class="body-wrapper">
                 <div class="section-1">
                     <div class="section-1-title">
-                        <span style="font-size:100px;">
+                        <span style="font-size:100px; line-height:100px;">
                             12<span style="color: #c8e19d;">15</span>
                         </span>
                     </div>
                     <div class="section-1-content">
                         <div class="section-1-content-menu">
-                            <div class="sec-1-cloud">
-                                <div class="c1"/>
-                                <div class="c2"/>
-                                <div class="c3"/>
-                                <div class="c4"/>
-                                <div class="c5"/>
-                                <div class="c6"/>
-                                <div class="c7"/>
-                                <div class="c8"/>
-                                <div class="c9"/>
-                            </div>
+                            <!-- for shadow -->
+                            <div v-for="i in 20" :key="i" :class="'ball'+i" style="box-shadow: 0 0 0 5px black; z-index: -1;"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 760 350" style="enable-background:new 0 0 760 350;" xml:space="preserve">
+                                <path id="XMLID_3_" style="fill:#f7f7f7;stroke:#000000;stroke-miterlimit:10;" d="M380,14.6C85.4,14.6,40.4,8.7,31.6,169.5v5.5  c0,0,0,5.5,0,5.5C40.4,341.3,85.4,335.4,380,335.4s339.6,5.9,348.4-154.9c0,0,0-5.5,0-5.5v-5.5C719.6,8.7,674.6,14.6,380,14.6z"/>
+                            </svg>
+                            <div v-for="i in 20" :key="i" :class="'ball'+i"/>
+
                             <!-- <div id="main-korean" class="section-1-menu-box"></div> -->
                             <!-- <div id="main-special" class="section-1-menu-box"></div> -->
                             <!-- <div id="main-star" class="section-1-menu-box"></div> -->
                         </div>
+                        <SideNav/>
                     </div>
                     <div class="section-1-scroll">
                         <div class="section-1-content-image">
@@ -33,7 +30,6 @@
                         </div>
                         <button class="scroll-round" v-on:click="pageScroll"/>
                     </div>
-                    <SideNav/>
                 </div>
                 <div class="section-2">
                     <div class="col1">
