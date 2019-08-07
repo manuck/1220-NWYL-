@@ -67,7 +67,7 @@
             <div class="modal-comment" id="commentSection" :key="$store.state.menucomments.length">
                 <!-- 댓글창 -->
                 <!-- 이곳에 댓글창 구현해 주세요 -->
-                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button class="form-button" @click="deletecomment(i);" style="position: absolute; right: 0;">삭제</button></li>
+                <li v-for="i in $store.state.menucomments.length" style="margin-top:20px">{{ $store.state.menucomments[i-1] }}<button v-if="$store.state.user.uid===$store.state.commentUserId[i-1]" class="form-button" @click="deletecomment(i);" style="position: absolute; right: 0;">삭제</button></li>
             </div>
         </div>
     </div>

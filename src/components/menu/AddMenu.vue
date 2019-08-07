@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a id="modal-button" class="button" href="#menu-add-modal" @click="">
+        <a id="modal-button" class="button" href="#menu-add-modal">
             메뉴 추가
         </a>
         <AddMenuModal></AddMenuModal>
