@@ -230,20 +230,9 @@ export default {
 		.catch(err => {
 			alert("실패      " + err)
 		})
-		// var config = {
-		// 	headers: {
-		// 	  'Access-Control-Allow-Origin': '*',
-		// 	  'dataType': "jsonp"
-		// 	}
-		//   };
-		// alert("씨발")
-		// console.log(config)
-
-		// userList2().then( data => {
-		// 	alert(data)
-		// 	return data
-		// })
-
-		
+	},
+	getDate(date) {
+		const result = firebase.firestore.Timestamp.fromDate()
+		return result
 	}
 }

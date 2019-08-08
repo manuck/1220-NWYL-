@@ -8,11 +8,6 @@
                 <v-card
                     v-if="($store.state.admin===true)"
                     class="mx-auto"
-                    :flat="flat"
-                    :loading="loading"
-                    :outlined="outlined"
-                    :elevation="elevation"
-                    :raised="raised"
                     :width="width"
                     :height="height"
                     @keyup.enter="createAdmin(admin_email)"        
@@ -46,11 +41,6 @@
                 <v-card
                 v-if="($store.state.admin===false)"
                     class="mx-auto"
-                    :flat="flat"
-                    :loading="loading"
-                    :outlined="outlined"
-                    :elevation="elevation"
-                    :raised="raised"
                     :width="width"
                     :height="height"          
                 >
@@ -72,11 +62,6 @@
                 <v-card 
                 v-if="($store.state.admin==='')"
                 class="mx-auto"
-                :flat="flat"
-                :loading="loading"
-                :outlined="outlined"
-                :elevation="elevation"
-                :raised="raised"
                 :width="width"
                 :height="height"
                 @keyup.enter="loginWithEmailAndPassword(email, password)"
@@ -110,9 +95,9 @@
                     </v-card-actions>
                 </v-card>
 
-                <!-- 유저 리스트가 나오는 영역 임시로-->
-                <UserList v-bind:members="members" member="member">
-                </UserList>
+                <!-- 유저 리스트가 나오는 영역 임시로  -->
+                <component v-bind:is="userlistCompo" v-bind:members="members" member="member">
+                </component>
             </div>       
       </div>
     </div>
@@ -121,28 +106,19 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 import store from '@/store'
-import { Promise } from 'q';
-import { log } from 'util';
-let md5 = require('md5');
-
 import UserList from '../components/admin/UserList'
 
 export default {
     name: 'AdminPage',
     data: () => ({
-      flat: false,
-      media: true,
-      loading: false,
-      outlined: false,
-      elevation: undefined,
-      raised: false,
       width: 400,
       height: undefined,
       admin_email: '',
       email: '',
       password: '',
       member: -1,
-      members: []
+      members: [],
+      userlistCompo: ''
     }),
     components: {
         UserList
@@ -167,14 +143,11 @@ export default {
                 //var count = 0
                 this.members =  result
                 this.member = result.length
+                this.userlistCompo = 'UserList'
                 // console.log(result)
                 // alert(result.length)
             }  )
-        },
-        gravatarURL(email) {
-            return `http://www.gravatar.com/avatar/${md5(email)}?s=150&d=retro`
         }
-
     }
 }
 </script>
