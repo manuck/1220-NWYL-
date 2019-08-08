@@ -45,10 +45,10 @@ export default {
         this.$store.watch(
             (state) => state.selected,
             (newValue, oldValue) => {
-                // console.log(`Updating from ${oldValue} to ${newValue}`);
+                console.log(`Updating from ${oldValue} to ${newValue}`);
                 // console.log(store.state.selected)
                 this.getSelectMenus(newValue)
-
+                
             // Do whatever makes sense now
             // if (newValue === 'success') {
             // this.complex = {

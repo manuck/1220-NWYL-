@@ -106,7 +106,7 @@ export default {
 				})
 	},
   // 회원가입을 통해 생성한 계정으로 로그인하기
-  signInWithEmailAndPassword(email, password) {
+  	signInWithEmailAndPassword(email, password) {
     return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
 		store.dispatch('getUser', result.user)
       	return result
@@ -121,7 +121,7 @@ export default {
 		}
 		console.error('[SignIn Error]',error)
     })
-  },
+  	},
   // 구글 계정으로 로그인하기 (팝업)
 	loginWithGoogle() {
 		let provider = new firebase.auth.GoogleAuthProvider()
