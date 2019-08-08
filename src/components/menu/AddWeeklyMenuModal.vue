@@ -10,8 +10,8 @@
                 <div class="modal-info">
                     <!-- <input @change="test" id="file" ref="myfile" name="weekly-menu" type="file" class="filecontainer"/> -->
                     <input @change="getMenuData" id="menudata" type="file" class="filecontainer"/>
-                    <a v-on:click="sendData">asd</a>
-                    <button id="formButton" @click="sendData" class="form-button" disabled="" type="button">제출</button>
+                    <!-- <button id="formButton" @click="sendData" class="form-button" disabled="" type="button">제출</button> -->
+                    <button @click="sendData" class="form-button" type="button">제출</button>
                 </div>
             </div>
             <div class="modal-content2">
@@ -44,7 +44,10 @@
 </template>
 
 <script>
-import { eventBus1 } from '@/main'
+import { eventBus } from '@/main'
+import firebase from 'firebase/app'
+
+const db = firebase.firestore();
 // const testdata = require('./5thJul2019.json')
 
 export default {
@@ -56,10 +59,14 @@ export default {
         // 'special',
     },
     data() {
+        // tmp: {{menudata.id}},
         return {
             menudata: []
-        }
+        },
     },
+    props: {
+        menudata: Object,
+    }
     created() {
         this.menudata.date = this.date,
         this.menudata.korean = this.korean,
@@ -67,7 +74,7 @@ export default {
         this.menudata.special = this.special
     },
     mounted() {
-
+        console.log(tmp)
     },
     methods: {
         getMenuData() {
@@ -112,8 +119,6 @@ export default {
                     query.appendChild(cell)
                 }
             }
-
-
         },
         sendData() {
             // console.log(this.menudata)
@@ -125,6 +130,17 @@ export default {
             // main.js에 선언한 메소드로 전달
             // eventBus.menuSended(new Date() )
             console.log('eventBus.menuSended')
+        },
+        menudatafunction(a) {
+          store.state.menudate = ''
+          store.state.korean = ''
+          store.state.star = ''
+          store.state.special = ''
+
+          store.state.menudataid = a
+          console.log(typeof(a))
+          console.log(typeof(store.state.menudataid))
+          var docRef = db.collection("Weeklymenus").doc(store.state.menudataid);
         }
     },
 }
