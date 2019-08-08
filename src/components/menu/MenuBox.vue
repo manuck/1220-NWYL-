@@ -72,10 +72,10 @@ export default {
             var docRef = db.collection("menus").doc(store.state.menuid);
             docRef.get().then(function(doc) {
                 if (doc.exists) {
-                    console.log("MENUS data:", doc.data());
+                    // console.log("MENUS data:", doc.data());
                     store.state.menuname = doc.data().name
                     store.state.menuimg = doc.data().image
-                    console.log(doc.data().tags)
+                    // console.log(doc.data().tags)
                     store.state.menutag = doc.data().tags
                 } else {
                     // doc.data() will be undefined in this case
@@ -87,7 +87,7 @@ export default {
         },
         commentfunction() {
             const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
-            console.log('commentfucntion:',collection)
+            // console.log('commentfucntion:',collection)
             collection.onSnapshot(snapshot => {
                 store.state.menucomments = []
                 store.state.commentId = []
@@ -111,10 +111,10 @@ export default {
                 
                 // console.log("score 합 : ",store.state.commentScore)
                 // console.log('commentL : ',commentL)
-                console.log('유저 리스트?')
-                console.log(store.state.commentUserId)
-                console.log('나의 uid')
-                console.log(store.state.user.uid)
+                // console.log('유저 리스트?')
+                // console.log(store.state.commentUserId)
+                // console.log('나의 uid')
+                // console.log(store.state.user.uid)
                 var res = store.state.commentScore/commentL
                 res = res.toFixed(1)
                 // console.log("avg : ",res)
@@ -125,7 +125,7 @@ export default {
         scorefunction(){
             const collection = db.collection('menus').doc(store.state.menuid)
             collection.onSnapshot(function(doc){
-                console.log("Current score: ", doc.data().score)
+                // console.log("Current score: ", doc.data().score)
             })
         },
         menuDelete(a){

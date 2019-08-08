@@ -62,7 +62,7 @@
                 </form>
                 <div class="submit-area">
                 <button v-if="$store.state.commentUserTF===false" id="formButton" @click="postComment(comment,score); clear();" class="form-button" type="button">제출</button>
-                <button id="editformButton" @click="clear();" class="form-button" type="button" style="display:none;">수정</button>
+                <button id="editformButton" @click="editPost(comment, score); clear();" class="form-button" type="button" style="display:none;">수정</button>
                 </div>
             </v-form>
             <br><hr><br>
@@ -101,26 +101,21 @@ export default {
     },
     mounted() {
         document.getElementById("myscore").value = 5;
-        console.log('모달에서 유저')
-        console.log(this.$store.state.user.uid)
     },
     methods: {
         postComment(comment, score) {
-            console.log('postComment:', comment, score)
+            // console.log('postComment:', comment, score)
             return firestore.collection('menus').doc(store.state.menuid).collection("comments").add({
                 comment,
                 score,
                 userInfo: this.$store.state.user.uid,
                 created_at: firebase.firestore.FieldValue.serverTimestamp()
             }).then(function(docRef) {
-                 console.log("Document written with ID: ", docRef.id);
-                 console.log()
+                //  console.log("Document written with ID: ", docRef.id);
                  firestore.collection('menus').doc(store.state.menuid).collection("comments").doc(docRef.id).update({
                      id: docRef.id
                 })
-                console.log(store.state.menucomments)
-                // store.state.menuid.prepend(docRef.id)
-                // store.state.menucomments.prepend(comment)
+                // console.log(store.state.menucomments)
             })
         },
         clear () {
@@ -136,16 +131,6 @@ export default {
             });
         },
         editComment(i) {
-            // var btn = document.createElement("BUTTON");
-            // btn.innerHTML = "제출";
-            // var e = document.getElementsByTagName('myli')[i-1];
-            // console.log(e)
-            // var d = document.createElement('input');
-            // d.setAttribute("id", "mycomment")
-            // d.innerHTML = e.innerHTML;
-            // e.parentNode.replaceChild(d, e);
-            // document.getElementById('mycomment').appendChild(btn);
-
             document.getElementById("editformButton").style.display = "block";
             document.getElementById("commentEdit").style.display = "none";
             var myC = db.collection("menus").doc(store.state.menuid).collection("comments").doc(store.state.commentId[i-1])
@@ -153,6 +138,7 @@ export default {
                 if (doc.exists) {
                     var myComment = doc.data().comment
                     document.querySelector("#commentTitle").parentNode.firstElementChild.textContent = myComment
+                    store.state.commentEditId = store.state.commentId[i-1]
                 } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -161,6 +147,18 @@ export default {
                 console.log("Error getting document:", error);
             });
 
+        },
+        editPost(comment, score) {
+            db.collection("menus").doc(store.state.menuid).collection("comments").doc(store.state.commentEditId).update({
+                "comment": comment,
+                "score": score
+            })
+            .then(function() {
+                console.log("Document successfully updated!");
+                document.getElementById("editformButton").style.display = "none";
+                document.getElementById("commentEdit").style.display = "inline";
+                document.querySelector("#commentTitle").parentNode.firstElementChild.textContent = "comment"
+            });
         }
     }
 }
