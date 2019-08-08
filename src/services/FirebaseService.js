@@ -107,20 +107,20 @@ export default {
 	},
   // 회원가입을 통해 생성한 계정으로 로그인하기
   	signInWithEmailAndPassword(email, password) {
-    return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
-		store.dispatch('getUser', result.user)
-      	return result
-    })
-    .catch(function(error) {
-		let errorCode = error.code;
-		let errorMessage = error.message;
-		if(errorCode === 'auth/wrong-password') {
-			alert('Wrong password.');
-		} else {
-			alert(errorMessage);
-		}
-		console.error('[SignIn Error]',error)
-    })
+		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+			store.dispatch('getUser', result.user)
+			return result
+		})
+		.catch(function(error) {
+			let errorCode = error.code;
+			let errorMessage = error.message;
+			if(errorCode === 'auth/wrong-password') {
+				alert('Wrong password.');
+			} else {
+				alert(errorMessage);
+			}
+			console.error('[SignIn Error]',error)
+		})
   	},
   // 구글 계정으로 로그인하기 (팝업)
 	loginWithGoogle() {
@@ -134,7 +134,7 @@ export default {
 			console.error('[Google Login Error]', error)
 		})
 	},
-  // 페이스북 계정으로 로그인하기 (팝업)
+  	// 페이스북 계정으로 로그인하기 (팝업)
 	loginWithFacebook() {
 		let provider = new firebase.auth.FacebookAuthProvider()
 		return firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -189,7 +189,6 @@ export default {
 			console.error('[SignUp Error]',error)
 		})
 	},
-
   	// 로그아웃
 	signOut() {
 		firebase.auth().signOut().then(function() {
@@ -202,6 +201,20 @@ export default {
 			console.error('[SignOut Error]',error)
 		})
   	},
+
+	// admin
+	getLogs() {
+		const logsCollection = firestore.collection('LOG')
+		return logsCollection
+				.orderBy('time', 'desc')
+				.get()
+				.then((docSnapshots) => {
+					return docSnapshots.docs.map((doc) => {
+						let data = doc.data()
+						return data
+					})
+				})
+	},
 
   	// 현재 로그인된 유저정보를 반환
 	currnetUser() {

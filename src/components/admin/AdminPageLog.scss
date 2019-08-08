@@ -1,0 +1,71 @@
+.admin-pagelog-li {
+    display: flex;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.admin-header-select {
+    display: flex;
+    span {
+        margin: auto 10px;;
+    }
+}
+.custom-select {
+    position: relative;
+    width: 80px;
+    border: 1px solid black;
+    border-radius: 100px;
+    select {
+        display: none;
+    }
+}
+.custom-select-selected {
+    &::after {
+        content: "";
+        position: absolute;
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #000000 transparent transparent transparent;
+    }
+    .custom-select-arrow-active::after {
+        border-color: transparent transparent #000000 transparent;
+        top: 7px;
+    }
+}
+.custom-select-items div, .custom-select-selected {
+    color: #000000;
+    padding: 8px 16px;
+    cursor: pointer;
+    user-select: none;
+}
+.custom-select-items {
+    position: absolute;
+    background-color: #f7f7f7;
+    top: 120%;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.custom-select-hide {
+    display: none;
+}
+.custom-select-items div:hover, .same-as-selected {
+    background: rgba(0,0,0,0.1);
+    &:first-child {
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+    &:last-child {
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+}
+select {
+    background: url('../../assets/icon/down-arrow.svg') no-repeat 75% 50%;
+    background-size: 10px;
+    appearance: none;
+}
