@@ -2,7 +2,7 @@
     <div>
         <div class="menulist-wrapper">
             <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>
-            <MenuModal />
+            <MenuModal v-show="$store.state.menuimg!==''" />
             <AddMenu v-if="$store.state.admin===true"></AddMenu>
         </div>
     </div>
