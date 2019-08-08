@@ -46,17 +46,26 @@ export default {
             (state) => state.selected,
             (newValue, oldValue) => {
                 console.log(`Updating from ${oldValue} to ${newValue}`);
+                if (newValue===""){
+                    this.getMenus()
+                }
+                else{
                 // console.log(store.state.selected)
                 this.getSelectMenus(newValue)
-                
-            // Do whatever makes sense now
-            // if (newValue === 'success') {
-            // this.complex = {
-            //     deep: 'some deep object',
-            // };
-            // }
+                }
         },
         );
+        this.$store.watch(
+            (state) => state.selectedState,
+            (newValue, oldValue) => {
+                console.log(`Updating from ${oldValue} to ${newValue}`);
+                // console.log(store.state.selected)
+                if(newValue===false){
+                    this.getMenus()
+                }
+        },
+        );
+
 	},
 	methods: {
 		async getMenus() {

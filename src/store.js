@@ -20,11 +20,7 @@ export default new Vuex.Store({
         commentUserTF: false,
         commentEditId:'',
         selected:'',
-        kostate: false,
-        jastate: false,
-        chstate: false,
-        westate: false,
-        etstate: false,
+        selectedState: false,
         imgToDB: {
             imglink: '',
             user_email: '',

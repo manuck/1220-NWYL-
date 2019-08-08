@@ -40,11 +40,11 @@ export default {
     name: 'MenuPage',
     data() {
         return {
-            // koState: false,
-            // jaState: false,
-            // chState: false,
-            // weState: false,
-            // etState: false,
+            koState: false,
+            jaState: false,
+            chState: false,
+            weState: false,
+            etState: false,
         }
     },
     components: {
@@ -52,57 +52,72 @@ export default {
         MenuList,
     },
     mounted() {
-        // this.getMenus()
 
-        this.$store.watch(
-            (state) => state.selected,
-            (newValue, oldValue) => {
-                console.log(`Updating from ${oldValue} to ${newValue}`);
-                // console.log(store.state.selected)
-                this.getSelectMenus(newValue)
-                
-            // Do whatever makes sense now
-            // if (newValue === 'success') {
-            // this.complex = {
-            //     deep: 'some deep object',
-            // };
-            // }
-        },
-        );
 	},
     methods: {
         foodSelect(a){
             if(a===1){
-                store.state.selected = '한식'
+                if(this.koState===false){
+                    store.state.selected = '한식'
+                }
+                else if(this.koState===true){
+                    store.state.selected = ''
+                }
             }
             else if(a===2){
-                store.state.selected = '일식'
+                if(this.jaState===false){
+                    store.state.selected = '일식'
+                }
+                else if(this.jaState===true){
+                    store.state.selected = ''
+                }
             }
             else if(a===3){
-                store.state.selected = '중식'
+                if(this.chState===false){
+                    store.state.selected = '중식'
+                }
+                else if(this.chState===true){
+                    store.state.selected = ''
+                }
             }
             else if(a===4){
-                store.state.selected = '양식'
+                if(this.weState===false){
+                    store.state.selected = '양식'
+                }
+                else if(this.weState===true){
+                    store.state.selected = ''
+                }
             }
             else if(a===5){
-                store.state.selected = '기타'
+                if(this.etState===false){
+                    store.state.selected = '기타'
+                }
+                else if(this.etState===true){
+                    store.state.selected = ''
+                }
             }
         },
         SelectedToggle(a) {
             if(a===1){
-                store.state.kostate = !store.state.kostate
+                this.koState = !this.koState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                console.log(store.state.selectedState)
             }
             else if(a===2){
-                store.state.jastate = !store.state.jastate
+                this.jaState = !this.jaState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
             }
             else if(a===3){
-                store.state.chstate = !store.state.chstate
+                this.chState = !this.chState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
             }
             else if(a===4){
-                store.state.westate = !store.state.westate
+                this.weState = !this.weState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
             }
             else if(a===5){
-                store.state.etstate = !store.state.etstate
+                this.etState = !this.etState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
             }
         },
 
