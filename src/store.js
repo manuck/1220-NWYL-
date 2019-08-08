@@ -19,6 +19,7 @@ export default new Vuex.Store({
         commentScore: 0,
         commentUserTF: false,
         commentEditId:'',
+        selected:'',
         imgToDB: {
             imglink: '',
             user_email: '',

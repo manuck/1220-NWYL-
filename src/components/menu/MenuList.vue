@@ -34,16 +34,37 @@ export default {
             menus: [],
         }
     },
+    watch() {
+
+    },
 	mounted() {
         this.getMenus()
         // console.log('유저가 누구?')
         // console.log(this.$store.state.user.uid)
         // console.log(this.$store.state.admin)
+        this.$store.watch(
+            (state) => state.selected,
+            (newValue, oldValue) => {
+                // console.log(`Updating from ${oldValue} to ${newValue}`);
+                // console.log(store.state.selected)
+                this.getSelectMenus(newValue)
+
+            // Do whatever makes sense now
+            // if (newValue === 'success') {
+            // this.complex = {
+            //     deep: 'some deep object',
+            // };
+            // }
+        },
+        );
 	},
 	methods: {
 		async getMenus() {
             this.menus = await FirebaseService.getMenus()
-		},
+        },
+        async getSelectMenus(a) {
+            this.menus = await FirebaseService.getSelectMenus(a)
+        }
     }
 }
 </script>

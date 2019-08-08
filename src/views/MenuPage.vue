@@ -7,11 +7,11 @@
                 <div class="menu-flex">
                     <div class="filter-wrapper">
                         <ul class="country">
-                            <li value="1">한식</li>
-                            <li value="2">일식</li>
-                            <li value="3">중식</li>
-                            <li value="4">양식</li>
-                            <li value="5">기타</li>
+                            <li value="1" @click="koreaFood()">한식</li>
+                            <li value="2" @click="japanFood()">일식</li>
+                            <li value="3" @click="chinaFood()">중식</li>
+                            <li value="4" @click="westFood()">양식</li>
+                            <li value="5" @click="etcFood()">기타</li>
                         </ul>
                         <ul class="style">
                             <li>볶음</li>
@@ -34,6 +34,7 @@
 <script>
 import SideNav from '@/components/mainview/SideNav'
 import MenuList from '@/components/menu/MenuList'
+import store from '@/store.js'
 
 export default {
     name: 'MenuPage',
@@ -42,17 +43,26 @@ export default {
         MenuList,
     },
     methods: {
-        countrySelect(a) {
-            console.log('asdsad')
-            console.log(a)
-            // var museums = db.collectionGroup('landmarks').where('type', '==', 'museum');
-            // museums.get().then(function (querySnapshot) {
-            // querySnapshot.forEach(function (doc) {
-            //     console.log(doc.id, ' => ', doc.data());
-            //     });
-            // });
-
-        }
+        koreaFood(){
+            store.state.selected = '한식'
+            // console.log(store.state.selected)
+        },
+        japanFood(){
+            store.state.selected = '일식'
+            // console.log(store.state.selected)
+        },
+        chinaFood(){
+            store.state.selected = '중식'
+            // console.log(store.state.selected)
+        },
+        westFood(){
+            store.state.selected = '양식'
+            // console.log(store.state.selected)
+        },
+        etcFood(){
+            store.state.selected = '기타'
+            // console.log(store.state.selected)
+        },
     }
 }
 </script>
