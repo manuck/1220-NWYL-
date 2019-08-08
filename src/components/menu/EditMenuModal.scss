@@ -1,4 +1,4 @@
-.modal-wrapper {
+.edit-modal-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,12 +33,12 @@
     width: 100%;
     cursor: default !important;
 }
-.modal-box {
+.edit-modal-box {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    height: 800px;
+    height: 600px;
     width: 750px;
     border: 2px solid black;
     border-radius: 10px;

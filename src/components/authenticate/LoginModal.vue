@@ -10,9 +10,9 @@
         </template>
 
         <template v-if="sign === false">
-            <v-card min-width="400px">
+            <v-card min-width="400px" @keyup.enter="loginWithEmailAndPassword(email, password)">
                 <v-card-title>
-                    <span class="headline">로그인 하기</span>
+                    <span class="headline">Login</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container grid-list-md>
@@ -69,29 +69,20 @@ export default {
         SignUp
     },
     methods: {
-        async loginWithEmailAndPassword(email, password) {
-            const result = await FirebaseService.signInWithEmailAndPassword(email, password)
+        loginWithEmailAndPassword(email, password) {
+            const result = FirebaseService.signInWithEmailAndPassword(email, password)
             this.dialog = false;
-            //alert(result.credential.accessToken + " asdasd ")
-            // console.log("emailAndpassword")
-            // console.log(result.user.displayName)
         },
-        async loginWithGoogle() {
-            const result = await FirebaseService.loginWithGoogle()
+        loginWithGoogle() {
+            const result = FirebaseService.loginWithGoogle()
             this.dialog = false;
-            //alert(this.$store.state.accessToken + " asdasd " + this.$store.state.user)
-            // console.log("google")
-            // console.log(result)
         },
-        async loginWithFacebook() {
-            const result = await FirebaseService.loginWithFacebook()
+        loginWithFacebook() {
+            const result = FirebaseService.loginWithFacebook()
             this.dialog = false;
-            // console.log("facebook")
-            // console.log(result)
         },
         signOut() {
             FirebaseService.signOut();
-            //console.log("로그아웃 !")
         },
         closeSignUp: function() {
            this.sign = false;

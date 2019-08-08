@@ -7,11 +7,11 @@
                 <div class="menu-flex">
                     <div class="filter-wrapper">
                         <ul class="country">
-                            <li>한식</li>
-                            <li>일식</li>
-                            <li>중식</li>
-                            <li>양식</li>
-                            <li>기타</li>
+                            <li value="1" @click="foodSelect(1)">한식</li>
+                            <li value="2" @click="foodSelect(2)">일식</li>
+                            <li value="3" @click="foodSelect(3)">중식</li>
+                            <li value="4" @click="foodSelect(4)">양식</li>
+                            <li value="5" @click="foodSelect(5)">기타</li>
                         </ul>
                         <ul class="style">
                             <li>볶음</li>
@@ -34,13 +34,42 @@
 <script>
 import SideNav from '@/components/mainview/SideNav'
 import MenuList from '@/components/menu/MenuList'
+import store from '@/store.js'
 
 export default {
     name: 'MenuPage',
+    data() {
+        return {
+            // isStatusOn: true,
+        }
+    },
     components: {
         SideNav,
         MenuList,
     },
+    methods: {
+        foodSelect(a){
+            if(a===1){
+                store.state.selected = '한식'
+            }
+            else if(a===2){
+                store.state.selected = '일식'
+            }
+            else if(a===3){
+                store.state.selected = '중식'
+            }
+            else if(a===4){
+                store.state.selected = '양식'
+            }
+            else if(a===5){
+                store.state.selected = '기타'
+            }
+        },
+        // SelectedToggle() {
+        //     this.isStatusOn = !this.isStatusOn;
+        // },
+
+    }
 }
 </script>
 
