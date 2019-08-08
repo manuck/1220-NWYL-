@@ -40,7 +40,7 @@
 <script>
 import { eventBus } from '@/main'
 export default {
-  name: "test2",
+  name: "testDetail",
   // 부모로부터 값을 받는 props
   props:[
       'name',

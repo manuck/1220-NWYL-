@@ -120,8 +120,8 @@ export default {
             // eventBus.$emit('userWasEdited', new Date()) 한개의 경우 전송 방법
             // main.js에 선언한 메소드로 전달
             eventBus.menuSended(new Date() )
-            console.log('eventBus.menuSended')
-        }
+            console.log('menuSended')
+        },
     },
 }
 </script>

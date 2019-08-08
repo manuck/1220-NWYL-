@@ -32,10 +32,7 @@ export default {
     },
     data() {
         return {
-<<<<<<< HEAD
             // itmes: postsData.filter((post) => post.id < 42),
-=======
->>>>>>> 11e901dc9b3ad43e0807908914096ec500971d7b
             id: '',
             title: '',
             body: '',
@@ -46,7 +43,6 @@ export default {
         // form 제출 버튼 활성화
         document.getElementById("formButton").disabled = false;
     },
-<<<<<<< HEAD
     methods: {
         PostWrite(id, title, body, imgSrc) {
         if (this.$store.state.imgSrc){
@@ -60,21 +56,6 @@ export default {
                     created_at: firebase.firestore.FieldValue.serverTimestamp()
                 }).then(location.href="/post")
                 // 제출 후 location.href 반환
-=======
-        methods: {
-    PostWrite(id, title, body, imgSrc) {
-    if (this.$store.state.imgSrc){
-        imgSrc = this.$store.state.imgSrc }
-            // post write 내용 firebase에 추가
-            return firestore.collection('posts').add({
-                id,
-                title,
-                body,
-                imgSrc,
-                created_at: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(location.href="/post")
-            // 제출 후 location.href 반환
->>>>>>> 11e901dc9b3ad43e0807908914096ec500971d7b
         }
     }
 }

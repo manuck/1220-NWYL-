@@ -16,7 +16,7 @@
 <script>
 import { eventBus } from '@/main'
 export default {
-  name: "test1",
+  name: "testUpdate",
   // 부모에게 받은 값을 바로 가공하면 에러발생. 가공필요.
    props:['name','address','phone','hasDog'],
     data() {
