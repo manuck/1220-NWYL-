@@ -2,7 +2,8 @@
     <div>
         <div class="menulist-wrapper">
             <MenuBox v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>
-            <MenuModal v-show="$store.state.menuimg!==''" />
+            <MenuModal v-show="$store.state.menuname!==''" />
+            <EditMenuModal></EditMenuModal>
             <AddMenu v-if="$store.state.admin===true"></AddMenu>
         </div>
     </div>
@@ -12,6 +13,7 @@
 import MenuBox from './MenuBox'
 import MenuModal from './MenuModal'
 import AddMenu from './AddMenu'
+import EditMenuModal from './EditMenuModal'
 import store from '@/store.js'
 import FirebaseService from '@/services/FirebaseService'
 
@@ -25,6 +27,7 @@ export default {
         MenuBox,
         MenuModal,
         AddMenu,
+        EditMenuModal,
     },
     data() {
         return {
@@ -33,9 +36,9 @@ export default {
     },
 	mounted() {
         this.getMenus()
-        console.log('유저가 누구?')
-        console.log(this.$store.state.user.uid)
-        console.log(this.$store.state.admin)
+        // console.log('유저가 누구?')
+        // console.log(this.$store.state.user.uid)
+        // console.log(this.$store.state.admin)
 	},
 	methods: {
 		async getMenus() {

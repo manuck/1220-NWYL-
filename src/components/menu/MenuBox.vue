@@ -21,6 +21,9 @@
         <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
             리뷰 보기
         </a>
+        <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
+            수정
+        </a>
         <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id)">
             삭제
         </a>
@@ -31,7 +34,7 @@
 import MenuModal from './MenuModal'
 import store from '@/store.js'
 import firebase from 'firebase/app'
-
+import EditMenuModal from './EditMenuModal'
 
 const db = firebase.firestore();
 
@@ -48,9 +51,10 @@ export default {
     },
     components: {
         MenuModal,
+        EditMenuModal
     },
     mounted(){
-        console.log(this.ID)
+        // console.log(this.ID)
         var docRef = db.collection("menus").doc(this.ID)
         docRef.get().then(function(doc) {
             if (doc.exists) {
@@ -84,6 +88,9 @@ export default {
                 }).catch(function(error) {
                     console.log("Error getting MENUS:", error);
                 });
+        },
+        editMenuId(a) {
+            store.state.menuid = a
         },
         commentfunction() {
             const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
@@ -136,7 +143,7 @@ export default {
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
             })
-        }
+        }, 
 }
 }
 

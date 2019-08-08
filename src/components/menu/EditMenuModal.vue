@@ -1,7 +1,7 @@
 <template>
-    <div id="menu-add-modal" class="add-modal-wrapper">
+    <div id="menu-edit-modal" class="modal-wrapper">
         <a href="#" class="modal-back"/>
-        <div class="add-modal-box">
+        <div class="modal-box">
             <v-form>
             <v-text-field
                 v-model="name"
@@ -60,7 +60,7 @@
             </div>
     
             <div class="submit-area">
-                <button id="formButton" @click="postMenu(name, score, selected, tags, image)" class="form-button" type="button">제출</button>
+                <button id="formButton" @click="updateMenu(name, selected, tags, image)" class="form-button" type="button">수정</button>
             </div>
             </v-form>
         </div>
@@ -76,7 +76,7 @@ import { firestore } from '@/services/FirebaseService'
 const db = firebase.firestore();
 var basicImg = 'https://i.imgur.com/CmRE3B9.jpg'
 export default {
-    name: 'AddMenuModal',
+    name: 'EditMenuModal',
     components: {
         Imgur,
     },
@@ -92,27 +92,24 @@ export default {
             isStatusOn: true,
         }
     },
+    mounted(){
+    },
     methods: {
-        postMenu(name, score, selected, tags, image) {
+        updateMenu(name, selected, tags, image) {
         if (this.$store.state.imgSrc){
             image = this.$store.state.imgSrc }
         else if (image===""){
             image = basicImg
         }
                 // portfolio write 내용 firebase에 추가
-                return firestore.collection('menus').add({
-                    name,
-                    score,
-                    image,
-                    selected,
-                    tags,
-                    created_at: firebase.firestore.FieldValue.serverTimestamp()
+                return db.collection('menus').doc(store.state.menuid).update({
+                    "name": name,
+                    "image": image,
+                    "selected": selected,
+                    "tags": tags,
                 })
                 .then(function(docRef) {
-                    // console.log("Document written with ID: ", docRef.id);
-                    firestore.collection('menus').doc(docRef.id).update({
-                        id: docRef.id
-                    })
+                    console.log('업데이트!')
                     location.href="/menu"
                 })
         },
