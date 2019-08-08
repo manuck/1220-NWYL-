@@ -23,13 +23,14 @@
                             <tbody id="calendar-body" style="text-align: center;"/>
                         </table>
                     </div>
-                    <AddWeeklyMenuModal @child="getChild"/>
-                    <div class="WeeklyMenu-content">
-                        <table id="calendar">
-                            <thead>
-                                <tr>{{menudata.menus}}</tr>
-                            </thead>
-                            <tbody id="calendar-body" style="text-align: center;"/>
+                    <AddWeeklyMenuModal/>
+                    <div id="uploaded-menu">
+                        <table>
+                            <tbody>
+                                <tr id="menu-korean"/>
+                                <tr id="menu-star"/>
+                                <tr id="menu-special"/>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -48,7 +49,6 @@ export default {
     data: function () {
         return {
             data: {},
-            menudata: ''
         }
     },
     components: {
@@ -181,11 +181,6 @@ export default {
                 }
             }
         },
-        getChild: function(text) {
-            this.menudata = text
-        }
-
-
     }
 }
 </script>

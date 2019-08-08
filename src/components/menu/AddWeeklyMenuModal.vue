@@ -10,7 +10,8 @@
                 <div class="modal-info">
                     <!-- <input @change="test" id="file" ref="myfile" name="weekly-menu" type="file" class="filecontainer"/> -->
                     <input @change="getMenuData" id="menudata" type="file" class="filecontainer"/>
-                    <button id="formButton" @click="sendData()" class="form-button" disabled="" type="button">제출</button>
+                    <a v-on:click="sendData">asd</a>
+                    <button id="formButton" @click="sendData" class="form-button" disabled="" type="button">제출</button>
                 </div>
             </div>
             <div class="modal-content2">
@@ -56,8 +57,7 @@ export default {
     },
     data() {
         return {
-            menudata: [],
-            // weeklymenu: {}
+            menudata: []
         }
     },
     created() {
@@ -80,6 +80,7 @@ export default {
                 this.showMenuData(this.menudata)
             }
             reader.readAsText(selectedFile)
+
         },
         showMenuData(data) {
             this.getDataFromJson(data, "date", '#menu-date', '')
@@ -111,17 +112,20 @@ export default {
                     query.appendChild(cell)
                 }
             }
+
+
         },
         sendData() {
+            // console.log(this.menudata)
             this.$emit("child", this.menudata)
-            console.log('sendData')
+            // console.log('sendData')
             // eventBus 를 통해서 형제 컴포넌트에게 값을 전송할 수 있다.
             // eventBus가 하나의 부모 컴포넌트 역할을 하며  $emit를 통해서 신호를 받는다.
             // eventBus.$emit('userWasEdited', new Date()) 한개의 경우 전송 방법
             // main.js에 선언한 메소드로 전달
-            eventBus.menuSended(new Date() )
-            console.log('menuSended')
-        },
+            // eventBus.menuSended(new Date() )
+            console.log('eventBus.menuSended')
+        }
     },
 }
 </script>
