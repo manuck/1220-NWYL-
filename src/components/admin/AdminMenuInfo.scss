@@ -1,6 +1,7 @@
 #admin-menuinfo {
     display: none;
+    height: 100%;
     &:target {
-        display: block;
+        display: flex;
     }
 }

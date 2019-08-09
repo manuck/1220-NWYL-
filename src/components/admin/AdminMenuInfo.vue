@@ -5,27 +5,28 @@
                 <div class="admin-menu-title">
                     메뉴 정보
                 </div>
+            
+                <hr>
+                <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu>
+                <hr>
+                <MenuModal v-show="$store.state.menuname!==''" />
+                <EditMenuModal></EditMenuModal>
+                <div v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id" style="margin-top:20px">
+                    <li>{{menu.name}} 
+                        <span style="margin-left:40px">{{menu.uploadUser}}</span>
+                        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
+                            리뷰 보기
+                        </a>
+                        <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
+                            수정
+                        </a>
+                        <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id);">
+                            삭제
+                        </a>
+                    </li>
+                </div>
+                <!-- <li v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>{{ menu.name }}</li> -->
             </div>
-            <hr>
-            <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu>
-            <hr>
-            <MenuModal v-show="$store.state.menuname!==''" />
-            <EditMenuModal></EditMenuModal>
-            <div v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id" style="margin-top:20px">
-                <li>{{menu.name}} 
-                    <span style="margin-left:40px">{{menu.uploadUser}}</span>
-                    <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
-                        리뷰 보기
-                    </a>
-                    <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
-                        수정
-                    </a>
-                    <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id);">
-                        삭제
-                    </a>
-                </li>
-            </div>
-            <!-- <li v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>{{ menu.name }}</li> -->
         </div>
         <div class="admin-fullbox">
             <div class="admin-menu-title">
