@@ -106,6 +106,7 @@ export default {
                     image,
                     selected,
                     tags,
+                    uploadUser: store.state.user.email,
                     created_at: firebase.firestore.FieldValue.serverTimestamp()
                 })
                 .then(function(docRef) {
