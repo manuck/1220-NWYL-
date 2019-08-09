@@ -14,14 +14,14 @@
                             <li value="5" @click="foodSelect(5); SelectedToggle(5)">기타</li>
                         </ul>
                         <ul class="style">
-                            <li>볶음</li>
-                            <li>면</li>
-                            <li>국</li>
-                            <li>밥</li>
-                            <li>고기</li>
-                            <li>야채</li>
-                            <li>과일</li>
-                            <li>기타</li>
+                            <li @click="tagSelect(1);">볶음</li>
+                            <li @click="tagSelect(2);">면</li>
+                            <li @click="tagSelect(3);">국</li>
+                            <li @click="tagSelect(4);">밥</li>
+                            <li @click="tagSelect(5);">고기</li>
+                            <li @click="tagSelect(6);">야채</li>
+                            <li @click="tagSelect(7);">과일</li>
+                            <li @click="tagSelect(8);">기타</li>
                         </ul>
                     </div>
                     <MenuList/>
@@ -99,25 +99,126 @@ export default {
         },
         SelectedToggle(a) {
             if(a===1){
-                this.koState = !this.koState
-                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
-                console.log(store.state.selectedState)
+                if(this.koState===false){
+                    this.koState = !this.koState
+                    this.jaState = false
+                    this.chState = false
+                    this.weState = false
+                    this.etState = false
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+                else{
+                    this.koState = !this.koState
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+                // console.log(store.state.selectedState)
             }
             else if(a===2){
-                this.jaState = !this.jaState
-                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                if(this.jaState===false){
+                    this.koState = false
+                    this.jaState = !this.jaState
+                    this.chState = false
+                    this.weState = false
+                    this.etState = false
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+                else{
+                    this.jaState = !this.jaState
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
             }
             else if(a===3){
-                this.chState = !this.chState
-                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                if(this.chState===false){
+                    this.koState = false
+                    this.jaState = false
+                    this.chState = !this.chState
+                    this.weState = false
+                    this.etState = false
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+                else{
+                    this.chState = !this.chState
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
             }
             else if(a===4){
-                this.weState = !this.weState
-                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                if(this.weState===false){
+                    this.koState = false
+                    this.jaState = false
+                    this.chState = false
+                    this.weState = !this.weState
+                    this.etState = false
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+                else{
+                    this.weState = !this.weState
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
             }
             else if(a===5){
-                this.etState = !this.etState
-                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                if(this.etState===false){
+                    this.koState = false
+                    this.jaState = false
+                    this.chState = false
+                    this.weState = false
+                    this.etState = !this.etState
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+                else{
+                    this.weState = !this.weState
+                    store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                }
+            }
+        },
+        // selectTag:[false, false, false, false, false, false, false, false]
+        tagSelect(a){
+            if(a===1){
+                store.state.selectTag[0] = !store.state.selectTag[0]
+                // console.log(store.state.selectTag)
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+            }
+            else if(a===2){
+                store.state.selectTag[1] = !store.state.selectTag[1]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
+            }
+            else if(a===3){
+                store.state.selectTag[2] = !store.state.selectTag[2]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
+            }
+            else if(a===4){
+                store.state.selectTag[3] = !store.state.selectTag[3]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
+            }
+            else if(a===5){
+                store.state.selectTag[4] = !store.state.selectTag[4]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
+            }
+            else if(a===6){
+                store.state.selectTag[5] = !store.state.selectTag[5]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
+            }
+            else if(a===7){
+                store.state.selectTag[6] = !store.state.selectTag[6]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
+            }
+            else if(a===8){
+                store.state.selectTag[7] = !store.state.selectTag[7]
+                store.state.selectTag.push('asd')
+                store.state.selectTag.pop()
+                // console.log(store.state.selectTag)
             }
         },
 

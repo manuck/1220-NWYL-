@@ -105,6 +105,17 @@ export default {
 					})
 				})
 	},
+	getSelectTags(a) {
+		const menusCollection = firestore.collection('menus')
+		return menusCollection.where("tags", "array-contains", a)
+				.get()
+				.then((docSnapshots) => {
+					return docSnapshots.docs.map((doc) => {
+						let data = doc.data()
+						return data
+					})
+				})
+	},
   // 회원가입을 통해 생성한 계정으로 로그인하기
   	signInWithEmailAndPassword(email, password) {
 		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {

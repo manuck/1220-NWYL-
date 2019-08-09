@@ -21,7 +21,18 @@ export default new Vuex.Store({
         commentEditId:'',
         selected:'',
         selectedState: false,
-        contentstate:'',
+        // contentstate:'',
+        selectTag:[false, false, false, false, false, false, false, false],
+        // selectTag:{
+        //     stirfry: false,
+        //     noodle: false,
+        //     soup: false,
+        //     rice: false,
+        //     meat: false,
+        //     vegetable: false,
+        //     fruit: false,
+        //     etc: false
+        // },
         imgToDB: {
             imglink: '',
             user_email: '',

@@ -32,6 +32,8 @@ export default {
     data() {
         return {
             menus: [],
+            mytag: [],
+            tags: ["볶음", "면", "국", "밥", "고기", "야채", "과일", "기타"]
         }
     },
     watch() {
@@ -65,6 +67,24 @@ export default {
                 }
         },
         );
+        this.$store.watch(
+            (state) => state.selectTag,
+            (newValue, oldValue) => {
+                console.log(`Updating from ${oldValue} to ${newValue}`);
+                this.mytag = []
+                this.menus = []
+                for(var i in store.state.selectTag) {
+                    if(store.state.selectTag[i]===true) {
+                        console.log(this.tags[i])
+                        this.mytag.push(this.tags[i])
+                    }
+                }
+                // console.log(this.mytag)
+            // this.getSelectTags(this.tags)
+
+
+        },
+        );
 
 	},
 	methods: {
@@ -73,6 +93,9 @@ export default {
         },
         async getSelectMenus(a) {
             this.menus = await FirebaseService.getSelectMenus(a)
+        },
+        async getSelectTags(a) {
+            this.menus = await FirebaseService.getSelectTags(a)
         }
     }
 }
