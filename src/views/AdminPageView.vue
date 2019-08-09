@@ -2,11 +2,6 @@
     <div>
         <AdminAside v-on:state="changeState"/>
         <div class="admin-content">
-            <!-- <AdminDashBoard v-if="(this.contentstate === 'admin-dashboard') || (this.contentstate === '') "/>
-            <AdminPageInfo v-if="this.contentstate === 'admin-pageinfo'"/>
-            <AdminUserInfo v-if="this.contentstate === 'admin-userinfo'"/>
-            <AdminMenuInfo v-if="this.contentstate === 'admin-menuinfo'"/>
-            <AdminPageLog v-if="this.contentstate === 'admin-pagelog'"/> -->
             <AdminDashBoard />
             <AdminPageInfo />
             <AdminUserInfo />
@@ -37,13 +32,11 @@ export default {
     },
     data() {
         return {
-            // contentstate: "",
+
         }
     },
     methods: {
-        // changeState(received) {
-        //     this.contentstate = received
-        // }
+
     }
 }
 </script>

@@ -7,7 +7,8 @@
                 </div>
             
                 <hr>
-                <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu>
+                <!-- <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu> -->
+                <AddMenuAdmin v-if="($store.state.admin===true) && (1)" style="margin-top:10px; margin-bottom:10px"/>
                 <hr>
                 <MenuModal v-show="$store.state.menuname!==''" />
                 <EditMenuModal></EditMenuModal>
@@ -42,7 +43,7 @@ import FirebaseService from '@/services/FirebaseService'
 import MenuModal from '@/components/menu/MenuModal'
 import firebase from 'firebase/app'
 import EditMenuModal from '@/components/menu/EditMenuModal'
-import AddMenu from '@/components/menu/AddMenu'
+import AddMenuAdmin from '@/components/menu/AddMenuAdmin'
 
 const db = firebase.firestore();
 
@@ -51,7 +52,7 @@ export default {
     components: {
         MenuModal,
         EditMenuModal,
-        AddMenu,
+        AddMenuAdmin,
     },
     data() {
         return {
