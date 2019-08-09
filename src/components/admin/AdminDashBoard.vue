@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="admin-dashboard">
         대시보드
     </div>
 </template>

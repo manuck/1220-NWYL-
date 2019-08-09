@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-content-wrapper">
+    <div id="admin-pagelog" class="admin-content-wrapper">
         <div class="admin-fullbox">
             <div class="admin-box-header">
                 <div class="admin-header-title">

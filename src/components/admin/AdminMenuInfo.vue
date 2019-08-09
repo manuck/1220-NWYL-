@@ -1,8 +1,10 @@
 <template>
-    <div class="admin-content-wrapper">
-        <div class="admin-fullbox">
-            <div class="admin-menu-title">
-                메뉴 정보
+    <div id="admin-menuinfo">
+        <div class="admin-content-wrapper">
+            <div class="admin-fullbox">
+                <div class="admin-menu-title">
+                    메뉴 정보
+                </div>
             </div>
             <hr>
             <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu>

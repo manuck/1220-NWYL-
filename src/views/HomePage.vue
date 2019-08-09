@@ -39,22 +39,20 @@
                     </div>
                 </div>
                 <div class="section-2">
-                    <div class="col1">
-                        <div class="aboutus-image-box">
+                    <div class="aboutus-images">
+                        <div class="aboutus-image-box nsm">
                             <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
                         </div>
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box ldm">
                             <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
                         </div>
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box koh">
                             <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
                         </div>
-                    </div>
-                    <div class="col2">
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box nhw">
                             <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
                         </div>
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box chy">
                             <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
                         </div>
                     </div>
@@ -184,6 +182,10 @@ export default {
                     this.timer = null
                 }, 50)
             }
+        },
+        responsiveProfileBox() {
+            var docStyle = document.documentElement.style
+            
         }
     },
 }

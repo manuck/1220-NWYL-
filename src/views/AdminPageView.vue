@@ -2,18 +2,22 @@
     <div>
         <AdminAside v-on:state="changeState"/>
         <div class="admin-content">
-            <AdminDashBoard v-if="($store.state.contentstate === 'admin-dashboard') || ($store.state.contentstate === '') "/>
-            <AdminPageInfo v-if="$store.state.contentstate === 'admin-pageinfo'"/>
-            <AdminUserInfo v-if="$store.state.contentstate === 'admin-userinfo'"/>
-            <AdminMenuInfo v-if="$store.state.contentstate === 'admin-menuinfo'"/>
-            <AdminPageLog v-if="$store.state.contentstate === 'admin-pagelog'"/>
+            <!-- <AdminDashBoard v-if="(this.contentstate === 'admin-dashboard') || (this.contentstate === '') "/>
+            <AdminPageInfo v-if="this.contentstate === 'admin-pageinfo'"/>
+            <AdminUserInfo v-if="this.contentstate === 'admin-userinfo'"/>
+            <AdminMenuInfo v-if="this.contentstate === 'admin-menuinfo'"/>
+            <AdminPageLog v-if="this.contentstate === 'admin-pagelog'"/> -->
+            <AdminDashBoard />
+            <AdminPageInfo />
+            <AdminUserInfo />
+            <AdminMenuInfo />
+            <AdminPageLog />
         </div>
     </div>
 </template>
 
 <script>
 import AdminAside from '@/components/admin/AdminAside'
-import AdminHeader from '@/components/admin/AdminHeader'
 import AdminDashBoard from '@/components/admin/AdminDashBoard'
 import AdminPageInfo from '@/components/admin/AdminPageInfo'
 import AdminUserInfo from '@/components/admin/AdminUserInfo'
@@ -25,7 +29,6 @@ export default {
     name: 'AdminPage',
     components: {
         AdminAside,
-        AdminHeader,
         AdminDashBoard,
         AdminPageInfo,
         AdminUserInfo,
@@ -34,13 +37,13 @@ export default {
     },
     data() {
         return {
-            contentstate: "",
+            // contentstate: "",
         }
     },
     methods: {
-        changeState(received) {
-            store.state.contentstate = received
-        }
+        // changeState(received) {
+        //     this.contentstate = received
+        // }
     }
 }
 </script>

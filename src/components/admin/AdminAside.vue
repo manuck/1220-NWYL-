@@ -13,21 +13,21 @@
                 </div>
             </div>
             <div class="admin-aside-menu">
-                <div id="admin-dashboard" @click="showContent" class="admin-aside-li">
+                <a href="#admin-dashboard" class="admin-aside-li">
                     <span>💻</span>대시 보드
-                </div>
-                <div id="admin-pageinfo" @click="showContent" class="admin-aside-li">
+                </a>
+                <a href="#admin-pageinfo" class="admin-aside-li">
                     <span>⚙️</span>페이지 정보
-                </div>
-                <div id="admin-userinfo" @click="showContent" class="admin-aside-li">
+                </a>
+                <a href="#admin-userinfo" class="admin-aside-li">
                     <span>🙍</span>회원 정보
-                </div>
-                <div id="admin-menuinfo" @click="showContent" class="admin-aside-li">
+                </a>
+                <a href="#admin-menuinfo" class="admin-aside-li">
                     <span>🍛</span>메뉴 정보
-                </div>
-                <div id="admin-pagelog" @click="showContent" class="admin-aside-li">
+                </a>
+                <a href="#admin-pagelog" class="admin-aside-li">
                     <span>📰</span>페이지 기록
-                </div>
+                </a>
             </div>
         </div>
     </div>
