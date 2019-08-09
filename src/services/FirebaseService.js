@@ -105,9 +105,9 @@ export default {
 					})
 				})
 	},
-	getSelectTags(a) {
+	getSelectTags() {
 		const menusCollection = firestore.collection('menus')
-		return menusCollection.where("tags", "array-contains", a)
+		return menusCollection.where("tags", "array-contains", '밥')
 				.get()
 				.then((docSnapshots) => {
 					return docSnapshots.docs.map((doc) => {

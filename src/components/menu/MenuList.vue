@@ -70,6 +70,8 @@ export default {
         this.$store.watch(
             (state) => state.selectTag,
             (newValue, oldValue) => {
+                console.log(store.state.selected)
+                console.log(store.state.selectedState)
                 console.log(`Updating from ${oldValue} to ${newValue}`);
                 this.mytag = []
                 this.menus = []
@@ -77,8 +79,11 @@ export default {
                     if(store.state.selectTag[i]===true) {
                         console.log(this.tags[i])
                         this.mytag.push(this.tags[i])
+                        console.log(this.getSelectTags(this.tags[i]))
                     }
                 }
+                this.getSelectTags()
+                // this.getMenus()
                 // console.log(this.mytag)
             // this.getSelectTags(this.tags)
 
@@ -94,8 +99,8 @@ export default {
         async getSelectMenus(a) {
             this.menus = await FirebaseService.getSelectMenus(a)
         },
-        async getSelectTags(a) {
-            this.menus = await FirebaseService.getSelectTags(a)
+        async getSelectTags() {
+            this.menus = await FirebaseService.getSelectTags()
         }
     }
 }
