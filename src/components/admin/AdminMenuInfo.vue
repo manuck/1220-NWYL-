@@ -1,13 +1,15 @@
 <template>
-    <div class="admin-content-wrapper">
-        <div class="admin-fullbox">
-            <div class="admin-menu-title">
-                메뉴 정보
+    <div id="admin-menuinfo">
+        <div class="admin-content-wrapper">
+            <div class="admin-fullbox">
+                <div class="admin-menu-title">
+                    메뉴 정보
+                </div>
             </div>
-        </div>
-        <div class="admin-fullbox">
-            <div class="admin-menu-title">
-                주간 메뉴 정보
+            <div class="admin-fullbox">
+                <div class="admin-menu-title">
+                    주간 메뉴 정보
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="admin-pageinfo">
         페이지 정보
     </div>
 </template>

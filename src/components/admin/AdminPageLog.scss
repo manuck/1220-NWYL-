@@ -1,3 +1,9 @@
+#admin-pagelog {
+    display: none;
+    &:target {
+        display: block;
+    }
+}
 .admin-pagelog-li {
     display: flex;
     padding: 5px 0;

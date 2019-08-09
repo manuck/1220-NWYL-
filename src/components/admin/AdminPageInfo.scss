@@ -1,0 +1,6 @@
+#admin-pageinfo {
+    display: none;
+    &:target {
+        display: block;
+    }
+}

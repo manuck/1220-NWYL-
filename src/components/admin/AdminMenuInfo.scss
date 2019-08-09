@@ -1,0 +1,6 @@
+#admin-menuinfo {
+    display: none;
+    &:target {
+        display: block;
+    }
+}
