@@ -31,6 +31,7 @@
 <script>
 let md5 = require('md5')
 import FirebaseService from '@/services/FirebaseService'
+import store from '@/store'
 
 export default {
     data: ()=>{
@@ -76,7 +77,7 @@ export default {
         // 관리자 권한 박탈하기 (관리자 -> 관리자)
         deleteAdmin(email) {
             const conf = window.confirm("회원에게 관리자 권한을 회수하시겠습니까?")
-            if(conf === true) {   // 확인을 눌렀을 때
+            if((conf === true)&&(email!=store.state.user.email)) {   // 확인을 눌렀을 때
                 const result = FirebaseService.deleteAdmin(email)
                 .then( ()=> {
                     const after = FirebaseService.getUserList()
@@ -85,15 +86,15 @@ export default {
                     })
                 })
             }
-            else {               // 취소를 눌렀을 때
-
+            else {               // 취소를 눌렀을 때 혹은 '현재 로그인된 관리자'의 정보를 바꿀 때
+                alert('권한 회수 실패')
             }
         },
 
         // 회원 탈퇴시키기 (관리자 입장에서)
         deleteUser(email) {
             const conf = window.confirm("회원정보를 삭제하시겠습니까?")
-            if(conf === true) {  // 확인을 눌렀을 때
+            if((conf === true)&&(email!=store.state.user.email)) {  // 확인을 눌렀을 때
                 const result = FirebaseService.deleteUser(email)
                 .then( ()=> {
                     const after = FirebaseService.getUserList()
@@ -102,8 +103,8 @@ export default {
                     })
                 })
             }
-            else {               // 취소를 눌렀을 때
-
+            else {               // 취소를 눌렀을 때 혹은 '현재 로그인된 관리자'의 정보를 바꿀 때
+                alert('삭제 실패')
             }
         },
 
