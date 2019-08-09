@@ -5,6 +5,8 @@
                 메뉴 정보
             </div>
             <hr>
+            <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu>
+            <hr>
             <MenuModal v-show="$store.state.menuname!==''" />
             <EditMenuModal></EditMenuModal>
             <div v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id" style="margin-top:20px">
@@ -37,6 +39,7 @@ import FirebaseService from '@/services/FirebaseService'
 import MenuModal from '@/components/menu/MenuModal'
 import firebase from 'firebase/app'
 import EditMenuModal from '@/components/menu/EditMenuModal'
+import AddMenu from '@/components/menu/AddMenu'
 
 const db = firebase.firestore();
 
@@ -45,6 +48,7 @@ export default {
     components: {
         MenuModal,
         EditMenuModal,
+        AddMenu,
     },
     data() {
         return {
