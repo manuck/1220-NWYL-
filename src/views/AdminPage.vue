@@ -8,11 +8,6 @@
                 <v-card
                     v-if="($store.state.admin===true)"
                     class="mx-auto"
-                    :flat="flat"
-                    :loading="loading"
-                    :outlined="outlined"
-                    :elevation="elevation"
-                    :raised="raised"
                     :width="width"
                     :height="height"
                     @keyup.enter="createAdmin(admin_email)"        
@@ -39,6 +34,7 @@
                     <v-card-actions>
                         <v-btn @click="createAdmin(admin_email)">Make Admin</v-btn>
                         <v-btn @click="showList">User List</v-btn>
+                        <v-btn @click="signOut">Logout</v-btn>
                     </v-card-actions>
                 </v-card>
 
@@ -46,11 +42,6 @@
                 <v-card
                 v-if="($store.state.admin===false)"
                     class="mx-auto"
-                    :flat="flat"
-                    :loading="loading"
-                    :outlined="outlined"
-                    :elevation="elevation"
-                    :raised="raised"
                     :width="width"
                     :height="height"          
                 >
@@ -72,11 +63,6 @@
                 <v-card 
                 v-if="($store.state.admin==='')"
                 class="mx-auto"
-                :flat="flat"
-                :loading="loading"
-                :outlined="outlined"
-                :elevation="elevation"
-                :raised="raised"
                 :width="width"
                 :height="height"
                 @keyup.enter="loginWithEmailAndPassword(email, password)"
@@ -104,15 +90,16 @@
                                     required
                             ></v-text-field> 
                         </v-form>
-                            
-
                     </v-card-text>
-
                     <v-card-actions>
                         <v-btn @click="loginWithEmailAndPassword(email, password)">Admin Login</v-btn>
                     </v-card-actions>
                 </v-card>
-            </div>
+
+                <!-- 유저 리스트가 나오는 영역 임시로 v-bind:members="members" member="member" -->
+                <component v-bind:is="Compo" >
+                </component>
+            </div>       
       </div>
     </div>
 </template>
@@ -120,41 +107,36 @@
 <script>
 import FirebaseService from '@/services/FirebaseService'
 import store from '@/store'
+import UserList from '../components/admin/UserList'
 
 export default {
     name: 'AdminPage',
     data: () => ({
-      flat: false,
-      media: true,
-      loading: false,
-      outlined: false,
-      elevation: undefined,
-      raised: false,
       width: 400,
       height: undefined,
       admin_email: '',
       email: '',
-      password: ''
+      password: '',
+      Compo: ''
     }),
+    components: {
+        UserList
+    },
     methods: {
-        createAdmin(email) {
-            const result = FirebaseService.createAdmin(email).then( () => {
-                this.$data.admin_email = ''
-            })
+        // 로그인
+        loginWithEmailAndPassword(email, password) {
+            const result = FirebaseService.signInWithEmailAndPassword(email, password)
         },
+        // 로그아웃
         signOut() {
             FirebaseService.signOut();
             this.$data.email = ''
             this.$data.password = ''
         },
-        loginWithEmailAndPassword(email, password) {
-            const result = FirebaseService.signInWithEmailAndPassword(email, password)
-        },
-        showList() {
-            const result = FirebaseService.getUserList()
-            alert(result)
+        // UserList.vue 컴포넌트 활성화
+        showList() {        
+            this.Compo = 'UserList'
         }
-
     }
 }
 </script>
