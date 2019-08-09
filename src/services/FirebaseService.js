@@ -260,7 +260,7 @@ export default {
 		return userList()
 		.then(data => {
 			//alert("성공      " + data.data[1].customClaims.admin)
-			//console.log(data)
+			// console.log(data)
 			return data.data
 		})
 		.catch(err => {

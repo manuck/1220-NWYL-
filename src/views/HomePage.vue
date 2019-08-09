@@ -64,9 +64,9 @@
                         <ChangeBgImage/>
                         <GitlabLinkBox/>
                         <PortfolioViewBox/>
-                        <WeatherBox/>
+                        <!-- <WeatherBox/> -->
                         <TranslateBox/>
-                        <Map/>
+                        <!-- <Map/> -->
                     </div>
                 </div>
             </div>
@@ -77,15 +77,15 @@
 <script>
 import Navbar from '@/components/mainview/Navbar'
 import SideNav from '@/components/mainview/SideNav'
-import Weather from '@/components/weather/Weather'
-import WeatherBox from '@/components/weather/WeatherBox'
+// import Weather from '@/components/weather/Weather'
+// import WeatherBox from '@/components/weather/WeatherBox'
 import ProfileBox from '@/components/gravatar/ProfileBox'
 import TranslateBox from '@/components/translate/TranslateBox'
 import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
 import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
 import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
 import store from '@/store'
-import Map from '@/components/map/Map'
+// import Map from '@/components/map/Map'
 
 // let time;
 export default {
@@ -93,14 +93,14 @@ export default {
     components: {
         Navbar,
         SideNav,
-        Weather,
-        WeatherBox,
+        // Weather,
+        // WeatherBox,
         ProfileBox,
         TranslateBox,
         GitlabLinkBox,
         ChangeBgImage,
         PortfolioViewBox,
-        Map,
+        // Map,
     },
     data() {
         return {
