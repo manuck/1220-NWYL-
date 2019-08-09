@@ -21,6 +21,7 @@ export default new Vuex.Store({
         commentEditId:'',
         selected:'',
         selectedState: false,
+        contentstate:'',
         imgToDB: {
             imglink: '',
             user_email: '',

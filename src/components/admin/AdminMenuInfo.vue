@@ -18,7 +18,7 @@
                     <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
                         수정
                     </a>
-                    <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id)">
+                    <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id);">
                         삭제
                     </a>
                 </li>
@@ -135,10 +135,15 @@ export default {
             db.collection("menus").doc(a).delete().then(function() {
                 console.log("Document successfully deleted!");
                 location.href="/adminview"
+                store.state.contentstate = 'admin-menuinfo'
+                console.log(store.state.contentstate)
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
             })
-        }, 
+        },
+        // changeState() {
+        //     store.state.contentstate = 'admin-menuinfo'
+        // }
     }
 }
 </script>
