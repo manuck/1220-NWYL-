@@ -5,6 +5,8 @@ const cors = require('cors')({
 })
 admin.initializeApp();
 
+// 관리자 권한 부여
+
 exports.addAdminRole = functions.https.onCall((data, context) => {
     //get user and cusstom claim (admin)
     return admin.auth().getUserByEmail(data.email).then(user => {
@@ -13,38 +15,33 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
         })
     }).then(()=> {
         return {
-            message: 'Success! ${data.email} has been made an admin'
+            message: 'Success! addAdminRole!'
         }
     }).catch(err => {
         return err
     })
 }),
 
-/// 유저 리스트 
+// 관리자 권한 박탈
 
-// exports.userList = functions.https.onCall((context) => {
-//         // List batch of users, 1000 at a time.
-//        return admin.auth().listUsers(1000, nextPageToken)
-//           .then(function(listUsersResult) {
-//             listUsersResult.users.forEach(function(userRecord) {
-//               console.log('user', userRecord.toJSON());
-//             });
-//             if (listUsersResult.pageToken) {
-//               // List next batch of users.
-//               listAllUsers(listUsersResult.pageToken);
-//             }
-//           })
-//           .then(() => {
-//               return {
-//                   message : ' Success! call function!!'
-//               }
-//           })
-//           .catch(function(error) {
-//             console.log('Error listing users:', error);
-//           });
-// }) 
+exports.deleteAdminRole = functions.https.onCall((data, context) => {
+    return admin.auth().getUserByEmail(data.email).then(user => {
+        return admin.auth().setCustomUserClaims(user.uid, {
+            admin: false
+        })
+    }).then(()=> {
+        return {
+            message: 'Success! deleteAdminRole!'
+         }
+    }).catch(err => {
+        return err
+    })
+})
 
-exports.userList2 = functions.https.onRequest(async (req, res) => {
+
+// 유저 리스트 
+
+exports.userList = functions.https.onRequest(async (req, res) => {
   res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS")
   res.setHeader("Access-Control-Max-Age", "3600")
   res.setHeader("Access-Control-Allow-Headers", "Origin,Accept, authorization, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
@@ -62,4 +59,17 @@ exports.userList2 = functions.https.onRequest(async (req, res) => {
     res.status(200).send(
       {data:userlist}
     )
-}) 
+})
+
+// 유저 삭제 (관리자가 아닌 유저)
+exports.deleteUser = functions.https.onCall( (data, context) => {
+  return admin.auth().getUserByEmail(data.email).then(user => {
+    return admin.auth().deleteUser(user.uid)
+  }).then(()=> {
+    return {
+        message: 'Successfully deleted user'
+    }
+  }).catch(err => {
+    return err
+  })
+})

@@ -203,7 +203,17 @@ export default {
 		return addAdminRole( {
 			email : admin_email
 		}).then(result => {
-			alert("관리자 등록 성공")
+			alert("관리자 권한 부여")
+		})
+	},
+
+	// 관리자 권한 박탈하기
+	deleteAdmin(admin_email) {
+		const deleteAdminRole = functions.httpsCallable('deleteAdminRole')
+		return deleteAdminRole( {
+			email : admin_email
+		}).then(result => {
+			alert("관리자 권한 회수")
 		})
 	},
 
@@ -219,9 +229,11 @@ export default {
 			console.log(err)
 		}) 
 	},
+
+	// 사이트 회원 정보 가져오기 (관리자 페이지에서 사용)
 	getUserList() {
-		const userList2 = functions.httpsCallable('userList2')
-		return userList2()
+		const userList = functions.httpsCallable('userList')
+		return userList()
 		.then(data => {
 			//alert("성공      " + data.data[1].customClaims.admin)
 			//console.log(data)
@@ -231,8 +243,18 @@ export default {
 			alert("실패      " + err)
 		})
 	},
-	getDate(date) {
-		const result = firebase.firestore.Timestamp.fromDate()
-		return result
+
+	// 관리자 권한으로 회원 탈퇴시키기 
+	deleteUser(user_email) {
+		const deleteUser = functions.httpsCallable('deleteUser')
+		return deleteUser( {
+			email : user_email
+		})
+		.then(result => {
+			alert("회원 삭제 성공")
+		})
+		.catch(err => {
+			alert(err)
+		})
 	}
 }

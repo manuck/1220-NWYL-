@@ -34,6 +34,7 @@
                     <v-card-actions>
                         <v-btn @click="createAdmin(admin_email)">Make Admin</v-btn>
                         <v-btn @click="showList">User List</v-btn>
+                        <v-btn @click="signOut">Logout</v-btn>
                     </v-card-actions>
                 </v-card>
 
@@ -95,8 +96,8 @@
                     </v-card-actions>
                 </v-card>
 
-                <!-- 유저 리스트가 나오는 영역 임시로  -->
-                <component v-bind:is="userlistCompo" v-bind:members="members" member="member">
+                <!-- 유저 리스트가 나오는 영역 임시로 v-bind:members="members" member="member" -->
+                <component v-bind:is="Compo" >
                 </component>
             </div>       
       </div>
@@ -116,37 +117,25 @@ export default {
       admin_email: '',
       email: '',
       password: '',
-      member: -1,
-      members: [],
-      userlistCompo: ''
+      Compo: ''
     }),
     components: {
         UserList
     },
     methods: {
-        createAdmin(email) {
-            const result = FirebaseService.createAdmin(email).then( () => {
-                this.$data.admin_email = ''
-            })
+        // 로그인
+        loginWithEmailAndPassword(email, password) {
+            const result = FirebaseService.signInWithEmailAndPassword(email, password)
         },
+        // 로그아웃
         signOut() {
             FirebaseService.signOut();
             this.$data.email = ''
             this.$data.password = ''
         },
-        loginWithEmailAndPassword(email, password) {
-            const result = FirebaseService.signInWithEmailAndPassword(email, password)
-        },
-        showList() {
-            const result = FirebaseService.getUserList()
-            result.then( result => {
-                //var count = 0
-                this.members =  result
-                this.member = result.length
-                this.userlistCompo = 'UserList'
-                // console.log(result)
-                // alert(result.length)
-            }  )
+        // UserList.vue 컴포넌트 활성화
+        showList() {        
+            this.Compo = 'UserList'
         }
     }
 }
