@@ -16,6 +16,8 @@ import AddMenu from './AddMenu'
 import EditMenuModal from './EditMenuModal'
 import store from '@/store.js'
 import FirebaseService from '@/services/FirebaseService'
+import firebase from 'firebase/app'
+
 
 export default {
     name: 'MenuList',   
@@ -33,7 +35,8 @@ export default {
         return {
             menus: [],
             mytag: [],
-            tags: ["볶음", "면", "국", "밥", "고기", "야채", "과일", "기타"]
+            tags: ["볶음", "면", "국", "밥", "고기", "야채", "과일", "기타"],
+            mystr: '',
         }
     },
     watch() {
@@ -41,6 +44,7 @@ export default {
     },
 	mounted() {
         this.getMenus()
+
         // console.log('유저가 누구?')
         // console.log(this.$store.state.user.uid)
         // console.log(this.$store.state.admin)
@@ -64,29 +68,34 @@ export default {
                 // console.log(store.state.selected)
                 if(newValue===false){
                     this.getMenus()
+
                 }
         },
         );
         this.$store.watch(
             (state) => state.selectTag,
             (newValue, oldValue) => {
+                this.getMenus()
                 console.log(store.state.selected)
                 console.log(store.state.selectedState)
                 console.log(`Updating from ${oldValue} to ${newValue}`);
                 this.mytag = []
-                this.menus = []
+                this.mystr = ''
+                this.menus=[]
+                var db = firebase.firestore().collection('menus');
+                // var nsm = db.collection('menus')
+
                 for(var i in store.state.selectTag) {
                     if(store.state.selectTag[i]===true) {
-                        console.log(this.tags[i])
                         this.mytag.push(this.tags[i])
-                        console.log(this.getSelectTags(this.tags[i]))
+                        console.log(this.tags[i])
+                        // this.menus = this.menus.where(`tags.${tags[i]}`,'==',true)
+                        this.mystr += '.where("tags2.' + `${this.tags[i]}` + '", "==", true)'
+                        console.log(this.mystr)
+                        db = db.where(`tags2.${this.tags[i]}`, '==', true)
                     }
                 }
-                this.getSelectTags()
-                // this.getMenus()
-                // console.log(this.mytag)
-            // this.getSelectTags(this.tags)
-
+                this.getSelectTags(db)
 
         },
         );
@@ -99,8 +108,8 @@ export default {
         async getSelectMenus(a) {
             this.menus = await FirebaseService.getSelectMenus(a)
         },
-        async getSelectTags() {
-            this.menus = await FirebaseService.getSelectTags()
+        async getSelectTags(a) {
+            this.menus = await FirebaseService.getSelectTags(a)
         }
     }
 }
