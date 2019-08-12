@@ -27,7 +27,13 @@
                     <div class="WeeklyMenu-content">
                         <table id="calendar">
                             <thead>
-                                <tr>{{menudata.menus}}</tr>                                
+                                <tbody>
+                                    <tr v-for="menu in menudata.menus" :menu="menu" :key="menu.id" class="menu">
+                                        <td>{{ menu.korean }}</td>
+                                        <td>{{ menu.star }}</td>
+                                        <td>{{ menu.special }}</td>
+                                    </tr>
+                                </tbody>
                             </thead>
                             <tbody id="calendar-body" style="text-align: center;"/>
                         </table>
