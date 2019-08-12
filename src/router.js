@@ -9,7 +9,6 @@ import PortfolioNewPage from './views/PortfolioNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
 import PortfolioDetailPage from './views/PortfolioDetailPage'
-import AdminPageView from './views/AdminPageView.vue'
 import AdminPage from './views/AdminPage.vue'
 
 
@@ -64,11 +63,6 @@ export default new Router({
 			path: '/portfolio/:Pfid',
 			name: 'details',
 			component: PortfolioDetailPage,
-		},
-		{
-			path: '/adminview',
-			name: 'adminview',
-			component: AdminPageView
 		},
 		{
 			path: '/admin',

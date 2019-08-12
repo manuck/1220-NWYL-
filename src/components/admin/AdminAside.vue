@@ -11,19 +11,20 @@
                 <div class="admin-aside-profile-info">
                     관리자이름
                 </div>
+                <button @click="signOut" class="button">로그아웃 하기</button>
             </div>
             <div class="admin-aside-menu">
                 <a href="#admin-dashboard" class="admin-aside-li">
                     <span>💻</span>대시 보드
-                </a>
-                <a href="#admin-pageinfo" class="admin-aside-li">
-                    <span>⚙️</span>페이지 정보
                 </a>
                 <a href="#admin-userinfo" class="admin-aside-li">
                     <span>🙍</span>회원 정보
                 </a>
                 <a href="#admin-menuinfo" class="admin-aside-li">
                     <span>🍛</span>메뉴 정보
+                </a>
+                <a href="#admin-weeklymenu" class="admin-aside-li">
+                    <span>📆</span>주간 메뉴
                 </a>
                 <a href="#admin-pagelog" class="admin-aside-li">
                     <span>📰</span>페이지 기록
@@ -34,12 +35,21 @@
 </template>
 
 <script>
+import LoginModal from '@/components/authenticate/LoginModal'
+import FirebaseService from '@/services/FirebaseService'
+
 export default {
     name: "AdminAside",
+    components: {
+        LoginModal,
+    },
     methods: {
         showContent(e) {
             this.$emit('state', e.target.id)
-        }
+        },
+        signOut() {
+            FirebaseService.signOut()
+        },
     }
 }
 </script>

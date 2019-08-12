@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="modal-button" class="button" @click="showAddMenuAdminModal">
+        <div id="modal-button" class="button admin-menuinfo-addmenu" @click="showAddMenuAdminModal">
             메뉴 추가
         </div>
         <AddMenuAdminModal :visible.sync="visible"/>
@@ -35,5 +35,5 @@ export default {
 </script>
 
 <style>
-
+@import './AddMenuAdmin.scss';
 </style>

@@ -1,0 +1,31 @@
+.admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.admin-login-box {
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    min-height: 200px;
+    max-height: 300px;
+    width: 30vw;
+    min-width: 400px;
+    max-width: 550px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 black;
+    background: #ffffff;
+    padding: 20px;
+}
+.admin-login-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.admin-login-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

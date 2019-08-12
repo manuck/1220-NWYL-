@@ -97,7 +97,7 @@ export default {
 
 <style>
 .auth-wrapper {
-    width: 100%;
+    flex: none;
     cursor: pointer;
 }
 </style>

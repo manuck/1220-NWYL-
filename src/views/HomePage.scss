@@ -290,45 +290,21 @@ svg {
     height: 100vh;
 }
 .aboutus-images {
-    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 100%;
     width: 100%;
 }
 .aboutus-image-box {
-    position: absolute;
+    display: flex;
     overflow: hidden;
     width: 25vh;
     height: 25vh;
     border: 8px solid #f7f7f7;
-    border-radius: 200px;
+    border-radius: 50%;
     background: rgba(0,0,0,0.7);
-    box-shadow: 0 0 30px 3px black;
-    transform: translate(-50%, -50%);
-    &.nsm {
-        top: 25%;
-        left: 15%;
-        background: repeating-linear-gradient(-45deg,#606dbc,#606dbc 7px,#465298 10px,#465298 17px);
-    }
-    &.ldm {
-        top: 80%;
-        left: 25%;
-        background: repeating-linear-gradient(-45deg,#56b94f,#56b94f 7px,#1b9110 10px,#1b9110 17px);
-    }
-    &.nhw {
-        top: 50%;
-        left: 50%;
-        background: repeating-linear-gradient(-45deg,#606dbc,#606dbc 7px,#465298 10px,#465298 17px);
-    }
-    &.koh {
-        top: 30%;
-        left: 80%;
-        background: repeating-linear-gradient(-45deg,#606dbc,#606dbc 7px,#465298 10px,#465298 17px);
-    }
-    &.chy {
-        top: 80%;
-        left: 90%;
-        background: repeating-linear-gradient(-45deg,#606dbc,#606dbc 7px,#465298 10px,#465298 17px);
-    }
+    box-shadow: 0 0 20px 0 black;
 }
 .aboutus-image {
     width: 25vh;

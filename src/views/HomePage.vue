@@ -64,9 +64,6 @@
                         <ChangeBgImage/>
                         <GitlabLinkBox/>
                         <PortfolioViewBox/>
-                        <!-- <WeatherBox/> -->
-                        <TranslateBox/>
-                        <!-- <Map/> -->
                     </div>
                 </div>
             </div>
