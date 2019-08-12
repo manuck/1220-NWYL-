@@ -88,42 +88,45 @@ export default {
             score: 0,
             selected:'',
             tags: [],
+            tags2:{},
             image: '',
             isStatusOn: true,
         }
     },
     methods: {
         postMenu(name, score, selected, tags, image) {
-        if (this.$store.state.imgSrc){
-            image = this.$store.state.imgSrc }
-        else if (image===""){
-            image = basicImg
-        }
-                // portfolio write 내용 firebase에 추가
-                return firestore.collection('menus').add({
-                    name,
-                    score,
-                    image,
-                    selected,
-                    tags,
-                    uploadUser: store.state.user.email,
-                    created_at: firebase.firestore.FieldValue.serverTimestamp()
+            console.log(this.tags)
+            var myclass = {};
+            for(var i in tags){
+                var k = tags[i]
+                myclass[k] = true
+            }
+            console.log(myclass)
+            console.log(this.tags2)
+            if (this.$store.state.imgSrc){
+                image = this.$store.state.imgSrc }
+            else if (image===""){
+                image = basicImg
+            }
+        
+            // portfolio write 내용 firebase에 추가
+            return firestore.collection('menus').add({
+                name,
+                score,
+                image,
+                selected,
+                tags,
+                tags2:myclass,
+                uploadUser: store.state.user.email,
+                created_at: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(function(docRef) {
+                // console.log("Document written with ID: ", docRef.id);
+                firestore.collection('menus').doc(docRef.id).update({
+                    id: docRef.id
                 })
-                .then(function(docRef) {
-                    // console.log("Document written with ID: ", docRef.id);
-                    // for(i in this.tags) {
-                    //     firestore.collection('menus').doc(docRef.id).update({
-                    //         tags2:{
-                    //             i:true
-                    //         }
-                    //     })
-                    // }
-                    
-                    firestore.collection('menus').doc(docRef.id).update({
-                        id: docRef.id
-                    })
-                    location.href="/menu"
-                })
+                location.href="/menu"
+            })
         },
         imageSelect1() {
             this.isStatusOn = true;
