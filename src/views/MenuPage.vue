@@ -14,14 +14,14 @@
                             <li id="EtFood" value="5" @click="foodSelect(5); SelectedToggle(5)">기타</li>
                         </ul>
                         <ul class="style">
-                            <li @click="tagSelect(1);">볶음</li>
-                            <li @click="tagSelect(2);">면</li>
-                            <li @click="tagSelect(3);">국</li>
-                            <li @click="tagSelect(4);">밥</li>
-                            <li @click="tagSelect(5);">고기</li>
-                            <li @click="tagSelect(6);">야채</li>
-                            <li @click="tagSelect(7);">과일</li>
-                            <li @click="tagSelect(8);">기타</li>
+                            <li id="tags0" @click="tagSelect(1);">볶음</li>
+                            <li id="tags1" @click="tagSelect(2);">면</li>
+                            <li id="tags2" @click="tagSelect(3);">국</li>
+                            <li id="tags3" @click="tagSelect(4);">밥</li>
+                            <li id="tags4" @click="tagSelect(5);">고기</li>
+                            <li id="tags5" @click="tagSelect(6);">야채</li>
+                            <li id="tags6" @click="tagSelect(7);">과일</li>
+                            <li id="tags7" @click="tagSelect(8);">기타</li>
                         </ul>
                     </div>
                     <MenuList/>

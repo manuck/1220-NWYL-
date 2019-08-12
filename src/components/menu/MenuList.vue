@@ -84,6 +84,16 @@ export default {
                 this.menus=[]
                 var db = firebase.firestore().collection('menus');
                 // var nsm = db.collection('menus')
+                console.log(store.state.selectTag)
+                for(var i in store.state.selectTag){
+                    console.log(i)
+                    if(store.state.selectTag[i]===true){
+                        document.getElementById(`tags${i}`).style.backgroundColor = 'darkgray'
+                    }
+                    else{
+                        document.getElementById(`tags${i}`).style.backgroundColor = 'white'
+                    }
+                }
 
                 for(var i in store.state.selectTag) {
                     if(store.state.selectTag[i]===true) {
