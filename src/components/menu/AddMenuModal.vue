@@ -111,6 +111,14 @@ export default {
                 })
                 .then(function(docRef) {
                     // console.log("Document written with ID: ", docRef.id);
+                    // for(i in this.tags) {
+                    //     firestore.collection('menus').doc(docRef.id).update({
+                    //         tags2:{
+                    //             i:true
+                    //         }
+                    //     })
+                    // }
+                    
                     firestore.collection('menus').doc(docRef.id).update({
                         id: docRef.id
                     })

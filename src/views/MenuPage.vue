@@ -7,11 +7,11 @@
                 <div class="menu-flex">
                     <div class="filter-wrapper">
                         <ul class="country">
-                            <li value="1" @click="foodSelect(1); SelectedToggle(1)">한식</li>
-                            <li value="2" @click="foodSelect(2); SelectedToggle(2)">일식</li>
-                            <li value="3" @click="foodSelect(3); SelectedToggle(3)">중식</li>
-                            <li value="4" @click="foodSelect(4); SelectedToggle(4)">양식</li>
-                            <li value="5" @click="foodSelect(5); SelectedToggle(5)">기타</li>
+                            <li id="KoFood" value="1" @click="foodSelect(1); SelectedToggle(1)">한식</li>
+                            <li id="JaFood" value="2" @click="foodSelect(2); SelectedToggle(2)">일식</li>
+                            <li id="ChFood" value="3" @click="foodSelect(3); SelectedToggle(3)">중식</li>
+                            <li id="WeFood" value="4" @click="foodSelect(4); SelectedToggle(4)">양식</li>
+                            <li id="EtFood" value="5" @click="foodSelect(5); SelectedToggle(5)">기타</li>
                         </ul>
                         <ul class="style">
                             <li @click="tagSelect(1);">볶음</li>
@@ -59,41 +59,71 @@ export default {
             if(a===1){
                 if(this.koState===false){
                     store.state.selected = '한식'
+                    document.getElementById('KoFood').style.backgroundColor = 'darkgray'
+                    document.getElementById('JaFood').style.backgroundColor = 'white'
+                    document.getElementById('ChFood').style.backgroundColor = 'white'
+                    document.getElementById('WeFood').style.backgroundColor = 'white'
+                    document.getElementById('EtFood').style.backgroundColor = 'white'
                 }
                 else if(this.koState===true){
                     store.state.selected = ''
+                    document.getElementById('KoFood').style.backgroundColor = 'white'
                 }
             }
             else if(a===2){
                 if(this.jaState===false){
                     store.state.selected = '일식'
+                    document.getElementById('JaFood').style.backgroundColor = 'darkgray'
+                    document.getElementById('KoFood').style.backgroundColor = 'white'
+                    document.getElementById('ChFood').style.backgroundColor = 'white'
+                    document.getElementById('WeFood').style.backgroundColor = 'white'
+                    document.getElementById('EtFood').style.backgroundColor = 'white'
                 }
                 else if(this.jaState===true){
                     store.state.selected = ''
+                    document.getElementById('JaFood').style.backgroundColor = 'white'
                 }
             }
             else if(a===3){
                 if(this.chState===false){
                     store.state.selected = '중식'
+                    document.getElementById('ChFood').style.backgroundColor = 'darkgray'
+                    document.getElementById('JaFood').style.backgroundColor = 'white'
+                    document.getElementById('KoFood').style.backgroundColor = 'white'
+                    document.getElementById('WeFood').style.backgroundColor = 'white'
+                    document.getElementById('EtFood').style.backgroundColor = 'white'
                 }
                 else if(this.chState===true){
                     store.state.selected = ''
+                    document.getElementById('ChFood').style.backgroundColor = 'white'
                 }
             }
             else if(a===4){
                 if(this.weState===false){
                     store.state.selected = '양식'
+                    document.getElementById('WeFood').style.backgroundColor = 'darkgray'
+                    document.getElementById('JaFood').style.backgroundColor = 'white'
+                    document.getElementById('ChFood').style.backgroundColor = 'white'
+                    document.getElementById('KoFood').style.backgroundColor = 'white'
+                    document.getElementById('EtFood').style.backgroundColor = 'white'
                 }
                 else if(this.weState===true){
                     store.state.selected = ''
+                    document.getElementById('WeFood').style.backgroundColor = 'white'
                 }
             }
             else if(a===5){
                 if(this.etState===false){
                     store.state.selected = '기타'
+                    document.getElementById('EtFood').style.backgroundColor = 'darkgray'
+                    document.getElementById('JaFood').style.backgroundColor = 'white'
+                    document.getElementById('ChFood').style.backgroundColor = 'white'
+                    document.getElementById('WeFood').style.backgroundColor = 'white'
+                    document.getElementById('KoFood').style.backgroundColor = 'white'
                 }
                 else if(this.etState===true){
                     store.state.selected = ''
+                    document.getElementById('EtFood').style.backgroundColor = 'white'
                 }
             }
         },
