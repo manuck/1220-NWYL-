@@ -11,14 +11,16 @@ import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
 import PortfolioDetailPage from './views/PortfolioDetailPage'
 import AdminPageView from './views/AdminPageView.vue'
-import test4 from './views/test4.vue'
+import AdminPage from './views/AdminPage.vue'
+
+
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes: [
 		{
 			path: '/',
 			name: 'home',
@@ -68,16 +70,16 @@ export default new Router({
 			path: '/portfolio/:Pfid',
 			name: 'details',
 			component: PortfolioDetailPage,
-    },
+		},
 		{
 			path: '/adminview',
 			name: 'adminview',
 			component: AdminPageView
 		},
-    {
-      path: '/test4',
-      name: test4,
-      component: test4,
-    },
+		{
+			path: '/admin',
+			name: 'admin',
+			component: AdminPage
+		},
   ]
 })

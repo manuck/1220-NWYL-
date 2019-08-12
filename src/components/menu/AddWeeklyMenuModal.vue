@@ -53,20 +53,17 @@ const db = firebase.firestore();
 export default {
     name: "AddWeeklyMenuModal",
     props: {
-        // 'date',
-        // 'korean',
-        // 'star',
-        // 'special',
+
     },
     data() {
         // tmp: {{menudata.id}},
         return {
             menudata: []
-        },
+        }
     },
     props: {
         menudata: Object,
-    }
+    },
     created() {
         this.menudata.date = this.date,
         this.menudata.korean = this.korean,

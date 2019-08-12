@@ -7,11 +7,11 @@
                 <div class="menu-flex">
                     <div class="filter-wrapper">
                         <ul class="country">
-                            <li>한식</li>
-                            <li>일식</li>
-                            <li>중식</li>
-                            <li>양식</li>
-                            <li>기타</li>
+                            <li value="1" @click="foodSelect(1); SelectedToggle(1)">한식</li>
+                            <li value="2" @click="foodSelect(2); SelectedToggle(2)">일식</li>
+                            <li value="3" @click="foodSelect(3); SelectedToggle(3)">중식</li>
+                            <li value="4" @click="foodSelect(4); SelectedToggle(4)">양식</li>
+                            <li value="5" @click="foodSelect(5); SelectedToggle(5)">기타</li>
                         </ul>
                         <ul class="style">
                             <li>볶음</li>
@@ -34,13 +34,94 @@
 <script>
 import SideNav from '@/components/mainview/SideNav'
 import MenuList from '@/components/menu/MenuList'
+import store from '@/store.js'
 
 export default {
     name: 'MenuPage',
+    data() {
+        return {
+            koState: false,
+            jaState: false,
+            chState: false,
+            weState: false,
+            etState: false,
+        }
+    },
     components: {
         SideNav,
         MenuList,
     },
+    mounted() {
+
+	},
+    methods: {
+        foodSelect(a){
+            if(a===1){
+                if(this.koState===false){
+                    store.state.selected = '한식'
+                }
+                else if(this.koState===true){
+                    store.state.selected = ''
+                }
+            }
+            else if(a===2){
+                if(this.jaState===false){
+                    store.state.selected = '일식'
+                }
+                else if(this.jaState===true){
+                    store.state.selected = ''
+                }
+            }
+            else if(a===3){
+                if(this.chState===false){
+                    store.state.selected = '중식'
+                }
+                else if(this.chState===true){
+                    store.state.selected = ''
+                }
+            }
+            else if(a===4){
+                if(this.weState===false){
+                    store.state.selected = '양식'
+                }
+                else if(this.weState===true){
+                    store.state.selected = ''
+                }
+            }
+            else if(a===5){
+                if(this.etState===false){
+                    store.state.selected = '기타'
+                }
+                else if(this.etState===true){
+                    store.state.selected = ''
+                }
+            }
+        },
+        SelectedToggle(a) {
+            if(a===1){
+                this.koState = !this.koState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+                console.log(store.state.selectedState)
+            }
+            else if(a===2){
+                this.jaState = !this.jaState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+            }
+            else if(a===3){
+                this.chState = !this.chState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+            }
+            else if(a===4){
+                this.weState = !this.weState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+            }
+            else if(a===5){
+                this.etState = !this.etState
+                store.state.selectedState = this.koState || this.jaState || this.chState || this.weState || this.etState
+            }
+        },
+
+    }
 }
 </script>
 

@@ -1,73 +1,72 @@
 <template>
-    <div class="menu-box">
-        <div class="menu-title">
-            {{ menu.name }}
-        </div>
-        <div class="menu-image">
-            <img :src="menu.image" style="width: 150px; height: 150px;" alt="menu_detail_image">
-        </div>
-        <ul class="menu-tags">
-            <li v-for="tag in menu.tags" :tag="tag" :key="tag.id" class="tag">
-                {{ tag }}
-            </li>
-        </ul>
-        <div class="menu-favorite">
-            <div class="star-ratings-css">
-            <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 0%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-            <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <div id="admin-menuinfo">
+        <div class="admin-content-wrapper">
+            <div class="admin-fullbox">
+                <div class="admin-menu-title">
+                    메뉴 정보
+                </div>
+            
+                <hr>
+                <!-- <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu> -->
+                <AddMenuAdmin v-if="($store.state.admin===true) && (1)" style="margin-top:10px; margin-bottom:10px"/>
+                <hr>
+                <MenuModal v-show="$store.state.menuname!==''" />
+                <EditMenuModal></EditMenuModal>
+                <div v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id" style="margin-top:20px">
+                    <li>{{menu.name}} 
+                        <span style="margin-left:40px">{{menu.uploadUser}}</span>
+                        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
+                            리뷰 보기
+                        </a>
+                        <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
+                            수정
+                        </a>
+                        <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id);">
+                            삭제
+                        </a>
+                    </li>
+                </div>
+                <!-- <li v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>{{ menu.name }}</li> -->
             </div>
         </div>
-        <div class='rating' style='width:40%;'></div>
-        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
-            리뷰 보기
-        </a>
-        <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
-            수정
-        </a>
-        <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id)">
-            삭제
-        </a>
+        <div class="admin-fullbox">
+            <div class="admin-menu-title">
+                주간 메뉴 정보
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import MenuModal from './MenuModal'
 import store from '@/store.js'
+import FirebaseService from '@/services/FirebaseService'
+import MenuModal from '@/components/menu/MenuModal'
 import firebase from 'firebase/app'
-import EditMenuModal from './EditMenuModal'
+import EditMenuModal from '@/components/menu/EditMenuModal'
+import AddMenuAdmin from '@/components/menu/AddMenuAdmin'
 
 const db = firebase.firestore();
 
 export default {
-    name: 'MenuBox',
-    data() {
-        return {
-
-        }
-    },
-    props: {
-        menu: Object,
-        ID: String
-    },
+    name: "AdminMenuInfo",
     components: {
         MenuModal,
-        EditMenuModal
+        EditMenuModal,
+        AddMenuAdmin,
     },
-    mounted(){
-        // console.log(this.ID)
-        var docRef = db.collection("menus").doc(this.ID)
-        docRef.get().then(function(doc) {
-            if (doc.exists) {
-                document.getElementById(doc.data().id).style.width = doc.data().score*20 + "%";
-                // console.log(doc.data().score);
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such MENUS!");
-            }
-            })   
+    data() {
+        return {
+            menus: [],
+        }
     },
-    methods: {
-        menuidfunction(a) {
+    mounted() {
+        this.getMenus()
+	},
+	methods: {
+		async getMenus() {
+            this.menus = await FirebaseService.getMenus()
+        },
+                menuidfunction(a) {
             store.state.menuname = ''
             store.state.menuimg = ''
             store.state.menutag = ''
@@ -139,46 +138,20 @@ export default {
             // console.log(a)
             db.collection("menus").doc(a).delete().then(function() {
                 console.log("Document successfully deleted!");
-                location.href="/menu"
+                location.href="/adminview"
+                store.state.contentstate = 'admin-menuinfo'
+                console.log(store.state.contentstate)
             }).catch(function(error) {
                 console.error("Error removing document: ", error);
             })
-        }, 
+        },
+        // changeState() {
+        //     store.state.contentstate = 'admin-menuinfo'
+        // }
+    }
 }
-}
-
 </script>
 
 <style lang="scss">
-@import './MenuBox.scss';
-
-.star-ratings-css {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
-  font-size: 25px;
-//   height: 25px;
-//   width: 100px;
-//   margin: 0 auto;
-  position: relative;
-  padding: 0;
-  text-shadow: 0px 1px 0 #a2a2a2;
-  
-  &-top {
-    color: #e7711b;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  &-bottom {
-    padding: 0;
-    display: block;
-    z-index: 0;
-  }
-}
-
-
+@import './AdminMenuInfo.scss';
 </style>

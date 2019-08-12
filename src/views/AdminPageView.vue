@@ -1,45 +1,43 @@
 <template>
     <div>
-        <div class="admin-aside">
-            <div class="admin-aside-flex">
-                <div class="admin-aside-title">
-                    ADMIN PAGE
-                </div>
-                <div class="admin-aside-menu">
-                    <div class="admin-aside-li">
-                        대시 보드
-                    </div>
-                    <div class="admin-aside-li">
-                        페이지 정보
-                    </div>
-                    <div class="admin-aside-li">
-                        회원 정보
-                    </div>
-                    <div class="admin-aside-li">
-                        메뉴 정보
-                    </div>
-                    <div class="admin-aside-li">
-                        페이지 기록
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="admin-header">
-            <div class="admin-header-flex">
-                <div class="admin-header-right">
-                    관리자 정보
-                </div>
-            </div>
-        </div>
+        <AdminAside v-on:state="changeState"/>
         <div class="admin-content">
-
+            <AdminDashBoard />
+            <AdminPageInfo />
+            <AdminUserInfo />
+            <AdminMenuInfo />
+            <AdminPageLog />
         </div>
     </div>
 </template>
 
 <script>
+import AdminAside from '@/components/admin/AdminAside'
+import AdminDashBoard from '@/components/admin/AdminDashBoard'
+import AdminPageInfo from '@/components/admin/AdminPageInfo'
+import AdminUserInfo from '@/components/admin/AdminUserInfo'
+import AdminMenuInfo from '@/components/admin/AdminMenuInfo'
+import AdminPageLog from '@/components/admin/AdminPageLog'
+import store from '@/store.js'
+
 export default {
     name: 'AdminPage',
+    components: {
+        AdminAside,
+        AdminDashBoard,
+        AdminPageInfo,
+        AdminUserInfo,
+        AdminMenuInfo,
+        AdminPageLog
+    },
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+
+    }
 }
 </script>
 

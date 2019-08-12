@@ -4,41 +4,55 @@
         <div class="main-wrapper">
             <div class="body-wrapper">
                 <div class="section-1">
-                    <div class="section-1-title">
-                        <span style="font-size:100px;">
-                            12<span style="color: #c8e19d;">15</span>
-                        </span>
-                    </div>
                     <div class="section-1-content">
+                        <div class="section-1-content-title">
+                            <span style="font-size:100px; line-height:100px;">
+                                12<span style="color: #c8e19d;">15</span>
+                            </span>
+                        </div>
                         <div class="section-1-content-menu">
-                            
+                            <!-- for shadow -->
+                            <div class="section-1-ball-container" style="z-index: -2;">
+                                <div v-for="i in 20" :key="i" :class="'ball'+i" style="box-shadow: 0 0 0 5px black; z-index: -1;"/>
+                            </div>
+                            <div class="section-1-ball-container" style="z-index: -1">
+                                <div v-for="i in 20" :key="i" :class="'ball'+i"/>
+                            </div>
+                            <svg version="1.1" x="0px" y="0px" viewBox="0 0 760 350" style="enable-background:new 0 0 760 350;">
+                                <path style="fill:#f7f7f7;" d="M380,14.6C85.4,14.6,40.4,8.7,31.6,169.5v5.5  c0,0,0,5.5,0,5.5C40.4,341.3,85.4,335.4,380,335.4s339.6,5.9,348.4-154.9c0,0,0-5.5,0-5.5v-5.5C719.6,8.7,674.6,14.6,380,14.6z"/>
+                            </svg>
+                            <div id="main-korean" class="section-1-menu-box"></div>
+                            <div id="main-special" class="section-1-menu-box"></div>
+                            <div id="main-star" class="section-1-menu-box"></div>
                         </div>
-                        <div class="section-1-content-image">
-                            <img src="@/assets/images/lying_hd.png" style="height:100px; width:auto;" alt="main_image"/>
-                        </div>
+                        <SideNav/>
                     </div>
                     <div class="section-1-scroll">
-                        <button class="scroll-round" v-on:click="pageScroll"/>
+                        <div class="section-1-scroll-think">
+                            <div class="section-1-scroll-think-bubble bubble1"/>
+                            <div class="section-1-scroll-think-bubble bubble2"/>
+                        </div>
+                        <div class="section-1-content-image" style="z-index: -3;">
+                            <img src="@/assets/images/lying_hd.png" style="height:100px; width:auto;" alt="main_image"/>
+                        </div>
+                        <!-- <button class="scroll-round" v-on:click="pageScroll"/> -->
                     </div>
-                    <SideNav/>
                 </div>
                 <div class="section-2">
-                    <div class="col1">
-                        <div class="aboutus-image-box">
+                    <div class="aboutus-images">
+                        <div class="aboutus-image-box nsm">
                             <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
                         </div>
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box ldm">
                             <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
                         </div>
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box koh">
                             <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
                         </div>
-                    </div>
-                    <div class="col2">
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box nhw">
                             <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
                         </div>
-                        <div class="aboutus-image-box">
+                        <div class="aboutus-image-box chy">
                             <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
                         </div>
                     </div>
@@ -50,10 +64,9 @@
                         <ChangeBgImage/>
                         <GitlabLinkBox/>
                         <PortfolioViewBox/>
-                        <PostViewBox/>
-                        <WeatherBox/>
+                        <!-- <WeatherBox/> -->
                         <TranslateBox/>
-                        <Map/>
+                        <!-- <Map/> -->
                     </div>
                 </div>
             </div>
@@ -64,8 +77,8 @@
 <script>
 import Navbar from '@/components/mainview/Navbar'
 import SideNav from '@/components/mainview/SideNav'
-import Weather from '@/components/weather/Weather'
-import WeatherBox from '@/components/weather/WeatherBox'
+// import Weather from '@/components/weather/Weather'
+// import WeatherBox from '@/components/weather/WeatherBox'
 import ProfileBox from '@/components/gravatar/ProfileBox'
 import TranslateBox from '@/components/translate/TranslateBox'
 import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
@@ -73,7 +86,7 @@ import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
 import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
 import PostViewBox from '@/components/post/PostViewBox'
 import store from '@/store'
-import Map from '@/components/map/Map'
+// import Map from '@/components/map/Map'
 
 // let time;
 export default {
@@ -81,21 +94,21 @@ export default {
     components: {
         Navbar,
         SideNav,
-        Weather,
-        WeatherBox,
+        // Weather,
+        // WeatherBox,
         ProfileBox,
         TranslateBox,
         GitlabLinkBox,
         ChangeBgImage,
         PortfolioViewBox,
-        PostViewBox,
-        Map,
+        // Map,
     },
     data() {
         return {
             statY: 0,
             heightnow: 0,
             timer: null,
+            cloudtimer: null,
         }
     },
     created() {
@@ -111,15 +124,15 @@ export default {
         store.dispatch('addLog');
 
         var team_btn = document.querySelector('#team-icon')
-        console.log(team_btn)
         team_btn.addEventListener('click', this.pageScroll)
+        this.responsiveCloud()
+        window.addEventListener('resize', this.responsiveCloud)
     },
     methods: {
         autoMoveToSecond() {
             this.statY = window.scrollY;
             this.heightnow = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             if(this.statY > 10 && this.statY < 100) {
-                console.log(this.heightnow)
                 window.scroll({
                     top: this.heightnow,
                     left: 0,
@@ -128,17 +141,52 @@ export default {
             }
         },
         pageScroll(e) {
-            console.log('pageScroll activated', this.timer)
+            // console.log('pageScroll activated', this.timer)
             if (!this.timer) {
                 let y = e.deltaY
                 let h = window.innerHeight
-                console.log('pageScroll if 문', this.timer, y, h)
+                // console.log('pageScroll if 문', this.timer, y, h)
                 if (y > 0 || !y)  window.scrollBy(0, h)
                 else        window.scrollBy(0, -h)
                 this.timer = setTimeout(() => {
                     this.timer = null
                 }, 500)
             }
+        },
+        responsiveCloud() {
+            var container = document.getElementsByClassName('section-1-ball-container')
+            var svg = document.querySelector('svg')
+            var menubox = document.getElementsByClassName('section-1-menu-box')
+            var path = document.querySelector('path')
+            if (!this.timer) {
+                var height = parseInt(getComputedStyle(svg).height, 10)
+                var width = parseInt(getComputedStyle(svg).width, 10)
+                if ((width/760) < 1.4) {
+                    for (let i = 0; i < container.length; i++) {
+                        // container[i].style.height = height + "px"
+                        // container[i].style.width = width + "px"
+                        container[i].style.transform = 'scale(' + (width/760) + ')'
+                        // container[i].style.transform = 'scale(' + (width/760) + ',' + (height/350) + ')'
+                    }
+                } else {
+                    for (let i = 0; i < container.length; i++) {
+                        container[i].style.transform = 'scale(1.4)'
+                    }
+                }
+                console.log('here')
+                for (let i = 0; i < menubox.length; i++) {
+                    console.log('andhere')
+                    menubox[i].style.width = ((path.getBoundingClientRect().width / 3) - 80) + "px";
+                    menubox[i].style.height = path.getBoundingClientRect().height + "px";
+                }
+                this.timer = setTimeout(() => {
+                    this.timer = null
+                }, 50)
+            }
+        },
+        responsiveProfileBox() {
+            var docStyle = document.documentElement.style
+
         }
     },
 }
