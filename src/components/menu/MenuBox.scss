@@ -1,11 +1,12 @@
 .menu-box {
     display: flex;
     flex-direction: column;
-    height: 370px;
+    height: 300px;
     width: 220px;
+    min-width: 220px;
     border: 2px solid black;
     border-radius: 10px;
-    padding: 10px;
+    // padding: 10px;
     margin-right: 20px;
     margin-bottom: 30px;
     background: #f7f7f7;
@@ -14,12 +15,17 @@
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    padding-bottom: 10px;
+    padding: 10px 0;
     border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 .menu-image {
     display: flex;
     justify-content: center;
+    height: 250px;
+    width: 100%;
+    min-width: 100%;
+    // max-width: 100%;
+    overflow: hidden;
 }
 .menu-tags {
     padding-bottom: 5px;
@@ -39,6 +45,11 @@
     height: 40px;
     padding: 5px;
     align-items: center;
+    justify-content: center;
+}
+.menu-more {
+    display: flex;
+    justify-content: center;
 }
 .favorite-icon {
     height: 20px;
@@ -47,6 +58,33 @@
     &:last-of-type {
         margin: 0;
     }
+}
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+//   height: 25px;
+//   width: 100px;
+//   margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+  
+  &-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+  &-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
 }
 .rating {
     display: inline-block;

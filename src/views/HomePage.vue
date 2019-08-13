@@ -7,7 +7,7 @@
                     <div class="section-1-content">
                         <div class="section-1-content-title">
                             <span style="font-size:100px; line-height:100px;">
-                                12<span style="color: #c8e19d;">15</span>
+                                12<span style="color: #c8e19d;">20</span>
                             </span>
                         </div>
                         <div class="section-1-content-menu">
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="aboutus-info-wrapper">
                                     <div class="aboutus-quote">
-                                        현우야 돌아와 제발!
+                                        여러분 클라이밍 많이 사랑해 주세요
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="aboutus-info-wrapper">
                                     <div class="aboutus-quote">
-                                        현우야 돌아와 제발!
+                                        안녕하세요. 최홍용입니다.
                                     </div>
                                 </div>
                             </div>

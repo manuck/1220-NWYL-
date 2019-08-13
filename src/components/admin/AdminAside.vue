@@ -5,9 +5,7 @@
                 ADMIN PAGE
             </div>
             <div class="admin-aside-profile">
-                <div class="admin-aside-profile-image">
-                    <!-- <img src="@/assets/images/aboutus/ldm_emoji.png" style="height: 100%; width: 100%;"/> -->
-                </div>
+                <div class="admin-aside-profile-image"/>
                 <div class="admin-aside-profile-info">
                     {{$store.state.user.displayName}}
                 </div>

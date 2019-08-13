@@ -20,18 +20,11 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-
-    .home {
+    .home, .team, .menu, .weeklymenu {
         background: rgba(255,255,255,0.9);   
     }
-    .team {
-        background: rgba(255,255,255,0.9);
-    }
-    .menu {
-        background: rgba(255,255,255,0.9);
-    }
-    .weeklymenu {
-        background: rgba(255,255,255,0.9);
+    .login, .logout, .admin {
+        background: rgba(255,255,255,0.9);  
     }
 }
 .nav-icon {
