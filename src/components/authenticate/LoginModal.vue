@@ -69,24 +69,34 @@ export default {
         SignUp
     },
     methods: {
+        // 가입한 이메일과 패스워드로 로그인
         loginWithEmailAndPassword(email, password) {
             const result = FirebaseService.signInWithEmailAndPassword(email, password)
+            .then( () => {
+                this.email =''
+                this.password = ''
+            })
             this.dialog = false;
         },
+        // 구글 계정으로 로그인(팝업)
         loginWithGoogle() {
             const result = FirebaseService.loginWithGoogle()
             this.dialog = false;
         },
+        // 페이스북 계정으로 로그인(팝업)
         loginWithFacebook() {
             const result = FirebaseService.loginWithFacebook()
             this.dialog = false;
         },
+        // 로그아웃
         signOut() {
             FirebaseService.signOut();
         },
+        // SignUp 컴포넌트 닫기
         closeSignUp: function() {
            this.sign = false;
         },
+        // 로그인 모달 컴포넌트 닫기
         closeDialog: function() {
             this.dialog = false;
             this.sign = false;
