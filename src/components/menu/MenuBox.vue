@@ -54,7 +54,13 @@ export default {
         EditMenuModal
     },
     mounted(){
-        // console.log(this.ID)
+        if(store.state.admin===true){
+            console.log(store.state.admin)
+            var all = document.getElementsByClassName('menu-box');
+            for (var i = 0; i < all.length; i++) {
+                all[i].style.height = "450px"
+            }
+        }
         var docRef = db.collection("menus").doc(this.ID)
         docRef.get().then(function(doc) {
             if (doc.exists) {

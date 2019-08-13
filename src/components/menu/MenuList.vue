@@ -42,7 +42,7 @@ export default {
     watch() {
 
     },
-	mounted() {
+	mounted() {       
         this.getMenus()
 
         // console.log('유저가 누구?')
