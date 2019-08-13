@@ -9,7 +9,7 @@
                     <!-- <img src="@/assets/images/aboutus/ldm_emoji.png" style="height: 100%; width: 100%;"/> -->
                 </div>
                 <div class="admin-aside-profile-info">
-                    관리자이름
+                    {{$store.state.user.displayName}}
                 </div>
                 <button @click="signOut" class="button">로그아웃 하기</button>
             </div>
@@ -37,11 +37,18 @@
 <script>
 import LoginModal from '@/components/authenticate/LoginModal'
 import FirebaseService from '@/services/FirebaseService'
+import store from '@/store'
+
+let md5 = require('md5')
 
 export default {
     name: "AdminAside",
     components: {
         LoginModal,
+    },
+    mounted() {
+        let pf = document.querySelector('.admin-aside-profile-image')
+        pf.style.backgroundImage = `url(${this.gravatarURL()})`
     },
     methods: {
         showContent(e) {
@@ -50,7 +57,10 @@ export default {
         signOut() {
             FirebaseService.signOut()
         },
-    }
+        gravatarURL() {
+            return `http://www.gravatar.com/avatar/${md5(store.state.user.email)}?s=150&d=retro`
+        }
+    },
 }
 </script>
 

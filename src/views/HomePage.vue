@@ -39,25 +39,74 @@
                     </div>
                 </div>
                 <div class="section-2">
-                    <div class="aboutus-images">
-                        <div class="aboutus-image-box nsm">
-                            <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
+                    <div class="aboutus-wrapper">
+                        <div class="aboutus-col">
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        개인정보 보호법에 의해 보호된 조원입니다.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        고양이 키우고 싶다.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        현우야 돌아와 제발!
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="aboutus-image-box ldm">
-                            <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
-                        </div>
-                        <div class="aboutus-image-box koh">
-                            <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
-                        </div>
-                        <div class="aboutus-image-box nhw">
-                            <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
-                        </div>
-                        <div class="aboutus-image-box chy">
-                            <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
+                        <div class="aboutus-col">
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        현우야 돌아와 제발!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        현우야 돌아와 제발!
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="section-3">
+                <!-- <div class="section-3">
                     <Navbar :ismain="true"/>
                     <div class="body-flex-c">
                         <ProfileBox/>
@@ -65,7 +114,7 @@
                         <GitlabLinkBox/>
                         <PortfolioViewBox/>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
