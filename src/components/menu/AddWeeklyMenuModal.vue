@@ -10,6 +10,7 @@
                 <div class="modal-info">
                     <!-- <input @change="test" id="file" ref="myfile" name="weekly-menu" type="file" class="filecontainer"/> -->
                     <input @change="getMenuData" id="menudata" type="file" class="filecontainer"/>
+                    <input id="file-input" type="file" style="" accept=".csv, .json" onchange="loadFile(this);">
                     <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
                 </div>
             </div>
@@ -97,6 +98,35 @@ export default {
                     query.appendChild(cell)
                 }
             }
+        },
+        loadFile(sender) {
+            // check file ext
+            var validExts = new Array(".csv", ".json");  // Allow csv, json
+            var fileExt = sender.value;
+            fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+         
+            // If ext is not valid -> alert
+            if (fileExt && validExts.indexOf(fileExt) < 0) {
+                alert("Invalid file selected.<br> valid files are of <b>" + validExts.toString() + "</b> types. ");
+                return false;
+            } 
+         
+            // file read
+            var reader = new FileReader();
+            reader.onload = function (sender) {
+                var data = sender.target.result;
+         
+                // .. if json
+                if (fileExt === ".json") {
+                    data = JSON.parse(data.replace(/u'(?=[^:]+')/g, "'"));  
+                    // ...
+                } 
+                else if (fileExt === ".csv") {
+                    data = data.split(/\r\n|\n/);  // 줄바꿈으로 나눔
+                    // ...
+                }
+            };
+            reader.readAsText(sender.files[0]);
         }
     },
 }

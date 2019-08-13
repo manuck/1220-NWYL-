@@ -120,7 +120,13 @@ export default {
                 else{
                     store.state.commentUserTF = false
                 }
-                
+
+                if(store.state.menucomments.length>0){
+                    // console.log('asdasdsad')
+                    var dkdk = store.state.menucomments.length*40 + 750
+                    // console.log(dkdk)
+                    document.querySelector('.modal-box').style.height = `${dkdk}` + "px"
+                }
                 // console.log("score 합 : ",store.state.commentScore)
                 // console.log('commentL : ',commentL)
                 // console.log('유저 리스트?')

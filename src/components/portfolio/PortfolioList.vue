@@ -74,7 +74,7 @@ export default {
 			// console.log(this.portfolios.length)
 			// console.log(this.limits)
 			this.limits += 2
-    }
+    	}
 	},
 }
 </script>

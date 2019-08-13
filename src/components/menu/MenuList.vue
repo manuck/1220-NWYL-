@@ -23,7 +23,8 @@ export default {
     name: 'MenuList',   
     props:{
         comment: {type: String},
-		score: {type: Number},
+        score: {type: Number},
+        limits: {type: Number, default: 3},
     },
     components: {
         MenuBox,
@@ -40,7 +41,7 @@ export default {
         }
     },
     watch() {
-
+        
     },
 	mounted() {       
         this.getMenus()
@@ -120,7 +121,10 @@ export default {
         },
         async getSelectTags(a) {
             this.menus = await FirebaseService.getSelectTags(a)
-        }
+        },
+        loadMoreMenus() {
+			this.limits += 2
+    	}
     }
 }
 </script>

@@ -45,12 +45,10 @@ export default {
 .add-button {
   width: 140px;
   height: 45px;
-  font-family: 'Roboto', sans-serif;
+  line-height: 45px;
   font-size: 11px;
-  text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
-  color: #000;
   background-color: #fff;
   border: none;
   border-radius: 45px;
