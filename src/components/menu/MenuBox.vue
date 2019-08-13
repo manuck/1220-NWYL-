@@ -6,7 +6,7 @@
         <div class="menu-image">
             <img :src="menu.image" style="width: 150px; height: 150px;" alt="menu_detail_image">
         </div>
-        <ul class="menu-tags">
+        <ul class="menu-tags" style="margin-top: 10px">
             <li v-for="tag in menu.tags" :tag="tag" :key="tag.id" class="tag">
                 {{ tag }}
             </li>
@@ -54,7 +54,12 @@ export default {
         EditMenuModal
     },
     mounted(){
-        // console.log(this.ID)
+        if(store.state.admin===true){
+            var all = document.getElementsByClassName('menu-box');
+            for (var i = 0; i < all.length; i++) {
+                all[i].style.height = "450px"
+            }
+        }
         var docRef = db.collection("menus").doc(this.ID)
         docRef.get().then(function(doc) {
             if (doc.exists) {
