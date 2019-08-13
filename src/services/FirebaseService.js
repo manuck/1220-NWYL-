@@ -7,6 +7,7 @@ import 'firebase/functions'
 const POSTS = 'posts'
 const PORTFOLIOS = 'portfolios'
 
+
 // Setup Firebase
 const config = {
 	apiKey: "AIzaSyAkuq-JbKzXNSx6zWNjeT6pGxGal6GPZJ8",
@@ -30,7 +31,7 @@ export { firestore };
 // 로그인, 로그아웃 상태를 감지
 firebase.auth().onAuthStateChanged(function(user) {
 	if(user) {  //// 로그인된 상태
-	
+
 		// 회원가입 후, 바로 store.js에 저장하지 않는다. displayName의 update가 이뤄진 다음에 저장!
 		if(user.displayName != null) {
 			store.dispatch('getUser', user)
@@ -105,23 +106,43 @@ export default {
 					})
 				})
 	},
+	getWeekMenus() {
+			const weekmenusCollection = firestore.collection('weeklymenus')
+			return weekmenusCollection
+				.orderBy('week', 'desc')
+				.get()
+				.then((docSnapshots) => {
+					return docSnapshots.docs.map((doc) => {
+						let data = doc.data()
+						return data
+					})
+				})
+	},
+	postWeekMenus(date, korean, star, special) {
+		return firestore.collection('weeklymenus').add({
+			date,
+			korean,
+			star,
+			special
+		})
+	},
   // 회원가입을 통해 생성한 계정으로 로그인하기
-  	signInWithEmailAndPassword(email, password) {
-		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
-			store.dispatch('getUser', result.user)
-			return result
-		})
-		.catch(function(error) {
-			let errorCode = error.code;
-			let errorMessage = error.message;
-			if(errorCode === 'auth/wrong-password') {
-				alert('Wrong password.');
-			} else {
-				alert(errorMessage);
-			}
-			console.error('[SignIn Error]',error)
-		})
-  	},
+	signInWithEmailAndPassword(email, password) {
+	return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+		store.dispatch('getUser', result.user)
+		return result
+	})
+	.catch(function(error) {
+		let errorCode = error.code;
+		let errorMessage = error.message;
+		if(errorCode === 'auth/wrong-password') {
+			alert('Wrong password.');
+		} else {
+			alert(errorMessage);
+		}
+		console.error('[SignIn Error]',error)
+	})
+	},
   // 구글 계정으로 로그인하기 (팝업)
 	loginWithGoogle() {
 		let provider = new firebase.auth.GoogleAuthProvider()
@@ -176,7 +197,7 @@ export default {
 					}
 				)
 			}
-		)   
+		)
 		.catch(function(error) {
 			let errorCode = error.code;
 			let errorMessage = error.message;
@@ -251,7 +272,7 @@ export default {
 			 }
 		}).catch(err => {
 			console.log(err)
-		}) 
+		})
 	},
 
 	// 사이트 회원 정보 가져오기 (관리자 페이지에서 사용)
@@ -268,7 +289,7 @@ export default {
 		})
 	},
 
-	// 관리자 권한으로 회원 탈퇴시키기 
+	// 관리자 권한으로 회원 탈퇴시키기
 	deleteUser(user_email) {
 		const deleteUser = functions.httpsCallable('deleteUser')
 		return deleteUser( {

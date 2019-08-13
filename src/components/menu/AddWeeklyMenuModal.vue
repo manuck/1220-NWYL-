@@ -13,6 +13,10 @@
                     <!-- <button id="formButton" @click="sendData" class="form-button" disabled="" type="button">제출</button> -->
                     <button @click="sendData" class="form-button" type="button">제출</button>
                 </div>
+                <!-- postWeekMenus(menudata.menus[i]["date"], menudata.menus[i]["korean"], menudata.menus[i]["star"], menudata.menus[i]["special"])
+                postWeekMenus(menudata.menus[0]['date'], menudata.menus[0]['korean'], menudata.menus[0]['star'], menudata.menus[0]['special']
+                v-for"menu in menudata.menus" :menu="menu" :key="menu.id"
+                sendData -->
             </div>
             <div class="modal-content2">
                 <div class="modal-content2-title">
@@ -46,6 +50,7 @@
 <script>
 import { eventBus } from '@/main'
 import firebase from 'firebase/app'
+import { firestore } from '@/services/FirebaseService'
 
 const db = firebase.firestore();
 // const testdata = require('./5thJul2019.json')
@@ -56,13 +61,12 @@ export default {
 
     },
     data() {
-        // tmp: {{menudata.id}},
         return {
             menudata: []
         }
     },
     props: {
-        menudata: Object,
+
     },
     created() {
         this.menudata.date = this.date,
@@ -71,7 +75,7 @@ export default {
         this.menudata.special = this.special
     },
     mounted() {
-        console.log(tmp)
+
     },
     methods: {
         getMenuData() {
@@ -138,7 +142,21 @@ export default {
           console.log(typeof(a))
           console.log(typeof(store.state.menudataid))
           var docRef = db.collection("Weeklymenus").doc(store.state.menudataid);
-        }
+        },
+        // postWeeklyMenu(date, korean, star, special) {
+        //   return firestore.collection('weeklymenus').add({
+        //     date,
+        //     korean,
+        //     star,
+        //     special
+        //   }).then(function(doRef) {
+        //       firestore.collection('weeklymenus').doc(doRef.id).update({
+        //         id: dcRef.id
+        //       })
+        //       location.href="/weeklymenu"
+        //   })
+        //   console.log('in')
+        // },
     },
 }
 </script>

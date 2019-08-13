@@ -51,11 +51,6 @@ export default new Router({
 			name: 'login',
 			component: LoginPage
 		},
-		{
-			path: '/portfolio/new',
-			name: 'new',
-			component: PortfolioNewPage
-		},
     {
     path: '/post/new',
     name: 'new',

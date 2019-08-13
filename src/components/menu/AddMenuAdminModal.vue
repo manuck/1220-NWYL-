@@ -14,7 +14,7 @@
                 <br>
 
                 <button @click="imageSelect1()" class="form-button" type="button">이미지 url 직접 입력</button>
-                <button @click="imageSelect2()" class="form-button" type="button">이미지 파일 등록</button> 
+                <button @click="imageSelect2()" class="form-button" type="button">이미지 파일 등록</button>
                 <div v-if="isStatusOn">
                     <v-text-field
                         v-model="image"
@@ -27,7 +27,7 @@
                     <br>
                     <Imgur></Imgur>
                 </div>
-                
+
 
                 <br>
                 <select v-model="selected" style="margin-top:20px; margin-right:20px">
@@ -60,7 +60,7 @@
                     <br>
                     <span>체크한 이름: {{ tags }}</span>
                 </div>
-        
+
                 <div class="submit-area">
                     <button id="formButton" @click="postMenu(name, score, selected, tags, image)" class="form-button" type="button">제출</button>
                 </div>
@@ -75,7 +75,7 @@
 import firebase from 'firebase/app'
 import store from '@/store.js'
 import Imgur from '@/components/portfolio/Imgur'
-import { firestore } from '@/services/FirebaseService'                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+import { firestore } from '@/services/FirebaseService'
 
 const db = firebase.firestore();
 var basicImg = 'https://i.imgur.com/CmRE3B9.jpg'
@@ -143,6 +143,3 @@ export default {
 <style lang="scss">
 @import './AddMenuAdminModal.scss';
 </style>
-
-
-
