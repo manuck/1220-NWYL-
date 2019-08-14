@@ -109,26 +109,6 @@ export default {
 					})
 				})
 	},
-<<<<<<< HEAD
-	getWeekMenus() {
-			const weekmenusCollection = firestore.collection('weeklymenus')
-			return weekmenusCollection
-				.orderBy('week', 'desc')
-				.get()
-				.then((docSnapshots) => {
-					return docSnapshots.docs.map((doc) => {
-						let data = doc.data()
-						return data
-					})
-				})
-	},
-	postWeekMenus(date, korean, star, special) {
-		return firestore.collection('weeklymenus').add({
-			date,
-			korean,
-			star,
-			special
-=======
 	getSelectTags(a) {
 		return a.get().then((docSnapshots) => {
 			return docSnapshots.docs.map((doc) => {
@@ -153,7 +133,6 @@ export default {
 				alert(errorMessage);
 			}
 			console.error('[SignIn Error]',error)
->>>>>>> 84e02b3fffb630954122a0718b7a9965de0c463d
 		})
 	},
   // 회원가입을 통해 생성한 계정으로 로그인하기
