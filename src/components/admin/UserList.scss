@@ -1,0 +1,14 @@
+.admin-userinfo-box {
+    margin-top: 20px;
+    box-shadow: 0 3px 5px 0 gray;
+    border-radius: 15px; 
+    table {
+        border-radius: 15px 15px 0 0;
+    }
+    > div > div > div > .v-datatable{
+        border-radius: 0 0 15px 15px;
+        .v-datatable__actions {
+            border-radius: 0 0 15px 15px;
+        }
+    }
+}

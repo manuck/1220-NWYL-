@@ -5,11 +5,9 @@ import MenuPage from '@/views/MenuPage.vue'
 import WeeklyMenuPage from '@/views/WeeklyMenuPage.vue'
 import PortfolioPage from './views/PortfolioPage.vue'
 import LoginPage from './views/LoginPage.vue'
-import PortfolioNewPage from './views/PortfolioNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
 import PortfolioDetailPage from './views/PortfolioDetailPage'
-import AdminPageView from './views/AdminPageView.vue'
 import AdminPage from './views/AdminPage.vue'
 
 
@@ -50,25 +48,15 @@ export default new Router({
 			name: 'login',
 			component: LoginPage
 		},
-		{
-			path: '/portfolio/new',
-			name: 'new',
-			component: PortfolioNewPage
-		},
-   		{
+ 		{
 			path: '/gitlabgraph2',
 			name: 'gitlabgraph2',
 			component: GitlabGraph2
 		},
-		{	
+		{
 			path: '/portfolio/:Pfid',
 			name: 'details',
 			component: PortfolioDetailPage,
-		},
-		{
-			path: '/adminview',
-			name: 'adminview',
-			component: AdminPageView
 		},
 		{
 			path: '/admin',

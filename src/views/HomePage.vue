@@ -7,7 +7,7 @@
                     <div class="section-1-content">
                         <div class="section-1-content-title">
                             <span style="font-size:100px; line-height:100px;">
-                                12<span style="color: #c8e19d;">15</span>
+                                12<span style="color: #c8e19d;">20</span>
                             </span>
                         </div>
                         <div class="section-1-content-menu">
@@ -21,9 +21,52 @@
                             <svg version="1.1" x="0px" y="0px" viewBox="0 0 760 350" style="enable-background:new 0 0 760 350;">
                                 <path style="fill:#f7f7f7;" d="M380,14.6C85.4,14.6,40.4,8.7,31.6,169.5v5.5  c0,0,0,5.5,0,5.5C40.4,341.3,85.4,335.4,380,335.4s339.6,5.9,348.4-154.9c0,0,0-5.5,0-5.5v-5.5C719.6,8.7,674.6,14.6,380,14.6z"/>
                             </svg>
-                            <div id="main-korean" class="section-1-menu-box"></div>
-                            <div id="main-special" class="section-1-menu-box"></div>
-                            <div id="main-star" class="section-1-menu-box"></div>
+                            <div id="main-korean" class="section-1-menu-box">
+                                <div class="section-1-menu-flex">
+                                    <div class="section-1-menu-title">
+                                        한식
+                                    </div>
+                                    <div class="section-1-menu-content">
+                                        <span>소불고기</span>
+                                        <span>수수밥</span>
+                                        <span>아욱된장국</span>
+                                        <span>두부조림</span>
+                                        <span>치커리겉절이</span>
+                                        <span>포기김치</span>
+                                        <span>채소스틱/차/숭늉</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="main-special" class="section-1-menu-box">
+                                <div class="section-1-menu-flex">
+                                    <div class="section-1-menu-title">
+                                        별식
+                                    </div>
+                                    <div class="section-1-menu-content">
+                                        <span>잡채덮밥*자장소스</span>
+                                        <span>계란팟국</span>
+                                        <span>물만두튀김</span>
+                                        <span>짜사이채무침</span>
+                                        <span>포기김치</span>
+                                        <span>채소스틱/차/숭늉</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="main-star" class="section-1-menu-box">
+                                <div class="section-1-menu-flex">
+                                    <div class="section-1-menu-title">
+                                        스페셜
+                                    </div>
+                                    <div class="section-1-menu-content">
+                                        <span>나주곰탕</span>
+                                        <span>쌀밥</span>
+                                        <span>오징어숙회무침</span>
+                                        <span>간장고추지</span>
+                                        <span>깍두기</span>
+                                        <span>채소스틱/차/숭늉</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <SideNav/>
                     </div>
@@ -39,36 +82,82 @@
                     </div>
                 </div>
                 <div class="section-2">
-                    <div class="aboutus-images">
-                        <div class="aboutus-image-box nsm">
-                            <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
+                    <div class="aboutus-wrapper">
+                        <div class="aboutus-col">
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/nsm_emoji.png" class="aboutus-image" alt="seungman">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        개인정보 보호법에 의해 보호된 조원입니다.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        고양이 키우고 싶다.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        현우야 돌아와 제발!
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="aboutus-image-box ldm">
-                            <img src="@/assets/images/aboutus/ldm_emoji.png" class="aboutus-image" alt="dongmyeong">
-                        </div>
-                        <div class="aboutus-image-box koh">
-                            <img src="@/assets/images/aboutus/koh_emoji.png" class="aboutus-image" alt="ohhyun">
-                        </div>
-                        <div class="aboutus-image-box nhw">
-                            <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
-                        </div>
-                        <div class="aboutus-image-box chy">
-                            <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
+                        <div class="aboutus-col">
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/nhw_emoji.png" class="aboutus-image" alt="hyunwoo">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        여러분 클라이밍 많이 사랑해 주세요
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="aboutus-each-box">
+                                <div class="aboutus-image-wrapper">
+                                    <div class="aboutus-image-box">
+                                        <img src="@/assets/images/aboutus/chy_emoji.png" class="aboutus-image" alt="hongyong">
+                                    </div>
+                                </div>
+                                <div class="aboutus-info-wrapper">
+                                    <div class="aboutus-quote">
+                                        안녕하세요. 최홍용입니다.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="section-3">
+                <!-- <div class="section-3">
                     <Navbar :ismain="true"/>
                     <div class="body-flex-c">
                         <ProfileBox/>
                         <ChangeBgImage/>
                         <GitlabLinkBox/>
                         <PortfolioViewBox/>
-                        <WeatherBox/>
-                        <TranslateBox/>
-                        <Map/>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -77,15 +166,16 @@
 <script>
 import Navbar from '@/components/mainview/Navbar'
 import SideNav from '@/components/mainview/SideNav'
-import Weather from '@/components/weather/Weather'
-import WeatherBox from '@/components/weather/WeatherBox'
+// import Weather from '@/components/weather/Weather'
+// import WeatherBox from '@/components/weather/WeatherBox'
 import ProfileBox from '@/components/gravatar/ProfileBox'
 import TranslateBox from '@/components/translate/TranslateBox'
 import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
 import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
 import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
+import PostViewBox from '@/components/post/PostViewBox'
 import store from '@/store'
-import Map from '@/components/map/Map'
+// import Map from '@/components/map/Map'
 
 // let time;
 export default {
@@ -93,14 +183,14 @@ export default {
     components: {
         Navbar,
         SideNav,
-        Weather,
-        WeatherBox,
+        // Weather,
+        // WeatherBox,
         ProfileBox,
         TranslateBox,
         GitlabLinkBox,
         ChangeBgImage,
         PortfolioViewBox,
-        Map,
+        // Map,
     },
     data() {
         return {
@@ -185,7 +275,7 @@ export default {
         },
         responsiveProfileBox() {
             var docStyle = document.documentElement.style
-            
+
         }
     },
 }

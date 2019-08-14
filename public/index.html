@@ -25,9 +25,9 @@
       gtag('js', new Date());
       gtag('config', 'UA-143617627-1');
     </script>
-    <script async defer
+    <!-- <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVaIeCU6pPEngLSTnS5FvpklT3pJAL5ag&callback=initMap">
-    </script>
+    </script> -->
 
     <style>
       a:hover, a:visited, a:link {
@@ -58,21 +58,17 @@
     </div>
   </body>
   <script>
-    // console.log('beforecreate')
-    let userAgent = window.navigator.userAgent;
-    let isChrome = userAgent.indexOf('Chrome')
-    let isChromeMobile = userAgent.indexOf('CriOS');
-    let isSamsungBrowser = userAgent.indexOf('SamsungBrowser');
-    let isWindows = userAgent.indexOf('Windows NT');
-    let isEdge = userAgent.indexOf('Edge');
-    let isIE = userAgent.indexOf('Trident');
-    if(!((isChrome > -1 && isWindows > -1 && isChromeMobile < 0 && isSamsungBrowser < 0 && isEdge < 0 && isIE < 0) ||
-    (isChrome < 0 && isChromeMobile > -1 && isSamsungBrowser < 0 && isWindows < 0 && isEdge < 0 && isIE < 0))) {
-      alert('해당 사이트는 크롬에 최적화 되어 있습니다..')
-    }
-    var locationSM = navigator.geolocation.getCurrentPosition
-    // console.log(navigator.geolocation.getCurrentPosition)
-    // console.log(locationSM.data)
- 
+    // let userAgent = window.navigator.userAgent;
+    // let isChrome = userAgent.indexOf('Chrome')
+    // let isChromeMobile = userAgent.indexOf('CriOS');
+    // let isSamsungBrowser = userAgent.indexOf('SamsungBrowser');
+    // let isWindows = userAgent.indexOf('Windows NT');
+    // let isEdge = userAgent.indexOf('Edge');
+    // let isIE = userAgent.indexOf('Trident');
+    // if(!((isChrome > -1 && isWindows > -1 && isChromeMobile < 0 && isSamsungBrowser < 0 && isEdge < 0 && isIE < 0) ||
+    // (isChrome < 0 && isChromeMobile > -1 && isSamsungBrowser < 0 && isWindows < 0 && isEdge < 0 && isIE < 0))) {
+    //   alert('해당 사이트는 크롬에 최적화 되어 있습니다..')
+    // }
+    // var locationSM = navigator.geolocation.getCurrentPosition
   </script>
 </html>

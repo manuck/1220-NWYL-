@@ -80,6 +80,7 @@
     </div>
 </template>
 
+<script id="dsq-count-scr" src="//hongyong3.disqus.com/count.js" async></script>
 <script>
 import firebase from 'firebase/app'
 import store from '@/store.js'
@@ -168,6 +169,9 @@ export default {
 <style lang="scss">
 @import './MenuModal.scss';
 </style>
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> cc0a35beaed43e9f00969740846d9690520db26c

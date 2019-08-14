@@ -10,6 +10,12 @@
                 <button id="team-icon" class="nav-icon team">
                     <img src="@/assets/images/group.png" style="width:100%;" alt="team">
                 </button>
+                <router-link to="/admin" v-if="$store.state.admin == true">
+                    <div class="nav-icon admin">
+                        <img src="@/assets/images/admin.png" style="width:100%;" alt="admin">
+                    </div>
+                </router-link>
+                <HomeLoginModal/>
             </div>
         </div>
         <div class="rightnav-wrapper">
@@ -30,23 +36,12 @@
 </template>
 
 <script>
+import HomeLoginModal from '@/components/authenticate/HomeLoginModal'
 
 export default {
     name: 'SideNav',
     components: {
-
-    },
-    props: {
-   
-    },
-    created() {
-
-    },
-    mounted() {
-      
-    },
-    methods: {
-      
+        HomeLoginModal,
     }
 }
 </script>

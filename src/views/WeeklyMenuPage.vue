@@ -1,4 +1,4 @@
-s<template>
+<template>
     <div style="height: 100%; width: 100%;">
         <div class="main-bg"/>
         <div class="main-wrapper">
@@ -23,9 +23,23 @@ s<template>
                             <tbody id="calendar-body" style="text-align: center;"/>
                         </table>
                     </div>
+                    <AddWeeklyMenuModal @child="getChild"/>
+                    <div class="WeeklyMenu-content">
+                        <table id="calendar">
+                            <thead>
+                                <tbody>
+                                    <tr v-for="menu in menudata.menus" :menu="menu" :key="menu.id" class="menu">
+                                        <td>{{ menu.korean }}</td>
+                                        <td>{{ menu.star }}</td>
+                                        <td>{{ menu.special }}</td>
+                                    </tr>
+                                </tbody>
+                            </thead>
+                            <tbody id="calendar-body" style="text-align: center;"/>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <AddWeeklyMenuModal/>
         </div>
     </div>
 </template>
@@ -34,11 +48,19 @@ s<template>
 import SideNav from '@/components/mainview/SideNav'
 import AddWeeklyMenuModal from '@/components/menu/AddWeeklyMenuModal'
 
+
 export default {
     name: 'WeeklyMenuPage',
+    data: function () {
+        return {
+            data: {},
+            menudata: ''
+        }
+    },
     components: {
         SideNav,
         AddWeeklyMenuModal,
+
     },
     mounted() {
         this.createCalendar()
@@ -51,7 +73,7 @@ export default {
             const month = new Date().getMonth()
             const year = new Date().getFullYear()
             const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-            
+
             const today = new Date()
 
             let tbl = document.querySelector('#calendar-body')
@@ -59,7 +81,7 @@ export default {
 
             let showMonth = document.querySelector('#showMonth')
             showMonth.innerHTML = months[month]
-            
+
             let date = today.getDate() - today.getDay() + 1;
             // date가 -4일 경우 안나옴! 해결해야 할지도..
 
@@ -95,7 +117,7 @@ export default {
 
             let showMonth = document.querySelector('#showMonth')
             showMonth.innerHTML = months[month]
-            
+
             let date = 1;
             for (let i = 0; i < 6; i++) {
                 let row = document.createElement("tr")
@@ -123,9 +145,11 @@ export default {
                 tbl.appendChild(row)
             }
         },
-        getMenu() {
+        getChild(data) {
+            this.menudata = data
 
-        }
+        },
+
     }
 }
 </script>

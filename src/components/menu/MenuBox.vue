@@ -1,33 +1,35 @@
 <template>
-    <div class="menu-box">
-        <div class="menu-title">
-            {{ menu.name }}
-        </div>
-        <div class="menu-image">
-            <img :src="menu.image" style="width: 150px; height: 150px;" alt="menu_detail_image">
-        </div>
-        <ul class="menu-tags" style="margin-top: 10px">
-            <li v-for="tag in menu.tags" :tag="tag" :key="tag.id" class="tag">
-                {{ tag }}
-            </li>
-        </ul>
-        <div class="menu-favorite">
-            <div class="star-ratings-css">
-            <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 0%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-            <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <a id="modal-button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">            
+        <div class="menu-box">
+            <div class="menu-title">
+                {{ menu.name }}
+            </div>
+            <div class="menu-image">
+                <img :src="menu.image" style="height: 100%;" alt="menu_detail_image">
+            </div>
+            <!-- <ul class="menu-tags" style="margin-top: 10px">
+                <li v-for="tag in menu.tags" :tag="tag" :key="tag.id" class="tag">
+                    {{ tag }}
+                </li>
+            </ul> -->
+            <div class="menu-favorite">
+                <div class="star-ratings-css">
+                <div v-bind:id="menu.id" class="star-ratings-css-top" style="width: 0%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-css-bottom">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                </div>
+            </div>
+            <!-- <div class='rating' style='width:40%;'></div> -->
+            <div class="menu-more">
+                <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
+                    수정
+                </a>
+                <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id)">
+                    삭제
+                </a>
             </div>
         </div>
-        <div class='rating' style='width:40%;'></div>
-        <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
-            리뷰 보기
-        </a>
-        <a v-if="$store.state.admin===true" id="modal-button" class="button" href="#menu-edit-modal" @click="editMenuId(menu.id);">
-            수정
-        </a>
-        <a v-if="$store.state.admin===true" id="modal-button" class="button" @click="menuDelete(menu.id)">
-            삭제
-        </a>
-    </div>
+    </a>
 </template>
 
 <script>
@@ -57,7 +59,7 @@ export default {
         if(store.state.admin===true){
             var all = document.getElementsByClassName('menu-box');
             for (var i = 0; i < all.length; i++) {
-                all[i].style.height = "450px"
+                all[i].style.height = "350px"
             }
         }
         var docRef = db.collection("menus").doc(this.ID)
@@ -157,41 +159,10 @@ export default {
                 console.error("Error removing document: ", error);
             })
         }, 
+    }
 }
-}
-
 </script>
 
 <style lang="scss">
 @import './MenuBox.scss';
-
-.star-ratings-css {
-  unicode-bidi: bidi-override;
-  color: #c5c5c5;
-  font-size: 25px;
-//   height: 25px;
-//   width: 100px;
-//   margin: 0 auto;
-  position: relative;
-  padding: 0;
-  text-shadow: 0px 1px 0 #a2a2a2;
-  
-  &-top {
-    color: #e7711b;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  &-bottom {
-    padding: 0;
-    display: block;
-    z-index: 0;
-  }
-}
-
-
 </style>
