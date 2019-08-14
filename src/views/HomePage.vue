@@ -173,6 +173,7 @@ import TranslateBox from '@/components/translate/TranslateBox'
 import GitlabLinkBox from '@/components/gitlab/GitlabLinkBox'
 import ChangeBgImage from '@/components/bgchange/ChangeBgImage'
 import PortfolioViewBox from '@/components/portfolio/PortfolioViewBox'
+import PostViewBox from '@/components/post/PostViewBox'
 import store from '@/store'
 // import Map from '@/components/map/Map'
 
@@ -274,7 +275,7 @@ export default {
         },
         responsiveProfileBox() {
             var docStyle = document.documentElement.style
-            
+
         }
     },
 }

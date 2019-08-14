@@ -23,19 +23,14 @@
                             <tbody id="calendar-body" style="text-align: center;"/>
                         </table>
                     </div>
-                    <AddWeeklyMenuModal @child="getChild"/>
-                    <div class="WeeklyMenu-content">
-                        <table id="calendar">
-                            <thead>
-                                <tbody>
-                                    <tr v-for="menu in menudata.menus" :menu="menu" :key="menu.id" class="menu">
-                                        <td>{{ menu.korean }}</td>
-                                        <td>{{ menu.star }}</td>
-                                        <td>{{ menu.special }}</td>
-                                    </tr>
-                                </tbody>
-                            </thead>
-                            <tbody id="calendar-body" style="text-align: center;"/>
+                    <AddWeeklyMenuModal/>
+                    <div id="uploaded-menu">
+                        <table>
+                            <tbody>
+                                <tr id="menu-korean"/>
+                                <tr id="menu-star"/>
+                                <tr id="menu-special"/>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -54,7 +49,6 @@ export default {
     data: function () {
         return {
             data: {},
-            menudata: ''
         }
     },
     components: {
@@ -145,11 +139,48 @@ export default {
                 tbl.appendChild(row)
             }
         },
-        getChild(data) {
-            this.menudata = data
+        getMenuData() {
+            const selectedFile = document.querySelector('#menudata').files[0]
 
+            var reader = new FileReader()
+            reader.onload = (e) => {
+                this.menudata = JSON.parse(e.target.result)
+                console.log('after parse', this.menudata)
+                this.showMenuData(this.menudata)
+            }
+            reader.readAsText(selectedFile)
         },
-
+        showMenuData(data) {
+            this.getDataFromJson(data, "date", '#menu-date', '')
+            this.getDataFromJson(data, "korean", '#menu-korean', '한식')
+            this.getDataFromJson(data, "star", '#menu-star', '별식')
+            this.getDataFromJson(data, "special", '#menu-special', '스페셜')
+        },
+        getDataFromJson(data, key, id, first) {
+            let query = document.querySelector(id)
+            for (let i = 0; i < 6; i++) {
+                var cell = document.createElement('td')
+                if (i == 0) {
+                    var cellText = document.createTextNode(first)
+                    cell.appendChild(cellText)
+                    query.appendChild(cell)
+                } else {
+                    let keydata = data["menus"][i-1][key]
+                    if (keydata.length) {
+                        for (let j = 0; j < keydata.length; j++) {
+                            var cellText = document.createTextNode(keydata[j])
+                            cell.appendChild(cellText)
+                            var br = document.createElement('br')
+                            cell.appendChild(br)
+                        }
+                    } else {
+                        var cellText = document.createTextNode(keydata)
+                        cell.appendChild(cellText)
+                    }
+                    query.appendChild(cell)
+                }
+            }
+        },
     }
 }
 </script>

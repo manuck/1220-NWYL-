@@ -1,38 +1,46 @@
 <template>
-    <v-layout py-4 h-100>
-        <v-flex row>
-            <div class="caption">{{formatedDate}}</div>
-            <h2 class="color-333 headline font-weight-light jemok">{{title}}</h2>
-            <p class="mb-1 color-666 font-weight-light subheading content">{{body}}</p>
-        </v-flex>
-    </v-layout>
+  <v-card>
+    <v-img :src="imgSrc" height="200px">
+    </v-img>
+    <v-card-title primary-title>
+      <div>
+        <div class="headline jemok">{{title}}</div>
+        <div>id : {{this.$route.params.id}}</div>
+        <span class="grey--text content">{{body}}</span>
+      </div>
+    </v-card-title>
+  </v-card>
 </template>
 
 <script>
 export default {
-    name: 'Post',
-    props: {
-        date: {type: Date},
-        title: {type: String},
-        body: {type: String}
-    },
-    computed: {
-        formatedDate() {
-            return `${this.date.getFullYear()}년 ${this.date.getMonth()}월 ${this.date.getDate()}일`
-        }
-    }
+	name: 'Post',
+	props: {
+    id: {type: Number},
+		date: {type: String},
+		title: {type: String},
+		body: {type: String},
+		imgSrc: {type: String},
+	},
+	data() {
+		return {
+			//
+		}
+	}
 }
 </script>
 
 <style>
-.color-666 {
-  color: #666;
+.jemok {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
-.color-333 {
-  color: #333;
-}
-.h-100 {
-  height: 100%;
+.content {
+	display: -webkit-box;
+	height: 4.5em;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 </style>
-

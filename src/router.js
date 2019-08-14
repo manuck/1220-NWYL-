@@ -6,6 +6,7 @@ import WeeklyMenuPage from '@/views/WeeklyMenuPage.vue'
 import PortfolioPage from './views/PortfolioPage.vue'
 import LoginPage from './views/LoginPage.vue'
 import PortfolioNewPage from './views/PortfolioNewPage.vue'
+import PostNewPage from './views/PostNewPage.vue'
 import HomePage from './views/HomePage.vue'
 import GitlabGraph2 from './views/GitlabGraph2.vue'
 import PortfolioDetailPage from './views/PortfolioDetailPage'
@@ -49,17 +50,17 @@ export default new Router({
 			name: 'login',
 			component: LoginPage
 		},
-		{
-			path: '/portfolio/new',
-			name: 'new',
-			component: PortfolioNewPage
-		},
-   		{
+    {
+    path: '/post/new',
+    name: 'new',
+    component: PostNewPage
+    },
+ 		{
 			path: '/gitlabgraph2',
 			name: 'gitlabgraph2',
 			component: GitlabGraph2
 		},
-		{	
+		{
 			path: '/portfolio/:Pfid',
 			name: 'details',
 			component: PortfolioDetailPage,
