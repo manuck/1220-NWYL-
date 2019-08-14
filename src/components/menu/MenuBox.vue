@@ -101,7 +101,8 @@ export default {
             const collection = db.collection('menus').doc(store.state.menuid).collection("comments").orderBy("created_at", "desc");
             // console.log('commentfucntion:',collection)
             collection.onSnapshot(snapshot => {
-                store.state.menucomments = []
+                store.state.menucomments = [],
+                store.state.menucommentsScore = []
                 store.state.commentId = []
                 store.state.commentUserId = []
                 store.state.commentScore = 0
@@ -111,6 +112,7 @@ export default {
                 commentL += 1
                 store.state.menucomments.push(doc.data().comment)
                 store.state.commentId.push(doc.data().id)
+                store.state.menucommentsScore.push(doc.data().score)
                 store.state.commentUserId.push(doc.data().userInfo)
                 store.state.commentScore += Number(doc.data().score)
                 });
