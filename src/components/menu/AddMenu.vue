@@ -1,15 +1,16 @@
 <template>
-    <div>
-        <a id="modal-button" class="button" href="#menu-add-modal">
-            메뉴 추가
-        </a>
+    <a id="modal-button" href="#menu-add-modal">            
+        <div class="menu-box" @mouseover="this.buttonHover" @mouseout="this.buttonUnHover" style="height: 350px; align-items: center; justify-content: center;">
+            <img class="menu-add-button" src="../../assets/images/plus1.png"/>
+        </div>
         <AddMenuModal></AddMenuModal>
-    </div>
+    </a>
 </template>
 
 <script>
 import AddMenuModal from './AddMenuModal'
-import FirebaseService from '@/services/FirebaseService'
+import plusIcon from '@/assets/images/plus2.png'
+import plusIcon1 from '@/assets/images/plus1.png'
 
 export default {
     name: 'AddMenu',   
@@ -18,17 +19,17 @@ export default {
     components: {
         AddMenuModal,
     },
-    data() {
-        return {
-            menus: [],
-        }
-    },
 	methods: {
-		
+		buttonHover(element) {
+            element.target.setAttribute('src', plusIcon);
+        },
+        buttonUnHover(element) {
+            element.target.setAttribute('src', plusIcon1);
+        }
     }
 }
 </script>
 
 <style>
-
+@import './AddMenu.scss';
 </style>

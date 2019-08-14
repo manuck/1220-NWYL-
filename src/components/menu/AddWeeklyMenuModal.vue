@@ -143,20 +143,20 @@ export default {
           console.log(typeof(store.state.menudataid))
           var docRef = db.collection("Weeklymenus").doc(store.state.menudataid);
         },
-        // postWeeklyMenu(date, korean, star, special) {
-        //   return firestore.collection('weeklymenus').add({
-        //     date,
-        //     korean,
-        //     star,
-        //     special
-        //   }).then(function(doRef) {
-        //       firestore.collection('weeklymenus').doc(doRef.id).update({
-        //         id: dcRef.id
-        //       })
-        //       location.href="/weeklymenu"
-        //   })
-        //   console.log('in')
-        // },
+        postWeeklyMenu(date, korean, star, special) {
+          return firestore.collection('weeklymenus').add({
+            date,
+            korean,
+            star,
+            special
+          }).then(function(doRef) {
+              firestore.collection('weeklymenus').doc(doRef.id).update({
+                id: dcRef.id
+              })
+              location.href="/weeklymenu"
+          })
+          console.log('in')
+        },
     },
 }
 </script>

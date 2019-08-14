@@ -1,18 +1,17 @@
 <template>
-    <div id="admin-menuinfo">
-        <div class="admin-content-wrapper">
-            <div class="admin-fullbox">
-                <div class="admin-menu-title">
+    <div id="admin-menuinfo" class="admin-content-wrapper">
+        <div class="admin-fullbox">
+            <div class="admin-box-header">
+                <div class="admin-header-title">
                     메뉴 정보
                 </div>
-            
-                <hr>
-                <!-- <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu> -->
-                <AddMenuAdmin v-if="($store.state.admin===true) && (1)" style="margin-top:10px; margin-bottom:10px"/>
-                <hr>
-                <MenuModal v-show="$store.state.menuname!==''" />
-                <EditMenuModal></EditMenuModal>
-                <div v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id" style="margin-top:20px">
+                <AddMenuAdmin v-if="($store.state.admin===true) && (1)"/>
+            </div>
+            <!-- <AddMenu v-if="$store.state.admin===true" style="margin-top:10px; margin-bottom:10px"></AddMenu> -->
+            <MenuModal v-show="$store.state.menuname!==''" />
+            <EditMenuModal></EditMenuModal>
+            <div class="admin-menuinfo-box">
+                <div v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id" class="admin-menuinfo-list">
                     <li>{{menu.name}} 
                         <span style="margin-left:40px">{{menu.uploadUser}}</span>
                         <a id="modal-button" class="button" href="#menu-modal" @click="menuidfunction(menu.id); commentfunction(); scorefunction()">
@@ -26,13 +25,8 @@
                         </a>
                     </li>
                 </div>
-                <!-- <li v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>{{ menu.name }}</li> -->
             </div>
-        </div>
-        <div class="admin-fullbox">
-            <div class="admin-menu-title">
-                주간 메뉴 정보
-            </div>
+            <!-- <li v-for="menu in menus" :menu="menu" :key="menu.id" v-bind:ID="menu.id"/>{{ menu.name }}</li> -->
         </div>
     </div>
 </template>

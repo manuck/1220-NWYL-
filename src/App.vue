@@ -15,6 +15,15 @@ export default {
 		return {
 			//branch용
 		}
-	}
+	},
+	watch: {
+		$route (to, from) {
+			if (to.name === 'menu') {
+				document.querySelector('html').style.overflowY = 'scroll'
+			} else {
+				document.querySelector('html').style.overflowY = 'hidden'
+			}
+		}
+	},
 }
 </script>

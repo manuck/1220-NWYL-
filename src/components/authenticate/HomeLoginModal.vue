@@ -2,10 +2,14 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on }">
             <v-layout wrap v-if="$store.state.accessToken" auth-wrapper>
-                <v-flex @click="signOut" class="button">로그아웃 하기</v-flex>
+                <v-flex @click="signOut" class="nav-icon logout">
+                    <img src="@/assets/images/exit-door.png" style="width:100%;" alt="logout">
+                </v-flex>
             </v-layout>
             <v-layout v-else auth-wrapper>
-                <v-flex v-on="on" class="button">로그인 하기</v-flex>
+                <v-flex v-on="on" class="nav-icon login">
+                    <img src="@/assets/images/key.png" style="width:100%;" alt="login">
+                </v-flex>
             </v-layout>
         </template>
 
@@ -58,7 +62,7 @@ import FirebaseService from '@/services/FirebaseService'
 import SignUp from '@/components/authenticate/SignUp'
 
 export default {
-    name: 'LoginModal',
+    name: 'HomeLoginModal',
     data: () => ({
         email: '',
         password: '',
@@ -69,34 +73,24 @@ export default {
         SignUp
     },
     methods: {
-        // 가입한 이메일과 패스워드로 로그인
         loginWithEmailAndPassword(email, password) {
             const result = FirebaseService.signInWithEmailAndPassword(email, password)
-            .then( () => {
-                this.email =''
-                this.password = ''
-            })
             this.dialog = false;
         },
-        // 구글 계정으로 로그인(팝업)
         loginWithGoogle() {
             const result = FirebaseService.loginWithGoogle()
             this.dialog = false;
         },
-        // 페이스북 계정으로 로그인(팝업)
         loginWithFacebook() {
             const result = FirebaseService.loginWithFacebook()
             this.dialog = false;
         },
-        // 로그아웃
         signOut() {
             FirebaseService.signOut();
         },
-        // SignUp 컴포넌트 닫기
         closeSignUp: function() {
            this.sign = false;
         },
-        // 로그인 모달 컴포넌트 닫기
         closeDialog: function() {
             this.dialog = false;
             this.sign = false;
@@ -106,8 +100,4 @@ export default {
 </script>
 
 <style>
-.auth-wrapper {
-    flex: none;
-    cursor: pointer;
-}
 </style>

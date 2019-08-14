@@ -8,6 +8,7 @@
 }
 .admin-content-wrapper {
     display: flex;
+    flex-direction: column;
     height: 100%;
 }
 .admin-fullbox {
@@ -18,7 +19,7 @@
     min-width: 800px;
     border-radius: 10px;
     background: #f7f7f7;
-    padding: 15px;
+    padding: 30px;
     margin-bottom: 20px;
     box-shadow: 0 10px 10px 0 rgba(0,0,0,0.3);
 }
@@ -32,7 +33,4 @@
 .admin-header-title {
     font-size: 24px;
     font-weight: 500;
-}
-.admin-box-content {
-    overflow-y: scroll;
 }

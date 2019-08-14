@@ -1,5 +1,6 @@
 <template>
-    <v-container grid-list-md>
+    <!-- <v-container grid-list-md> -->
+    <div class="admin-userinfo-box">
         <v-layout row wrap>
             <v-flex xs12>
                 <v-data-table
@@ -25,7 +26,8 @@
                 </v-data-table>
             </v-flex>
         </v-layout>
-    </v-container>
+    </div>
+    <!-- </v-container> -->
 </template>
 
 <script>
@@ -46,12 +48,11 @@ export default {
                 {text: 'Kick out' , sortable:false}
             ],
             pagination: {
-                rowsPerPage: 10
+                rowsPerPage: 5
             },
             members: [],
         }
     },
-
     methods: {
         gravatarURL(email) {
             return `http://www.gravatar.com/avatar/${md5(email)}?s=150&d=retro`
@@ -153,3 +154,7 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+@import './UserList.scss';
+</style>

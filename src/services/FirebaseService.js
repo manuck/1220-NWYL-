@@ -84,6 +84,7 @@ export default {
 		})
 	},
 	getMenus() {
+		console.log('모두다')
 		const menusCollection = firestore.collection('menus')
 		return menusCollection
 				.orderBy('name', 'desc')
@@ -96,16 +97,19 @@ export default {
 				})
 	},
 	getSelectMenus(a) {
+		console.log('지역')
 		const menusCollection = firestore.collection('menus')
 		return menusCollection.where("selected", "==", a)
 				.get()
 				.then((docSnapshots) => {
 					return docSnapshots.docs.map((doc) => {
 						let data = doc.data()
+						console.log(data)
 						return data
 					})
 				})
 	},
+<<<<<<< HEAD
 	getWeekMenus() {
 			const weekmenusCollection = firestore.collection('weeklymenus')
 			return weekmenusCollection
@@ -124,6 +128,32 @@ export default {
 			korean,
 			star,
 			special
+=======
+	getSelectTags(a) {
+		return a.get().then((docSnapshots) => {
+			return docSnapshots.docs.map((doc) => {
+				let data = doc.data()
+				console.log(data)
+				return data
+			})
+		})
+	},
+  // 회원가입을 통해 생성한 계정으로 로그인하기
+  	signInWithEmailAndPassword(email, password) {
+		return firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+			store.dispatch('getUser', result.user)
+			return result
+		})
+		.catch(function(error) {
+			let errorCode = error.code;
+			let errorMessage = error.message;
+			if(errorCode === 'auth/wrong-password') {
+				alert('Wrong password.');
+			} else {
+				alert(errorMessage);
+			}
+			console.error('[SignIn Error]',error)
+>>>>>>> 84e02b3fffb630954122a0718b7a9965de0c463d
 		})
 	},
   // 회원가입을 통해 생성한 계정으로 로그인하기

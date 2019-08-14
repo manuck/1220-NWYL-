@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="admin-box-content">
+            <div class="admin-pagelog-content">
                 <div v-for="i in logs.length > limits ? limits : logs.length" :key="i" class="admin-pagelog-li">
                     <span style="flex: 1 1 20px;">{{ i-1 }}</span>
                     <span style="flex: 1 1 80px;">{{ logs[i-1].page }}</span>
