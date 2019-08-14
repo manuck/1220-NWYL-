@@ -21,9 +21,52 @@
                             <svg version="1.1" x="0px" y="0px" viewBox="0 0 760 350" style="enable-background:new 0 0 760 350;">
                                 <path style="fill:#f7f7f7;" d="M380,14.6C85.4,14.6,40.4,8.7,31.6,169.5v5.5  c0,0,0,5.5,0,5.5C40.4,341.3,85.4,335.4,380,335.4s339.6,5.9,348.4-154.9c0,0,0-5.5,0-5.5v-5.5C719.6,8.7,674.6,14.6,380,14.6z"/>
                             </svg>
-                            <div id="main-korean" class="section-1-menu-box"></div>
-                            <div id="main-special" class="section-1-menu-box"></div>
-                            <div id="main-star" class="section-1-menu-box"></div>
+                            <div id="main-korean" class="section-1-menu-box">
+                                <div class="section-1-menu-flex">
+                                    <div class="section-1-menu-title">
+                                        한식
+                                    </div>
+                                    <div class="section-1-menu-content">
+                                        <span>소불고기</span>
+                                        <span>수수밥</span>
+                                        <span>아욱된장국</span>
+                                        <span>두부조림</span>
+                                        <span>치커리겉절이</span>
+                                        <span>포기김치</span>
+                                        <span>채소스틱/차/숭늉</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="main-special" class="section-1-menu-box">
+                                <div class="section-1-menu-flex">
+                                    <div class="section-1-menu-title">
+                                        별식
+                                    </div>
+                                    <div class="section-1-menu-content">
+                                        <span>잡채덮밥*자장소스</span>
+                                        <span>계란팟국</span>
+                                        <span>물만두튀김</span>
+                                        <span>짜사이채무침</span>
+                                        <span>포기김치</span>
+                                        <span>채소스틱/차/숭늉</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="main-star" class="section-1-menu-box">
+                                <div class="section-1-menu-flex">
+                                    <div class="section-1-menu-title">
+                                        스페셜
+                                    </div>
+                                    <div class="section-1-menu-content">
+                                        <span>나주곰탕</span>
+                                        <span>쌀밥</span>
+                                        <span>오징어숙회무침</span>
+                                        <span>간장고추지</span>
+                                        <span>깍두기</span>
+                                        <span>채소스틱/차/숭늉</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <SideNav/>
                     </div>
