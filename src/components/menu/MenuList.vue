@@ -45,6 +45,7 @@ export default {
     },
 	mounted() {       
         this.getMenus()
+        
 
         // console.log('유저가 누구?')
         // console.log(this.$store.state.user.uid)

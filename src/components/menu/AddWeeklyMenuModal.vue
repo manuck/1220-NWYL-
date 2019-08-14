@@ -10,7 +10,7 @@
                 <div class="modal-info">
                     <!-- <input @change="test" id="file" ref="myfile" name="weekly-menu" type="file" class="filecontainer"/> -->
                     <input @change="getMenuData" id="menudata" type="file" class="filecontainer"/>
-                    <input id="file-input" type="file" style="" accept=".csv, .json" onchange="loadFile(this);">
+                    <input type="file" id="csvfileinput" accept=".csv"/>
                     <button id="formButton" @click="postPortfolio(title,body,imgSrc)" class="form-button" disabled="" type="button">제출</button>
                 </div>
             </div>
@@ -45,7 +45,33 @@
 
 <script>
 // const testdata = require('./5thJul2019.json')
+function csvJSON(csv){
+                var lines=csv.split('\n');
+                console.log(lines.length)
+                var result = [];
+                var headers=lines[0].split(",");
+                console.log(headers)
+                for(var i in lines){
+                    console.log('azzzzz')
+                    var obj = {};
+                    var currentline=lines[i].split(",");
+                    for(var j in headers){
+                        console.log('asdsadasd')
+                        obj[headers[j]] = currentline[j];
+                    }
+                    console.log(obj)
+                    result.push(obj);
+                }
+                console.log(result)
+                console.log(JSON.stringify(result))
+                return JSON.stringify(result);
+            }
 
+function  fileExtention(filename) {
+                var parts = filename.split('.');
+                console.log(parts)
+                return parts[parts.length - 1];
+            }
 export default {
     name: "AddWeeklyMenuModal",
     data() {
@@ -55,6 +81,24 @@ export default {
     },
     mounted() {
         
+      $("#csvfileinput").change(function () {
+        console.log('아아아이이이잉ㅇ 앗살라마라이쿰')
+            var file = this.files[0];
+            if (file && fileExtention($(this).val()) == 'csv') {
+            var reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function (evt) {
+            // code to convert file data and render in json format
+            document.getElementById("fileContents").innerHTML = csvJSON(evt.target.result);
+            } 
+            reader.onerror = function (evt) { 
+            document.getElementById("fileContents").innerHTML = "error reading file"; 
+            } 
+            } 
+            else{ 
+            document.getElementById("fileContents").innerHTML = "Not a csv file"; 
+            } 
+        });  
     },
     methods: {
         getMenuData() {
@@ -99,35 +143,7 @@ export default {
                 }
             }
         },
-        loadFile(sender) {
-            // check file ext
-            var validExts = new Array(".csv", ".json");  // Allow csv, json
-            var fileExt = sender.value;
-            fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
-         
-            // If ext is not valid -> alert
-            if (fileExt && validExts.indexOf(fileExt) < 0) {
-                alert("Invalid file selected.<br> valid files are of <b>" + validExts.toString() + "</b> types. ");
-                return false;
-            } 
-         
-            // file read
-            var reader = new FileReader();
-            reader.onload = function (sender) {
-                var data = sender.target.result;
-         
-                // .. if json
-                if (fileExt === ".json") {
-                    data = JSON.parse(data.replace(/u'(?=[^:]+')/g, "'"));  
-                    // ...
-                } 
-                else if (fileExt === ".csv") {
-                    data = data.split(/\r\n|\n/);  // 줄바꿈으로 나눔
-                    // ...
-                }
-            };
-            reader.readAsText(sender.files[0]);
-        }
+        
     },
 }
 </script>
