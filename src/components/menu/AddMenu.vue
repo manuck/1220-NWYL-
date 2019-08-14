@@ -31,37 +31,5 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
-.wrap {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.add-button {
-  width: 140px;
-  height: 45px;
-  line-height: 45px;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  background-color: #fff;
-  border: none;
-  border-radius: 45px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-  }
-
-.add-button:hover {
-  background-color: #2EE59D;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
-}
-=======
 @import './AddMenu.scss';
->>>>>>> 365f4d7eadb9ff84287c3068a6513873ac22fedd
 </style>
