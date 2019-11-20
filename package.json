@@ -1,5 +1,5 @@
 {
-  "name": "ssafy",
+  "name": "nwyl",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,8 +33,8 @@
     "@vue/cli-plugin-pwa": "^3.0.4",
     "@vue/cli-service": "^3.9.2",
     "font-awesome": "^4.7.0",
-    "node-sass": "^4.12.0",
-    "parcel-bundler": "^1.12.3",
+    "node-sass": "^4.13.0",
+    "parcel-bundler": "^1.12.4",
     "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",

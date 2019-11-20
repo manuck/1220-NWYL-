@@ -1,4 +1,4 @@
-# ssafy
+# nwyl
 
 ## Project setup
 ```

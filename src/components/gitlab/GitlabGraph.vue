@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <a class="button blue ml-3" href="https://lab.ssafy.com/dmlimgo/webmobile-sub2/tree/develop">Gitlab Page 이동</a>
+        <a class="button blue ml-3" href="https://lab..com/dmlimgo/webmobile-sub2/tree/develop">Gitlab Page 이동</a>
         <div id="chart" class="hide_xs mt-3"></div>
     </div>
 </template>
@@ -47,15 +47,6 @@ export default {
     },
 
     methods: {
-        getgitCommits: function() {
-            axios.get('https://lab.ssafy.com/api/v4/projects/7541/events?per_page=100&private_token=JqwP6fMQbfkr2sLj9b_R')
-                .then(response => {
-                    this.gitCommits = response.data.reverse()
-                })
-                .then(() => {
-                   this.getDate()
-                })
-        },
         getDate: function() {
             for (var i = 0; i < this.gitCommits.length; i++) {
                 if (this.gitCommits[i]["action_name"] === "pushed to") {
